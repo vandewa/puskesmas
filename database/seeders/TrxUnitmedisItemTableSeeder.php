@@ -1,8 +1,10 @@
 <?php
 
-//namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class TrxUnitmedisItemTableSeeder extends Seeder
 {
@@ -16,9 +18,9 @@ class TrxUnitmedisItemTableSeeder extends Seeder
     {
         
 
-        \DB::table('trx_unitmedis_item')->delete();
+        DB::table('trx_unitmedis_item')->delete();
         
-        \DB::table('trx_unitmedis_item')->insert(array (
+        DB::table('trx_unitmedis_item')->insert(array (
             0 => 
             array (
                 'medicalunit_cd' => 'A077',

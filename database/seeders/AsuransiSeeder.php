@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 use App\Models\His\TrxInsurance;
 
@@ -10,13 +12,13 @@ class AsuransiSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $data = [
             ["insurance_cd" => "JKN", "Insurance_nm" => "BPJS"]
         ];
 
-        foreach ($data as $item){
+        foreach ($data as $item) {
             TrxInsurance::create($item);
         }
     }

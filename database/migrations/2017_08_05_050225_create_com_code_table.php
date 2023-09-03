@@ -3,7 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateComCodeTable extends Migration {
+class CreateComCodeTable extends Migration
+{
 
 	/**
 	 * Run the migrations.
@@ -12,7 +13,7 @@ class CreateComCodeTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('com_code', function(Blueprint $table)
+		Schema::create('com_codes', function(Blueprint $table)
 		{
 			$table->string('com_cd', 20)->primary('com_code_pkey');
 			$table->string('code_nm', 100)->nullable();
@@ -31,7 +32,7 @@ class CreateComCodeTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('com_code');
+		Schema::drop('com_codes');
 	}
 
 }

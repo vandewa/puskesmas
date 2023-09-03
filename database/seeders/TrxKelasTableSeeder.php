@@ -1,8 +1,10 @@
 <?php
 
-//namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class TrxKelasTableSeeder extends Seeder
 {
@@ -16,9 +18,9 @@ class TrxKelasTableSeeder extends Seeder
     {
         
 
-        \DB::table('trx_kelas')->delete();
+        DB::table('trx_kelas')->delete();
         
-        \DB::table('trx_kelas')->insert(array (
+        DB::table('trx_kelas')->insert(array (
             0 => 
             array (
                 'kelas_cd' => 'KL01',

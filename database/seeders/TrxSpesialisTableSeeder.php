@@ -1,8 +1,10 @@
 <?php
 
-//namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class TrxSpesialisTableSeeder extends Seeder
 {
@@ -16,9 +18,9 @@ class TrxSpesialisTableSeeder extends Seeder
     {
 
 
-        \DB::table('trx_spesialis')->delete();
+        DB::table('trx_spesialis')->delete();
 
-        \DB::table('trx_spesialis')->insert(array (
+        DB::table('trx_spesialis')->insert(array (
             0 =>
             array (
                 'spesialis_cd' => 'SPA',

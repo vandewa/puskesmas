@@ -1,8 +1,10 @@
 <?php
 
-//namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class TrxTarifTindakanTableSeeder extends Seeder
 {
@@ -16,9 +18,9 @@ class TrxTarifTindakanTableSeeder extends Seeder
     {
         
 
-        \DB::table('trx_tarif_tindakan')->delete();
+        DB::table('trx_tarif_tindakan')->delete();
         
-        \DB::table('trx_tarif_tindakan')->insert(array (
+        DB::table('trx_tarif_tindakan')->insert(array (
             0 => 
             array (
                 'seq_no' => 72548,

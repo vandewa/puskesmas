@@ -10,13 +10,13 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('com_codes', function (Blueprint $table) {
-            $table->string('code_cd')->primary();
-            $table->string('code_nm');
-            $table->string('code_group');
-            $table->string('code_value')->nullable();
-            $table->timestamps();
-        });
+        // Schema::create('com_codes', function (Blueprint $table) {
+        //     $table->string('code_cd')->primary();
+        //     $table->string('code_nm');
+        //     $table->string('code_group');
+        //     $table->string('code_value')->nullable();
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -24,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('com_codes');
+        // Schema::dropIfExists('com_codes');
     }
 };

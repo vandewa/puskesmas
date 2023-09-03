@@ -1,8 +1,10 @@
 <?php
 
-//namespace Database\Seeders;
+namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
 
 class TrxJadwalTableSeeder extends Seeder
 {
@@ -16,9 +18,9 @@ class TrxJadwalTableSeeder extends Seeder
     {
 
 
-        \DB::table('trx_jadwal')->delete();
+        DB::table('trx_jadwal')->delete();
 
-        \DB::table('trx_jadwal')->insert(array (
+        DB::table('trx_jadwal')->insert(array (
             0 =>
             array (
                 'seq_no' => 82,

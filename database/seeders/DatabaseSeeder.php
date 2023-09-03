@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,17 +14,18 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-         $this->call(LaratrustSeeder::class);
-         $this->call(ComCodeSeeder::class);
-         $this->call(NationSeeder::class);
-         $this->call(Icd10Seeder::class);
-         $this->call(ComAccountGroupSeeder::class);
-         $this->call(ComAccountSeeder::class);
-         $this->call(PosInventorySeeder::class);
-         $this->call(UomSeeder::class);
-         $this->call(ItemTypeSeeder::class);
-         $this->call(AsuransiSeeder::class);
-         $this->call(RegionSeeder::class);
+        $this->call(UserSeeder::class);
+        $this->call(LaratrustSeeder::class);
+        $this->call(ComCodeSeeder::class);
+        $this->call(NationSeeder::class);
+        $this->call(Icd10Seeder::class);
+        $this->call(ComAccountGroupSeeder::class);
+        $this->call(ComAccountSeeder::class);
+        $this->call(PosInventorySeeder::class);
+        $this->call(UomSeeder::class);
+        $this->call(ItemTypeSeeder::class);
+        $this->call(AsuransiSeeder::class);
+        $this->call(RegionSeeder::class);
         $this->call(ComAccountGroupTableSeeder::class);
         $this->call(ComAccountTableSeeder::class);
         $this->call(ComPaymentMethodTableSeeder::class);
