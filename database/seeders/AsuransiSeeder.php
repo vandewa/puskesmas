@@ -15,7 +15,7 @@ class AsuransiSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            ["insurance_cd" => "JKN", "Insurance_nm" => "BPJS"]
+            ["insurance_cd" => "JKN", "insurance_nm" => "BPJS"]
         ];
 
         foreach ($data as $item) {

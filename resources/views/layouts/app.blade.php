@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/plugins/toastr/toastr.min.css') }}">
 
     @stack('css')
     @livewireStyles
@@ -110,6 +111,7 @@
     <script src="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <!-- Summernote -->
     <script src="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.js') }}"></script>
+    <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js') }}"></script>
     <!-- overlayScrollbars -->
     <script src="{{ asset('AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
@@ -120,6 +122,20 @@
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
     @stack('js')
     @livewireScripts
+
+    <script>
+        window.addEventListener('toast', event => {
+            $(document).Toasts('create', {
+                class: event.detail.type??'bg-success',
+                autohide: true,
+                delay: 2000,
+                position: 'topRight',
+                title: event.detail.title,
+                body: event.detail.body
+            })
+
+        });
+    </script>
 </body>
 
 </html>

@@ -44,14 +44,21 @@ use \OwenIt\Auditing\Auditable;
         'modi_datetime'
     ];
 
+    public function scopeCari($query, $s)
+    {
+        if($s){
+            return $query->where('spesialis_cd', 'ilike', "%$s%")->orWhere('spesialis_nm', 'ilike', "%$s%");
+        }
+    }
+
     /**
      * Validation rules
      *
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

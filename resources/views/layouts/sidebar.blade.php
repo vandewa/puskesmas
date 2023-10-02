@@ -1,8 +1,8 @@
       <!-- Preloader -->
-      <div class="preloader flex-column justify-content-center align-items-center">
+      {{-- <div class="preloader flex-column justify-content-center align-items-center">
           <img class="animation__shake" src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo"
               height="60" width="60">
-      </div>
+      </div> --}}
 
       <!-- Navbar -->
       <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -67,6 +67,126 @@
                               </p>
                           </a>
                       </li>
+
+                      <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-flask"></i>
+                            <p>
+                                Sistem
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                  Admin
+                                  <i class="fas fa-angle-left right"></i>
+                                </p>
+                              </a>
+
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon ml-3"></i>
+                                    <p>Group</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon ml-3"></i>
+                                    <p>User</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon ml-3"></i>
+                                    <p>Autorisasi</p>
+                                  </a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon ml-3"></i>
+                                    <p>Setting</p>
+                                  </a>
+                                </li>
+
+                              </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                  Data Medis
+                                  <i class="fas fa-angle-left right"></i>
+                                </p>
+                              </a>
+
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      <p>Spesialis</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      <p>Group</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      <p>Group</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      <p>Group</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      <p>Group</p>
+                                    </a>
+                                  </li>
+                                  <li class="nav-item">
+                                    <a href="pages/examples/login.html" class="nav-link">
+                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      <p>Group</p>
+                                    </a>
+                                  </li>
+                              </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                              <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>
+                                  Data Umum
+                                  <i class="fas fa-angle-left right"></i>
+                                </p>
+                              </a>
+
+                              <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                  <a href="pages/examples/login.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Login v1</p>
+                                  </a>
+                                </li>
+                              </ul>
+                            </li>
+                        </ul>
+                    </li>
+
                       <li class="nav-item">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-user-circle"></i>

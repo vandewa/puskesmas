@@ -9,13 +9,13 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-6 mt-4">
-                        <a href="{{ route('pendaftaran') }}">
+                        <a href="{{ route('pendaftaran') }}" wire:navigate>
                             <!-- small box -->
                             <div class="small-box bg-success sedang">
                                 <div class="inner jarak">
                                     <center><i class="far fa-edit fa-3x"></i></center>
                                 </div>
-                                <p class="small-box-footer">Pendaftaran</p>
+                                <p class="small-box-footer">List Pasien</p>
                             </div>
                         </a>
                     </div>
@@ -23,12 +23,14 @@
                     <!-- ./col -->
                     <div class="col-lg-3 col-6 mt-4">
                         <!-- small box -->
-                        <div class="small-box bg-success sedang">
-                            <div class="inner jarak">
-                                <center><i class="fas fa-user-circle fa-3x"></i></center>
+                        <a href="{{ route('pasien.index') }}" wire:navigate>
+                            <div class="small-box bg-success sedang">
+                                <div class="inner jarak">
+                                    <center><i class="fas fa-user-circle fa-3x"></i></center>
+                                </div>
+                                <p class="small-box-footer">Pasien</p>
                             </div>
-                            <p class="small-box-footer">Pasien</p>
-                        </div>
+                        </a>
                     </div>
                     <!-- ./col -->
                     <div class="col-lg-3 col-6 mt-4">
