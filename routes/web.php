@@ -39,7 +39,7 @@ Route::middleware([
         Route::get('list', ListPasien::class)->name('index');
     });
     Route::group(['prefix' => 'master', 'as' => 'master.'], function(){
-        Route::get('spesialis', Spesialis::class);
+        Route::get('spesialis', Spesialis::class)->name('spesialis');
     });
 
 

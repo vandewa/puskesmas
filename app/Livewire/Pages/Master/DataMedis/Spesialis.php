@@ -21,6 +21,12 @@ class Spesialis extends Component
         $this->edit = true;
     }
 
+    public function batal() {
+        $this->edit = false;
+        $this->reset();
+
+    }
+
     public function save() {
         if($this->edit){
             $this->storeUpdate();

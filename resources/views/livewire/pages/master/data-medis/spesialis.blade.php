@@ -28,7 +28,7 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                {{-- <button type="button" class="btn btn-default float-right">Kembali</button> --}}
+                                <button type="button" class="btn btn-default float-right" wire:click='batal'>Batal</button>
                             </div>
                             <!-- /.card-footer -->
                         </form>

@@ -127,7 +127,7 @@
 
                               <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
+                                    <a href="{{ route('master.spesialis') }}" wire:navigate class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Spesialis</p>
                                     </a>
