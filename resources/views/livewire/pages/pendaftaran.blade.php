@@ -14,8 +14,8 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label empatbelas">No.
                                                 RM</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="no_rm">
-                                                @error('no_rm')
+                                                <input type="text" class="form-control" wire:model="form.no_rm" readonly>
+                                                @error('form.no_rm')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -24,8 +24,8 @@
                                             <label for="inputPassword3" class="col-sm-3 col-form-label empatbelas">Nama
                                                 Pasien</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="pasien_cd">
-                                                @error('pasien_cd')
+                                                <input type="text" class="form-control" wire:model="form.pasien_cd">
+                                                @error('form.pasien_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -34,9 +34,9 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Tanggal Lahir</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model.lazy="tanggal_lahir">
-                                                @error('tanggal_lahir')
+                                                <input type="date" class="form-control"
+                                                    wire:model.live="form.birth_date">
+                                                @error('form.birth_date')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -45,8 +45,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Umur</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="umur">
-                                                @error('umur')
+                                                <input type="text" class="form-control" wire:model="form.age" readonly>
+                                                @error('age')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -55,9 +55,14 @@
                                             <label for="inputPassword3" class="col-sm-3 col-form-label empatbelas">Jenis
                                                 Kelamin</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model.lazy="jenis_kelamin">
-                                                @error('jenis_kelamin')
+                                                <select name="" id="" class="form-control" wire:model="form.gender_tp">
+                                                    <option value="">Pilih Jenis Kelamin</option>
+                                                    @foreach ($jk as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                @error('form.gender_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -66,8 +71,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Alamat</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control" rows="2" wire.model="alamat" id="alamat"></textarea>
-                                                @error('alamat')
+                                                <textarea class="form-control" rows="2" wire.model="form.address" id="alamat"></textarea>
+                                                @error('form.address')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -77,7 +82,7 @@
                                                 Kelurahan</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="cari_kelurahan">
+                                                    wire:model="form.cari_kelurahan">
                                                 @error('cari_kelurahan')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -87,8 +92,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Provinsi</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="propinsi">
-                                                @error('propinsi')
+                                               <select name="" id="" class="form-control" wire:model.live='form.region_prop'>
+                                                    <option value="">Pilih Provinsi</option>
+                                                @foreach ($prop as $item )
+                                                    <option value="{{ $item['region_cd'] }}">{{ $item['region_nm'] }}</option>
+                                                @endforeach
+                                               </select>
+                                                @error('form.region_prop')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -97,8 +107,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Kabupaten</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="kabupaten">
-                                                @error('kabupaten')
+                                                <select name="" id="" class="form-control" wire:model.live='form.region_kab'>
+                                                    <option value="">Pilih Kabupaten</option>
+                                                @foreach ($kab??[] as $item )
+                                                    <option value="{{ $item['region_cd'] }}">{{ $item['region_nm'] }}</option>
+                                                @endforeach
+                                               </select>
+                                                @error('form.region_kab')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -107,8 +122,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Kecamatan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="kecamatan">
-                                                @error('kecamatan')
+                                                <select name="" id="" class="form-control" wire:model.live='form.region_kec'>
+                                                    <option value="">Pilih Kecamatan</option>
+                                                @foreach ($kec??[] as $item )
+                                                    <option value="{{ $item['region_cd'] }}">{{ $item['region_nm'] }}</option>
+                                                @endforeach
+                                               </select>
+                                                @error('form.region_kec')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -117,8 +137,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Kelurahan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="kelurahan">
-                                                @error('kelurahan')
+                                                <select name="" id="" class="form-control" wire:model.live='form.region_kel'>
+                                                    <option value="">Pilih Keliurahan</option>
+                                                @foreach ($kel??[] as $item )
+                                                    <option value="{{ $item['region_cd'] }}">{{ $item['region_nm'] }}</option>
+                                                @endforeach
+                                               </select>
+                                                @error('form.region_kel')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -127,8 +152,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Telepon</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" wire:model.lazy="telepon">
-                                                @error('telepon')
+                                                <input type="number" class="form-control" wire:model="form.phone">
+                                                @error('form.phone')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -137,8 +162,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">HP</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" wire:model.lazy="hp">
-                                                @error('hp')
+                                                <input type="number" class="form-control" wire:model="form.mobile1">
+                                                @error('form.mobile1')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -149,9 +174,38 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label empatbelas">Tipe
                                                 Pasien</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model.lazy="tipe_pasien">
-                                                @error('tipe_pasien')
+                                                <select name="" wire:model.live='form.pasien_tp' id="" class="form-control">
+                                                    <option value="">Pilih Jenis Pasien</option>
+                                                    @foreach ($tppasien??[] as $item )
+                                                    <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.pasien_tp')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row margin-bawah">
+                                            <label for="inputPassword3"
+                                                class="col-sm-3 col-form-label empatbelas">Jenis Jaminan</label>
+                                            <div class="col-sm-9">
+                                                <select name="" id="" class="form-control" wire:model.live='insurance.insurance_cd'  @if($form['pasien_tp'] != 'PASIEN_TP_02')readonly @endif>
+                                                    <option value="">Pilih Jaminan</option>
+                                                    @foreach ($tpjaminan??[] as $item)
+                                                        <option value="{{ $item['insurance_cd']}}">{{ $item['insurance_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('insurance.insurance_cd')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row margin-bawah">
+                                            <label for="inputPassword3"
+                                                class="col-sm-3 col-form-label empatbelas">No Peserta</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" wire:model.live="insurance.insurance_no" @if($form['pasien_tp'] != 'PASIEN_TP_02')readonly @endif>
+                                                @error('insurance.insurance_no')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -160,8 +214,14 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Status</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="status">
-                                                @error('status')
+
+                                                <select name="" id="" class="form-control" wire:model="form.marital_tp">
+                                                    <option value="">Pilih Status</option>
+                                                    @foreach ($status??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.marital_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -170,9 +230,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Pendidikan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model.lazy="pendidikan">
-                                                @error('pendidikan')
+                                                    <select name="" id="" class="form-control" wire:model="form.education_cd">
+                                                        <option value="">Pilih Pendidikan</option>
+                                                        @foreach ($status??[] as $item)
+                                                            <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                @error('form.education_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -181,9 +245,14 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Pekerjaan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model.lazy="pekerjaan">
-                                                @error('pekerjaan')
+                                                <select name="" id="" class="form-control" wire:model="form.occupation_cd">
+                                                    <option value="">Pilih Pendidikan</option>
+                                                    @foreach ($pekerjaan??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+
+                                                @error('form.occupation_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -192,8 +261,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Suku</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="suku">
-                                                @error('suku')
+                                                <input type="text" class="form-control" wire:model="form.race_cd">
+                                                @error('form.race_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -202,8 +271,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Agama</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="agama">
-                                                @error('agama')
+                                                <input type="text" class="form-control" wire:model="form.religion_cd">
+                                                @error('form.religion_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -213,8 +282,8 @@
                                                 class="col-sm-3 col-form-label empatbelas">Identitas</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="identitas">
-                                                @error('identitas')
+                                                    wire:model="form.identity_tp">
+                                                @error('form.identity_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -224,8 +293,8 @@
                                                 Identitas</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="no_identitas">
-                                                @error('no_identitas')
+                                                    wire:model="form.identity_no">
+                                                @error('form.identity_no')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -234,8 +303,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Warga Negara</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="nation">
-                                                @error('nation')
+                                                <input type="text" class="form-control" wire:model="form.nation_cd">
+                                                @error('form.nation_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -247,8 +316,8 @@
                                                 Darah</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="gol_darah">
-                                                @error('gol_darah')
+                                                    wire:model="form.blood_tp">
+                                                @error('form.blood_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -257,8 +326,8 @@
                                             <label for="inputEmail3"
                                                 class="col-sm-3 col-form-label empatbelas">Berat</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="berat">
-                                                @error('berat')
+                                                <input type="text" class="form-control" wire:model="form.weight">
+                                                @error('form.weight')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -267,8 +336,8 @@
                                             <label for="inputEmail3"
                                                 class="col-sm-3 col-form-label empatbelas">Tinggi</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="tinggi">
-                                                @error('tinggi')
+                                                <input type="text" class="form-control" wire:model="form.height">
+                                                @error('form.height')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -277,8 +346,8 @@
                                             <label for="inputEmail3"
                                                 class="col-sm-3 col-form-label empatbelas">Email</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.lazy="email">
-                                                @error('email')
+                                                <input type="text" class="form-control" wire:model="form.email">
+                                                @error('form.email')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -288,8 +357,8 @@
                                                 Pos</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="kode_pos">
-                                                @error('kode_pos')
+                                                    wire:model="form.postcode">
+                                                @error('form.postcode')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -299,8 +368,8 @@
                                                 Ayah</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="nama_ayah">
-                                                @error('nama_ayah')
+                                                    wire:model="form.dad_name">
+                                                @error('form.dad_name')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -310,8 +379,8 @@
                                                 Ibu</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="nama_ibu">
-                                                @error('nama_ibu')
+                                                    wire:model="form.mom_name">
+                                                @error('form.mom_name')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -321,8 +390,8 @@
                                                 class="col-sm-3 col-form-label empatbelas">Nama</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="nama_keluarga">
-                                                @error('nama_keluarga')
+                                                    wire:model="form.pj_name">
+                                                @error('form.pj_name')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -332,8 +401,8 @@
                                                 class="col-sm-3 col-form-label empatbelas">Hubungan</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model.lazy="hubungan">
-                                                @error('hubungan')
+                                                    wire:model="form.pj_tp">
+                                                @error('form.pj_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -342,8 +411,8 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Alamat</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control" rows="2" wire.model="alamat_keluarga" id="alamat_keluarga"></textarea>
-                                                @error('alamat_keluarga')
+                                                <textarea class="form-control" rows="2" wire.model="form.pj_address" id="alamat_keluarga"></textarea>
+                                                @error('form.pj_address')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -353,8 +422,8 @@
                                                 class="col-sm-3 col-form-label empatbelas">Telepon</label>
                                             <div class="col-sm-9">
                                                 <input type="number" class="form-control"
-                                                    wire:model.lazy="telepon_keluarga">
-                                                @error('telepon_keluarga')
+                                                    wire:model="form.pj_telp">
+                                                @error('form.pj_telp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -363,9 +432,9 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Tanggal Lahir</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model.lazy="tanggal_lahir_keluarga">
-                                                @error('tanggal_lahir_keluarga')
+                                                <input type="date" class="form-control"
+                                                    wire:model="form.pj_date_birth">
+                                                @error('form.pj_date_birth')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
