@@ -7,6 +7,7 @@ use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
+use App\Livewire\Pages\Master\DataMedis\Dokter;
 
 /*
 |--------------------------------------------------------------------------

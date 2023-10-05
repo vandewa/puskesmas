@@ -159,5 +159,13 @@ class TrxDokter extends Model implements Auditable
         }
     }
 
+    public function scopeCari($query, $s)
+    {
+        if($s){
+            return $query->where('dr_nm', 'ilike', "%$s%")->orWhere('dr_cd', 'ilike', "%$s%")
+            ->orWhere('nip', 'ilike', "%$s%");;
+        }
+    }
+
 
 }

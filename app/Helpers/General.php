@@ -35,7 +35,7 @@ if(!function_exists('file_name')){
 if(!function_exists('get_code')){
     function get_code($a){
         $value = Cache::remember($a, config('app.cache_time'), function () use($a) {
-            return  ComCode::where('code_group', $a)->get()->toArray();
+            return  ComCode::where('code_group', $a)->get()->toArray;
         });
 
         return $value;

@@ -68,20 +68,15 @@ class TrxPasien extends Model implements Auditable
 {
 use \OwenIt\Auditing\Auditable;
 
-public $incrementing = false;
 
     public $table = 'trx_pasien';
-
-
-
-
-
-
+    public $incrementing = false;
     protected $primaryKey = 'pasien_cd';
+    public $keyType = 'string';
 
     // public $incrementing = false;
 
-    public $timestamps = true;
+
 
     public $fillable = [
            'pasien_cd',
@@ -142,7 +137,7 @@ public $incrementing = false;
      * @var array
      */
     protected $casts = [
-
+        'pasien_cd' => 'string',
     ];
 
     protected static $logAttributes = [
@@ -207,6 +202,7 @@ public $incrementing = false;
 
     ];
 
+
     public function family()
     {
       return $this->hasOne(TrxPasienFamily::class,'pasien_cd');
@@ -264,7 +260,37 @@ public $incrementing = false;
       return $this->belongsTo(ComCode::class,'pasien_tp');
     }
 
+    public function scopeCarirm($filter, $value) {
+        if($value){
+            return $this->where('no_rm', 'ilike', "%$value%");
+        }
 
+    }
+    public function scopeCaripasien($filter, $value) {
+        if($value){
+            return $this->where('pasien_nm', 'ilike', "%$value%");
+        }
 
+    }
+
+    public function scopeCarialamat($filter, $value) {
+        if($value){
+            return $this->whereHas('provinsi', function($a) use($value){
+                $a->where('region_nm', 'ilike', "%$value%");
+            })->orwhereHas('kabupaten', function($a) use($value) {
+                $a->where('region_nm', 'ilike', "%$value%");
+            })->orwhereHas('kecamatan', function($a) use($value) {
+                $a->where('region_nm', 'ilike', "%$value%");
+            })->orwhereHas('kelurahan', function($a) use($value) {
+                $a->where('region_nm', 'ilike', "%$value%");
+            })->orwhere('address', 'ilike', "$value");
+        }
+    }
+
+    public function scopeCaritanggal($filter, $value){
+        if($value){
+            return $this->where('birth_date', $value);
+        }
+    }
 
 }
