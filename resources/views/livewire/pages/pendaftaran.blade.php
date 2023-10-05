@@ -6,7 +6,7 @@
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
-                        <form class="form-horizontal mt-2" >
+                        <form class="form-horizontal mt-2" wire:submit="save">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4">
@@ -24,8 +24,8 @@
                                             <label for="inputPassword3" class="col-sm-3 col-form-label empatbelas">Nama
                                                 Pasien</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model="form.pasien_cd">
-                                                @error('form.pasien_cd')
+                                                <input type="text" class="form-control" wire:model="form.pasien_nm">
+                                                @error('form.pasien_nm')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -77,7 +77,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-group row margin-bawah">
+                                        {{-- <div class="form-group row margin-bawah">
                                             <label for="inputPassword3" class="col-sm-3 col-form-label empatbelas">Cari
                                                 Kelurahan</label>
                                             <div class="col-sm-9">
@@ -87,7 +87,7 @@
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group row margin-bawah">
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Provinsi</label>
@@ -189,13 +189,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Jenis Jaminan</label>
                                             <div class="col-sm-9">
-                                                <select name="" id="" class="form-control" wire:model.live='insurance.insurance_cd'  @if($form['pasien_tp'] != 'PASIEN_TP_02')readonly @endif>
+                                                <select name="" id="" class="form-control" wire:model.live='insurance.insurance_tp'  @if($form['pasien_tp'] != 'PASIEN_TP_02')readonly @endif>
                                                     <option value="">Pilih Jaminan</option>
                                                     @foreach ($tpjaminan??[] as $item)
                                                         <option value="{{ $item['insurance_cd']}}">{{ $item['insurance_nm'] }}</option>
                                                     @endforeach
                                                 </select>
-                                                @error('insurance.insurance_cd')
+                                                @error('insurance.insurance_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -232,7 +232,7 @@
                                             <div class="col-sm-9">
                                                     <select name="" id="" class="form-control" wire:model="form.education_cd">
                                                         <option value="">Pilih Pendidikan</option>
-                                                        @foreach ($status??[] as $item)
+                                                        @foreach ($pendidikan??[] as $item)
                                                             <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
                                                         @endforeach
                                                     </select>
@@ -261,7 +261,12 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Suku</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model="form.race_cd">
+                                                <select name="" id="" class="form-control" wire:model="form.race_cd">
+                                                    <option value="">Pilih Suku</option>
+                                                    @foreach ($suku??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
                                                 @error('form.race_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -271,7 +276,12 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Agama</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model="form.religion_cd">
+                                                <select name="" id="" class="form-control" wire:model="form.religion_cd">
+                                                    <option value="">Pilih Agama</option>
+                                                    @foreach ($agama??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
                                                 @error('form.religion_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -281,8 +291,12 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Identitas</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model="form.identity_tp">
+                                                <select name="" id="" class="form-control" wire:model="form.identity_tp">
+                                                    <option value="">Pilih Jenis Identitas</option>
+                                                    @foreach ($tipeIdentitas??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
                                                 @error('form.identity_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -303,7 +317,13 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Warga Negara</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model="form.nation_cd">
+                                                <select name="" id="" class="form-control" wire:model="form.nation_cd">
+                                                    <option value="">Pilih Negara</option>
+                                                    @foreach ($negara??[] as $item)
+                                                        <option value="{{ $item['nation_cd'] }}">{{ $item['nation_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+
                                                 @error('form.nation_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -315,8 +335,13 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label empatbelas">Gol.
                                                 Darah</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model="form.blood_tp">
+                                                <select name="" id="" class="form-control" wire:model="form.blood_tp">
+                                                    <option value="">Pilih Golongan Darah</option>
+                                                    @foreach ($goldarah??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+
                                                 @error('form.blood_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -363,6 +388,7 @@
                                                 @enderror
                                             </div>
                                         </div>
+
                                         <div class="form-group row margin-bawah">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label empatbelas">Nama
                                                 Ayah</label>
@@ -386,6 +412,9 @@
                                             </div>
                                         </div>
                                         <div class="form-group row margin-bawah">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label empatbelas">Penanggung Jawab</label>
+                                        </div>
+                                        <div class="form-group row margin-bawah">
                                             <label for="inputEmail3"
                                                 class="col-sm-3 col-form-label empatbelas">Nama</label>
                                             <div class="col-sm-9">
@@ -400,8 +429,13 @@
                                             <label for="inputEmail3"
                                                 class="col-sm-3 col-form-label empatbelas">Hubungan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model="form.pj_tp">
+                                                <select name="" id="" class="form-control" wire:model="form.pj_tp">
+                                                    <option value="">Jenis Hubunngan Keluarga</option>
+                                                    @foreach ($family??[] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+
                                                 @error('form.pj_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -448,7 +482,7 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <button type="submit" class="btn btn-default float-right">Batalkan</button>
+                                <a  href="{{ route('pasien.index') }}" wire:navigate class="btn btn-default float-right">Batalkan</a>
                             </div>
                             <!-- /.card-footer -->
                         </form>
