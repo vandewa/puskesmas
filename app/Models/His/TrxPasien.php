@@ -266,6 +266,12 @@ use \OwenIt\Auditing\Auditable;
         }
 
     }
+    public function scopeCarikusus($filter, $value) {
+        if($value){
+            return $this->where('no_rm', 'ilike', "%$value%")->orWhere('pasien_nm', 'ilike', "%$value%");
+        }
+
+    }
     public function scopeCaripasien($filter, $value) {
         if($value){
             return $this->where('pasien_nm', 'ilike', "%$value%");

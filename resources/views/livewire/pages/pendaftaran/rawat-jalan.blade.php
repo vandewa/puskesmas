@@ -27,7 +27,7 @@
                                             <div class="input-group ">
                                                 <input type="text" class="form-control">
                                                 <span class="input-group-append">
-                                                  <button type="button" class="btn btn-info btn-flat">Cari!</button>
+                                                  <button type="button" class="btn btn-info btn-flat" wire:click="$dispatch('show-modal')">Cari</button>
                                                 </span>
                                               </div>
                                         </div>
@@ -117,5 +117,5 @@
 
         </div>
     </section>
-
+    <livewire:component.modal-pasien>
 </div>
