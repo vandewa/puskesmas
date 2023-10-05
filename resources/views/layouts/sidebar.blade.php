@@ -1,5 +1,4 @@
-      <!-- Preloader -->
-      {{-- <div class="preloader flex-column justify-content-center align-items-center">
+      <!-- Preloader --> {{-- <div class="preloader flex-column justify-content-center align-items-center">
           <img class="animation__shake" src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo"
               height="60" width="60">
       </div> --}}
@@ -9,8 +8,7 @@
           <!-- Left navbar links -->
           <ul class="navbar-nav">
               <li class="nav-item">
-                  <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
-                          class="fas fa-bars"></i></a>
+                  <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
               </li>
           </ul>
 
@@ -60,7 +58,8 @@
                       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                       <li class="nav-item">
-                          <a href="pages/widgets.html" class="nav-link active">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
                               <i class="nav-icon fas fa-home"></i>
                               <p>
                                   Beranda
@@ -68,124 +67,139 @@
                           </a>
                       </li>
 
-                      <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-flask"></i>
-                            <p>
-                                Sistem
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                  Admin
-                                  <i class="fas fa-angle-left right"></i>
-                                </p>
-                              </a>
+                      <li
+                          class="nav-item  
+                      {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
+                      ">
+                          <a href="#" class="nav-link">
+                              <i class="nav-icon fa fa-desktop"></i>
+                              <p>
+                                  Sistem
+                                  <i class="right fas fa-angle-left"></i>
+                              </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                      <i class="fa fa-folder nav-icon ml-2"></i>
+                                      <p>
+                                          Admin
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
 
-                              <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                  <a href="pages/examples/login.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon ml-3"></i>
-                                    <p>Group</p>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a href="pages/examples/login.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon ml-3"></i>
-                                    <p>User</p>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a href="pages/examples/login.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon ml-3"></i>
-                                    <p>Autorisasi</p>
-                                  </a>
-                                </li>
-                                <li class="nav-item">
-                                  <a href="pages/examples/login.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon ml-3"></i>
-                                    <p>Setting</p>
-                                  </a>
-                                </li>
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Group</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>User</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Autorisasi</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Setting</p>
+                                          </a>
+                                      </li>
 
-                              </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                  Data Medis
-                                  <i class="fas fa-angle-left right"></i>
-                                </p>
-                              </a>
+                                  </ul>
+                              </li>
+                          </ul>
+                          <ul class="nav nav-treeview">
+                              <li
+                                  class="nav-item 
+                              {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
 
-                              <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="{{ route('master.spesialis') }}" wire:navigate class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Spesialis</p>
-                                    </a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Group</p>
-                                    </a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Group</p>
-                                    </a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Group</p>
-                                    </a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Group</p>
-                                    </a>
-                                  </li>
-                                  <li class="nav-item">
-                                    <a href="pages/examples/login.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Group</p>
-                                    </a>
-                                  </li>
-                              </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                              <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>
-                                  Data Umum
-                                  <i class="fas fa-angle-left right"></i>
-                                </p>
-                              </a>
-
-                              <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                  <a href="pages/examples/login.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Login v1</p>
+                              ">
+                                  <a href="#"
+                                      class="nav-link 
+                                      {{ Request::segment(2) == 'spesialis' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'dokter' ? 'active' : '' }}
+                                      ">
+                                      <i class="fa fa-folder nav-icon ml-2"></i>
+                                      <p>
+                                          Data Medis
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
                                   </a>
-                                </li>
-                              </ul>
-                            </li>
-                        </ul>
-                    </li>
+
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.spesialis') }}" wire:navigate
+                                              class="nav-link  {{ Request::segment(2) == 'spesialis' ? 'active' : '' }}">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Spesialis</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.dokter') }}"
+                                              class="nav-link {{ Request::segment(2) == 'dokter' ? 'active' : '' }}">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Dokter</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Group</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Group</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Group</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              <p>Group</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </li>
+                          </ul>
+                          <ul class="nav nav-treeview">
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link">
+                                      <i class="fa fa-folder nav-icon ml-2"></i>
+                                      <p>
+                                          Data Umum
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
+
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="pages/examples/login.html" class="nav-link">
+                                              <i class="far fa-circle nav-icon"></i>
+                                              <p>Login v1</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </li>
+                          </ul>
+                      </li>
 
                       <li class="nav-item">
                           <a href="#" class="nav-link">
@@ -198,25 +212,25 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="{{ route('pasien.index') }}" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Data Pasien</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pendaftaran Pasien</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>View Pasien</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pasien Rujukan</p>
                                   </a>
                               </li>
@@ -233,49 +247,49 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pendaftaran</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Transaksi Rawat Jalan</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Laboratorium</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Radiologi</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Resep/Obat</p>
                                   </a>
                               </li>
@@ -292,61 +306,61 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Booking</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pendaftaran</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Transaksi Rawat Inap</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Laboratorium</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Radiologi</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Resep/Obat</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Bed Management</p>
                                   </a>
                               </li>
@@ -363,13 +377,13 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
                               </li>
@@ -386,25 +400,25 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Laboratorium</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Radiologi</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Resep/Obat</p>
                                   </a>
                               </li>
@@ -421,13 +435,13 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Tracking RM</p>
                                   </a>
                               </li>
@@ -444,25 +458,25 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Proses Resep</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Retur</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Penjualan Bebas</p>
                                   </a>
                               </li>
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon"></i>
+                                      <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pengambilan Obat</p>
                                   </a>
                               </li>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
@@ -40,6 +41,7 @@ Route::middleware([
     });
     Route::group(['prefix' => 'master', 'as' => 'master.'], function(){
         Route::get('spesialis', Spesialis::class)->name('spesialis');
+        Route::get('dokter', Dokter::class)->name('dokter');
     });
 
 
