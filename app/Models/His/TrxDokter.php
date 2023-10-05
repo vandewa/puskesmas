@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -47,7 +48,7 @@ use Eloquent as Model;
  */
 class TrxDokter extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_dokter';
@@ -55,7 +56,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     protected $primaryKey = 'dr_cd';
-    public $incrementing =  false;
+    public $incrementing = false;
 
 
     /**
@@ -145,6 +146,17 @@ use \OwenIt\Auditing\Auditable;
     public function spesialis()
     {
         return $this->belongsTo(TrxSpesialis::class, 'spesialis_cd');
+    }
+    public function tipe()
+    {
+        return $this->belongsTo(ComCode::class, 'paramedis_tp');
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('dr_cd', 'ilike', "%$s%")->orWhere('dr_nm', 'ilike', "%$s%")->orWhere('paramedis_tp', 'ilike', "%$s%");
+        }
     }
 
     public function scopeCari($query, $s)

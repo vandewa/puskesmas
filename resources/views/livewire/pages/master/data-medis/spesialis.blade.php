@@ -22,17 +22,20 @@
                         <form class="form-horizontal mt-2" wire:submit='save'>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Kode Spesialis</label>
-                                            <div class="col-sm-10">
-                                            <input type="text" class="form-control" wire:model='form.spesialis_cd'  placeholder="Kode Spesialis">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                                Spesialis</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control"
+                                                    wire:model='form.spesialis_cd' placeholder="Kode Spesialis">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
-                                            <div class="col-sm-10">
-                                            <input type="text" class="form-control" wire:model='form.spesialis_nm'  placeholder="Nama">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control"
+                                                    wire:model='form.spesialis_nm' placeholder="Nama">
                                             </div>
                                         </div>
                                     </div>
@@ -41,7 +44,8 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <button type="button" class="btn btn-default float-right" wire:click='batal'>Batal</button>
+                                <button type="button" class="btn btn-default float-right"
+                                    wire:click='batal'>Batal</button>
                             </div>
                             <!-- /.card-footer -->
                         </form>
@@ -60,7 +64,8 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <input type="text" class="form-control" placeholder="cari" wire:model.live='cari'>
+                                    <input type="text" class="form-control" placeholder="cari"
+                                        wire:model.live='cari'>
                                 </div>
                             </div>
 
@@ -76,12 +81,18 @@
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->spesialis_cd }}'>
 
-                                            <td>{{ $loop->index + $post->firstItem()}}</td>
+                                            <td>{{ $loop->index + $post->firstItem() }}</td>
                                             <td>{{ $item->spesialis_cd }}</td>
                                             <td> {{ $item->spesialis_nm }}</td>
                                             <td>
-                                                <button type="button" wire:click="getEdit('{{ $item->spesialis_cd }}')" class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip" data-placement="left" title="Edit"><i class="fas fa-pencil-alt"></i></button>
-                                                <button type="button"  class="btn btn-danger btn-flat btn-sm" data-toggle="modal" data-target="#modal-default" wire:click="setDelete('{{ $item->spesialis_cd }}')"><i class="fas fa-trash"></i></button>
+                                                <button type="button" wire:click="getEdit('{{ $item->spesialis_cd }}')"
+                                                    class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
+                                                    data-placement="left" title="Edit"><i
+                                                        class="fas fa-pencil-alt"></i></button>
+                                                <button type="button" class="btn btn-danger btn-flat btn-sm"
+                                                    data-toggle="modal" data-target="#modal-default"
+                                                    wire:click="setDelete('{{ $item->spesialis_cd }}')"><i
+                                                        class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -95,25 +106,5 @@
 
         </div>
     </section>
-    <div class="modal fade" id="modal-default" wire:ignore>
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-danger">
-              <h4 class="modal-title">Konformasi Hapus</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              Data yang dihapus tidak dapat dikembalikan!
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-              <button type="button" class="btn btn-danger" data-dismiss="modal" wire:click='delete'>Ya Hapus</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
+    @include('livewire.global.modal-konfirmasi-hapus')
 </div>
