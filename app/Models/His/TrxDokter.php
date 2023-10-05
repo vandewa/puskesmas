@@ -147,5 +147,13 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(TrxSpesialis::class, 'spesialis_cd');
     }
 
+    public function scopeCari($query, $s)
+    {
+        if($s){
+            return $query->where('dr_nm', 'ilike', "%$s%")->orWhere('dr_cd', 'ilike', "%$s%")
+            ->orWhere('nip', 'ilike', "%$s%");;
+        }
+    }
+
 
 }
