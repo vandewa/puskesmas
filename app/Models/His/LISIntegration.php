@@ -3,7 +3,7 @@
 namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 class LISIntegration extends Model implements Auditable
 {

@@ -189,7 +189,7 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Jenis Jaminan</label>
                                             <div class="col-sm-9">
-                                                <select name="" id="" class="form-control" wire:model.live='insurance.insurance_tp'  @if($form['pasien_tp'] != 'PASIEN_TP_02')readonly @endif>
+                                                <select name="" id="" class="form-control" wire:model.live='insurance.insurance_tp'  @if($form['pasien_tp'] != 'PASIEN_TP_02')disabled @endif>
                                                     <option value="">Pilih Jaminan</option>
                                                     @foreach ($tpjaminan??[] as $item)
                                                         <option value="{{ $item['insurance_cd']}}">{{ $item['insurance_nm'] }}</option>
@@ -204,7 +204,7 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">No Peserta</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model.live="insurance.insurance_no" @if($form['pasien_tp'] != 'PASIEN_TP_02')readonly @endif>
+                                                <input type="text" class="form-control" wire:model.live="insurance.insurance_no" @if($form['pasien_tp'] != 'PASIEN_TP_02')disabled @endif>
                                                 @error('insurance.insurance_no')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror

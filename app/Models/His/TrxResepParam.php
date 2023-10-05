@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxResepParam
@@ -25,7 +25,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_resep_param';
-    
+
 
 
 
@@ -73,8 +73,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

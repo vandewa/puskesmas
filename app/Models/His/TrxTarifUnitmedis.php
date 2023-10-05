@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxTarifUnitmedis
@@ -26,7 +26,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_tarif_unitmedis';
-    
+
 
 
 
@@ -76,7 +76,7 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     public function kelas(){
@@ -97,5 +97,5 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(TrxUnitmedisItem::class, 'medicalunit_cd');
     }
 
-    
+
 }

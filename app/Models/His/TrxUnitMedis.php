@@ -6,7 +6,7 @@ use Auth;
 use DB;
 use Carbon\Carbon;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxUnitMedis
@@ -32,6 +32,7 @@ class TrxUnitMedis extends Model implements Auditable
     protected $primaryKey = 'medunit_cd';
 
     public $incrementing = false;
+    protected $keyType = 'string';
 
 
 

@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxIcdgroupItem
@@ -22,7 +22,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_icdgroup_item';
-    
+
 
 
 
@@ -61,8 +61,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

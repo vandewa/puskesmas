@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Master\DataMedis;
 
 use App\Models\His\TrxDokter;
+use App\Models\His\TrxSpesialis;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -10,6 +11,7 @@ class Dokter extends Component
 {
     use WithPagination;
 
+    public $listSpesialis ;
     public $form = [
         'dr_cd' => '',
         'dr_nm' => '',
@@ -18,8 +20,12 @@ class Dokter extends Component
     ];
     public $cari, $edit = false;
     public $idHapus;
+
+    public function mount() {
+        $this->listSpesialis = TrxSpesialis::all()->toArray();
+    }
     public function getEdit($a){
-        $this->form = TrxDokter::with('spesialis')->find($a)->only(['dr_cd','spesialis_cd', 'dr_nm']);
+        $this->form = TrxDokter::with('spesialis')->find($a)->only(['dr_cd','spesialis_cd', 'dr_nm', 'nip']);
         $this->edit = true;
     }
 
@@ -42,8 +48,9 @@ class Dokter extends Component
     public function store()
     {
         $this->validate([
+            'form.dr_cd' => 'required',
+            'form.dr_nm' => 'required',
             'form.spesialis_cd' => 'required',
-            'form.spesialis_nm' => 'required',
         ]);
 
         TrxDokter::create($this->form);
@@ -60,7 +67,7 @@ class Dokter extends Component
 
     public function storeUpdate()
     {
-        TrxDokter::find($this->form['spesialis_cd'])->update($this->form);
+        TrxDokter::find($this->form['dr_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
     }

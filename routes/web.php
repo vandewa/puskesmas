@@ -7,6 +7,7 @@ use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
+use App\Livewire\Pages\Registrasi\RawatJalan;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,10 @@ Route::middleware([
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::get('spesialis', Spesialis::class)->name('spesialis');
         Route::get('dokter', Dokter::class)->name('dokter');
+    });
+
+    Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function(){
+        Route::get('rawat-jalan', RawatJalan::class);
     });
 
 

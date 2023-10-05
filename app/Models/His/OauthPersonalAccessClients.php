@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class OauthPersonalAccessClients
@@ -19,7 +19,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'oauth_personal_access_clients';
-    
+
 
 
 
@@ -51,8 +51,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

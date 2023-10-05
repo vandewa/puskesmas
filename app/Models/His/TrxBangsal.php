@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxBangsal
@@ -23,7 +23,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_bangsal';
-    
+
 
     public $incrementing = false;
     protected $primaryKey = 'bangsal_cd';
@@ -57,7 +57,7 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
 
@@ -65,5 +65,5 @@ use \OwenIt\Auditing\Auditable;
     {
         return $this->hasMany(TrxRuang::class, 'bangsal_cd');
     }
-    
+
 }

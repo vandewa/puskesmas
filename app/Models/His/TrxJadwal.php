@@ -3,8 +3,9 @@
 namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
+use App\Models\ComCode;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxJadwal
@@ -28,12 +29,6 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_jadwal';
-
-
-
-
-
-
     protected $primaryKey = 'seq_no';
 
     public $fillable = [

@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxMedicalParamedis
@@ -62,7 +62,7 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     public function dokter()
@@ -83,5 +83,5 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(ComCode::class , 'paramedis_role');
     }
 
-    
+
 }

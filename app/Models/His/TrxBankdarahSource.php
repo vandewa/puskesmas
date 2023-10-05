@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxBankdarahSource
@@ -35,7 +35,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_bankdarah_source';
-    
+
 
 
 
@@ -112,8 +112,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

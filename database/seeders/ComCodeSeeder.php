@@ -49,7 +49,7 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "DAY_TP_04", "code_nm" => "Kamis", "code_group" => "DAY_TP", "code_value" => "Thursday"]);
         $code = Code::create(["com_cd" => "DAY_TP_05", "code_nm" => "Jumat", "code_group" => "DAY_TP", "code_value" => "Friday"]);
         $code = Code::create(["com_cd" => "DAY_TP_06", "code_nm" => "Sabtu", "code_group" => "DAY_TP", "code_value" => "Saturday"]);
-        $code = Code::create(["com_cd" => "DAY_TP_07", "code_nm" => "Minggu", "code_group" => "DAY_TP", "code_value" => "Sunday"]);
+        $code = Code::create(["com_cd" => "DAY_TP_00", "code_nm" => "Minggu", "code_group" => "DAY_TP", "code_value" => "Sunday"]);
         $code = Code::create(["com_cd" => "DOSIS_TP_01", "code_nm" => "Sendok Obat", "code_group" => "DOSIS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "DOSIS_TP_02", "code_nm" => "CC", "code_group" => "DOSIS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "DOSIS_TP_03", "code_nm" => "Tetes Telinga Kanan", "code_group" => "DOSIS_TP", "code_value" => null]);

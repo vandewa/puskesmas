@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxQueue
@@ -33,7 +33,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_queue';
-    
+
 
 
 
@@ -102,8 +102,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

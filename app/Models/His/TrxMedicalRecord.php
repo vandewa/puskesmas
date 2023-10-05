@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxMedicalRecord
@@ -42,7 +42,7 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     public function jenisKasus()
@@ -65,5 +65,5 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(TrxIcd::class, 'icd_cd');
     }
 
-    
+
 }

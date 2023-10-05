@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ComApproval
@@ -22,7 +22,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'com_approval';
-    
+
 
 
 
@@ -62,8 +62,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

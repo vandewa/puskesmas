@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class PoPrincipal
@@ -29,7 +29,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'po_principal';
-    
+
 
 
 
@@ -90,7 +90,7 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     public static function getData($param='')
@@ -104,5 +104,5 @@ use \OwenIt\Auditing\Auditable;
                 // ->join('')
     }
 
-    
+
 }

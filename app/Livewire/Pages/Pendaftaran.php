@@ -7,7 +7,9 @@ use App\Models\His\ComNation;
 use App\Models\His\ComRegion;
 use App\Models\His\TrxInsurance;
 use App\Models\His\TrxPasien;
+use App\Models\His\TrxPasienInsurance;
 use Livewire\Component;
+use Illuminate\Support\Arr;
 
 class Pendaftaran extends Component
 {
@@ -57,7 +59,7 @@ class Pendaftaran extends Component
     public $jk, $prop, $kab, $kec, $kel, $tppasien, $status, $pendidikan, $pekerjaan, $suku, $agama, $ras,
     $negara, $goldarah, $tipeIdentitas, $tpjaminan, $family, $isEdit = false;
 
-    public function mount() {
+    public function mount($id="") {
         $this->form['no_rm'] = gen_no_rm();
         $this->jk = get_code('GENDER_TP');
         $this->prop = ComRegion::where('region_level', 1)->get()->toArray();
@@ -73,14 +75,69 @@ class Pendaftaran extends Component
         $this->tipeIdentitas = get_code('IDENTITY_TP');
         $this->family = get_code('FAMILY_TP');
 
-        // set default value
-        $this->form['nation_cd'] = 62;
-        $this->form['region_prop'] = 33;
-        $this->changeKab($this->form['region_prop']);
-        $this->form['region_kab'] = 3307;
-        $this->changeKec($this->form['region_kab']);
-        $this->form['region_kec'] = 3307030;
-        $this->changeKel($this->form['region_kec']);
+        if($id == ""){
+
+            $this->form['nation_cd'] = 62;
+            $this->form['region_prop'] = 33;
+            $this->changeKab($this->form['region_prop']);
+            $this->form['region_kab'] = 3307;
+            $this->changeKec($this->form['region_kab']);
+            $this->form['region_kec'] = 3307030;
+            $this->changeKel($this->form['region_kec']);
+        } else {
+            $this->isEdit = true;
+          $this->form=  TrxPasien::find($id)->only(
+                [
+                'no_rm',
+                'pasien_cd',
+                'pasien_nm',
+                'birth_date',
+                'age',
+                'gender_tp',
+                'address',
+                'region_prop',
+                'region_kab',
+                'region_kec',
+                'region_kel',
+                'phone',
+                'mobile1',
+                'pasien_tp',
+                'marital_tp',
+                'education_cd',
+                'occupation_cd',
+                'religion_cd',
+                'identity_tp',
+                'identity_no',
+                'nation_cd',
+                'blood_tp',
+                'weight',
+                'height',
+                'email',
+                'postcode',
+                'dad_name',
+                'mom_name',
+                'dad_name',
+                'pj_name',
+                'pj_tp',
+                'pj_address',
+                'pj_tp',
+                'pj_telp',
+                'pj_date_birth',]
+            );
+
+            $insurance = TrxPasienInsurance::where('pasien_cd', $id)->first();
+            if($insurance){
+                $this->insurance['insurance_tp'] = $insurance->insurance_tp;
+                $this->insurance['insurance_no'] = $insurance->insurance_no;
+            }
+
+            $this->changeKab($this->form['region_prop']);
+            $this->changeKec($this->form['region_kab']);
+            $this->changeKel($this->form['region_kec']);
+
+        }
+
+
 
     }
 
@@ -157,7 +214,23 @@ class Pendaftaran extends Component
     }
 
     public function saveEdit() {
+        TrxPasien::find($this->form['pasien_cd'])->update(
+            Arr::except($this->form, ['pasien_cd', 'no_rm'])
+        );
 
+        $cek =  TrxPasienInsurance::where('pasien_cd', $this->form['pasien_cd'])->first();
+        if($cek) {
+            TrxPasienInsurance::where('pasien_cd', $this->form['pasien_cd'])
+            ->update($this->insurance);
+            $this->redirect(route('pasien.index'));
+        } else {
+            TrxPasienInsurance::create([
+                'pasien_cd' => $this->form['pasien_cd'],
+                'insurance_tp' => $this->insurance['insurance_tp'],
+                'insurance_no' => $this->insurance['insurance_no'],
+            ]);
+        }
+        $this->redirect(route('pasien.index'));
     }
 
     public function render()

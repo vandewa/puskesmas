@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxTarifGeneral
@@ -70,7 +70,7 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
     public function kelas(){
@@ -86,5 +86,5 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(ComAccount::class, 'account_cd');
     }
 
-    
+
 }

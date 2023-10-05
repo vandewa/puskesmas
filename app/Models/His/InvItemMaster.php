@@ -6,7 +6,7 @@ use Auth;
 use DB;
 use Carbon\Carbon;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class InvItemMaster

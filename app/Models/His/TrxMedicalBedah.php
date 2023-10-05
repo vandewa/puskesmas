@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxMedicalBedah
@@ -30,7 +30,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_medical_bedah';
-    
+
 
 
 
@@ -91,8 +91,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

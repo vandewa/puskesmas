@@ -27,24 +27,41 @@
                                             <label for="inputEmail3" class="col-sm-2 col-form-label">Kode</label>
                                             <div class="col-sm-10">
                                             <input type="text" class="form-control" wire:model='form.dr_cd'  placeholder="Kode Spesialis">
+                                                @error('form.dr_cd')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" wire:model='form.dr_nm'  placeholder="Kode Spesialis">
+                                                <input type="text" class="form-control" wire:model='form.dr_nm'  placeholder="Kode Spesialis">
+                                                @error('form.dr_nm')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-2 col-form-label">Nip</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" wire:model='form.nip'  placeholder="Nama">
+                                                <input type="text" class="form-control" wire:model='form.nip'  placeholder="Nama">
+                                                @error('form.nip')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-2 col-form-label">Spesialis</label>
                                             <div class="col-sm-10">
-                                            <input type="text" class="form-control" wire:model='form.spesialis_cd'  placeholder="Nama">
+                                                <select name="" id="" class="form-control" wire:model='form.spesialis_cd'>
+                                                    <option value="">Pilih Spesialis</option>
+                                                    @foreach ($listSpesialis??[] as $item)
+                                                        <option value="{{ $item['spesialis_cd'] }}">{{ $item['spesialis_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.spesialis_cd')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
@@ -96,8 +113,8 @@
                                             <td> {{ $item->nip }}</td>
                                             <td>{{ $item->spesialis_cd }}</td>
                                             <td>
-                                                <button type="button" wire:click="getEdit('{{ $item->spesialis_cd }}')" class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip" data-placement="left" title="Edit"><i class="fas fa-pencil-alt"></i></button>
-                                                <button type="button"  class="btn btn-danger btn-flat btn-sm" data-toggle="modal" data-target="#modal-default" wire:click="setDelete('{{ $item->spesialis_cd }}')"><i class="fas fa-trash"></i></button>
+                                                <button type="button" wire:click="getEdit('{{ $item->dr_cd }}')" class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip" data-placement="left" title="Edit"><i class="fas fa-pencil-alt"></i></button>
+                                                <button type="button"  class="btn btn-danger btn-flat btn-sm" data-toggle="modal" data-target="#modal-default" wire:click="setDelete('{{ $item->dr_cd }}')"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

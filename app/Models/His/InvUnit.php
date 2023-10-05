@@ -5,7 +5,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class InvUnit

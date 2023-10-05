@@ -19,13 +19,17 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <a href="{{ route('pendaftaran') }}" wire:navigate class="btn btn-success">Tambah Pasien</a>
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <div class="form-group row margin-bawah">
                                        <label for="" class="col-sm-3 col-form-label">No. RM</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" wire:model.live='searchRm'>
+                                            <div class="input-group ">
+                                                <input type="text" class="form-control">
+                                                <span class="input-group-append">
+                                                  <button type="button" class="btn btn-info btn-flat">Cari!</button>
+                                                </span>
+                                              </div>
                                         </div>
                                     </div>
                                     <div class="form-group row margin-bawah">
@@ -88,32 +92,18 @@
                         <div class="card-body">
                             <table class="table">
                                 <thead>
-                                    <th>No RM</th>
-                                    <th>Nama Pasien</th>
-                                    <th>Tgl Lahir</th>
-                                    <th>Alamat</th>
-                                    <th>No BPJS</th>
-                                    <th>No Identitas</th>
+                                    <th>Nama Poli</th>
+                                    <th>Waktu</th>
+                                    <th>Nama Dokter</th>
+                                    <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($posts as $item)
-                                    <tr wire:click='pilih({{ $item->pasien_cd }})' @if($selected == $item->pasien_cd) class="bg-secondary" @endif  wire:key='{{ $item->pasien_cd  }}'>
-                                        <td>{{ $item->no_rm }}</td>
-                                        <td>{{ $item->pasien_nm }}</td>
-                                        <td>{{ $item->birth_date }}
-                                            @php
-                                                  $date = new \DateTime($item->birth_date);
-                                                    $now = new \DateTime();
-                                                    $interval = $now->diff($date);
-
-                                            @endphp
-                                            ({{ $interval->y }}) Th</td>
-                                        <td>
-                                            {{ $item->provinsi->region_nm }}, {{ $item->kabupaten->region_nm??"" }}, {{ $item->kecamatan->region_nm??"" }}, {{ $item->kelurahan->region_nm ??""}}
-                                            {{ $item->address }}
-                                        </td>
-                                        <td>{{ $item->asuransi->insurance_no??"-" }}</td>
-                                        <td>{{ $item->identity_no??"-" }}</td>
+                                    <tr>
+                                        <td>{{ $item->poli->medunit_nm }}</td>
+                                        <td>{{ $item->time_start }} - {{ $item->time_end }}</td>
+                                        <td>{{ $item->dokter->dr_nm }}</td>
+                                        <td></td>
                                     </tr>
                                     @endforeach
                                 </tbody>

@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class CoreAssetOwner
@@ -28,7 +28,7 @@ use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'core_asset_owner';
-    
+
 
 
 
@@ -87,8 +87,8 @@ use \OwenIt\Auditing\Auditable;
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+
 }

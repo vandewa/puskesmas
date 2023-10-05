@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class TrxSpesialis
@@ -23,8 +23,8 @@ use \OwenIt\Auditing\Auditable;
     public $table = 'trx_spesialis';
     protected $guarded = [];
     public $incrementing = false;
-
     protected $primaryKey = 'spesialis_cd';
+    public $keyType = 'string';
 
 
     /**

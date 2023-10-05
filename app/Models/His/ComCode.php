@@ -4,7 +4,7 @@ namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use Carbon\Carbon;
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class ComCode
@@ -22,16 +22,10 @@ class ComCode extends Model implements Auditable
 use \OwenIt\Auditing\Auditable;
 
 
-    public $table = 'com_codes';
-
-    public $incrementing = false;
-    public $timestamps = true;
-
-
-
-
-
     protected $primaryKey = 'com_cd';
+    // protected $primaryKey = 'com_cd';
+    public $incrementing = false;
+    protected $keyType = 'string';
 
     public $fillable = [
         'com_cd',
