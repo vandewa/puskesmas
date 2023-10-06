@@ -28,9 +28,9 @@ use App\Livewire\Pages\Registrasi\RawatJalan;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
-});
+})->name('login');
 
 
 Route::get('docs', function () {
@@ -42,6 +42,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
+    Route::get('/', [DashboardController::class, 'index']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
     Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
