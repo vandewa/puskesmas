@@ -28,7 +28,11 @@
                                                 Spesialis</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model='form.spesialis_cd' placeholder="Kode Spesialis">
+                                                    wire:model='form.spesialis_cd' placeholder="Kode Spesialis"
+                                                    @if ($edit) disabled @endif>
+                                                @error('form.spesialis_cd')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -36,6 +40,9 @@
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control"
                                                     wire:model='form.spesialis_nm' placeholder="Nama">
+                                                @error('form.spesialis_nm')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>

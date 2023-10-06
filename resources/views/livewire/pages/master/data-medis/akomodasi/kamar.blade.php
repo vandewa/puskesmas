@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Master</a></li>
-                    <li class="breadcrumb-item active">Paramedis</li>
+                    <li class="breadcrumb-item active">Kamar</li>
                 </ol>
             </div>
         </div>
@@ -22,15 +22,13 @@
                         <form class="form-horizontal mt-2" wire:submit='save'>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                                Paramedis</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model='form.paramedis_cd' placeholder="Kode Paramedis"
-                                                    @if ($edit) disabled @endif>
-                                                @error('form.paramedis_cd')
+                                                <input type="text" class="form-control" wire:model='form.kamar_cd'
+                                                    placeholder="Kode Ruangan">
+                                                @error('form.kamar_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -38,13 +36,55 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model='form.paramedis_nm' placeholder="Nama">
+                                                <input type="text" class="form-control" wire:model='form.kamar_nm'
+                                                    placeholder="Nama Kamar">
+                                                @error('form.kamar_nm')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
-                                            @error('form.paramedis_nm')
-                                                <span class="form-text text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kelas</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" wire:model='form.kelas_cd'>
+                                                    <option value="">Pilih Kelas</option>
+                                                    @foreach ($listKelas ?? [] as $item)
+                                                        <option value="{{ $item['kelas_cd'] }}">
+                                                            {{ $item['kelas_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.kelas_cd')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Bangsal</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" wire:model='form.bangsal_cd'>
+                                                    <option value="">Pilih Bangsal</option>
+                                                    @foreach ($listBangsal ?? [] as $item)
+                                                        <option value="{{ $item['bangsal_cd'] }}">
+                                                            {{ $item['bangsal_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.bangsal_cd')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Tempat
+                                                Tidur</label>
+                                            <div class="col-sm-9">
+                                                <input type="number" class="form-control" wire:model=''
+                                                    placeholder="Jumlah">
+                                                @error('')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +105,7 @@
                     <div class="card card-success card-outline">
                         <div class="card-header">
                             <div class="card-title">
-                                Data Paramedis
+                                Data Kamar
                             </div>
                         </div>
                         <div class="card-body">
@@ -81,23 +121,27 @@
                                     <th>No</th>
                                     <th>Kode</th>
                                     <th>Nama</th>
+                                    <th>Jml Tempat Tidur</th>
+                                    <th>Bangsal</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr wire:key='{{ $item->paramedis_cd }}'>
+                                        <tr wire:key='{{ $item->kamar_cd }}'>
 
                                             <td>{{ $loop->index + $post->firstItem() }}</td>
-                                            <td>{{ $item->paramedis_cd }}</td>
-                                            <td> {{ $item->paramedis_nm }}</td>
+                                            <td>{{ $item->kamar_cd }}</td>
+                                            <td>{{ $item->kamar_nm }}</td>
+                                            <td>{{ $item->kamar_nm }}</td>
+                                            <td>{{ $item->bangsal->bangsal_nm ?? '' }}</td>
                                             <td>
-                                                <button type="button" wire:click="getEdit('{{ $item->paramedis_cd }}')"
+                                                <button type="button" wire:click="getEdit('{{ $item->kamar_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
                                                     data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->paramedis_cd }}')"><i
+                                                    wire:click="setDelete('{{ $item->kamar_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

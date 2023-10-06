@@ -11,37 +11,41 @@ class Dokter extends Component
 {
     use WithPagination;
 
-    public $listSpesialis ;
+    public $listSpesialis;
     public $form = [
         'dr_cd' => '',
         'dr_nm' => '',
         'spesialis_cd' => '',
-         'nip' => '',
+        'nip' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
 
-    public function mount() {
+    public function mount()
+    {
         $this->listSpesialis = TrxSpesialis::all()->toArray();
     }
-    public function getEdit($a){
-        $this->form = TrxDokter::with('spesialis')->find($a)->only(['dr_cd','spesialis_cd', 'dr_nm', 'nip']);
+    public function getEdit($a)
+    {
+        $this->form = TrxDokter::with('spesialis')->find($a)->only(['dr_cd', 'spesialis_cd', 'dr_nm', 'nip']);
         $this->edit = true;
     }
 
-    public function batal() {
+    public function batal()
+    {
         $this->edit = false;
         $this->reset();
 
     }
 
-    public function save() {
-        if($this->edit){
+    public function save()
+    {
+        if ($this->edit) {
             $this->storeUpdate();
         } else {
             $this->store();
         }
-        $this->dispatch('toast', type:'bg-success',  title: 'Berhasil!!', body: "Data berhasil disimpan");
+        $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil disimpan");
         $this->reset();
     }
 
@@ -57,12 +61,14 @@ class Dokter extends Component
 
     }
 
-    public function setDelete($id) {
+    public function setDelete($id)
+    {
         $this->idHapus = $id;
     }
-    public function delete() {
+    public function delete()
+    {
         TrxDokter::destroy($this->idHapus);
-        $this->dispatch('toast', type:'bg-success',  title: 'Berhasil!!', body: "Data berhasil dihapus");
+        $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
@@ -75,7 +81,7 @@ class Dokter extends Component
     public function render()
     {
         $data = TrxDokter::cari($this->cari)->paginate(10);
-        return view('livewire.pages.master.data-medis.dokter',[
+        return view('livewire.pages.master.data-medis.dokter', [
             'post' => $data
         ]);
     }

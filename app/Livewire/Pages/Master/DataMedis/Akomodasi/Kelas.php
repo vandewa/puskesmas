@@ -1,24 +1,25 @@
 <?php
 
-namespace App\Livewire\Pages\Master\DataMedis;
+namespace App\Livewire\Pages\Master\DataMedis\Akomodasi;
 
-use App\Models\His\TrxSpesialis;
 use Livewire\Component;
 use Livewire\WithPagination;
+use App\Models\His\TrxKelas;
 
-class Spesialis extends Component
+class Kelas extends Component
 {
     use WithPagination;
 
     public $form = [
-        'spesialis_cd' => '',
-        'spesialis_nm' => '',
+        'kelas_cd' => '',
+        'kelas_nm' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
+
     public function getEdit($a)
     {
-        $this->form = TrxSpesialis::find($a)->only(['spesialis_cd', 'spesialis_nm']);
+        $this->form = TrxKelas::find($a)->only(['kelas_cd', 'kelas_nm']);
         $this->edit = true;
     }
 
@@ -43,12 +44,11 @@ class Spesialis extends Component
     public function store()
     {
         $this->validate([
-            'form.spesialis_cd' => 'required',
-            'form.spesialis_nm' => 'required',
+            'form.kelas_cd' => 'required',
+            'form.kelas_nm' => 'required',
         ]);
 
-        TrxSpesialis::create($this->form);
-
+        TrxKelas::create($this->form);
     }
 
     public function setDelete($id)
@@ -57,21 +57,21 @@ class Spesialis extends Component
     }
     public function delete()
     {
-        TrxSpesialis::destroy($this->idHapus);
+        TrxKelas::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
     {
-        TrxSpesialis::find($this->form['spesialis_cd'])->update($this->form);
+        TrxKelas::find($this->form['kelas_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
     }
 
     public function render()
     {
-        $data = TrxSpesialis::cari($this->cari)->paginate(10);
-        return view('livewire.pages.master.data-medis.spesialis', [
+        $data = TrxKelas::cari($this->cari)->paginate(10);
+        return view('livewire.pages.master.data-medis.akomodasi.kelas', [
             'post' => $data
         ]);
     }

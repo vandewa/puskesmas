@@ -71,11 +71,19 @@
                           class="nav-item  
                       {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
                       {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'paramedis' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'tindakan-medis' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'jenis-penyakit' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'bangsal' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
                       ">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fa fa-desktop"></i>
                               <p>
-                                  Sistem
+                                  Master
                                   <i class="right fas fa-angle-left"></i>
                               </p>
                           </a>
@@ -123,12 +131,28 @@
                                   class="nav-item 
                               {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'paramedis' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'tindakan-medis' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'jenis-penyakit' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'bangsal' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
 
                               ">
                                   <a href="#"
                                       class="nav-link 
                                       {{ Request::segment(2) == 'spesialis' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'dokter' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'paramedis' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'poliklinik' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'tindakan-medis' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'jenis-penyakit' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'bangsal' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'kamar' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'tempat-tidur' ? 'active' : '' }}
                                       ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
@@ -136,45 +160,163 @@
                                           <i class="fas fa-angle-left right"></i>
                                       </p>
                                   </a>
-
                                   <ul class="nav nav-treeview">
                                       <li class="nav-item">
                                           <a href="{{ route('master.spesialis') }}" wire:navigate
                                               class="nav-link  {{ Request::segment(2) == 'spesialis' ? 'active' : '' }}">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              @if (Request::segment(2) == 'spesialis')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
                                               <p>Spesialis</p>
                                           </a>
                                       </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.dokter') }}"
                                               class="nav-link {{ Request::segment(2) == 'dokter' ? 'active' : '' }}">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
+                                              @if (Request::segment(2) == 'dokter')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
                                               <p>Dokter</p>
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Group</p>
+                                          <a href="{{ route('master.paramedis') }}"
+                                              class="nav-link {{ Request::segment(2) == 'paramedis' ? 'active' : '' }}">
+                                              @if (Request::segment(2) == 'paramedis')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Paramedis</p>
+                                          </a>
+                                      </li>
+                                      <li
+                                          class="nav-item  {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}">
+                                          <a href="#"
+                                              class="nav-link {{ Request::segment(2) == 'poliklinik' ? 'active' : '' }}">
+                                              <i class="fa fa-folder nav-icon ml-3"></i>
+                                              <p>Instalasi Medis
+                                                  <i class="fas fa-angle-left right"></i>
+                                              </p>
+                                          </a>
+                                          <ul class="nav nav-treeview">
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.poliklinik') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(2) == 'poliklinik' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'poliklinik')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Poliklinik</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="#" wire:navigate class="nav-link">
+                                                      <i class="far fa-circle nav-icon ml-5"></i>
+                                                      <p>Laboratorium</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="#" wire:navigate class="nav-link">
+                                                      <i class="far fa-circle nav-icon ml-5"></i>
+                                                      <p>Radiologi</p>
+                                                  </a>
+                                              </li>
+                                          </ul>
+                                      </li>
+
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.tindakan-medis') }}"
+                                              class="nav-link {{ Request::segment(2) == 'tindakan-medis' ? 'active' : '' }}">
+                                              @if (Request::segment(2) == 'tindakan-medis')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Tindakan Medis</p>
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Group</p>
+                                          <a href="{{ route('master.jenis-penyakit') }}"
+                                              class="nav-link {{ Request::segment(2) == 'jenis-penyakit' ? 'active' : '' }}">
+                                              @if (Request::segment(2) == 'jenis-penyakit')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Jenis Penyakit</p>
                                           </a>
                                       </li>
-                                      <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Group</p>
+                                      <li
+                                          class="nav-item  
+                                          {{ Request::segment(2) == 'bangsal' ? 'menu-is-opening menu-open' : '' }}
+                                          {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
+                                          {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
+                                          {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
+                                          ">
+                                          <a href="#"
+                                              class="nav-link 
+                                              {{ Request::segment(2) == 'bangsal' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'kamar' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'tempat-tidurs' ? 'active' : '' }}
+                                              ">
+                                              <i class="fa fa-folder nav-icon ml-3"></i>
+                                              <p>Akomodasi
+                                                  <i class="fas fa-angle-left right"></i>
+                                              </p>
                                           </a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Group</p>
-                                          </a>
+                                          <ul class="nav nav-treeview">
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.bangsal') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(2) == 'bangsal' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'bangsal')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Bangsal</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.kelas') }}" wire:navigate
+                                                      class="nav-link {{ Request::segment(2) == 'kelas' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'kelas')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Kelas</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.kamar') }}" wire:navigate
+                                                      class="nav-link {{ Request::segment(2) == 'kamar' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'kamar')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Kamar</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tempat-tidur') }}" wire:navigate
+                                                      class="nav-link {{ Request::segment(2) == 'tempat-tidur' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'tempat-tidur')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Tempat Tidur</p>
+                                                  </a>
+                                              </li>
+                                          </ul>
                                       </li>
                                   </ul>
                               </li>
@@ -201,8 +343,8 @@
                           </ul>
                       </li>
 
-                      <li class="nav-item">
-                          <a href="#" class="nav-link">
+                      <li class="nav-item {{ Request::segment(2) == 'list' ? 'menu-is-opening menu-open' : '' }}">
+                          <a href="#" class="nav-link {{ Request::segment(2) == 'list' ? 'active' : '' }}">
                               <i class="nav-icon fas fa-user-circle"></i>
                               <p>
                                   Pasien
@@ -211,8 +353,13 @@
                           </a>
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                  <a href="{{ route('pasien.index') }}" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('pasien.index') }}"
+                                      class="nav-link {{ Request::segment(2) == 'list' ? 'active' : '' }}">
+                                      @if (Request::segment(2) == 'list')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Data Pasien</p>
                                   </a>
                               </li>

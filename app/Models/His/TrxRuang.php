@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -24,14 +25,16 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxRuang extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_ruang';
     public $incrementing = false;
     protected $primaryKey = 'ruang_cd';
 
-   protected $guarded = [];
+    protected $guarded = [];
+    public $keyType = 'string';
+
 
     /**
      * The attributes that should be casted to native types.
@@ -85,6 +88,15 @@ use \OwenIt\Auditing\Auditable;
     public function kelas()
     {
         return $this->belongsTo(TrxKelas::class, 'kelas_cd');
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('ruang
+            _cd', 'ilike', "%$s%")->orWhere('ruang
+            _nm', 'ilike', "%$s%");
+        }
     }
 
 

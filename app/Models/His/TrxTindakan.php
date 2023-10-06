@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -23,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxTindakan extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_tindakan';
@@ -71,6 +72,13 @@ use \OwenIt\Auditing\Auditable;
     public static $rules = [
 
     ];
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('treatment_cd', 'ilike', "%$s%")->orWhere('treatment_nm', 'ilike', "%$s%");
+        }
+    }
 
 
 }

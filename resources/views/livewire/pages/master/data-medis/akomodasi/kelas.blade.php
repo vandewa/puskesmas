@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Master</a></li>
-                    <li class="breadcrumb-item active">Paramedis</li>
+                    <li class="breadcrumb-item active">Kelas</li>
                 </ol>
             </div>
         </div>
@@ -22,15 +22,14 @@
                         <form class="form-horizontal mt-2" wire:submit='save'>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                                Paramedis</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model='form.paramedis_cd' placeholder="Kode Paramedis"
+                                                <input type="text" class="form-control" wire:model='form.kelas_cd'
+                                                    placeholder="Kode Kelas"
                                                     @if ($edit) disabled @endif>
-                                                @error('form.paramedis_cd')
+                                                @error('form.kelas_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -38,12 +37,12 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model='form.paramedis_nm' placeholder="Nama">
+                                                <input type="text" class="form-control" wire:model='form.kelas_nm'
+                                                    placeholder="Nama Kelas">
+                                                @error('form.kelas_nm')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
-                                            @error('form.paramedis_nm')
-                                                <span class="form-text text-danger">{{ $message }}</span>
-                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -65,7 +64,7 @@
                     <div class="card card-success card-outline">
                         <div class="card-header">
                             <div class="card-title">
-                                Data Paramedis
+                                Data Kelas
                             </div>
                         </div>
                         <div class="card-body">
@@ -85,19 +84,19 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr wire:key='{{ $item->paramedis_cd }}'>
+                                        <tr wire:key='{{ $item->kelas_cd }}'>
 
                                             <td>{{ $loop->index + $post->firstItem() }}</td>
-                                            <td>{{ $item->paramedis_cd }}</td>
-                                            <td> {{ $item->paramedis_nm }}</td>
+                                            <td>{{ $item->kelas_cd }}</td>
+                                            <td>{{ $item->kelas_nm }}</td>
                                             <td>
-                                                <button type="button" wire:click="getEdit('{{ $item->paramedis_cd }}')"
+                                                <button type="button" wire:click="getEdit('{{ $item->kelas_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
                                                     data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->paramedis_cd }}')"><i
+                                                    wire:click="setDelete('{{ $item->kelas_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -75,16 +76,16 @@ class TrxUnitMedis extends Model implements Auditable
 
         $currentMonthDate = Carbon::now()->format('md');
         $query = DB::table($this->table)
-                   ->select(
-                       DB::raw("
+            ->select(
+                DB::raw("
                            'PI-$currentMonthDate-'||lpad((right(item_cd, 5)::int8+1)::varchar, 5, '0') as item_cd
                        ")
-                   )
-                   ->where(function($q){
-                       $q->where(DB::raw("left(item_cd, 2)"), 'PI')
-                         ->where(DB::raw("substring(item_cd, 4, 4)"), DB::raw("to_char(now(), 'mmdd')"));
-                   })
-                   ->orderByRaw("
+            )
+            ->where(function ($q) {
+                $q->where(DB::raw("left(item_cd, 2)"), 'PI')
+                    ->where(DB::raw("substring(item_cd, 4, 4)"), DB::raw("to_char(now(), 'mmdd')"));
+            })
+            ->orderByRaw("
                               substring(item_cd, 4, 4)::int desc,
                               substring(item_cd, 9, 13)::int desc
                           ");
@@ -92,10 +93,17 @@ class TrxUnitMedis extends Model implements Auditable
 
     public function getUnitMedis($args)
     {
-        return DB::table($this->table)->where(function($q) use ($args){
-            $q->where('medunit_cd', 'ilike', '%'.$args.'%')
-              ->orWhere('medunit_nm', 'ilike', '%'.$args.'%');
+        return DB::table($this->table)->where(function ($q) use ($args) {
+            $q->where('medunit_cd', 'ilike', '%' . $args . '%')
+                ->orWhere('medunit_nm', 'ilike', '%' . $args . '%');
         });
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('medunit_cd', 'ilike', "%$s%")->orWhere('medunit_nm', 'ilike', "%$s%");
+        }
     }
 
 }

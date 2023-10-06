@@ -1,24 +1,24 @@
 <?php
 
-namespace App\Livewire\Pages\Master\DataMedis;
+namespace App\Livewire\Pages\Master\DataMedis\InstalasiMedis;
 
-use App\Models\His\TrxSpesialis;
+use App\Models\His\TrxUnitMedis;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Spesialis extends Component
+class Poliklinik extends Component
 {
     use WithPagination;
 
     public $form = [
-        'spesialis_cd' => '',
-        'spesialis_nm' => '',
+        'medunit_cd' => '',
+        'medunit_nm' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
     public function getEdit($a)
     {
-        $this->form = TrxSpesialis::find($a)->only(['spesialis_cd', 'spesialis_nm']);
+        $this->form = TrxUnitMedis::find($a)->only(['medunit_cd', 'medunit_nm']);
         $this->edit = true;
     }
 
@@ -43,11 +43,11 @@ class Spesialis extends Component
     public function store()
     {
         $this->validate([
-            'form.spesialis_cd' => 'required',
-            'form.spesialis_nm' => 'required',
+            'form.medunit_cd' => 'required',
+            'form.medunit_nm' => 'required',
         ]);
 
-        TrxSpesialis::create($this->form);
+        TrxUnitMedis::create($this->form);
 
     }
 
@@ -57,21 +57,21 @@ class Spesialis extends Component
     }
     public function delete()
     {
-        TrxSpesialis::destroy($this->idHapus);
+        TrxUnitMedis::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
     {
-        TrxSpesialis::find($this->form['spesialis_cd'])->update($this->form);
+        TrxUnitMedis::find($this->form['medunit_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
     }
 
     public function render()
     {
-        $data = TrxSpesialis::cari($this->cari)->paginate(10);
-        return view('livewire.pages.master.data-medis.spesialis', [
+        $data = TrxUnitMedis::cari($this->cari)->paginate(10);
+        return view('livewire.pages.master.data-medis.instalasi-medis.poliklinik', [
             'post' => $data
         ]);
     }

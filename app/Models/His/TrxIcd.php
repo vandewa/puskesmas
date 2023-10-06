@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -20,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxIcd extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_icd';
@@ -66,6 +67,13 @@ use \OwenIt\Auditing\Auditable;
     public function standar()
     {
         return $this->belongsTo(ComCode::class, 'icd_tp');
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('icd_cd', 'ilike', "%$s%")->orWhere('icd_nm', 'ilike', "%$s%");
+        }
     }
 
 
