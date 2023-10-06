@@ -34,19 +34,23 @@ class RawatJalan extends Component
         "rm_tp" => "RM_TP_3",
         "icd_cd" => null,
         "medical_note" => null,
+        "dr_cd" => null,
     ];
     public $searchRm, $searchPasien, $searchAlamat, $searchTanggal;
 
-    public function mount() {
+    public function mount($id = '') {
         $this->alasan = get_code('VISIT_TP');
         $this->jenisPasien = get_code('PASIEN_TP');
+        if($id !=""){
+            $this->pilihOrang($id);
+        }
     }
 
 
     #[On('pilih-orang')]
     public function pilihOrang($id ="") {
 
-        $this->pasien = TrxPasien::find($id);
+        $this->pasien = TrxPasien::findorfail($id);
         $this->form['pasien_tp'] = $this->pasien->pasien_tp;
     }
 
@@ -66,8 +70,10 @@ class RawatJalan extends Component
 
               return ;
         }
-
+        $this->form['medical_cd'] = gen_medical_cd();
     }
+
+
 
     public function render()
     {
