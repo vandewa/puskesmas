@@ -13,10 +13,18 @@ class ModalPasien extends Component
     public $search;
     public $modal = false;
 
-    #[On('show-modal')]
+    public function pilih($id) {
+        $this->dispatch('pilih-orang', $id);
+        $this->showModal();
+    }
+
+    #[On('show-modal-pasien')]
     public function showModal()
     {
         $this->modal = !$this->modal;
+        $this->search = null;
+        $this->dispatch('autofocus', id: 'search-pasien');
+
     }
 
     public function render()
