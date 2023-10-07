@@ -2,13 +2,13 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title">Default Modal</h4>
+          <h4 class="modal-title">Pasien</h4>
           <button type="button" wire:click='showModal' class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <input type="text" class="form-control" wire:model.live='search'>
+            <input type="text" id="search-pasien" class="form-control" wire:model.live='search' autofocus>
             <table class="table">
                 <thead>
                     <th>No RM</th>
@@ -38,7 +38,13 @@
                         </td>
 
                         <td>{{ $item->identity_no??"-" }}</td>
-                        <td><button class="btn btn-primary">Tambah</button></td>
+                        <td>
+                            <button type="button" wire:click='pilih({{ $item->pasien_cd }})' class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
+                            data-placement="left" title="Pilih Pasien"><i
+                                class="fas fa-plus"></i>
+                            </button>
+
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

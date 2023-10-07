@@ -64,17 +64,15 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
 
-                                </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="d-flex justify-content-end">
                                         <div>
                                             <button class="btn btn-info">Cetak</button>
                                             <button class="btn btn-primary">Rekam Medis</button>
                                             <a href="{{ route('pendaftaran', $selected) }}" wire:navigate class="btn btn-primary">Ubah Data Pasien</a>
                                             <button class="btn btn-danger">Hapus Data Pasien</button>
-                                            <button class="btn btn-primary">Daftar Rawat Jalan</button>
+                                            <a href="{{ route('registrasi.rawat-jalan', $selected) }}" wire:navigate class="btn btn-primary">Daftar Rawat Jalan</a>
                                             <button class="btn btn-primary">Daftar Rawat Inap</button>
                                         </div>
                                     </div>

@@ -67,7 +67,7 @@ Route::middleware([
     });
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
-        Route::get('rawat-jalan', RawatJalan::class);
+        Route::get('rawat-jalan/{id?}', RawatJalan::class)->name('rawat-jalan');
     });
 
 

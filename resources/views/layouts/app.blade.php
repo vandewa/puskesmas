@@ -28,7 +28,8 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
 
     @stack('css')
     @livewireStyles
@@ -103,6 +104,7 @@
     <!-- Summernote -->
     <script src="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script src="{{ asset('AdminLTE/plugins/toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('AdminLTE/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
     <!-- overlayScrollbars -->
     <script src="{{ asset('AdminLTE/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
     <!-- AdminLTE App -->
@@ -126,6 +128,13 @@
             })
 
         });
+        window.addEventListener('autofocus', event => {
+
+            setTimeout(() => {
+                document.getElementById(event.detail.id).focus();
+            }, 300);
+
+         });
     </script>
 </body>
 

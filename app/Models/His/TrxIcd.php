@@ -30,6 +30,7 @@ class TrxIcd extends Model implements Auditable
     public $incrementing = false;
 
     protected $primaryKey = 'icd_cd';
+    protected $keyType = 'string';
 
 
     /**
