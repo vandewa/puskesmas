@@ -79,6 +79,8 @@
                       {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
                       {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
                       {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'list-jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
+                      {{ Request::segment(2) == 'jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
                       ">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fa fa-desktop"></i>
@@ -139,6 +141,8 @@
                               {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'list-jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
 
                               ">
                                   <a href="#"
@@ -153,6 +157,8 @@
                                       {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'kamar' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'tempat-tidur' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'list-jadwal-praktek' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'jadwal-praktek' ? 'active' : '' }}
                                       ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
@@ -317,6 +323,17 @@
                                                   </a>
                                               </li>
                                           </ul>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.jadwal-praktek.index') }}"
+                                              class="nav-link {{ Request::segment(2) == 'list-jadwal-praktek' ? 'active' : '' }}{{ Request::segment(2) == 'jadwal-praktek' ? 'active' : '' }}">
+                                              @if (Request::segment(2) == 'jadwal-praktek' || Request::segment(2) == 'list-jadwal-praktek')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Jadwal Praktek</p>
+                                          </a>
                                       </li>
                                   </ul>
                               </li>

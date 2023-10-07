@@ -9,7 +9,9 @@ use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kelas;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
+use App\Livewire\Pages\Master\DataMedis\JadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\JenisPenyakit;
+use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Pasien\ListPasien;
@@ -60,6 +62,8 @@ Route::middleware([
         Route::get('kelas', Kelas::class)->name('kelas');
         Route::get('kamar', Kamar::class)->name('kamar');
         Route::get('tempat-tidur', TempatTidur::class)->name('tempat-tidur');
+        Route::get('jadwal-praktek', JadwalPraktek::class)->name('jadwal-praktek');
+        Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
     });
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
