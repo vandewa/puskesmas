@@ -208,5 +208,23 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(TrxRuang::class, 'ruang_cd');
     }
 
+    public function scopeCarirm($filter, $value) {
+        if($value){
+           return $filter->whereHas('pasien', function($a) use($value) {
+                $a->where('no_rm', 'ilike', "%$value%");
+            });
+        }
+    }
+    public function scopeCaripoliklinik($filter, $value) {
+        if($value){
+           return $filter->where('medunit_cd', $value);
+        }
+    }
+    public function scopeCaritanggal($filter, $value) {
+        if($value){
+           return $filter->where('datetime_in', 'ilike' ,"$value");
+        }
+    }
+
 
 }
