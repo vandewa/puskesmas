@@ -84,6 +84,12 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
+                            @if (session('status'))
+
+                                <div class="alert alert-success">
+                                    Pendaftaran pasienber dilakukan
+                                </div>
+                            @endif
                             <table class="table">
                                 <thead>
                                     <th>No RM</th>
