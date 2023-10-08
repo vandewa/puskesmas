@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Transaksi;
 
+use App\Models\His\TrxDokter;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\His\TrxMedical;
@@ -13,11 +14,15 @@ class ListPasienTransaksi extends Component
     use  WithPagination;
     public $rm;
     public $poliklinik;
-    public $tanggal;
+    public $tanggal ;
     public $poli;
+    public $listDokter;
+    public $dokter;
 
     public function mount(){
         $this->poli = TrxUnitMedis::where('medicalunit_tp', 'MEDICALUNIT_TP_1')->get()->toArray();
+        $this->tanggal = date('Y-m-d');
+        $this->listDokter = TrxDokter::all()->toArray();
     }
     public function render()
     {

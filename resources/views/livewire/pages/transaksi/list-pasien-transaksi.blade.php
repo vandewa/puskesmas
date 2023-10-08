@@ -31,7 +31,6 @@
                                        <label for="" class="col-sm-3 col-form-label">PoliKlinik</label>
                                         <div class="col-md-9" wire:ignore>
                                             <select name="" class="form-control select2bs4" id="select2" wire:model.live='poliklinik'>
-                                                <option value="">Pilih Poliklinik</option>
                                                 @foreach ($poli??[] as $item)
                                                 <option value="{{ $item['medunit_cd'] }}">{{ $item['medunit_nm'] }}</option>
                                                 @endforeach
@@ -48,9 +47,11 @@
                                      </div>
                                      <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Dokter</label>
-                                         <div class="col-md-9">
-                                            <select name="" class="form-control" id="">
-                                                <option value="">Pilih Dokter</option>
+                                         <div class="col-md-9" wire:ignore>
+                                            <select name="" class="form-control select2bs4" id="select3" wire:model.live='dokter'>
+                                                @foreach ($listDokter??[] as $item)
+                                                <option value="{{ $item['dr_cd'] }}">{{ $item['dr_nm'] }}</option>
+                                                @endforeach
                                             </select>
                                          </div>
                                      </div>
@@ -61,7 +62,7 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal">
+                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal" :dokter="$dokter" url="registrasi.rawat-jalan">
                         </div>
 
                     </div>
@@ -79,11 +80,22 @@
     <script>
         $(document).ready(function () {
             $('#select2').select2({
-                theme: 'bootstrap4'
+                theme: 'bootstrap4',
+                placeholder: "Pilih Poliklinik",
+                allowClear: true
             });
             $('#select2').on('change', function (e) {
                 var data = $('#select2').select2("val");
             @this.set('poliklinik', data);
+            });
+            $('#select3').select2({
+                theme: 'bootstrap4',
+                placeholder: "Pilih Dokter",
+                allowClear: true
+            });
+            $('#select3').on('change', function (e) {
+                var data = $('#select3').select2("val");
+            @this.set('dokter', data);
             });
         });
     </script>

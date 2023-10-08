@@ -222,7 +222,12 @@ use \OwenIt\Auditing\Auditable;
     }
     public function scopeCaritanggal($filter, $value) {
         if($value){
-           return $filter->where('datetime_in', 'ilike' ,"$value");
+           return $filter->where('datetime_in', 'ilike' ,"%$value%");
+        }
+    }
+    public function scopeCaridokter($filter, $value) {
+        if($value){
+           return $filter->where('dr_cd', 'ilike' ,"%$value%");
         }
     }
 
