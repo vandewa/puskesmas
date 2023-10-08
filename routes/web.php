@@ -76,6 +76,8 @@ Route::middleware([
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function(){
         Route::group(['prefix' => 'rawat-jalan', 'as'=> 'rawat-jalan.'], function(){
             Route::get('list', ListPasienTransaksi::class)->name('list');
+            Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
+            Route::get('rekam-medis', RekamMedis::class)->name('rekam-medis');
         });
     });
 

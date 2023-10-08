@@ -62,7 +62,7 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal" :dokter="$dokter" url="registrasi.rawat-jalan">
+                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal" :dokter="$dokter" url="transaksi.rawat-jalan.detail.rawat-jalan">
                         </div>
 
                     </div>

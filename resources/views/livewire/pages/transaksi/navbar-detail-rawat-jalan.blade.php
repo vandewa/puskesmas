@@ -62,7 +62,7 @@
                                 <div class="tab-pane fade" id="custom-tabs-one-rm" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-rm-tab">
                                     REKAM MEDIS
-                                    @include('livewire.global.detail-pasien')
+                                   <livewire:component.detail-pasien :pasiencd="$pasien->pasien_cd">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="card card-dark card-tabs">
