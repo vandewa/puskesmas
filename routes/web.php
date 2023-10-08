@@ -19,6 +19,9 @@ use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Transaksi\DetailRawatJalan;
+use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
+use App\Livewire\Pages\Transaksi\RekamMedis;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +75,10 @@ Route::middleware([
         Route::get('rawat-jalan/{id?}', RawatJalan::class)->name('rawat-jalan');
     });
 
-    Route::group(['prefix' => 'helper', 'as' => 'helper.'], function (){
+    Route::get('detail', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
+    Route::get('rekam-medis', RekamMedis::class)->name('rekam-medis');
+
+    Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
     });
 

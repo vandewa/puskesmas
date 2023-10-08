@@ -17,7 +17,7 @@ class RawatJalan extends Component
     use WithPagination;
 
     public $pasien, $diagnosa, $alasan, $jenisPasien;
-    public $form= [
+    public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
         "dr_cd" => null,
@@ -41,17 +41,19 @@ class RawatJalan extends Component
     ];
     public $searchRm, $searchPasien, $searchAlamat, $searchTanggal;
 
-    public function mount($id = '') {
+    public function mount($id = '')
+    {
         $this->alasan = get_code('VISIT_TP');
         $this->jenisPasien = get_code('PASIEN_TP');
-        if($id !=""){
+        if ($id != "") {
             $this->pilihOrang($id);
         }
     }
 
 
     #[On('pilih-orang')]
-    public function pilihOrang($id ="") {
+    public function pilihOrang($id = "")
+    {
 
         $this->pasien = TrxPasien::findorfail($id);
         $this->form['pasien_tp'] = $this->pasien->pasien_tp;
@@ -60,20 +62,22 @@ class RawatJalan extends Component
     }
 
     #[On('pilih-diagnosa')]
-    public function pilihDiagnosa($id ="") {
+    public function pilihDiagnosa($id = "")
+    {
 
         $this->diagnosa = TrxIcd::find($id);
     }
 
-    public function pilih($id) {
-        if(!$this->pasien) {
+    public function pilih($id)
+    {
+        if (!$this->pasien) {
             $this->js("Swal.fire(
                 'Oops!',
                 'Mohon Pilih Pasien terlebih dahulu!',
                 'error'
               )");
 
-              return ;
+            return;
         }
 
         // masukkan unsur poli
@@ -85,11 +89,13 @@ class RawatJalan extends Component
             ->where('pasien_cd', $this->pasien->pasien_cd)
             ->where('medical_trx_st', 'MEDICAL_TRX_ST_0');
 
-            // cek pendaftaran poli sama
-        if($ceking->whereDate('datetime_in', date('Y-m-d'))->where('medical_tp', 'MEDICAL_TP_01')
-            ->where('jadwal_seqno', $id)->first()){
+        // cek pendaftaran poli sama
+        if (
+            $ceking->whereDate('datetime_in', date('Y-m-d'))->where('medical_tp', 'MEDICAL_TP_01')
+                ->where('jadwal_seqno', $id)->first()
+        ) {
 
-                $this->js("Swal.fire(
+            $this->js("Swal.fire(
                     'Oops!',
                     'Pasien sudah terdaftar di poli yang sama!',
                     'error'
@@ -98,7 +104,7 @@ class RawatJalan extends Component
         }
         // cek sudah terdaftar di rawat inap
 
-        if($ceking->where('medical_tp', 'MEDICAL_TP_02')->first()){
+        if ($ceking->where('medical_tp', 'MEDICAL_TP_02')->first()) {
             $this->js("Swal.fire(
                 'Oops!',
                 'Pasien sudah terdaftar di rawat inap',
@@ -119,7 +125,7 @@ class RawatJalan extends Component
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-               ".' $wire.save()'."
+               " . ' $wire.save()' . "
             //   Swal.fire('Saved!', '', 'success')
             } else if (result.isDenied) {
               Swal.fire('Changes are not saved', '', 'info')
@@ -132,22 +138,23 @@ class RawatJalan extends Component
 
     }
 
-    public function generateAntrian() {
+    public function generateAntrian()
+    {
         // generate no amtrian
         $noTertinggi = 0;
         //cek keberadaan apointment
         $maxappointment = TrxQueue::where('jadwal_seqno', $this->form['jadwal_seqno'])
-            ->whereDate('datetime_trx',date('Y-m-d'))->orderBy("seq_no", 'desc')
-        ->first();
-        if($maxappointment){
+            ->whereDate('datetime_trx', date('Y-m-d'))->orderBy("seq_no", 'desc')
+            ->first();
+        if ($maxappointment) {
             $noTertinggi = $maxappointment->queue_no;
         }
         //cek yang di medical
         $maxappointment = TrxMedical::where('jadwal_seqno', $this->form['jadwal_seqno'])
-            ->whereDate('datetime_in',date('Y-m-d'))->orderBy("created_at", 'desc')
+            ->whereDate('datetime_in', date('Y-m-d'))->orderBy("created_at", 'desc')
             ->first();
-        if($maxappointment){
-            if ($noTertinggi < $maxappointment->queue_no ){
+        if ($maxappointment) {
+            if ($noTertinggi < $maxappointment->queue_no) {
                 $noTertinggi = $maxappointment->queue_no;
             }
         }
@@ -157,21 +164,22 @@ class RawatJalan extends Component
 
     }
 
-    public function save() {
+    public function save()
+    {
 
 
         $this->form['medical_cd'] = gen_medical_cd();
         $this->form['queue_no'] = $this->generateAntrian();
         $this->form['datetime_in'] = now();
         $rm = TrxMedical::create(
-                $this->form
-            );
+            $this->form
+        );
 
-            if($this->medicalRecord['icd_cd'] != "") {
-                $rm->medicalRecord()->create($this->medicalRecord);
-            }
+        if ($this->medicalRecord['icd_cd'] != "") {
+            $rm->medicalRecord()->create($this->medicalRecord);
+        }
 
-        $this->js('window.open("'.route('helper.print-antrian-poli',1).'", "Print Antrian Poli", "width=200,height=100");');
+        $this->js('window.open("' . route('helper.print-antrian-poli', 1) . '", "Print Antrian Poli", "width=200,height=100");');
         session()->flash('status', 'Post successfully updated.');
 
         $this->js("
@@ -185,21 +193,22 @@ class RawatJalan extends Component
                 confirmButtonText: 'Kembali Ke list pasien?'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    ".'$wire.kembalii()'."
+                    " . '$wire.kembalii()' . "
                 }
             })
             ");
         // $this->redirect(route('pasien.index'));
     }
 
-    public function kembalii() {
+    public function kembalii()
+    {
         $this->redirect(ListPasien::class);
     }
 
 
     public function render()
     {
-        $data = TrxJadwal::with([ 'dokter', 'hari', 'poli'])->where('day_tp', 'DAY_TP_0'.date('w'))->paginate(100);
+        $data = TrxJadwal::with(['dokter', 'hari', 'poli'])->where('day_tp', 'DAY_TP_0' . date('w'))->paginate(100);
         return view('livewire.pages.pendaftaran.rawat-jalan', [
             'posts' => $data
         ]);

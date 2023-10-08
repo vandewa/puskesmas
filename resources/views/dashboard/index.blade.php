@@ -9,7 +9,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-6 mt-4">
-                        <a href="{{ route('pendaftaran') }}" wire:navigate>
+                        <a href="{{ route('pasien.pendaftaran') }}" wire:navigate>
                             <!-- small box -->
                             <div class="small-box bg-success sedang">
                                 <div class="inner jarak">

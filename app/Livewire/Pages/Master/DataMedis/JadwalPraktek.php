@@ -20,7 +20,7 @@ class JadwalPraktek extends Component
         'note' => '',
     ];
     public $cari, $edit = false, $dokter, $poli, $hari;
-    public $idHapus, $idnya;
+    public $idHapus;
 
 
     public function mount($id = "")
