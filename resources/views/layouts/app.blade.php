@@ -50,7 +50,7 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 <div class="container-fluid">
-                    {{ $header??"" }}
+                    {{ $header ?? '' }}
 
                 </div><!-- /.container-fluid -->
             </div>
@@ -122,7 +122,7 @@
     <script>
         window.addEventListener('toast', event => {
             $(document).Toasts('create', {
-                class: event.detail.type??'bg-success',
+                class: event.detail.type ?? 'bg-success',
                 autohide: true,
                 delay: 2000,
                 position: 'topRight',
@@ -135,9 +135,9 @@
 
             setTimeout(() => {
                 document.getElementById(event.detail.id).focus();
-            }, 300);
+            }, 5000);
 
-         });
+        });
     </script>
 </body>
 

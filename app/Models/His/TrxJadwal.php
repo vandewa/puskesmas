@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use App\Models\ComCode;
@@ -25,11 +26,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxJadwal extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
-
+    use \OwenIt\Auditing\Auditable;
 
     public $table = 'trx_jadwal';
     protected $primaryKey = 'seq_no';
+    protected $keyType = 'string';
 
     public $fillable = [
         'dr_cd',
@@ -56,7 +57,7 @@ use \OwenIt\Auditing\Auditable;
         'note' => 'string',
         'rs_cd' => 'string',
         'modi_id' => 'string',
-        'max_pasien' => 'integer'
+        'max_pasien' => 'integer',
     ];
 
     protected static $logAttributes = [
@@ -81,16 +82,40 @@ use \OwenIt\Auditing\Auditable;
 
     ];
 
-    public function hari(){
+    public function hari()
+    {
         return $this->belongsTo(ComCode::class, 'day_tp');
     }
 
-    public function poli(){
+    public function poli()
+    {
         return $this->belongsTo(TrxUnitMedis::class, 'medunit_cd');
     }
 
-    public function dokter(){
+    public function dokter()
+    {
         return $this->belongsTo(TrxDokter::class, 'dr_cd');
+    }
+
+    public function scopeCaridokter($filter, $value)
+    {
+        if ($value) {
+            return $this->whereHas('dokter', function ($a) use ($value) {
+                $a->where('dr_nm', 'ilike', "%$value%");
+            });
+        }
+    }
+    public function scopeCaripoli($filter, $value)
+    {
+        if ($value) {
+            return $this->where('medunit_cd', 'ilike', "%$value%");
+        }
+    }
+    public function scopeCarihari($filter, $value)
+    {
+        if ($value) {
+            return $this->where('day_tp', 'ilike', "%$value%");
+        }
     }
 
 
