@@ -59,7 +59,7 @@
            with font-awesome or any other icon font library -->
                       <li class="nav-item">
                           <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
                               <i class="nav-icon fas fa-home"></i>
                               <p>
                                   Beranda

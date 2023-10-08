@@ -76,11 +76,13 @@ class Dokter extends Component
         TrxDokter::find($this->form['dr_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
+        $this->listSpesialis = TrxSpesialis::all()->toArray();
+
     }
 
     public function render()
     {
-        $data = TrxDokter::cari($this->cari)->paginate(10);
+        $data = TrxDokter::with(['spesialis'])->cari($this->cari)->paginate(10);
         return view('livewire.pages.master.data-medis.dokter', [
             'post' => $data
         ]);

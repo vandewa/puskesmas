@@ -64,6 +64,7 @@
                         <div class="card-body">
                             <table class="table">
                                 <thead>
+                                    <th>Hari</th>
                                     <th>Nama Poli</th>
                                     <th>Waktu</th>
                                     <th>Dokter</th>
@@ -71,21 +72,31 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr style="background-color:green;color:white;">
-                                            <td colspan="5" align="center">
-                                                <h5><b>{{ $item->hari->code_nm ?? '-' }}</b></h5>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                        <tr wire:key='{{ $item->seq_no }}'>
+                                            <td>{{ $item->hari->code_nm ?? '-' }}</td>
                                             <td>{{ $item->poli->medunit_nm ?? '-' }}</td>
-                                            {{-- <td>{{ $item->hari->code_nm ?? '-' }}</td> --}}
-                                            <td>{{ $item->time_start . ' - ' . $item->time_end }}</td>
+                                            <td>{{ \Carbon\Carbon::createFromFormat('H:i:s', $item->time_start)->format('H:i') . ' - ' . \Carbon\Carbon::createFromFormat('H:i:s', $item->time_end)->format('H:i') }}
+                                            </td>
                                             <td>{{ $item->dokter->dr_nm ?? '' }}</td>
-                                            <td>{{ $item->dokter->dr_nm ?? '' }}</td>
+                                            <td>
+                                                {{-- <button type="button" wire:click="getEdit('{{ $item->seq_no }}')"
+                                                    class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
+                                                    data-placement="left" title="Edit"><i
+                                                        class="fas fa-pencil-alt"></i></button> --}}
+                                                <a href="{{ route('master.jadwal-praktek', $item->seq_no) }}"
+                                                    wire:navigate class="btn btn-warning btn-flat btn-sm"
+                                                    data-toggle="tooltip" data-placement="left" title="Edit"><i
+                                                        class="fas fa-pencil-alt"></i></a>
+                                                <button type="button" class="btn btn-danger btn-flat btn-sm"
+                                                    data-toggle="modal" data-target="#modal-default"
+                                                    wire:click="setDelete('{{ $item->seq_no }}')"><i
+                                                        class="fas fa-trash"></i></button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{ $post->links() }}
                         </div>
 
                     </div>

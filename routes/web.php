@@ -62,7 +62,7 @@ Route::middleware([
         Route::get('kelas', Kelas::class)->name('kelas');
         Route::get('kamar', Kamar::class)->name('kamar');
         Route::get('tempat-tidur', TempatTidur::class)->name('tempat-tidur');
-        Route::get('jadwal-praktek', JadwalPraktek::class)->name('jadwal-praktek');
+        Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
     });
 

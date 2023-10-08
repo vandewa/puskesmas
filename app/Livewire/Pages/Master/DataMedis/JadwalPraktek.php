@@ -20,7 +20,7 @@ class JadwalPraktek extends Component
         'note' => '',
     ];
     public $cari, $edit = false, $dokter, $poli, $hari;
-    public $idHapus;
+    public $idHapus, $idnya;
 
 
     public function mount($id = "")
@@ -28,18 +28,20 @@ class JadwalPraktek extends Component
         $this->dokter = TrxDokter::get()->toArray();
         $this->poli = TrxUnitMedis::get()->toArray();
         $this->hari = get_code('DAY_TP');
-    }
-
-    public function getEdit($a)
-    {
-        $this->form = TrxJadwal::find($a)->only(['dr_cd', 'medunit_cd', 'time_start', 'time_end', 'note']);
-        $this->edit = true;
-    }
-
-    public function batal()
-    {
-        $this->edit = false;
-        $this->reset();
+        if ($id != "") {
+            $this->edit = true;
+            $this->form = TrxJadwal::find($id)->only(
+                [
+                    'seq_no',
+                    'dr_cd',
+                    'medunit_cd',
+                    'day_tp',
+                    'time_start',
+                    'time_end',
+                    'note',
+                ]
+            );
+        }
     }
 
     public function save()
@@ -60,26 +62,16 @@ class JadwalPraktek extends Component
             'form.medunit_cd' => 'required',
             'form.time_start' => 'required',
             'form.time_end' => 'required',
-            'form.note' => 'required',
         ]);
 
         TrxJadwal::create($this->form);
         $this->redirect(route('master.jadwal-praktek.index'));
     }
 
-    public function setDelete($id)
-    {
-        $this->idHapus = $id;
-    }
-    public function delete()
-    {
-        TrxJadwal::destroy($this->idHapus);
-        $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
-    }
 
     public function storeUpdate()
     {
-        TrxJadwal::find($this->form['dr_cd'])->update($this->form);
+        TrxJadwal::find($this->form['seq_no'])->update($this->form);
         $this->reset();
         $this->edit = false;
         $this->redirect(route('master.jadwal-praktek.index'));

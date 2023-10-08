@@ -6,6 +6,9 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <form class="form-horizontal mt-2" wire:submit='save'>
+                            @if ($edit)
+                                <input type="hidden" value="{{ $form['seq_no'] }}" wire:model="form.seq_no">
+                            @endif
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -36,6 +39,22 @@
                                                     @endforeach
                                                 </select>
                                                 @error('form.medunit_cd')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Hari</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" wire:model="form.day_tp">
+                                                    <option value="">-- Pilih Hari --</option>
+                                                    @foreach ($hari ?? [] as $item)
+                                                        <option value="{{ $item['com_cd'] }}">
+                                                            {{ $item['code_nm'] }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.day_tp')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -74,8 +93,8 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <button type="button" class="btn btn-default float-right"
-                                    wire:click='batal'>Batal</button>
+                                <a href="{{ route('master.jadwal-praktek.index') }}"
+                                    class="btn btn-default float-right">Kembali</a>
                             </div>
                         </form>
                     </div>

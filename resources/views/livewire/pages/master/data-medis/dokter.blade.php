@@ -57,8 +57,8 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Spesialis</label>
                                             <div class="col-sm-9">
-                                                <select name="" id="" class="form-control"
-                                                    wire:model='form.spesialis_cd'>
+                                                <select class="form-control" wire:model='form.spesialis_cd'
+                                                    wire:key="select.dokter">
                                                     <option value="">Pilih Spesialis</option>
                                                     @foreach ($listSpesialis ?? [] as $item)
                                                         <option value="{{ $item['spesialis_cd'] }}">
@@ -118,7 +118,7 @@
                                             <td>{{ $item->dr_cd }}</td>
                                             <td>{{ $item->dr_nm }}</td>
                                             <td>{{ $item->nip }}</td>
-                                            <td>{{ $item->spesialis_cd }}</td>
+                                            <td>{{ $item->spesialis->spesialis_nm ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->dr_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
