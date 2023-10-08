@@ -428,7 +428,11 @@
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list') }}" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                      @if (request()->is('transaksi/rawat-jalan/list') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Transaksi Rawat Jalan</p>
                                   </a>
                               </li>
