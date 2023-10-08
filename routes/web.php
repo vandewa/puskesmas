@@ -19,9 +19,11 @@ use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
 use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
 use App\Livewire\Pages\Transaksi\RekamMedis;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +71,12 @@ Route::middleware([
         Route::get('tempat-tidur', TempatTidur::class)->name('tempat-tidur');
         Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
+    });
+
+    Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function(){
+        Route::group(['prefix' => 'rawat-jalan', 'as'=> 'rawat-jalan.'], function(){
+            Route::get('list', ListPasienTransaksi::class)->name('list');
+        });
     });
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {

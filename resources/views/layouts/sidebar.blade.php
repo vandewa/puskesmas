@@ -427,7 +427,7 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index.html" class="nav-link">
+                                  <a href="{{ route('transaksi.rawat-jalan.list') }}" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Transaksi Rawat Jalan</p>
                                   </a>
