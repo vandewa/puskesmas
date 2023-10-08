@@ -18,6 +18,7 @@ use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
+use App\Http\Controllers\HelperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,9 +48,10 @@ Route::middleware([
     Route::get('/', [DashboardController::class, 'index']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-    Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
+
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
         Route::get('list', ListPasien::class)->name('index');
+        Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
     });
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::get('spesialis', Spesialis::class)->name('spesialis');
@@ -68,6 +70,10 @@ Route::middleware([
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
         Route::get('rawat-jalan/{id?}', RawatJalan::class)->name('rawat-jalan');
+    });
+
+    Route::group(['prefix' => 'helper', 'as' => 'helper.'], function (){
+        Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
     });
 
 

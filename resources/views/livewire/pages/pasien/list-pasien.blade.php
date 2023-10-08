@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <a href="{{ route('pendaftaran') }}" wire:navigate class="btn btn-success">Tambah Pasien</a>
+                            <a href="{{ route('pasien.pendaftaran') }}" wire:navigate class="btn btn-success">Tambah Pasien</a>
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <div class="form-group row margin-bawah">
@@ -68,12 +68,24 @@
                                 <div class="col-md-12">
                                     <div class="d-flex justify-content-end">
                                         <div>
-                                            <button class="btn btn-info">Cetak</button>
-                                            <button class="btn btn-primary">Rekam Medis</button>
-                                            <a href="{{ route('pendaftaran', $selected) }}" wire:navigate class="btn btn-primary">Ubah Data Pasien</a>
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-success">Cetak</button>
+                                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                  <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <div class="dropdown-menu" role="menu" style="">
+                                                  <a class="dropdown-item" href="#">Action</a>
+                                                  <a class="dropdown-item" href="#">Another action</a>
+                                                  <a class="dropdown-item" href="#">Something else here</a>
+                                                  <div class="dropdown-divider"></div>
+                                                  <a class="dropdown-item" href="#">Separated link</a>
+                                                </div>
+                                              </div>
+                                            <button class="btn btn-outline-info">Rekam Medis</button>
+                                            <a href="{{ route('pasien.pendaftaran', $selected) }}" wire:navigate class="btn btn-warning">Ubah Data Pasien</a>
                                             <button class="btn btn-danger">Hapus Data Pasien</button>
-                                            <a href="{{ route('registrasi.rawat-jalan', $selected) }}" wire:navigate class="btn btn-primary">Daftar Rawat Jalan</a>
-                                            <button class="btn btn-primary">Daftar Rawat Inap</button>
+                                            <a href="{{ route('registrasi.rawat-jalan', $selected) }}" wire:navigate class="btn btn-info">Daftar Rawat Jalan</a>
+                                            <button class="btn btn-outline-primary" >Daftar Rawat Inap</button>
                                         </div>
                                     </div>
                                 </div>
@@ -84,6 +96,12 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
+                            @if (session('status'))
+
+                                <div class="alert alert-success">
+                                    Pendaftaran pasienber dilakukan
+                                </div>
+                            @endif
                             <table class="table">
                                 <thead>
                                     <th>No RM</th>
