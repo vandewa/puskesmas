@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <a href="{{ route('pendaftaran') }}" wire:navigate class="btn btn-success">Tambah Pasien</a>
+                            <a href="{{ route('pasien.pendaftaran') }}" wire:navigate class="btn btn-success">Tambah Pasien</a>
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <div class="form-group row margin-bawah">
@@ -82,7 +82,7 @@
                                                 </div>
                                               </div>
                                             <button class="btn btn-outline-info">Rekam Medis</button>
-                                            <a href="{{ route('pendaftaran', $selected) }}" wire:navigate class="btn btn-warning">Ubah Data Pasien</a>
+                                            <a href="{{ route('pasien.pendaftaran', $selected) }}" wire:navigate class="btn btn-warning">Ubah Data Pasien</a>
                                             <button class="btn btn-danger">Hapus Data Pasien</button>
                                             <a href="{{ route('registrasi.rawat-jalan', $selected) }}" wire:navigate class="btn btn-info">Daftar Rawat Jalan</a>
                                             <button class="btn btn-outline-primary" >Daftar Rawat Inap</button>

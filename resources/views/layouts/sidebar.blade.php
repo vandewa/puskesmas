@@ -68,7 +68,7 @@
                       </li>
 
                       <li
-                          class="nav-item  
+                          class="nav-item
                       {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
                       {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
                       {{ Request::segment(2) == 'paramedis' ? 'menu-is-opening menu-open' : '' }}
@@ -128,7 +128,7 @@
                           </ul>
                           <ul class="nav nav-treeview">
                               <li
-                                  class="nav-item 
+                                  class="nav-item
                               {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'paramedis' ? 'menu-is-opening menu-open' : '' }}
@@ -142,7 +142,7 @@
 
                               ">
                                   <a href="#"
-                                      class="nav-link 
+                                      class="nav-link
                                       {{ Request::segment(2) == 'spesialis' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'dokter' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'paramedis' ? 'active' : '' }}
@@ -253,14 +253,14 @@
                                           </a>
                                       </li>
                                       <li
-                                          class="nav-item  
+                                          class="nav-item
                                           {{ Request::segment(2) == 'bangsal' ? 'menu-is-opening menu-open' : '' }}
                                           {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
                                           {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
                                           {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
                                           ">
                                           <a href="#"
-                                              class="nav-link 
+                                              class="nav-link
                                               {{ Request::segment(2) == 'bangsal' ? 'active' : '' }}
                                               {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
                                               {{ Request::segment(2) == 'kamar' ? 'active' : '' }}
@@ -343,8 +343,8 @@
                           </ul>
                       </li>
 
-                      <li class="nav-item {{ Request::segment(2) == 'list' ? 'menu-is-opening menu-open' : '' }}">
-                          <a href="#" class="nav-link {{ Request::segment(2) == 'list' ? 'active' : '' }}">
+                      <li class="nav-item {{ request()->is('pasien/*') ? 'menu-is-opening menu-open' : '' }}">
+                          <a href="#" class="nav-link {{ request()->is('pasien/*') ? 'active' : '' }}">
                               <i class="nav-icon fas fa-user-circle"></i>
                               <p>
                                   Pasien
@@ -354,8 +354,8 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="{{ route('pasien.index') }}"
-                                      class="nav-link {{ Request::segment(2) == 'list' ? 'active' : '' }}">
-                                      @if (Request::segment(2) == 'list')
+                                      class="nav-link {{ request()->is('pasien/list') ? 'active' : '' }}">
+                                      @if (request()->is('pasien/*') ? "active": "")
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
                                           <i class="far fa-circle nav-icon ml-3"></i>
@@ -364,8 +364,13 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('pasien.pendaftaran') }}" class="nav-link
+                                  {{ request()->is('pasien/pendaftaran') ? 'active' : '' }}">
+                                        @if (request()->is('pasien/pendaftaran') ? "active": "")
+                                            <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                        @else
+                                            <i class="far fa-circle nav-icon ml-3"></i>
+                                        @endif
                                       <p>Pendaftaran Pasien</p>
                                   </a>
                               </li>

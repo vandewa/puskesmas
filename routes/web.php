@@ -46,9 +46,10 @@ Route::middleware([
     Route::get('/', [DashboardController::class, 'index']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-    Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
+
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
         Route::get('list', ListPasien::class)->name('index');
+        Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
     });
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::get('spesialis', Spesialis::class)->name('spesialis');
