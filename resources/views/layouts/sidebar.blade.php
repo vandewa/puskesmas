@@ -405,8 +405,8 @@
                               </li>
                           </ul>
                       </li>
-                      <li class="nav-item">
-                          <a href="#" class="nav-link">
+                      <li class="nav-item {{  request()->is('*rawat-jalan*') ? 'menu-is-opening menu-open' : ''  }}">
+                          <a href="#" class="nav-link {{ request()->is('*rawat-jalan*') ? 'active' : '' }}">
                               <i class="nav-icon fas fa-wheelchair"></i>
                               <p>
                                   Rawat Jalan
@@ -415,8 +415,12 @@
                           </a>
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                  <a href="./index2.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('registrasi.rawat-jalan') }}" class="nav-link {{ request()->is('registrasi/rawat-jalan/*') ? 'active' : '' }}">
+                                    @if (request()->is('registrasi/rawat-jalan/*') ? "active": "")
+                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                    @else
+                                        <i class="far fa-circle nav-icon ml-3"></i>
+                                    @endif
                                       <p>Pendaftaran</p>
                                   </a>
                               </li>
