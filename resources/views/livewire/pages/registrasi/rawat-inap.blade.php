@@ -24,25 +24,54 @@
                                     <div class="form-group row margin-bawah">
                                         <label for="" class="col-sm-3 col-form-label">Pasien</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <div class="input-group ">
+                                                <p class="form-control"> {{ $pasien->no_rm ?? '' }} @if ($pasien)
+                                                        |
+                                                    @endif {{ $pasien->pasien_nm ?? '' }}</p>
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-info btn-flat"
+                                                        wire:click="$dispatch('show-modal-pasien')">Cari</button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group row margin-bawah">
                                         <label for="" class="col-sm-3 col-form-label">Jenis</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <select name="" id="" class="form-control"
+                                                wire:model.live='form.pasien_tp'
+                                                @if (strtoupper($pasien->pasien_tp ?? '') == 'PASIEN_TP_01') disabled @endif>
+                                                <option value="">Pilih Jenis</option>
+                                                @foreach ($jenisPasien ?? [] as $item)
+                                                    <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row margin-bawah">
                                         <label for="" class="col-sm-3 col-form-label">Alasan</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <select name="" id="" class="form-control"
+                                                wire:model.live='form.visit_tp'>
+                                                <option value="">Pilih Alasan</option>
+                                                @foreach ($alasan ?? [] as $item)
+                                                    <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row margin-bawah">
                                         <label for="" class="col-sm-3 col-form-label">Diagnosa Masuk</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <div class="input-group ">
+                                                <p class="form-control">{{ $diagnosa->icd_nm ?? '' }}</p>
+                                                <span class="input-group-append">
+                                                    <button type="button" class="btn btn-info btn-flat"
+                                                        wire:click="$dispatch('show-modal-diagnosa')">Cari</button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -95,16 +124,18 @@
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Kelas I</td>
-                                        <td>CEMPAKA</td>
-                                        <td>CEMPAKA 2</td>
-                                        <td>
-                                            <a href="" wire:navigate class="btn btn-success btn-flat btn-sm"
-                                                data-toggle="tooltip" data-placement="left" title="Daftar"><i
-                                                    class="fas fa-bed"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach ($posts as $item)
+                                        <tr>
+                                            <td>{{ $item->kelas->kelas_nm }}</td>
+                                            <td>{{ $item->bangsal->bangsal_nm }}</td>
+                                            <td>{{ $item->kamar->kamar_nm }}</td>
+                                            <td>
+                                                <a href="" wire:navigate class="btn btn-success btn-flat btn-sm"
+                                                    data-toggle="tooltip" data-placement="left" title="Daftar"><i
+                                                        class="fas fa-bed"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>

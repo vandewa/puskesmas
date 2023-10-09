@@ -90,7 +90,8 @@
                                             <button class="btn btn-danger">Hapus Data Pasien</button>
                                             <a href="{{ route('registrasi.rawat-jalan', $selected) }}" wire:navigate
                                                 class="btn btn-info">Daftar Rawat Jalan</a>
-                                            <button class="btn btn-success">Daftar Rawat Inap</button>
+                                            <a href="{{ route('registrasi.rawat-inap', $selected) }}"
+                                                class="btn btn-success" wire:navigate>Daftar Rawat Inap</a>
                                         </div>
                                     </div>
                                 </div>

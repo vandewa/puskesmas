@@ -120,8 +120,8 @@ class RawatJalan extends Component
             title: 'Anda yakin akan mendaftarkan pasien?',
             showDenyButton: true,
             showCancelButton: true,
-            confirmButtonText: 'Save',
-            denyButtonText: `Don't save`,
+            confirmButtonText: 'Iya',
+            denyButtonText: `Tidak`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
@@ -132,10 +132,6 @@ class RawatJalan extends Component
             }
           })
         ");
-
-
-
-
     }
 
     public function generateAntrian()

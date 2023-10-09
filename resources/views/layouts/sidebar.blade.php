@@ -418,7 +418,7 @@
                               <li class="nav-item">
                                   <a href="{{ route('registrasi.rawat-jalan') }}" wire:navigate
                                       class="nav-link {{ request()->is('registrasi/rawat-jalan/*') ? 'active' : '' }}">
-                                      @if (request()->is('registrasi/rawat-jalan'))
+                                      @if (request()->is('registrasi/rawat-jalan') || request()->is('registrasi/rawat-jalan/*'))
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
                                           <i class="far fa-circle nav-icon ml-3"></i>
@@ -499,7 +499,7 @@
                                   <a href="{{ route('registrasi.rawat-inap') }}" wire:navigate
                                       class="nav-link {{ request()->is('registrasi/rawat-inap/*') ? 'active' : '' }}"
                                       class="nav-link">
-                                      @if (request()->is('registrasi/rawat-inap'))
+                                      @if (request()->is('registrasi/rawat-inap') || request()->is('registrasi/rawat-inap/*'))
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
                                           <i class="far fa-circle nav-icon ml-3"></i>
