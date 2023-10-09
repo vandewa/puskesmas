@@ -18,6 +18,7 @@ use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
+use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Http\Controllers\HelperController;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
@@ -74,8 +75,8 @@ Route::middleware([
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
     });
 
-    Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function(){
-        Route::group(['prefix' => 'rawat-jalan', 'as'=> 'rawat-jalan.'], function(){
+    Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
+        Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {
             Route::get('list/{url?}', ListPasienTransaksi::class)->name('list');
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
             Route::get('rekam-medis', RekamMedis::class)->name('rekam-medis');
@@ -85,6 +86,7 @@ Route::middleware([
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
         Route::get('rawat-jalan/{id?}', RawatJalan::class)->name('rawat-jalan');
+        Route::get('rawat-inap/{id?}', RawatInap::class)->name('rawat-inap');
     });
 
     Route::get('detail', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
