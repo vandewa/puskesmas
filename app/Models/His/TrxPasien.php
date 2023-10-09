@@ -75,7 +75,7 @@ use \OwenIt\Auditing\Auditable;
     public $keyType = 'string';
 
     // public $incrementing = false;
-
+    protected $appends = ["usia"];
 
 
     public $fillable = [
@@ -297,6 +297,12 @@ use \OwenIt\Auditing\Auditable;
         if($value){
             return $this->where('birth_date', $value);
         }
+    }
+
+
+
+    public function getUsiAttribute() {
+         return hitung_umur($this->attributes['birth_date']);
     }
 
 }

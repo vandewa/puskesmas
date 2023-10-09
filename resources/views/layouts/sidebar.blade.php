@@ -471,10 +471,15 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
-                                      <p>Resep/Obat</p>
-                                  </a>
+                                <a href="{{ route('transaksi.rawat-jalan.list','transaksi.rawat-jalan.resep-obat') }}" wire:navigate class="nav-link">
+                                    @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '')
+                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                    @else
+                                        <i class="far fa-circle nav-icon ml-3"></i>
+                                    @endif
+                                    <p>Resep/Obat</p>
+                                </a>
+
                               </li>
                           </ul>
                       </li>

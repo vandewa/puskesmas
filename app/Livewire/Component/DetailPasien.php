@@ -8,10 +8,10 @@ use Livewire\Component;
 
 class DetailPasien extends Component
 {
-    public $pasiencd;
+    public $medicalcd;
     public function render()
     {
-        $data = TrxMedical::find($this->pasiencd);
+        $data = TrxMedical::with(['pasien', 'jenisRawat', 'dokter', 'poli'])->find($this->medicalcd);
         return view('livewire.component.detail-pasien', [
             'item' => $data
         ]);
