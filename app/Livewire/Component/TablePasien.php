@@ -25,8 +25,10 @@ class TablePasien extends Component
 
     public $url;
 
+
     public function render()
     {
+
         $data = TrxMedical::with(['poli', 'dokter', 'pasien', 'jenisPasien'])->carirm($this->rm)
         ->caripoliklinik($this->poliklinik)
         ->caritanggal($this->tanggal)

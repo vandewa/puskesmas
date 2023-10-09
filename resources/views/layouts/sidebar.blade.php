@@ -370,7 +370,7 @@
                           </a>
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                  <a href="{{ route('pasien.index') }}"
+                                  <a href="{{ route('pasien.index') }}" wire:navigate
                                       class="nav-link {{ request()->is('pasien/list') ? 'active' : '' }}">
                                       @if (request()->is('pasien/list') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -381,7 +381,7 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="{{ route('pasien.pendaftaran') }}"
+                                  <a href="{{ route('pasien.pendaftaran') }}" wire:navigate
                                       class="nav-link
                                   {{ request()->is('pasien/pendaftaran') ? 'active' : '' }}">
                                       @if (request()->is('pasien/pendaftaran') ? 'active' : '')

@@ -20,12 +20,12 @@
                         <livewire:component.link-transaksi/>
                         <div class="card-body">
 
-                            RESEP
+
                            <livewire:component.detail-pasien :medicalcd="$medicalcd">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="card card-dark card-tabs">
-                                        <div class="card-header p-0 pt-1">
+                                        {{-- <div class="card-header p-0 pt-1">
                                             <ul class="nav nav-tabs" id="custom-tabs-six-transaksi-tab"
                                                 role="tablist">
                                                 <li class="nav-item">
@@ -59,9 +59,9 @@
                                                             style="color:black">Tambah Resep</span></a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                         <div class="card-body">
-                                            <div class="tab-content" id="custom-tabs-six-tabContent">
+                                            {{-- <div class="tab-content" id="custom-tabs-six-tabContent">
                                                 <div class="tab-pane fade show active"
                                                     id="custom-tabs-six-data-resep" role="tabpanel"
                                                     aria-labelledby="custom-tabs-six-data-resep-tab">
@@ -77,7 +77,9 @@
                                                     aria-labelledby="custom-tabs-six-template-resep-tab">
                                                     TEMPLATE RESEP
                                                 </div>
-                                            </div>
+                                            </div> --}}
+
+                                           <livewire:component.form-resep>
                                         </div>
                                     </div>
                                     <!-- /.card -->

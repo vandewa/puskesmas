@@ -141,6 +141,7 @@ class Pendaftaran extends Component
 
     }
 
+
     public function changeKab($id) {
         $this->kab = ComRegion::where('region_root', $id)->get()->toArray();
     }
@@ -235,6 +236,7 @@ class Pendaftaran extends Component
 
     public function render()
     {
+
         return view('livewire.pages.pendaftaran');
     }
 }

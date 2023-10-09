@@ -136,7 +136,7 @@
 
             setTimeout(() => {
                 document.getElementById(event.detail.id).focus();
-            }, 5000);
+            }, 300);
 
         });
     </script>
