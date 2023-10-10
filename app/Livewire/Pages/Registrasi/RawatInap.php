@@ -5,6 +5,8 @@ namespace App\Livewire\Pages\Registrasi;
 use Livewire\Component;
 use App\Models\His\TrxIcd;
 use Livewire\Attributes\On;
+use App\Models\His\TrxKamar;
+use App\Models\His\TrxKelas;
 use App\Models\His\TrxQueue;
 use App\Models\His\TrxRuang;
 use Livewire\WithPagination;
@@ -19,7 +21,7 @@ class RawatInap extends Component
 
     use WithPagination;
 
-    public $pasien, $diagnosa, $alasan, $jenisPasien;
+    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang;
     public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
@@ -48,6 +50,8 @@ class RawatInap extends Component
     {
         $this->alasan = get_code('VISIT_TP');
         $this->jenisPasien = get_code('PASIEN_TP');
+        $this->kelas = TrxKelas::all()->toArray();
+        $this->ruang = TrxKamar::all()->toArray();
         if ($id != "") {
             $this->pilihOrang($id);
         }

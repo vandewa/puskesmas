@@ -85,13 +85,25 @@
                                     <div class="form-group row margin-bawah">
                                         <label for="" class="col-sm-3 col-form-label">Kelas</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <select class="form-control">
+                                                <option value="">-- Pilih Kelas --</option>
+                                                @foreach ($kelas ?? [] as $item)
+                                                    <option value="{{ $item['kelas_cd'] }}">{{ $item['kelas_nm'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row margin-bawah">
                                         <label for="" class="col-sm-3 col-form-label">Ruang Perawatan</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control">
+                                            <select class="form-control">
+                                                <option value="">-- Pilih Ruang --</option>
+                                                @foreach ($ruang ?? [] as $item)
+                                                    <option value="{{ $item['kamar_cd'] }}">{{ $item['kamar_nm'] }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group row margin-bawah">
@@ -167,6 +179,8 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
+    <livewire:component.modal-pasien wire:key='modal-pasien'>
+        <livewire:component.modal-diagnosa wire:key='modal-diagnosa'>
 </div>
 
 @push('css')
