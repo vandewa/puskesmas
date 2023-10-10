@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="col-lg-3 col-6 mt-4">
                             <!-- small box -->
-                            <a href="{{ route('pasien.pendaftaran') }}" wire:navigate class="hvr-float-shadow">
+                            <a href="{{ route('pasien.index') }}" wire:navigate class="hvr-float-shadow">
                                 <div class="small-box bg-success" style="width: 150px;">
                                     <div class="inner jarak">
                                         <center><i class="far fa-edit fa-3x"></i></center>
@@ -41,7 +41,7 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-6 mt-4">
                             <!-- small box -->
-                            <a href="{{ route('pasien.index') }}" wire:navigate class="hvr-float-shadow">
+                            <a href="{{ route('pasien.pendaftaran') }}" wire:navigate class="hvr-float-shadow">
                                 <div class="small-box bg-success" style="width: 150px;">
                                     <div class="inner jarak">
                                         <center><i class="fas fa-user-circle fa-3x"></i></center>
@@ -53,7 +53,7 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-6 mt-4">
                             <!-- small box -->
-                            <a href="#" wire:navigate class="hvr-float-shadow">
+                            <a href="{{ route('registrasi.rawat-jalan') }}" wire:navigate class="hvr-float-shadow">
                                 <div class="small-box bg-success" style="width: 150px;">
                                     <div class="inner jarak">
                                         <center><i class="fas fa-wheelchair fa-3x"></i></center>
@@ -65,7 +65,7 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-6 mt-4">
                             <!-- small box -->
-                            <a href="#" wire:navigate class="hvr-float-shadow">
+                            <a href="{{ route('registrasi.rawat-inap') }}" wire:navigate class="hvr-float-shadow">
                                 <div class="small-box bg-success" style="width: 150px;">
                                     <div class="inner jarak">
                                         <center><i class="fas fa-bed fa-3x"></i></center>
