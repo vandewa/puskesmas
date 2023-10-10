@@ -134,4 +134,12 @@ class InvItemMaster extends Model implements Auditable
     public function generic(){
         return $this->belongsTo(ComCode::class, 'generic_st');
     }
+
+    // cari berdasarkan nama dan barcode
+    public function scopeCari($filter, $value) {
+        if($value){
+           return $filter->where('item_nm', 'ilike', "%$value%")
+            ->orWhere('barcode', 'ilike', "%$value%");
+        }
+    }
 }

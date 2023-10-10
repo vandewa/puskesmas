@@ -79,7 +79,7 @@
                                                 </div>
                                             </div> --}}
 
-                                           <livewire:component.form-resep>
+                                           <livewire:component.form-resep :dr_cd="$medik->dr_cd">
                                         </div>
                                     </div>
                                     <!-- /.card -->
