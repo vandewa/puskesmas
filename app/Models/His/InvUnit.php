@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -64,7 +65,14 @@ class InvUnit extends Model implements Auditable
     // Methods
     public function getUnit($q = '')
     {
-        return $this->select('unit_cd', 'unit_nm')->where('unit_cd','ilike',"%$q%");
+        return $this->select('unit_cd', 'unit_nm')->where('unit_cd', 'ilike', "%$q%");
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('unit_cd', 'ilike', "%$s%")->orWhere('unit_nm', 'ilike', "%$s%");
+        }
     }
 
 

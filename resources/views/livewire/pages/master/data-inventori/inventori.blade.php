@@ -7,7 +7,7 @@
                     <div class="card card-success card-outline">
                         <form class="form-horizontal mt-2" wire:submit='save'>
                             @if ($edit)
-                                <input type="hidden" value="{{ $form['item_cd'] }}" wire:model="form.seq_no">
+                                <input type="hidden" value="{{ $form['item_cd'] }}" wire:model="form.item_cd">
                             @endif
                             <div class="card-body">
                                 <div class="row">
@@ -15,7 +15,8 @@
                                         <div class="form-group row">
                                             <label for="" class="col-sm-3 col-form-label">Kode Item</label>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" wire:model='form.item_cd'>
+                                                <input type="text" class="form-control" wire:model='form.item_cd'
+                                                    @if ($edit) disabled @endif>
                                                 @error('form.item_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -25,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class PoPrincipal extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'po_principal';
@@ -37,7 +38,8 @@ use \OwenIt\Auditing\Auditable;
 
     protected $primaryKey = 'principal_cd';
 
-    public $fillable = ['principal_cd',
+    public $fillable = [
+        'principal_cd',
         'principal_nm',
         'address',
         'city',
@@ -93,15 +95,22 @@ use \OwenIt\Auditing\Auditable;
 
     ];
 
-    public static function getData($param='')
+    public static function getData($param = '')
     {
-        if($param == ''){
+        if ($param == '') {
             $data = DB::table('po_principal')->get();
-        }else{
-            $data = DB::table('po_principal')->where('principal_cd',$param)->get()->first();
+        } else {
+            $data = DB::table('po_principal')->where('principal_cd', $param)->get()->first();
         }
         return $data;
-                // ->join('')
+        // ->join('')
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('principal_cd', 'ilike', "%$s%")->orWhere('principal_nm', 'ilike', "%$s%");
+        }
     }
 
 

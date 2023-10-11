@@ -20,8 +20,17 @@ use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Master\DataInventori\Golongan;
 use App\Livewire\Pages\Master\DataInventori\Inventori;
+use App\Livewire\Pages\Master\DataInventori\Kelompok;
 use App\Livewire\Pages\Master\DataInventori\ListInventori;
+use App\Livewire\Pages\Master\DataInventori\ListPrincipal;
+use App\Livewire\Pages\Master\DataInventori\ListSupplier;
+use App\Livewire\Pages\Master\DataInventori\ListTipe;
+use App\Livewire\Pages\Master\DataInventori\Principal;
+use App\Livewire\Pages\Master\DataInventori\Supplier;
+use App\Livewire\Pages\Master\DataInventori\Tipe;
+use App\Livewire\Pages\Master\DataInventori\UnitSatuan;
 use App\Livewire\Pages\Master\DataUmum\DataPuskesmas;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
@@ -79,6 +88,17 @@ Route::middleware([
         Route::get('data-puskesmas', DataPuskesmas::class)->name('data-puskesmas');
         Route::get('inventori', Inventori::class)->name('inventori');
         Route::get('list-inventori', ListInventori::class)->name('inventori.index');
+        Route::get('unit-satuan', UnitSatuan::class)->name('unit-satuan');
+        Route::get('principal/{id?}', Principal::class)->name('principal');
+        Route::get('list-principal', ListPrincipal::class)->name('principal.index');
+        Route::get('supplier/{id?}', Supplier::class)->name('supplier');
+        Route::get('list-supplier', ListSupplier::class)->name('supplier.index');
+        Route::get('tipe', Tipe::class)->name('tipe');
+        Route::get('kelompok', Kelompok::class)->name('kelompok');
+        Route::get('golongan', Golongan::class)->name('golongan');
+        Route::get('list-tipe', ListTipe::class)->name('tipe-inventori.index');
+
+
     });
 
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {

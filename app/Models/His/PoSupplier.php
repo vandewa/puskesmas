@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -99,15 +100,22 @@ class PoSupplier extends Model implements Auditable
 
     ];
 
-    public static function getData($param='')
+    public static function getData($param = '')
     {
-        if($param == ''){
+        if ($param == '') {
             $data = DB::table('po_supplier')->get();
-        }else{
-            $data = DB::table('po_supplier')->where('supplier_cd',$param)->get()->first();
+        } else {
+            $data = DB::table('po_supplier')->where('supplier_cd', $param)->get()->first();
         }
         return $data;
-                // ->join('')
+        // ->join('')
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('supplier_cd', 'ilike', "%$s%")->orWhere('supplier_nm', 'ilike', "%$s%");
+        }
     }
 
 

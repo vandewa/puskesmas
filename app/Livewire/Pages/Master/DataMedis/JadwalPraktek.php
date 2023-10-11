@@ -79,10 +79,6 @@ class JadwalPraktek extends Component
 
     public function render()
     {
-        $data = TrxJadwal::with(['hari', 'poli', 'dokter'])->paginate(10);
-
-        return view('livewire.pages.master.data-medis.jadwal-praktek', [
-            'post' => $data
-        ]);
+        return view('livewire.pages.master.data-medis.jadwal-praktek');
     }
 }

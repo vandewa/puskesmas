@@ -361,11 +361,21 @@
                                   class="nav-item     
                                  {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
                                  {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'principal' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'list-principal' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'supplier' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'list-supplier' ? 'menu-is-opening menu-open' : '' }}
                                  ">
                                   <a href="#"
                                       class="nav-link
                                 {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
                                 {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'principal' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
                                 ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
@@ -375,6 +385,34 @@
                                   </a>
 
                                   <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.unit-satuan') }}"
+                                              class="nav-link  
+                                              {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
+                                              "
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'unit-satuan' || Request::segment(2) == 'unit-satuan')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Unit/Satuan</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.tipe-inventori.index') }}"
+                                              class="nav-link  
+                                              {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
+                                              "
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'list-tipe' || Request::segment(2) == 'list-tipe')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Tipe</p>
+                                          </a>
+                                      </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.inventori.index') }}"
                                               class="nav-link  
@@ -388,6 +426,36 @@
                                                   <i class="far fa-circle nav-icon ml-3"></i>
                                               @endif
                                               <p>Inventori</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.supplier.index') }}"
+                                              class="nav-link  
+                                              {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
+                                              "
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'supplier' || Request::segment(2) == 'list-supplier')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Supplier</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.principal.index') }}"
+                                              class="nav-link  
+                                              {{ Request::segment(2) == 'principal' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
+                                              "
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'principal' || Request::segment(2) == 'list-principal')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Principal</p>
                                           </a>
                                       </li>
                                   </ul>
@@ -462,7 +530,8 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="{{ route('transaksi.rawat-jalan.list') }}" wire:navigate class="nav-link">
+                                  <a href="{{ route('transaksi.rawat-jalan.list') }}" wire:navigate
+                                      class="nav-link">
                                       @if (request()->is('transaksi/rawat-jalan/list') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else

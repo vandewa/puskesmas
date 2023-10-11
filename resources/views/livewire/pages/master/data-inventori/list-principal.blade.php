@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Master</a></li>
-                    <li class="breadcrumb-item active">Inventori</li>
+                    <li class="breadcrumb-item active">Principal</li>
                 </ol>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <a href="{{ route('master.inventori') }}" wire:navigate class="btn btn-success mb-4"><i
+                            <a href="{{ route('master.principal') }}" wire:navigate class="btn btn-success mb-4"><i
                                     class="fas fa-plus-square mr-2"></i> Tambah </a>
 
                             <div class="row">
@@ -30,28 +30,23 @@
                             </div>
                             <table class="table">
                                 <thead>
-                                    <th>Hari</th>
-                                    <th>Nama Poli</th>
-                                    <th>Waktu</th>
-                                    <th>Dokter</th>
+                                    <th>Kode Principal</th>
+                                    <th>Nama Principal</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr wire:key='{{ $item->seq_no }}'>
-                                            <td>{{ $item->hari->code_nm ?? '-' }}</td>
-                                            <td>{{ $item->poli->medunit_nm ?? '-' }}</td>
-                                            <td>{{ \Carbon\Carbon::createFromFormat('H:i:s', $item->time_start)->format('H:i') . ' - ' . \Carbon\Carbon::createFromFormat('H:i:s', $item->time_end)->format('H:i') }}
-                                            </td>
-                                            <td>{{ $item->dokter->dr_nm ?? '' }}</td>
+                                        <tr wire:key='{{ $item->principal_cd }}'>
+                                            <td>{{ $item->principal_cd }}</td>
+                                            <td>{{ $item->principal_nm }}</td>
                                             <td>
-                                                <a href="{{ route('master.jadwal-praktek', $item->seq_no) }}"
+                                                <a href="{{ route('master.principal', $item->principal_cd) }}"
                                                     wire:navigate class="btn btn-warning btn-flat btn-sm"
                                                     data-toggle="tooltip" data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></a>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
                                                     data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->seq_no }}')"><i
+                                                    wire:click="setDelete('{{ $item->principal_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
