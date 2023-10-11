@@ -20,6 +20,7 @@ use App\Models\His\InvPosInventory;
 use App\Models\His\TrxKelas;
 use App\Models\His\TrxInsurance;
 use App\Models\His\ComAccount;
+use App\Models\His\TrxMedicalResep;
 
 if (!function_exists('file_name')) {
     function file_name($path, $extension)
@@ -248,6 +249,17 @@ if (!function_exists('gen_pasien_cd')) {
             $no = Date('y') . str_pad((int) substr($terakhir->pasien_cd, -8) + 1, 8, 0, STR_PAD_LEFT);
         }
         return $no;
+    }
+}
+if (!function_exists('gen_no_resep')) {
+    function gen_no_resep()
+    {
+        $no = Date('y') . str_pad(1, 8, '0', STR_PAD_LEFT);
+        $terakhir = \App\Models\His\TrxMedicalResep::orderBy('created_at', 'desc')->first();
+        if ($terakhir) {
+            $no = Date('y') . str_pad((int) substr($terakhir->resep_no, -8) + 1, 8, 0, STR_PAD_LEFT);
+        }
+        return "RSP-".$no;
     }
 }
 

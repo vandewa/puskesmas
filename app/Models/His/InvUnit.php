@@ -25,6 +25,8 @@ class InvUnit extends Model implements Auditable
     protected $guarded = [''];
     protected $primaryKey = 'unit_cd';
     public $incrementing = false;
+    protected $keyType = 'string';
+
 
     public $fillable = [
         'unit_cd',
