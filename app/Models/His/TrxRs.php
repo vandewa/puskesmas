@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -30,14 +31,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxRs extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_rs';
 
     protected $primaryKey = 'rs_cd';
 
-   protected $guarded =[''];
+    protected $guarded = [''];
 
     /**
      * The attributes that should be casted to native types.
@@ -92,20 +93,26 @@ use \OwenIt\Auditing\Auditable;
     ];
     public function provinsi()
     {
-        return $this->belongsTo('App\Models\His\ComRegion','region_prop');
+        return $this->belongsTo('App\Models\His\ComRegion', 'region_prop');
     }
     public function kabupaten()
     {
-        return $this->belongsTo('App\Models\His\ComRegion','region_kab');
+        return $this->belongsTo('App\Models\His\ComRegion', 'region_kab');
     }
     public function kecamatan()
     {
-        return $this->belongsTo('App\Models\His\ComRegion','region_kec');
+        return $this->belongsTo('App\Models\His\ComRegion', 'region_kec');
     }
     public function kelurahan()
     {
-        return $this->belongsTo('App\Models\His\ComRegion','region_kel');
+        return $this->belongsTo('App\Models\His\ComRegion', 'region_kel');
     }
 
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('rs_cd', 'ilike', "%$s%")->orWhere('rs_nm', 'ilike', "%$s%")->orWhere('address', 'ilike', "%$s%");
+        }
+    }
 
 }

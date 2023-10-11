@@ -69,19 +69,7 @@
 
                       <li
                           class="nav-item
-                      {{ Request::segment(2) == 'spesialis' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'paramedis' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'tindakan-medis' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'jenis-penyakit' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'bangsal' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'kamar' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'list-jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
-                      {{ Request::segment(2) == 'jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
-                      ">
+                          {{ request()->is('master/*') ? 'menu-is-opening menu-open' : '' }}">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fa fa-desktop"></i>
                               <p>
@@ -143,7 +131,6 @@
                               {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'list-jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
-
                               ">
                                   <a href="#"
                                       class="nav-link
@@ -339,8 +326,13 @@
                               </li>
                           </ul>
                           <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                  <a href="#" class="nav-link">
+                              <li
+                                  class="nav-item     
+                                   {{ Request::segment(2) == 'data-puskesmas' ? 'menu-is-opening menu-open' : '' }}">
+                                  <a href="#"
+                                      class="nav-link
+                                  {{ Request::segment(2) == 'data-puskesmas' ? 'active' : '' }}
+                                  ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
                                           Data Umum
@@ -350,9 +342,52 @@
 
                                   <ul class="nav nav-treeview">
                                       <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon"></i>
-                                              <p>Login v1</p>
+                                          <a href="{{ route('master.data-puskesmas') }}"
+                                              class="nav-link  {{ Request::segment(2) == 'data-puskesmas' ? 'active' : '' }}"
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'data-puskesmas')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Data Puskesmas</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </li>
+                          </ul>
+                          <ul class="nav nav-treeview">
+                              <li
+                                  class="nav-item     
+                                 {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
+                                 ">
+                                  <a href="#"
+                                      class="nav-link
+                                {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
+                                ">
+                                      <i class="fa fa-folder nav-icon ml-2"></i>
+                                      <p>
+                                          Data Inventori
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
+
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.inventori.index') }}"
+                                              class="nav-link  
+                                              {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
+                                              "
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'inventori' || Request::segment(2) == 'list-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Inventori</p>
                                           </a>
                                       </li>
                                   </ul>

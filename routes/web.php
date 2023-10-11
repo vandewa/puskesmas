@@ -20,6 +20,9 @@ use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Master\DataInventori\Inventori;
+use App\Livewire\Pages\Master\DataInventori\ListInventori;
+use App\Livewire\Pages\Master\DataUmum\DataPuskesmas;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
 use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
@@ -73,6 +76,9 @@ Route::middleware([
         Route::get('tempat-tidur', TempatTidur::class)->name('tempat-tidur');
         Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
+        Route::get('data-puskesmas', DataPuskesmas::class)->name('data-puskesmas');
+        Route::get('inventori', Inventori::class)->name('inventori');
+        Route::get('list-inventori', ListInventori::class)->name('inventori.index');
     });
 
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
