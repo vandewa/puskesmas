@@ -2,17 +2,10 @@
 
 @section('content')
     <div id="idnsticky_bar">
-        <div id="sticybaricon">
-            <a href="#" id="cs-logo">
-                <span></span> </a>
-        </div>
-        <div id="sticky_bar_text">
-            <p class="customdesco">
-                <span style="font-family: 'Baloo Tammudu 2'; color:white;">Selamat Datang di </span>
-            </p>
-        </div>
+
+
         <div id="sticky_bar_btn">
-            <a href="#"><button class="btn-hover color-2 ml-1">E-RM Puskesmas Sapuran</button></a>
+            <a href="#"><button class="btn-hover color-2 ml-1">Summary Report</button></a>
         </div>
     </div>
 
@@ -24,58 +17,16 @@
             <div class="box-body card-success card-outline" style="background-color:white; padding-bottom:20px;">
                 <div class="box-header">
                 </div>
-                <div class="container" style="max-width: 970px;">
-                    <div class="row">
-                        <div class="col-lg-3 col-6 mt-4">
-                            <!-- small box -->
-                            <a href="{{ route('pasien.index') }}" wire:navigate class="hvr-float-shadow">
-                                <div class="small-box bg-success" style="width: 150px;">
-                                    <div class="inner jarak">
-                                        <center><i class="far fa-edit fa-3x"></i></center>
-                                    </div>
-                                    <p class="small-box-footer">List Pasien</p>
-                                </div>
-                            </a>
-                        </div>
-
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6 mt-4">
-                            <!-- small box -->
-                            <a href="{{ route('pasien.pendaftaran') }}" wire:navigate class="hvr-float-shadow">
-                                <div class="small-box bg-success" style="width: 150px;">
-                                    <div class="inner jarak">
-                                        <center><i class="fas fa-user-circle fa-3x"></i></center>
-                                    </div>
-                                    <p class="small-box-footer">Pasien</p>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6 mt-4">
-                            <!-- small box -->
-                            <a href="{{ route('registrasi.rawat-jalan') }}" wire:navigate class="hvr-float-shadow">
-                                <div class="small-box bg-success" style="width: 150px;">
-                                    <div class="inner jarak">
-                                        <center><i class="fas fa-wheelchair fa-3x"></i></center>
-                                    </div>
-                                    <p class="small-box-footer">Rawat Jalan</p>
-                                </div>
-                            </a>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6 mt-4">
-                            <!-- small box -->
-                            <a href="{{ route('registrasi.rawat-inap') }}" wire:navigate class="hvr-float-shadow">
-                                <div class="small-box bg-success" style="width: 150px;">
-                                    <div class="inner jarak">
-                                        <center><i class="fas fa-bed fa-3x"></i></center>
-                                    </div>
-                                    <p class="small-box-footer">Rawat Jalan</p>
-                                </div>
-                            </a>
-                        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <livewire:chart.line-chart/>
+                    </div>
+                    <div class="col-md-6">
+                        <livewire:chart.chart-pembanding/>
                     </div>
                 </div>
+
+
 
             </div>
             <!-- /.row -->

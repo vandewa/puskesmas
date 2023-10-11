@@ -37,6 +37,7 @@
     @stack('css')
     @livewireStyles
 
+
     @vite([])
 
 </head>
@@ -119,6 +120,7 @@
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
     @stack('js')
     @livewireScripts
+    @livewireChartsScripts
 
     <script>
         window.addEventListener('toast', event => {
