@@ -70,6 +70,7 @@ class ChartPembanding extends Component
 
     public function render()
     {
+        
         $asu = DB::select("select name, sum(account) as accounts , start_date::date  from executive_summary_item esi where group_code = '".$this->group."' and  EXTRACT(
             YEAR
             FROM

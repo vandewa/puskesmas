@@ -85,7 +85,7 @@ class LineChart extends Component
 
             return $columnChartModel->addColumn($type, $value, $this->colors[$this->index]);
         }, LivewireCharts::columnChartModel()
-            ->setTitle($this->name .' Group ('.$this->group.') - kode'.$this->tahun)
+            ->setTitle($this->name .' Group ('.$this->group.') - '.$this->tahun)
             ->setAnimated($this->firstRun)
             ->withOnColumnClickEventName('onColumnClick')
             ->setLegendVisibility(true)
