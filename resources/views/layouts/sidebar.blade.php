@@ -70,7 +70,7 @@
                       <li
                           class="nav-item
                           {{ request()->is('master/*') ? 'menu-is-opening menu-open' : '' }}">
-                          <a href="#" class="nav-link">
+                          <a href="#" class="nav-link  {{ request()->is('master/*') ? 'active' : '' }}">
                               <i class="nav-icon fa fa-desktop"></i>
                               <p>
                                   Master
