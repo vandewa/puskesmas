@@ -166,7 +166,7 @@
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('master.dokter') }}"
+                                          <a href="{{ route('master.dokter') }}" wire:navigate
                                               class="nav-link {{ Request::segment(2) == 'dokter' ? 'active' : '' }}">
                                               @if (Request::segment(2) == 'dokter')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -177,7 +177,7 @@
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('master.paramedis') }}"
+                                          <a href="{{ route('master.paramedis') }}" wire:navigate
                                               class="nav-link {{ Request::segment(2) == 'paramedis' ? 'active' : '' }}">
                                               @if (Request::segment(2) == 'paramedis')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -224,7 +224,7 @@
                                       </li>
 
                                       <li class="nav-item">
-                                          <a href="{{ route('master.tindakan-medis') }}"
+                                          <a href="{{ route('master.tindakan-medis') }}" wire:navigate
                                               class="nav-link {{ Request::segment(2) == 'tindakan-medis' ? 'active' : '' }}">
                                               @if (Request::segment(2) == 'tindakan-medis')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -235,7 +235,7 @@
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('master.jenis-penyakit') }}"
+                                          <a href="{{ route('master.jenis-penyakit') }}" wire:navigate
                                               class="nav-link {{ Request::segment(2) == 'jenis-penyakit' ? 'active' : '' }}">
                                               @if (Request::segment(2) == 'jenis-penyakit')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -312,7 +312,7 @@
                                           </ul>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('master.jadwal-praktek.index') }}"
+                                          <a href="{{ route('master.jadwal-praktek.index') }}" wire:navigate
                                               class="nav-link {{ Request::segment(2) == 'list-jadwal-praktek' ? 'active' : '' }}{{ Request::segment(2) == 'jadwal-praktek' ? 'active' : '' }}">
                                               @if (Request::segment(2) == 'jadwal-praktek' || Request::segment(2) == 'list-jadwal-praktek')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
