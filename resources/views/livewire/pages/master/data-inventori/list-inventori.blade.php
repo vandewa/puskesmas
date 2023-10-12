@@ -30,28 +30,27 @@
                             </div>
                             <table class="table">
                                 <thead>
-                                    <th>Hari</th>
-                                    <th>Nama Poli</th>
-                                    <th>Waktu</th>
-                                    <th>Dokter</th>
+                                    <th>Nama Item</th>
+                                    <th>Tipe</th>
+                                    <th>Unit</th>
+                                    <th>Generik</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr wire:key='{{ $item->seq_no }}'>
-                                            <td>{{ $item->hari->code_nm ?? '-' }}</td>
-                                            <td>{{ $item->poli->medunit_nm ?? '-' }}</td>
-                                            <td>{{ \Carbon\Carbon::createFromFormat('H:i:s', $item->time_start)->format('H:i') . ' - ' . \Carbon\Carbon::createFromFormat('H:i:s', $item->time_end)->format('H:i') }}
-                                            </td>
-                                            <td>{{ $item->dokter->dr_nm ?? '' }}</td>
+                                        <tr wire:key='{{ $item->item_cd }}'>
+                                            <td>{{ $item->item_nm ?? '-' }}</td>
+                                            <td>{{ $item->type->type_nm ?? '-' }}</td>
+                                            <td>{{ $item->satuan->unit_nm ?? '-' }}</td>
+                                            <td>{{ $item->satuan->unit_nm ?? '-' }}</td>
                                             <td>
-                                                <a href="{{ route('master.jadwal-praktek', $item->seq_no) }}"
+                                                <a href="{{ route('master.jadwal-praktek', $item->item_cd) }}"
                                                     wire:navigate class="btn btn-warning btn-flat btn-sm"
                                                     data-toggle="tooltip" data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></a>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
                                                     data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->seq_no }}')"><i
+                                                    wire:click="setDelete('{{ $item->item_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

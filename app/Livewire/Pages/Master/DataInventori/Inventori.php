@@ -8,6 +8,7 @@ use Livewire\WithPagination;
 use App\Models\His\InvItemType;
 use App\Models\His\PoPrincipal;
 use App\Models\His\InvItemMaster;
+use App\Models\His\InvItemCategory;
 use App\Models\His\InvItemGolongan;
 
 class Inventori extends Component
@@ -39,9 +40,10 @@ class Inventori extends Component
     {
         $this->jenis = InvItemType::get()->toArray();
         $this->satuan = InvUnit::get()->toArray();
-        $this->gol = InvItemGolongan::get()->toArray();
+        $this->gol = InvItemGolongan::where('level_no', '1')->get()->toArray();
         $this->pajak = get_code('VAT_TP');
         $this->principal = PoPrincipal::get()->toArray();
+        $this->kelompok = InvItemCategory::get()->toArray();
 
         if ($id != "") {
             $this->edit = true;
@@ -65,7 +67,15 @@ class Inventori extends Component
                     'generik_st',
                 ]
             );
+        } else {
+            $this->updatedFormGolonganCd();
+
         }
+    }
+
+    public function updatedFormGolonganCd()
+    {
+        $this->subgol = InvItemGolongan::where('root_cd', $this->form['golongan_cd'])->get();
     }
 
     public function save()
@@ -113,10 +123,6 @@ class Inventori extends Component
 
     public function render()
     {
-        $data = InvItemMaster::with(['satuan', 'type', 'generic'])->paginate(10);
-
-        return view('livewire.pages.master.data-inventori.inventori', [
-            'post' => $data
-        ]);
+        return view('livewire.pages.master.data-inventori.inventori');
     }
 }

@@ -78,8 +78,6 @@
 
                             <table class="table">
                                 <thead>
-
-                                    <th>No</th>
                                     <th>Kode</th>
                                     <th>Nama Satuan</th>
                                     <th>Action</th>
@@ -87,8 +85,6 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->unit_cd }}'>
-
-                                            <td>{{ $loop->index + $post->firstItem() }}</td>
                                             <td>{{ $item->unit_cd }}</td>
                                             <td> {{ $item->unit_nm }}</td>
                                             <td>

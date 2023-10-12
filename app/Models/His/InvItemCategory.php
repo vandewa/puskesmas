@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models\His;
-use OwenIt\Auditing\Contracts\Auditable;
+
 use Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class InvItemCategory
@@ -28,17 +29,9 @@ class InvItemCategory extends Model implements Auditable
 
     protected $guarded = [''];
 
-
     protected $primaryKey = 'kategori_cd';
+    protected $keyType = 'string';
 
-    public $fillable = [
-        'kategori_cd',
-        'kategori_nm',
-        'root_cd',
-        'modi_id',
-        'modi_datetime',
-        'type_cd',
-    ];
 
     /**
      * The attributes that should be casted to native types.
@@ -74,36 +67,44 @@ class InvItemCategory extends Model implements Auditable
     public function getDataJoin()
     {
 
-      $model = DB::table('inv_item_kategori')
-              ->select('inv_item_kategori.kategori_cd','inv_item_kategori.kategori_nm','inv_item_kategori.root_cd','inv_item_kategori.modi_id','inv_item_kategori.modi_datetime','inv_item_kategori.type_cd','inv_item_type.type_nm')
-              ->leftjoin('inv_item_type','inv_item_kategori.type_cd','inv_item_type.type_cd')
-              ->get();
-      return  $model;
+        $model = DB::table('inv_item_kategori')
+            ->select('inv_item_kategori.kategori_cd', 'inv_item_kategori.kategori_nm', 'inv_item_kategori.root_cd', 'inv_item_kategori.modi_id', 'inv_item_kategori.modi_datetime', 'inv_item_kategori.type_cd', 'inv_item_type.type_nm')
+            ->leftjoin('inv_item_type', 'inv_item_kategori.type_cd', 'inv_item_type.type_cd')
+            ->get();
+        return $model;
     }
 
 
     public function getDataWhere($id)
     {
 
-      $model = DB::table('inv_item_kategori')
-              ->select('inv_item_kategori.kategori_cd','inv_item_kategori.kategori_nm','inv_item_kategori.root_cd','inv_item_kategori.modi_id','inv_item_kategori.modi_datetime','inv_item_kategori.type_cd','inv_item_type.type_nm')
-              ->leftjoin('inv_item_type','inv_item_kategori.type_cd','inv_item_type.type_cd')
-              ->where('inv_item_kategori.kategori_cd', $id)
-              ->first();
-      return  $model;
+        $model = DB::table('inv_item_kategori')
+            ->select('inv_item_kategori.kategori_cd', 'inv_item_kategori.kategori_nm', 'inv_item_kategori.root_cd', 'inv_item_kategori.modi_id', 'inv_item_kategori.modi_datetime', 'inv_item_kategori.type_cd', 'inv_item_type.type_nm')
+            ->leftjoin('inv_item_type', 'inv_item_kategori.type_cd', 'inv_item_type.type_cd')
+            ->where('inv_item_kategori.kategori_cd', $id)
+            ->first();
+        return $model;
     }
 
-    public function getDataType($params = array()) {
+    public function getDataType($params = array())
+    {
         $data = DB::table('inv_item_type')
-        ->select('inv_item_type.type_cd','inv_item_type.type_nm')
-        ->where(DB::raw('lower(inv_item_type.type_nm)'), 'like','%'.strtolower((isset($params['search_text'])?$params['search_text']:'')).'%')
-        ->get();
+            ->select('inv_item_type.type_cd', 'inv_item_type.type_nm')
+            ->where(DB::raw('lower(inv_item_type.type_nm)'), 'like', '%' . strtolower((isset($params['search_text']) ? $params['search_text'] : '')) . '%')
+            ->get();
         return $data;
     }
 
 
     public function scopekategoriList()
     {
-        return $this::select( 'kategori_cd','kategori_nm');
+        return $this::select('kategori_cd', 'kategori_nm');
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('kategori_cd', 'ilike', "%$s%")->orWhere('kategori_nm', 'ilike', "%$s%");
+        }
     }
 }

@@ -366,6 +366,7 @@
                                  {{ Request::segment(2) == 'list-principal' ? 'menu-is-opening menu-open' : '' }}
                                  {{ Request::segment(2) == 'supplier' ? 'menu-is-opening menu-open' : '' }}
                                  {{ Request::segment(2) == 'list-supplier' ? 'menu-is-opening menu-open' : '' }}
+                                 {{ Request::segment(2) == 'list-tipe' ? 'menu-is-opening menu-open' : '' }}
                                  ">
                                   <a href="#"
                                       class="nav-link
@@ -376,6 +377,7 @@
                                 {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
                                 {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
                                 {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
+                                {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
                                 ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>

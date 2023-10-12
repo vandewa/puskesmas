@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Master\DataInventori;
 
-use App\Models\His\TrxSpesialis;
+use App\Models\His\InvItemGolongan;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,14 +11,22 @@ class Golongan extends Component
     use WithPagination;
 
     public $form = [
-        'spesialis_cd' => '',
-        'spesialis_nm' => '',
+        'golongan_cd' => '',
+        'golongan_nm' => '',
+        'root_cd' => '',
+        'level_no' => '',
     ];
     public $cari, $edit = false;
-    public $idHapus;
+    public $idHapus, $root;
+
+    public function mount()
+    {
+        $this->root = InvItemGolongan::where('level_no', 1)->get()->toArray();
+    }
+
     public function getEdit($a)
     {
-        $this->form = TrxSpesialis::find($a)->only(['spesialis_cd', 'spesialis_nm']);
+        $this->form = InvItemGolongan::find($a)->only(['golongan_cd', 'golongan_nm', 'root_cd', 'level_no']);
         $this->edit = true;
     }
 
@@ -43,11 +51,20 @@ class Golongan extends Component
     public function store()
     {
         $this->validate([
-            'form.spesialis_cd' => 'required',
-            'form.spesialis_nm' => 'required',
+            'form.golongan_cd' => 'required',
+            'form.golongan_nm' => 'required',
         ]);
 
-        TrxSpesialis::create($this->form);
+        if ($this->form['root_cd'] == '') {
+            $this->form['level_no'] = '1';
+        }
+
+
+        InvItemGolongan::create([
+            'golongan_cd' => $this->form['golongan_cd'],
+            'golongan_nm' => $this->form['golongan_nm'],
+            'level_no' => $this->form['level_no'],
+        ]);
 
     }
 
@@ -57,20 +74,33 @@ class Golongan extends Component
     }
     public function delete()
     {
-        TrxSpesialis::destroy($this->idHapus);
+        InvItemGolongan::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
     {
-        TrxSpesialis::find($this->form['spesialis_cd'])->update($this->form);
+        if ($this->form['root_cd'] == '') {
+            $this->form['level_no'] = '1';
+        } else {
+            $this->form['level_no'] = null;
+        }
+
+        InvItemGolongan::find($this->form['golongan_cd'])->update([
+            'golongan_cd' => $this->form['golongan_cd'],
+            'golongan_nm' => $this->form['golongan_nm'],
+            'root_cd' => $this->form['root_cd'],
+            'level_no' => $this->form['level_no'],
+        ]);
         $this->reset();
         $this->edit = false;
     }
 
     public function render()
     {
-        $data = TrxSpesialis::cari($this->cari)->paginate(10);
+        $data = InvItemGolongan::with(['root'])->cari($this->cari)->paginate(10);
+
+        // dd($data);
         return view('livewire.pages.master.data-inventori.golongan', [
             'post' => $data
         ]);

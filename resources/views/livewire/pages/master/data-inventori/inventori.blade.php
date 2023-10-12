@@ -64,14 +64,15 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Golongan</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" wire:model="form.unit_cd">
+                                                <select class="form-control" wire:model="form.golongan_cd">
                                                     <option value="">-- Pilih Golongan --</option>
-                                                    @foreach ($satuan ?? [] as $item)
-                                                        <option value="{{ $item['unit_cd'] }}">{{ $item['unit_nm'] }}
+                                                    @foreach ($gol ?? [] as $item)
+                                                        <option value="{{ $item['golongan_cd'] }}">
+                                                            {{ $item['golongan_nm'] }}
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                @error('form.unit_cd')
+                                                @error('form.golongan_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -79,14 +80,15 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Sub Golongan</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" wire:model="form.unit_cd">
-                                                    <option value="">-- Pilih Golongan --</option>
-                                                    @foreach ($satuan ?? [] as $item)
-                                                        <option value="{{ $item['unit_cd'] }}">{{ $item['unit_nm'] }}
+                                                <select class="form-control" wire:model="form.sub_golongan_cd">
+                                                    <option value="">-- Pilih Sub Golongan --</option>
+                                                    @foreach ($subgol ?? [] as $item)
+                                                        <option value="{{ $item['golongan_cd'] }}">
+                                                            {{ $item['golongan_nm'] }}
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                @error('form.unit_cd')
+                                                @error('form.sub_golongan_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -94,14 +96,15 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Kelompok</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" wire:model="form.unit_cd">
-                                                    <option value="">-- Pilih Golongan --</option>
-                                                    @foreach ($satuan ?? [] as $item)
-                                                        <option value="{{ $item['unit_cd'] }}">{{ $item['unit_nm'] }}
+                                                <select class="form-control" wire:model="form.kategori_cd">
+                                                    <option value="">-- Pilih Kelompok --</option>
+                                                    @foreach ($kelompok ?? [] as $item)
+                                                        <option value="{{ $item['kategori_cd'] }}">
+                                                            {{ $item['kategori_nm'] }}
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                @error('form.unit_cd')
+                                                @error('form.kategori_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -190,19 +193,17 @@
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label class="col-sm-4 control-label"></label>
-                                            <div class="col-sm-8">
+                                            <label class="col-sm-3 control-label"></label>
+                                            <div class="col-sm-9">
                                                 <label><input type="radio" class="flat-red"
                                                         wire:model="form.inventory_st" value="1"
-                                                        checked="checked">Barang
-                                                    Inventori</label>&nbsp;
+                                                        checked="checked">&nbsp;Barang
+                                                    Inventori</label>&nbsp;&nbsp;&nbsp;&nbsp;
                                                 <label><input type="radio" class="flat-red"
                                                         wire:model="form.generik_st"
-                                                        value="1">Generik</label>&nbsp;
+                                                        value="1">&nbsp;Generik</label>&nbsp;
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
                             </div>

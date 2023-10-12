@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Models\His;
-use OwenIt\Auditing\Contracts\Auditable;
+
 use Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class InvItemType
@@ -26,14 +27,8 @@ class InvItemType extends Model implements Auditable
     protected $guarded = [''];
     public $incrementing = false;
 
-
     protected $primaryKey = 'type_cd';
-
-    public $fillable = [
-        'type_nm',
-        'modi_id',
-        'modi_datetime'
-    ];
+    protected $keyType = 'string';
 
     /**
      * The attributes that should be casted to native types.
@@ -62,7 +57,7 @@ class InvItemType extends Model implements Auditable
     ];
 
     // Methods
-    public function getType($q='')
+    public function getType($q = '')
     {
         $query = $this->select('type_cd', 'type_nm');
 
@@ -70,19 +65,27 @@ class InvItemType extends Model implements Auditable
         return $query;
     }
 
-    public static function getData() {
+    public static function getData()
+    {
         $data = DB::connection()->table('inv_item_type')
-        ->select('type_cd','type_nm');
+            ->select('type_cd', 'type_nm');
         return $data;
     }
 
     public static function getSelectcategory($params = array())
     {
         $data = DB::table('inv_item_type')
-                  ->select(DB::raw('type_cd,type_nm'))
-                  ->where(DB::raw('lower(inv_item_type.type_nm)'), 'like','%'.strtolower((isset($params['search_text'])?$params['search_text']:'')).'%')
-                  ->get();
+            ->select(DB::raw('type_cd,type_nm'))
+            ->where(DB::raw('lower(inv_item_type.type_nm)'), 'like', '%' . strtolower((isset($params['search_text']) ? $params['search_text'] : '')) . '%')
+            ->get();
 
         return $data;
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('type_cd', 'ilike', "%$s%")->orWhere('type_nm', 'ilike', "%$s%");
+        }
     }
 }

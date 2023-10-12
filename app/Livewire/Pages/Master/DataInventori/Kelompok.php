@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Master\DataInventori;
 
-use App\Models\His\TrxSpesialis;
+use App\Models\His\InvItemCategory;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,14 +11,14 @@ class Kelompok extends Component
     use WithPagination;
 
     public $form = [
-        'spesialis_cd' => '',
-        'spesialis_nm' => '',
+        'kategori_cd' => '',
+        'kategori_nm' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
     public function getEdit($a)
     {
-        $this->form = TrxSpesialis::find($a)->only(['spesialis_cd', 'spesialis_nm']);
+        $this->form = InvItemCategory::find($a)->only(['kategori_cd', 'kategori_nm']);
         $this->edit = true;
     }
 
@@ -43,11 +43,11 @@ class Kelompok extends Component
     public function store()
     {
         $this->validate([
-            'form.spesialis_cd' => 'required',
-            'form.spesialis_nm' => 'required',
+            'form.kategori_cd' => 'required',
+            'form.kategori_nm' => 'required',
         ]);
 
-        TrxSpesialis::create($this->form);
+        InvItemCategory::create($this->form);
 
     }
 
@@ -57,20 +57,20 @@ class Kelompok extends Component
     }
     public function delete()
     {
-        TrxSpesialis::destroy($this->idHapus);
+        InvItemCategory::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
     {
-        TrxSpesialis::find($this->form['spesialis_cd'])->update($this->form);
+        InvItemCategory::find($this->form['kategori_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
     }
 
     public function render()
     {
-        $data = TrxSpesialis::cari($this->cari)->paginate(10);
+        $data = InvItemCategory::cari($this->cari)->paginate(10);
         return view('livewire.pages.master.data-inventori.kelompok', [
             'post' => $data
         ]);

@@ -1,17 +1,4 @@
 <div>
-    <x-slot name="header">
-        <div class="row mb-2">
-            <div class="col-sm-6">
-                <h1 class="m-0">Master Data</h1>
-            </div>
-            <div class="col-sm-6">
-                <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Master</a></li>
-                    <li class="breadcrumb-item active">Spesialis</li>
-                </ol>
-            </div>
-        </div>
-    </x-slot>
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -25,22 +12,39 @@
                                     <div class="col-md-6">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                                Spesialis</label>
+                                                Golongan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model='form.spesialis_cd' placeholder="Kode Spesialis"
+                                                <input type="text" class="form-control" wire:model='form.golongan_cd'
+                                                    placeholder="Kode Golongan"
                                                     @if ($edit) disabled @endif>
-                                                @error('form.spesialis_cd')
+                                                @error('form.golongan_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Nama
+                                                Golongan</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control"
-                                                    wire:model='form.spesialis_nm' placeholder="Nama">
-                                                @error('form.spesialis_nm')
+                                                <input type="text" class="form-control" wire:model='form.golongan_nm'
+                                                    placeholder="Nama Golongan">
+                                                @error('form.golongan_nm')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Root</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" wire:model='form.root_cd'
+                                                    wire:key="select.root_cd">
+                                                    <option value="">-- Pilih Root --</option>
+                                                    @foreach ($root ?? [] as $item)
+                                                        <option value="{{ $item['golongan_cd'] }}">
+                                                            {{ $item['golongan_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.root_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -65,7 +69,7 @@
                     <div class="card card-success card-outline">
                         <div class="card-header">
                             <div class="card-title">
-                                Data Spesialis
+                                Data Golongan
                             </div>
                         </div>
                         <div class="card-body">
@@ -78,27 +82,27 @@
 
                             <table class="table">
                                 <thead>
-
-                                    <th>No</th>
-                                    <th>Kode</th>
-                                    <th>Nama</th>
+                                    <th>Kode Golongan</th>
+                                    <th>Nama Golongan</th>
+                                    <th>Root</th>
+                                    <th>Nama Root</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr wire:key='{{ $item->spesialis_cd }}'>
-
-                                            <td>{{ $loop->index + $post->firstItem() }}</td>
-                                            <td>{{ $item->spesialis_cd }}</td>
-                                            <td> {{ $item->spesialis_nm }}</td>
+                                        <tr wire:key='{{ $item->golongan_cd }}'>
+                                            <td>{{ $item->golongan_cd }}</td>
+                                            <td> {{ $item->golongan_nm }}</td>
+                                            <td> {{ $item->root->golongan_cd ?? '-' }}</td>
+                                            <td> {{ $item->root->golongan_nm ?? '-' }}</td>
                                             <td>
-                                                <button type="button" wire:click="getEdit('{{ $item->spesialis_cd }}')"
+                                                <button type="button" wire:click="getEdit('{{ $item->golongan_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
                                                     data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->spesialis_cd }}')"><i
+                                                    wire:click="setDelete('{{ $item->golongan_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -113,5 +117,4 @@
 
         </div>
     </section>
-    @include('livewire.global.modal-konfirmasi-hapus')
 </div>

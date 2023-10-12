@@ -12,7 +12,7 @@
             </p>
         </div>
         <div id="sticky_bar_btn">
-            <a href="#"><button class="btn-hover color-2 ml-1">E-RM Puskesmas Sapuran</button></a>
+            <a href="#"><button class="btn-hover color-2 ml-1">E-RM Puskesmas</button></a>
         </div>
     </div>
 

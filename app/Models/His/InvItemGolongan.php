@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Models\His;
-use OwenIt\Auditing\Contracts\Auditable;
+
 use Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
+use OwenIt\Auditing\Contracts\Auditable;
 
 /**
  * Class InvItemCategory
@@ -27,17 +28,10 @@ class InvItemGolongan extends Model implements Auditable
 
     protected $guarded = [''];
 
-
     protected $primaryKey = 'golongan_cd';
 
-    public $fillable = [
-        'golongan_cd',
-        'golongan_nm',
-        'root_cd',
-        'modi_id',
-        'level_no',
-        'type_cd'
-    ];
+    protected $keyType = 'string';
+
 
     /**
      * The attributes that should be casted to native types.
@@ -73,20 +67,32 @@ class InvItemGolongan extends Model implements Auditable
 
     public function scopegolonganList()
     {
-        return $this::select( 'golongan_cd','golongan_nm');
+        return $this::select('golongan_cd', 'golongan_nm');
     }
 
-    public static function getData($param='')
+    public static function getData($param = '')
     {
-        if($param == ''){
+        if ($param == '') {
             $data = DB::table('inv_item_golongan')
-                    ->leftJoin('inv_item_type','inv_item_golongan.type_cd','inv_item_type.type_cd')->orderBy('inv_item_golongan.modi_datetime')->get();
-        }else{
+                ->leftJoin('inv_item_type', 'inv_item_golongan.type_cd', 'inv_item_type.type_cd')->orderBy('inv_item_golongan.modi_datetime')->get();
+        } else {
             $data = DB::table('inv_item_golongan')
-                    ->leftJoin('inv_item_type','inv_item_golongan.type_cd','inv_item_type.type_cd')->where('golongan_cd',$param)
-                    ->orderBy('inv_item_golongan.modi_datetime')->get();
+                ->leftJoin('inv_item_type', 'inv_item_golongan.type_cd', 'inv_item_type.type_cd')->where('golongan_cd', $param)
+                ->orderBy('inv_item_golongan.modi_datetime')->get();
         }
 
         return $data;
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('golongan_cd', 'ilike', "%$s%")->orWhere('golongan_nm', 'ilike', "%$s%");
+        }
+    }
+
+    public function root()
+    {
+        return $this->belongsTo(InvItemGolongan::class, 'root_cd');
     }
 }
