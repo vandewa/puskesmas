@@ -65,7 +65,7 @@
                                     <livewire:component.detail-pasien :medicalcd="$pasien->pasien_cd">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="card card-dark card-tabs">
+                                                <div class="card card-success card-tabs">
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-two-transaksi-tab"
                                                             role="tablist">
@@ -98,7 +98,7 @@
                                                                     Medis</a>
                                                             </li>
                                                             <li class="nav-item"
-                                                                style="margin-left: auto; background:yellow;">
+                                                                style="margin-left: auto; background:rgb(255, 255, 49);">
                                                                 <a class="nav-link"
                                                                     id="custom-tabs-two-tambah-rekam-medis-tab"
                                                                     data-toggle="pill"
@@ -152,7 +152,7 @@
                                     <livewire:component.detail-pasien :medicalcd="$pasien->pasien_cd">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="card card-dark card-tabs">
+                                                <div class="card card-success card-tabs">
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-three-transaksi-tab"
                                                             role="tablist">
@@ -238,7 +238,7 @@
                                     <livewire:component.detail-pasien :medicalcd="$pasien->pasien_cd">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="card card-dark card-tabs">
+                                                <div class="card card-success card-tabs">
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-four-transaksi-tab"
                                                             role="tablist">
@@ -309,7 +309,7 @@
                                     <livewire:component.detail-pasien :medicalcd="$pasien->pasien_cd">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="card card-dark card-tabs">
+                                                <div class="card card-success card-tabs">
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-five-transaksi-tab"
                                                             role="tablist">
@@ -383,7 +383,7 @@
                                     <livewire:component.detail-pasien :medicalcd="$pasien->pasien_cd">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <div class="card card-dark card-tabs">
+                                                <div class="card card-success card-tabs">
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-six-transaksi-tab"
                                                             role="tablist">
@@ -461,7 +461,7 @@
 @push('css')
     <style>
         .detail-pasien {
-            background: #00a350;
+            background: #0193a9;
             color: #fff;
             text-transform: uppercase;
             font-weight: bold;
