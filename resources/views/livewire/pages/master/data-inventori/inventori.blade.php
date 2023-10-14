@@ -64,7 +64,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Golongan</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" wire:model="form.golongan_cd">
+                                                <select class="form-control" wire:model.live="form.golongan_cd">
                                                     <option value="">-- Pilih Golongan --</option>
                                                     @foreach ($gol ?? [] as $item)
                                                         <option value="{{ $item['golongan_cd'] }}">
@@ -80,7 +80,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Sub Golongan</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" wire:model="form.sub_golongan_cd">
+                                                <select class="form-control" wire:model="form.subgolongan_cd">
                                                     <option value="">-- Pilih Sub Golongan --</option>
                                                     @foreach ($subgol ?? [] as $item)
                                                         <option value="{{ $item['golongan_cd'] }}">
@@ -88,13 +88,10 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                @error('form.sub_golongan_cd')
+                                                @error('form.subgolongan_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-
-                                            <input type="text" x-model="$wire.form.golongan_cd">
-
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Kelompok</label>
@@ -173,8 +170,8 @@
                                                 Maksimum</label>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control"
-                                                    wire:model='form.principal_cd'>
-                                                @error('form.principal_cd')
+                                                    wire:model='form.maximum_stock'>
+                                                @error('form.maximum_stock')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -182,7 +179,7 @@
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Principal</label>
                                             <div class="col-md-9">
-                                                <select class="form-control" wire:model="form.vat_tp">
+                                                <select class="form-control" wire:model="form.principal_cd">
                                                     <option value="">-- Pilih Principal --</option>
                                                     @foreach ($principal ?? [] as $item)
                                                         <option value="{{ $item['principal_cd'] }}">
@@ -190,29 +187,38 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
-                                                @error('form.vat_tp')
+                                                @error('form.principal_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
+
                                         <div class="form-group row">
                                             <label class="col-sm-3 control-label"></label>
                                             <div class="col-sm-9">
-                                                <label><input type="radio" class="flat-red"
-                                                        wire:model="form.inventory_st" value="1"
-                                                        checked="checked">&nbsp;Barang
-                                                    Inventori</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                                                <label><input type="radio" class="flat-red"
-                                                        wire:model="form.generik_st"
-                                                        value="1">&nbsp;Generik</label>&nbsp;
+                                                <input class="form-check-input" type="radio" name="tipe"
+                                                    id="genderMale" value="1" wire:model="form.inventory_st">
+                                                <label class="form-check-label" for="genderMale">
+                                                    Barang Inventori
+                                                </label>
+
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                <input class="form-check-input" type="radio" name="tipe"
+                                                    id="genderFemale" value="1" wire:model="form.generic_st">
+                                                <label class="form-check-label" for="genderFemale">
+                                                    Generik
+                                                </label>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <a href="{{ route('master.jadwal-praktek.index') }}"
+                                <a href="{{ route('master.inventori.index') }}"
                                     class="btn btn-default float-right">Kembali</a>
                             </div>
                         </form>

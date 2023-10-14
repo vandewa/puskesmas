@@ -86,7 +86,7 @@ Route::middleware([
         Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
         Route::get('data-puskesmas', DataPuskesmas::class)->name('data-puskesmas');
-        Route::get('inventori', Inventori::class)->name('inventori');
+        Route::get('inventori/{id?}', Inventori::class)->name('inventori');
         Route::get('list-inventori', ListInventori::class)->name('inventori.index');
         Route::get('unit-satuan', UnitSatuan::class)->name('unit-satuan');
         Route::get('principal/{id?}', Principal::class)->name('principal');

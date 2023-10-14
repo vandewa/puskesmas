@@ -20,7 +20,7 @@ class Inventori extends Component
         'type_cd' => '',
         'unit_cd' => '',
         'golongan_cd' => '',
-        'sub_golongan_cd' => '',
+        'subgolongan_cd' => '',
         'kategori_cd' => '',
         'item_price_buy' => '',
         'item_price' => '',
@@ -30,7 +30,7 @@ class Inventori extends Component
         'maximum_stock' => '',
         'principal_cd' => '',
         'inventory_st' => '',
-        'generik_st' => '',
+        'generic_st' => '',
     ];
     public $cari, $edit = false, $jenis, $satuan, $gol, $subgol, $kelompok, $pajak, $principal;
     public $idHapus;
@@ -54,7 +54,7 @@ class Inventori extends Component
                     'type_cd',
                     'unit_cd',
                     'golongan_cd',
-                    'sub_golongan_cd',
+                    'subgolongan_cd',
                     'kategori_cd',
                     'item_price_buy',
                     'item_price',
@@ -64,9 +64,10 @@ class Inventori extends Component
                     'maximum_stock',
                     'principal_cd',
                     'inventory_st',
-                    'generik_st',
+                    'generic_st',
                 ]
             );
+            $this->changeGol($this->form['golongan_cd']);
         }
     }
 
@@ -75,7 +76,11 @@ class Inventori extends Component
         if ($property == 'form.golongan_cd') {
             $this->subgol = InvItemGolongan::where('root_cd', $this->form['golongan_cd'])->get();
         }
+    }
 
+    public function changeGol($id)
+    {
+        $this->subgol = InvItemGolongan::where('root_cd', $id)->get()->toArray();
     }
 
     public function save()
@@ -85,8 +90,16 @@ class Inventori extends Component
         } else {
             $this->store();
         }
-        $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil disimpan");
         $this->reset();
+        $this->js(<<<'JS'
+        Swal.fire({
+            position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 5000,
+          })
+        JS);
     }
 
     public function store()
@@ -97,7 +110,7 @@ class Inventori extends Component
             'form.type_cd' => 'required',
             'form.unit_cd' => 'required',
             'form.golongan_cd' => 'required',
-            'form.sub_golongan_cd' => 'required',
+            'form.subgolongan_cd' => 'required',
             'form.kategori_cd' => 'required',
             'form.item_price_buy' => 'required',
             'form.item_price' => 'required',
