@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div class="form-group row margin-bawah">
-                <label class="col-sm-5 control-label pasien">Unit</label>
+                <label class="col-sm-5 control-label pasien">Dokter</label>
                 <label class="col-sm-1 control-label pasien">:</label>
                 <div class="col-sm-6">
                     <label for="pasien_nm" class="control-label pasien">{{ $item->dokter->dr_nm }}</label>
