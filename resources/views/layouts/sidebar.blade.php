@@ -522,7 +522,7 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="{{ route('registrasi.rawat-jalan') }}" wire:navigate
-                                      class="nav-link {{ request()->is('registrasi/rawat-jalan/*') ? 'active' : '' }}">
+                                      class="nav-link @if (Request::is('registrasi/rawat-jalan*')) active @endif">
                                       @if (request()->is('registrasi/rawat-jalan') || request()->is('registrasi/rawat-jalan/*'))
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
@@ -544,7 +544,7 @@
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.rekam-medis') }}"
-                                      class="nav-link  @if (Request::is('transaksi/rawat-jalan/rekam-medis  *')) active @endif" wire:navigate>
+                                      class="nav-link  @if (Request::is('transaksi/rawat-jalan/rekam-medis*')) active @endif" wire:navigate>
                                       @if (request()->is('transaksi/rawat-jalan/rekam-medis*') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
