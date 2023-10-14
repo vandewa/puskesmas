@@ -6,13 +6,10 @@
                 <div class="col-md-12">
                     {{-- <div class="card card-success card-outline"> --}}
                     <form class="form-horizontal mt-2" wire:submit='save'>
-                        @if ($edit)
-                            <input type="hidden" value="{{ $form['seq_no'] }}" wire:model="form.seq_no">
-                        @endif
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Anamnesa</label>
                                         <div class="col-md-9">
                                             <textarea wire:model="form.anamnesa" class="form-control" rows="2"></textarea>
@@ -21,7 +18,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Pencarian ICD</label>
                                         <div class="col-md-9">
                                             <div class="input-group ">
@@ -33,7 +30,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Diagnosa</label>
                                         <div class="col-md-9">
                                             <textarea wire:model="form.medical_data" class="form-control" rows="2"></textarea>
@@ -42,7 +39,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label class="col-sm-3 col-form-label">Jenis Diagnosa</label>
                                         <div class="col-md-9">
                                             <select class="form-control" wire:model="form.rm_tp">
@@ -56,7 +53,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" value="{{ now() }}"
@@ -69,7 +66,7 @@
 
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label class="col-sm-3 col-form-label">Dokter</label>
                                         <div class="col-md-9">
                                             <select class="form-control" wire:model="form.dr_cd">
@@ -84,7 +81,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Jenis Kasus</label>
                                         <div class="col-md-9">
                                             <select class="form-control" wire:model="form.case_tp">
@@ -100,7 +97,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Pemeriksaan
                                             Fisik</label>
                                         <div class="col-md-9">
@@ -110,7 +107,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Pemeriksaan
                                             Penunjang</label>
                                         <div class="col-md-9">
@@ -120,7 +117,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Catatan</label>
                                         <div class="col-md-9">
                                             <textarea rows="2" class="form-control" wire:model='form.medical_note'></textarea>

@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Master Data</h1>
+                <h1 class="m-0">Rawat Jalan</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Master</a></li>
-                    <li class="breadcrumb-item active">Paramedis</li>
+                    <li class="breadcrumb-item"><a href="#">Rawat Jalan</a></li>
+                    <li class="breadcrumb-item active">Detail Transaksi Rawat Jalan</li>
                 </ol>
             </div>
         </div>
@@ -57,7 +57,7 @@
                             <div class="tab-content" id="custom-tabs-one-tabContent">
                                 <div class="tab-pane fade show active" id="custom-tabs-one-transaksi" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-transaksi-tab">
-                                    TRANSAKSI
+                                    <livewire:component.data-transaksi :medicalcd="$pasien->pasien_cd">
                                 </div>
                                 <div class="tab-pane fade" id="custom-tabs-one-rm" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-rm-tab">
