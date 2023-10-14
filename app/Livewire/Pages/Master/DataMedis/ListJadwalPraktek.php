@@ -19,11 +19,28 @@ class ListJadwalPraktek extends Component
         $this->hari = get_code('DAY_TP');
     }
 
-    public function setDelete($id)
+    public function delete($id)
     {
         $this->idHapus = $id;
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+                text: "Apakah kamu ingin menghapus data ini? proses ini tidak dapat dikembalikan.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus!',
+                cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $wire.hapus()
+            }
+          })
+        JS);
     }
-    public function delete()
+
+    public function hapus()
     {
         TrxJadwal::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");

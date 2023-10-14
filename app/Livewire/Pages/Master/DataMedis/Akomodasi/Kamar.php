@@ -11,24 +11,35 @@ use App\Models\His\TrxKelas;
 class Kamar extends Component
 {
     use WithPagination;
-    public $listKelas, $listBangsal;
 
     public $form = [
         'kamar_cd' => '',
         'kamar_nm' => '',
+        'bangsal_cd' => '',
+        'kelas_cd' => '',
+        'jumlah_tt' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
 
     public function mount()
     {
-        $this->listKelas = TrxKelas::all()->toArray();
-        $this->listBangsal = TrxBangsal::all()->toArray();
+        $this->ambilBangsal();
+        $this->ambilKelas();
+    }
+
+    public function ambilKelas()
+    {
+        return TrxKelas::all()->toArray();
+    }
+    public function ambilBangsal()
+    {
+        return TrxBangsal::all()->toArray();
     }
 
     public function getEdit($a)
     {
-        $this->form = TrxKamar::with(['bangsal', 'kelas'])->find($a)->only(['kamar_cd', 'kamar_nm']);
+        $this->form = TrxKamar::with(['bangsal', 'kelas'])->find($a)->only(['kamar_cd', 'kamar_nm', 'bangsal_cd', 'kelas_cd', 'jumlah_tt']);
         $this->edit = true;
     }
 
@@ -97,8 +108,11 @@ class Kamar extends Component
     public function render()
     {
         $data = TrxKamar::with(['bangsal', 'kelas'])->cari($this->cari)->paginate(10);
+
         return view('livewire.pages.master.data-medis.akomodasi.kamar', [
-            'post' => $data
+            'post' => $data,
+            'listKelas' => $this->ambilKelas(),
+            'listBangsal' => $this->ambilBangsal()
         ]);
     }
 }

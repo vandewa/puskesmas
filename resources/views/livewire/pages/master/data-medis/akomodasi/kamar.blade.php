@@ -77,9 +77,9 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Tempat
                                                 Tidur</label>
                                             <div class="col-sm-9">
-                                                <input type="number" class="form-control" wire:model=''
+                                                <input type="number" class="form-control" wire:model='form.jumlah_tt'
                                                     placeholder="Jumlah">
-                                                @error('')
+                                                @error('form.jumlah_tt')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
@@ -118,7 +118,6 @@
 
                             <table class="table">
                                 <thead>
-                                    <th>No</th>
                                     <th>Kode</th>
                                     <th>Nama</th>
                                     <th>Jml Tempat Tidur</th>
@@ -128,11 +127,9 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->kamar_cd }}'>
-
-                                            <td>{{ $loop->index + $post->firstItem() }}</td>
                                             <td>{{ $item->kamar_cd }}</td>
                                             <td>{{ $item->kamar_nm }}</td>
-                                            <td>{{ $item->kamar_nm }}</td>
+                                            <td>{{ $item->jumlah_tt ?? '-' }}</td>
                                             <td>{{ $item->bangsal->bangsal_nm ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->kamar_cd }}')"

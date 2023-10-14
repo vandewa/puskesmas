@@ -51,7 +51,15 @@ class JadwalPraktek extends Component
         } else {
             $this->store();
         }
-        $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil disimpan");
+        $this->js(<<<'JS'
+        Swal.fire({
+            position: 'top-end',
+                icon: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500,
+          })
+        JS);
         $this->reset();
     }
 

@@ -22,15 +22,26 @@ class TempatTidur extends Component
     ];
     public $cari, $edit = false;
 
-    public $listKelas, $listBangsal, $listKamar;
-
     public $idHapus;
 
     public function mount()
     {
-        $this->listKelas = TrxKelas::all()->toArray();
-        $this->listBangsal = TrxBangsal::all()->toArray();
-        $this->listKamar = TrxKamar::all()->toArray();
+        $this->ambilBangsal();
+        $this->ambilKamar();
+        $this->ambilKelas();
+    }
+
+    public function ambilKelas()
+    {
+        return TrxKelas::all()->toArray();
+    }
+    public function ambilBangsal()
+    {
+        return TrxBangsal::all()->toArray();
+    }
+    public function ambilKamar()
+    {
+        return TrxKamar::all()->toArray();
     }
 
     public function getEdit($a)
@@ -108,7 +119,10 @@ class TempatTidur extends Component
     {
         $data = TrxRuang::cari($this->cari)->paginate(10);
         return view('livewire.pages.master.data-medis.akomodasi.tempat-tidur', [
-            'post' => $data
+            'post' => $data,
+            'listKelas' => $this->ambilKelas(),
+            'listBangsal' => $this->ambilBangsal(),
+            'listKamar' => $this->ambilKamar(),
         ]);
     }
 }
