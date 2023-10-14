@@ -100,7 +100,12 @@
                                                             <li class="nav-item"
                                                                 style="margin-left: auto; background:yellow;">
                                                                 <a class="nav-link"
-                                                                    href="#custom-tabs-six-template-resep"><i
+                                                                    id="custom-tabs-two-tambah-rekam-medis-tab"
+                                                                    data-toggle="pill"
+                                                                    href="#custom-tabs-two-tambah-rekam-medis"
+                                                                    role="tab"
+                                                                    aria-controls="custom-tabs-two-tambah-rekam-medis"
+                                                                    aria-selected="false"><i
                                                                         class="fas fa-plus-square mr-2"
                                                                         style="color:black"></i><span
                                                                         style="color:black">Tambah Rekam
@@ -125,6 +130,14 @@
                                                                 role="tabpanel"
                                                                 aria-labelledby="custom-tabs-two-riwayat-rekam-medis-tab">
                                                                 RIWAYAT REKAM MEDIS
+                                                            </div>
+                                                            <div class="tab-pane fade"
+                                                                id="custom-tabs-two-tambah-rekam-medis"
+                                                                role="tabpanel"
+                                                                aria-labelledby="custom-tabs-two-tambah-rekam-medis-tab">
+                                                                <h5>TAMBAH REKAM MEDIS</h5>
+                                                                <livewire:component.tambah-rekam-medis
+                                                                    :medicalcd="$pasien->pasien_cd">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -208,7 +221,7 @@
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-tambah-tindakan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-tambah-tindakan-tab">
-                                                                TAMBAH TINDAKAN
+                                                                <h5>TAMBAH TINDAKAN</h5>
                                                                 <livewire:component.tambah-tindakan-medis
                                                                     :medicalcd="$pasien->pasien_cd">
                                                             </div>

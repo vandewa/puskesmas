@@ -105,7 +105,7 @@ Route::middleware([
         Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {
             Route::get('list/{url?}', ListPasienTransaksi::class)->name('list');
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
-            Route::get('rekam-medis', RekamMedis::class)->name('rekam-medis');
+            Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
             Route::get('resep-obat/{id?}', ResepObat::class)->name('resep-obat');
         });
     });
