@@ -67,15 +67,15 @@ class Inventori extends Component
                     'generik_st',
                 ]
             );
-        } else {
-            $this->updatedFormGolonganCd();
-
         }
     }
 
-    public function updatedFormGolonganCd()
+    public function updated($property)
     {
-        $this->subgol = InvItemGolongan::where('root_cd', $this->form['golongan_cd'])->get();
+        if ($property == 'form.golongan_cd') {
+            $this->subgol = InvItemGolongan::where('root_cd', $this->form['golongan_cd'])->get();
+        }
+
     }
 
     public function save()

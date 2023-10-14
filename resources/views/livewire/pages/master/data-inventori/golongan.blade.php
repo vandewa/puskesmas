@@ -36,7 +36,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Root</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" wire:model='form.root_cd'
+                                                <select class="form-control" wire:model.defer='form.root_cd'
                                                     wire:key="select.root_cd">
                                                     <option value="">-- Pilih Root --</option>
                                                     @foreach ($root ?? [] as $item)
@@ -101,8 +101,7 @@
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
-                                                    data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->golongan_cd }}')"><i
+                                                    wire:click="delete('{{ $item->golongan_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

@@ -57,7 +57,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Spesialis</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" wire:model='form.spesialis_cd'
+                                                <select class="form-control" wire:model.defer='form.spesialis_cd'
                                                     wire:key="select.dokter">
                                                     <option value="">Pilih Spesialis</option>
                                                     @foreach ($listSpesialis ?? [] as $item)
@@ -112,7 +112,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
-                                        <tr wire:key='{{ $item->spesialis_cd }}'>
+                                        <tr wire:key='{{ $item->dr_cd }}'>
 
                                             <td>{{ $loop->index + $post->firstItem() }}</td>
                                             <td>{{ $item->dr_cd }}</td>
@@ -125,8 +125,7 @@
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
-                                                    data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->dr_cd }}')"><i
+                                                    wire:click="delete('{{ $item->dr_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>

@@ -28,7 +28,7 @@
                                                 Satuan</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" wire:model='form.unit_cd'
-                                                    placeholder="Kode Spesialis"
+                                                    placeholder="Kode Satuan"
                                                     @if ($edit) disabled @endif>
                                                 @error('form.unit_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
@@ -93,8 +93,7 @@
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
-                                                    data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->unit_cd }}')"><i
+                                                    wire:click="delete('{{ $item->unit_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -106,8 +105,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-    @include('livewire.global.modal-konfirmasi-hapus')
 </div>

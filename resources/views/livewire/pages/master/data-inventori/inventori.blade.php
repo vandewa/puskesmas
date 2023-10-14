@@ -92,6 +92,9 @@
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
+
+                                            <input type="text" x-model="$wire.form.golongan_cd">
+
                                         </div>
                                         <div class="form-group row">
                                             <label class="col-sm-3 col-form-label">Kelompok</label>

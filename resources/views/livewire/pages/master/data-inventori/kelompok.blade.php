@@ -81,8 +81,7 @@
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></button>
                                                 <button type="button" class="btn btn-danger btn-flat btn-sm"
-                                                    data-toggle="modal" data-target="#modal-default"
-                                                    wire:click="setDelete('{{ $item->kategori_cd }}')"><i
+                                                    wire:click="delete('{{ $item->kategori_cd }}')"><i
                                                         class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
@@ -97,5 +96,4 @@
 
         </div>
     </section>
-    {{-- @include('livewire.global.modal-konfirmasi-hapus') --}}
 </div>

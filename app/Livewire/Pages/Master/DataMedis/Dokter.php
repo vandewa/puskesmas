@@ -11,19 +11,25 @@ class Dokter extends Component
 {
     use WithPagination;
 
-    public $listSpesialis;
     public $form = [
         'dr_cd' => '',
         'dr_nm' => '',
         'spesialis_cd' => '',
         'nip' => '',
     ];
+
     public $cari, $edit = false;
     public $idHapus;
 
     public function mount()
     {
-        $this->listSpesialis = TrxSpesialis::all()->toArray();
+        $this->ambilSpesialis();
+    }
+
+    public function ambilSpesialis()
+    {
+        return TrxSpesialis::all()->toArray();
+
     }
     public function getEdit($a)
     {
@@ -61,11 +67,28 @@ class Dokter extends Component
 
     }
 
-    public function setDelete($id)
+    public function delete($id)
     {
         $this->idHapus = $id;
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+                text: "Apakah kamu ingin menghapus data ini? proses ini tidak dapat dikembalikan.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus!',
+                cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $wire.hapus()
+            }
+          })
+        JS);
     }
-    public function delete()
+
+    public function hapus()
     {
         TrxDokter::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
@@ -76,15 +99,15 @@ class Dokter extends Component
         TrxDokter::find($this->form['dr_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
-        $this->listSpesialis = TrxSpesialis::all()->toArray();
-
     }
 
     public function render()
     {
-        $data = TrxDokter::with(['spesialis'])->cari($this->cari)->paginate(10);
+        $data = TrxDokter::with(['spesialis'])->orderBy('updated_at', 'desc')->cari($this->cari)->paginate(10);
+
         return view('livewire.pages.master.data-medis.dokter', [
-            'post' => $data
+            'post' => $data,
+            'listSpesialis' => $this->ambilSpesialis()
         ]);
     }
 }
