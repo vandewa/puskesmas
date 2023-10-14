@@ -122,23 +122,21 @@ class RawatInap extends Component
 
         $this->form['jadwal_seqno'] = $id;
 
-        $this->js("
+        $this->js(<<<'JS'
         Swal.fire({
             title: 'Anda yakin akan mendaftarkan pasien?',
-            showDenyButton: true,
+            type: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Iya',
-            denyButtonText: `Tidak`,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Iya!',
+            cancelButtonText: 'Tidak'
           }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
-               " . ' $wire.save()' . "
-            //   Swal.fire('Saved!', '', 'success')
-            } else if (result.isDenied) {
-              Swal.fire('Changes are not saved', '', 'info')
-            }
-          })
-        ");
+              $wire.save()
+            } 
+        })
+        JS);
     }
 
     public function generateAntrian()
@@ -183,22 +181,21 @@ class RawatInap extends Component
         $this->js('window.open("' . route('helper.print-antrian-poli', 1) . '", "Print Antrian Poli", "width=200,height=100");');
         session()->flash('status', 'Post successfully updated.');
 
-        $this->js("
-            Swal.fire({
-                title: 'Berhasil?',
-                text: 'Pendaftaran berhasil',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Kembali Ke list pasien?'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    " . '$wire.kembalii()' . "
-                }
-            })
-            ");
-        // $this->redirect(route('pasien.index'));
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Pendaftaran berhasil!',
+            type: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Kembali Ke list pasien',
+            cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $wire.kembalii()
+            }
+          })
+        JS);
     }
 
     public function kembalii()
