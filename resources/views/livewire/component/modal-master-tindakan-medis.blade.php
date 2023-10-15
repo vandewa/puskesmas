@@ -3,33 +3,30 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Diagnosa</h4>
+                <h4 class="modal-title">List Tindakan</h4>
                 <button type="button" wire:click='showModal' class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <input type="text" id="search-diagnosa" class="form-control" wire:model.live='search' autofocus>
+                <input type="text" id="search-master-tindakan-medis" class="form-control" wire:model.live='search'
+                    autofocus>
                 <table class="table">
                     <thead>
-                        <th>No</th>
                         <th>Kode</th>
                         <th>Nama</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
                         @foreach ($posts as $item)
-                            <tr wire:key='{{ $item->icd_cd }}'>
-
-                                <td>{{ $loop->index + $posts->firstItem() }}</td>
-                                <td>{{ $item->icd_cd }}</td>
-                                <td>{{ $item->icd_nm }}</td>
+                            <tr>
+                                <td>{{ $item->treatment_cd }}</td>
+                                <td>{{ $item->treatment_nm }}</td>
                                 <td>
-                                    <button type="button" wire:click='pilih("{{ $item->icd_cd }}")'
+                                    <button type="button" wire:click="pilih('{{ $item->treatment_cd }}')"
                                         class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
-                                        data-placement="left" title="Edit"><i class="fas fa-plus"></i>
+                                        data-placement="left" title="Pilih Tindakan"><i class="fas fa-plus"></i>
                                     </button>
-
                                 </td>
                             </tr>
                         @endforeach

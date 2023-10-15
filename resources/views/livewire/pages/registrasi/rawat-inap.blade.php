@@ -21,7 +21,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Pasien</label>
                                         <div class="col-md-9">
                                             <div class="input-group ">
@@ -35,7 +35,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Jenis</label>
                                         <div class="col-md-9">
                                             <select name="" id="" class="form-control"
@@ -49,7 +49,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Alasan</label>
                                         <div class="col-md-9">
                                             <select name="" id="" class="form-control"
@@ -62,7 +62,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Diagnosa Masuk</label>
                                         <div class="col-md-9">
                                             <div class="input-group ">
@@ -76,13 +76,13 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Rujukan</label>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Kelas</label>
                                         <div class="col-md-9">
                                             <select class="form-control">
@@ -94,7 +94,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Ruang Perawatan</label>
                                         <div class="col-md-9">
                                             <select class="form-control">
@@ -106,7 +106,7 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group row margin-bawah">
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Keterangan
                                             Diagnosa</label>
                                         <div class="col-md-9">
@@ -138,9 +138,9 @@
                                 <tbody>
                                     @foreach ($posts as $item)
                                         <tr>
-                                            <td>{{ $item->kelas->kelas_nm }}</td>
-                                            <td>{{ $item->bangsal->bangsal_nm }}</td>
-                                            <td>{{ $item->kamar->kamar_nm }}</td>
+                                            <td>{{ $item->kelas->kelas_nm ?? '-' }}</td>
+                                            <td>{{ $item->bangsal->bangsal_nm ?? '-' }}</td>
+                                            <td>{{ $item->kamar->kamar_nm ?? '-' }}</td>
                                             <td>
                                                 <a href="" wire:navigate class="btn btn-success btn-flat btn-sm"
                                                     data-toggle="tooltip" data-placement="left" title="Daftar"><i
@@ -157,40 +157,6 @@
             </div>
         </div>
     </section>
-    <div class="modal fade" id="modal-default" wire:ignore>
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-danger">
-                    <h4 class="modal-title">Konformasi Hapus</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Data yang dihapus tidak dapat dikembalikan!
-                </div>
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal" wire:click='delete'>Ya
-                        Hapus</button>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
     <livewire:component.modal-pasien wire:key='modal-pasien'>
         <livewire:component.modal-diagnosa wire:key='modal-diagnosa'>
 </div>
-
-@push('css')
-    <style>
-        .margin-bawah {
-            margin-bottom: 0.5rem;
-        }
-
-        .empatbelas {
-            font-size: 14px;
-        }
-    </style>
-@endpush
