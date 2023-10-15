@@ -2,7 +2,7 @@
     <ul class="nav nav-tabs" id="custom-tabs-one-transaksi-tab" role="tablist">
         <li class="nav-item">
             <a class="nav-link" id="custom-tabs-one-transaksi-tab"
-                href="#custom-tabs-one-transaksi" role="tab">Data
+                href="{{  route('transaksi.rawat-jalan.detail.rawat-jalan', $medicalcd??"")  }}" >Data
                 Transaksi</a>
         </li>
         <li class="nav-item">
@@ -24,8 +24,8 @@
                 >Radiologi</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-resep-tab" data-toggle="pill"
-                href="#custom-tabs-one-resep"
+            <a class="nav-link" id="custom-tabs-one-resep-tab"
+                href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd??"") }}"
                 >Resep/Obat</a>
         </li>
     </ul>

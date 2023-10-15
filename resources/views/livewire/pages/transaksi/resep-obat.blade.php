@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi/>
+                        <livewire:component.link-transaksi :medicalcd="$medik->medical_cd"/>
                         <div class="card-body">
                             <div class="tab-pane fade active show">
                                 <div class="tab-pane active show fade" id="custom-tabs-one-resep" role="tabpanel"
