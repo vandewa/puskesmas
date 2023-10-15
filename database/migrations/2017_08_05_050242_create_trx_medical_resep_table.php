@@ -27,7 +27,7 @@ class CreateTrxMedicalResepTable extends Migration {
 			$table->dateTime('proses_date')->nullable();
 			$table->string('info_01', 1000)->nullable();
 			$table->string('info_02', 1000)->nullable();
-			$table->bigInteger('ref_proses_seqno');
+			$table->bigInteger('ref_proses_seqno')->nullable();
 			$table->string('kelas_cd', 20)->nullable();
 			$table->string('case_tp', 20)->nullable();
 			$table->string('modi_id', 20)->nullable();

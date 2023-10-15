@@ -1,6 +1,6 @@
 <div>
     <h4 class="mb-3">Resep Racik</h4>
-    <div class="row"  wire:keydown.shift.up.window="$dispatch('show-modal-pasien')">
+    <div class="row"  wire:keydown.shift.right.window="$dispatch('show-modal-obat-racik')">
         <div id="div-form" class="col-sm-6">
             <form class="form-horizontal" method="post" id="form-resep" novalidate="" action="" enctype="multipart/form-data">
 
@@ -10,9 +10,9 @@
                   <div class="col-sm-6">
                      <!-- <select name="obat_cd" id="obat_cd" class="form-control select2-obat_cd" id="e7" style="width: 100%;"></select> -->
                      <div class="input-group mb-3">
-                        <p class="form-control">{{ $obat->barcode??"Tekan Shift + Up" }}</p>
+                        <p class="form-control">{{ $obat->barcode??"Tekan Shift + Right" }}</p>
                         <div class="input-group-append">
-                          <span class="input-group-text"><i class="fas fa-search" wire:click="$dispatch('show-modal-pasien')"> Cari</i></span>
+                          <span class="input-group-text"><i class="fas fa-search" wire:click="$dispatch('show-modal-obat-racik')"> Cari</i></span>
                         </div>
                       </div>
                   </div>
@@ -35,22 +35,40 @@
                   </div>
                   <label for="satuan_jumlah" class="col-form-label"><p>{{ $obat->satuan->unit_nm??"" }}</p></label>
               </div>
-              <div class=" mb-1 row">
-                  <label class="col-sm-2 col-form-label">Satuan</label>
-                  <div class="col-sm-8">
-                     <input type="number" name="jumlah" wire:model.live='jumlah' class="form-control" id="jumlah" style="width: 100%;" min="0">
-                     @error('jumlah')
-                     <span class="form-text text-danger">{{ $message }}</span>
-                     @enderror
-                  </div>
-                  <label for="satuan_jumlah" class="col-form-label"><p>{{ $obat->satuan->unit_nm??"" }}</p></label>
-              </div>
+
               <div class="mt-2 col-md-10">
                 <div class="d-flex justify-content-end">
                     <button type="button" class="btn btn-warning btn-sm btn-flat btn-tambah" wire:click='tambah'><i class="fa fa-plus"></i> Tambah</button>
                 </div>
             </div>
             <hr>
+            <div class=" mb-1 row">
+                <label class="col-sm-2 col-form-label">Paket</label>
+                <div class="col-sm-2">
+                   <input name="dosis_1" wire:model.live='paket' type="number" class="form-control">
+                   @error('dosisdepan')
+                   <span class="form-text text-danger">{{ $message }}</span>
+               @enderror
+                </div>
+
+                <div class="col-sm-8">
+                    <div class="col-sm-8">
+                        <select name="" id="" class="form-control"  wire:model.live='satuanPaket'>
+                           <option value="">Pilih Satuan</option>
+                           @foreach ($satuan as $item)
+                           <option value="{{ $item->unit_nm }}">{{ $item->unit_nm }}</option>
+                           @endforeach
+
+                        </select>
+                        @error('satuanPaket')
+                        <span class="form-text text-danger">{{ $message }}</span>
+                        @enderror
+                     </div>
+                  @error('dosisbelakang')
+                      <span class="form-text text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+            </div>
               <div class=" mb-1 row">
                   <label class="col-sm-2 col-form-label">Dosis</label>
                   <div class="col-sm-2">
@@ -131,15 +149,21 @@
             <div id="table-resep_wrapper" class="dataTables_wrapper form-inline dt-bootstrap4 no-footer"><div class="top"></div>
             <table id="table-resep" class="table table-bordered dataTable no-footer" style="height: 200px" role="grid">
                 <thead>
-                  <tr role="row"><th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Nama Obat: activate to sort column ascending">Nama Obat</th><th class="table-cell-edit sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Jumlah: activate to sort column ascending">Jumlah</th><th class="table-cell-edit sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Dosis: activate to sort column ascending">Dosis</th><th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Satuan: activate to sort column ascending">Satuan</th><th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label=": activate to sort column ascending"></th></tr>
+                  <tr role="row">
+                    <th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Nama Obat: activate to sort column ascending">Nama Obat</th>
+                    <th class="table-cell-edit sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Jumlah: activate to sort column ascending">Jumlah</th>
+                    <th class="table-cell-edit sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Dosis: activate to sort column ascending">Satuan</th>
+
+                    <th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label=": activate to sort column ascending"></th></tr>
                 </thead>
                 <tbody>
                    @foreach ($obatTable??[] as $index => $item)
                     <tr>
-                        <td>{{ $item['item_cd'] }}</td>
-                        <td>{{ $item['quantity'] }}</td>
                         <td>{{ $item['data_nm'] }}</td>
-                        <td>{{ $item['info_01'] }}</td>
+                        <td>{{ $item['quantity'] }}</td>
+
+                        <td>{{ $item['satuan'] }}</td>
+
                         <td><button class="btn btn-danger" wire:click='deleteObat("{{ $index }}")'><span class="fas fa-trash"></span></button></td>
                     </tr>
                    @endforeach
@@ -151,9 +175,9 @@
           <div class="pull-right">
 
               <button type="button" wire:click="$dispatch('show-racik')" class="btn btn-danger btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Batal</button>
-              <button type="submit" class="btn btn-primary btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Simpan</button>
+              <button type="button" wire:click='simpan' class="btn btn-primary btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Simpan</button>
           </div>
         </div>
     </div>
-    <livewire:component.modal-obat>
+    <livewire:component.modal-obat-racik>
     </div>

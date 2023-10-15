@@ -4,9 +4,12 @@ namespace App\Livewire\Component;
 
 use App\Models\His\InvItemMaster;
 use App\Models\His\TrxDokter;
+use App\Models\His\TrxMedical;
+use App\Models\His\TrxMedicalResep;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Illuminate\Support\Arr;
 
 class FormResep extends Component
 {
@@ -17,6 +20,9 @@ class FormResep extends Component
     public $sore = [];
     public $malam =[];
     public $habiskan = [];
+    public $racik;
+    public $medicalcd;
+    public $dataMedic ;
 
     public $form= [
         'resep_no' => null,
@@ -58,10 +64,27 @@ class FormResep extends Component
 
         $this->js('
         setTimeout(() => {
-            document.getElementById("jumlah").focus();
+            document.getElementById("jumlah-obat").focus();
         }, 100);
         ');
 
+    }
+
+    #[On('show-racik')]
+    public function racik()
+    {
+        $this->racik = null;
+    }
+
+    // terima dari resep racik
+    #[On('data-racikan')]
+    public function dataRacikan($header, $body)
+    {
+        // gabungkan degnan resep racik
+        $data = $header + ['racikan' => $body];
+
+        array_push($this->obatTable, $data);
+        $this->racik = null;
     }
 
     public function mount() {
@@ -69,6 +92,7 @@ class FormResep extends Component
         $this->form['tanggal'] = date('Y-m-d');
         $this->form['dr_cd'] = $this->dr_cd;
         $this->dokter = TrxDokter::all()->toArray();
+
 
     }
 
@@ -97,6 +121,7 @@ class FormResep extends Component
             'quantity'  => $this->jumlah,
             'info_01'   => $this->catatan,
             'resep_tp'  => 'RESEP_TP_1',
+            'info_02'   => $this->obat->satuan->unit_nm,
         ];
 
 
@@ -124,6 +149,65 @@ class FormResep extends Component
     public function deleteObat($id)
     {
       unset($this->obatTable[$id]);
+    }
+
+    // simpan ke database
+    public function simpan() {
+
+
+
+        if(count($this->obatTable) <=0){
+            $this->js(<<<'JS'
+                Swal.fire(
+                'Ops!',
+                'Anda harus memilih obat terlebih dahulu!',
+                'error'
+                )
+            JS);
+            return ;
+        }
+
+        $resep = TrxMedicalResep::create([
+            'medical_cd' => $this->dataMedic->medical_cd,
+            'dr_cd' => $this->dr_cd,
+            'resep_date' => now(),
+            'proses_st' => 0,
+            'resep_no' => gen_no_resep()
+        ]);
+        foreach($this->obatTable as $item) {
+            if($item['resep_tp'] == 'RESEP_TP_1') {
+                $resep->resepData()->create(
+                    $item
+                );
+            } else {
+
+                // Buang Racikan
+                $filtered = Arr::except($item, ['racikan']);
+                $data =  $resep->resepData()->create(
+                    $filtered
+                );
+
+                foreach($item['racikan'] as $racik) {
+                    $data->resepRacik()->create(
+                        $racik
+                    );
+                }
+
+
+            }
+
+        }
+
+        $this->js(<<<'JS'
+            Swal.fire(
+            'Berhasil!',
+            'Data obat berhasil disimpan!',
+            'success'
+            )
+            JS);
+            $this->resetForm();
+            $this->form['resep_no'] = gen_no_resep();
+            $this->obatTable = [];
     }
 
     public function render()

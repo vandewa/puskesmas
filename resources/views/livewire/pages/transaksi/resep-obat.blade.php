@@ -79,11 +79,18 @@
                                                 </div>
                                             </div> --}}
 
-                                            @if($racik)
-                                                <livewire:component.form-resep-racik :dr_cd="$medik->dr_cd">
-                                            @else
-                                                <livewire:component.form-resep :dr_cd="$medik->dr_cd">
-                                            @endif
+
+                                            <div style="@if(!$racik) display:none @endif">
+                                                <livewire:component.form-resep-racik :dr_cd="$medik->dr_cd" >
+                                            </div>
+
+
+                                            <div style=" @if($racik) display:none @endif">
+                                                <livewire:component.form-resep :dr_cd="$medik->dr_cd" :dataMedic="$medik">
+                                            </div>
+
+
+
 
 
                                         </div>

@@ -1,10 +1,17 @@
 <div>
 
-   
-<div class="row"  wire:keydown.shift.up.window="$dispatch('show-modal-pasien')">
+<h4>Resep Obat Non Racik</h4>
+<div class="row"  wire:keydown.shift.up.window="$dispatch('show-modal-obat')">
     <div id="div-form" class="col-sm-6">
         <form class="form-horizontal" method="post" id="form-resep" novalidate="" action="" enctype="multipart/form-data">
-
+            <div class=" mb-1 row">
+                <label class="col-sm-2 col-form-label">No. Resep</label>
+                <div class="col-sm-8">
+                    <p class="form-control">
+                        {{  $this->form['resep_no'] }}
+                    </p>
+                </div>
+            </div>
           <div class=" mb-1 row">
               <label class="col-sm-2 col-form-label">Obat</label>
               <div class="col-sm-6">
@@ -12,13 +19,13 @@
                  <div class="input-group mb-3">
                     <p class="form-control">{{ $obat->barcode??"Tekan Shift + Up" }}</p>
                     <div class="input-group-append">
-                      <span class="input-group-text"><i class="fas fa-search" wire:click="$dispatch('show-modal-pasien')"> Cari</i></span>
+                      <span class="input-group-text"><i class="fas fa-search" wire:click="$dispatch('show-modal-obat')"> Cari</i></span>
                     </div>
                   </div>
               </div>
               <div class="col-sm-3">
                   <label class="col-form-label">
-                      <input type="checkbox" class="form-check-label" name="resep_tp" id="racik" wire:change="$dispatch('show-racik')">
+                      <input type="checkbox" class="form-check-label" wire:model.live='racik' name="resep_tp" id="racik" wire:change="$dispatch('show-racik')">
                       Racik
                   </label>
               </div>
@@ -33,7 +40,7 @@
           <div class=" mb-1 row">
               <label class="col-sm-2 col-form-label">Jumlah</label>
               <div class="col-sm-2">
-                 <input type="number" name="jumlah" wire:model.live='jumlah' class="form-control" id="jumlah" style="width: 100%;" min="0">
+                 <input type="number" name="jumlah" wire:model.live='jumlah' class="form-control" id="jumlah-obat" style="width: 100%;" min="0">
                  @error('jumlah')
                  <span class="form-text text-danger">{{ $message }}</span>
                  @enderror
@@ -170,10 +177,10 @@
             <tbody>
                @foreach ($obatTable??[] as $index => $item)
                 <tr>
-                    <td>{{ $item['item_cd'] }}</td>
+                    <td>{!! $item['data_nm'] !!}</td>
                     <td>{{ $item['quantity'] }}</td>
-                    <td>{{ $item['data_nm'] }}</td>
                     <td>{{ $item['info_01'] }}</td>
+                    <td>{{ $item['info_02'] }}</td>
                     <td><button class="btn btn-danger" wire:click='deleteObat("{{ $index }}")'><span class="fas fa-trash"></span></button></td>
                 </tr>
                @endforeach
@@ -184,7 +191,7 @@
 </div>
       <div class="pull-right">
 
-          <button type="submit" class="btn btn-primary btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Simpan</button>
+          <button type="submit" wire:click='simpan' class="btn btn-primary btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Simpan</button>
       </div>
     </div>
 </div>

@@ -3,9 +3,11 @@
 namespace App\Livewire\Component;
 
 use App\Models\His\InvItemMaster;
+use App\Models\His\InvUnit;
 use App\Models\His\TrxDokter;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
+use Livewire\Attributes\Title;
 use Livewire\Component;
 
 class FormResepRacik extends Component
@@ -28,7 +30,9 @@ class FormResepRacik extends Component
 
     public $jumlah;
     public $obat;
-    public $dokter;
+    public $pilihSatuan;
+    public $paket;
+    public $satuanPaket;
 
     public $obatTable = [];
     public $obatTableRacik = [];
@@ -51,10 +55,11 @@ class FormResepRacik extends Component
         return $data;
     }
 
-    #[On('pilih-obat')]
+    #[On('pilih-obat-racik')]
     public function pilihObat($id = "")
     {
         $this->obat = InvItemMaster::with(['satuan'])->findorfail($id);
+        $this->pilihSatuan = $this->obat->unit_cd;
 
         $this->js('
         setTimeout(() => {
@@ -65,10 +70,7 @@ class FormResepRacik extends Component
     }
 
     public function mount() {
-        $this->form['resep_no'] = gen_no_resep();
-        $this->form['tanggal'] = date('Y-m-d');
-        $this->form['dr_cd'] = $this->dr_cd;
-        $this->dokter = TrxDokter::all()->toArray();
+
 
     }
 
@@ -85,31 +87,31 @@ class FormResepRacik extends Component
             return ;
         }
 
-        $this->validate([
-            'jumlah' => 'required',
-            'dosisbelakang' => 'required',
-            'dosisdepan' => 'required',
-        ]);
+        // $this->validate([
+        //     'jumlah' => 'required',
+        //     'dosisbelakang' => 'required',
+        //     'dosisdepan' => 'required',
+        // ]);
 
         $isian = [
             'item_cd'   => $this->obat->item_cd,
             'data_nm'   => $this->obat->item_nm,
             'quantity'  => $this->jumlah,
-            'info_01'   => $this->catatan,
-            'resep_tp'  => 'RESEP_TP_1',
+            'satuan'   => $this->obat->satuan->unit_nm,
+            'trx_satuan' => $this->obat->unit_cd
         ];
 
 
 
         // $this->obatTable->push($isian);
         array_push($this->obatTable, $isian);
-        $this->resetForm();
+        $this->obat = null;
+        $this->jumlah = null;
     }
 
     public function resetForm()
     {
-        $this->obat = null;
-        $this->jumlah = null;
+
         $this->hari = null;
         $this->dosisdepan = null;
         $this->dosisbelakang = null;
@@ -118,7 +120,52 @@ class FormResepRacik extends Component
         $this->sore = [];
         $this->malam =[];
         $this->habiskan = [];
+        $this->paket = null;
+        $this->satuanPaket = null;
 
+    }
+    public function genTable() {
+        $data = '';
+        foreach($this->obatTable as $item){
+            $data = $data.' '.$item['data_nm'].' => '.$item['quantity'].' '.$item['satuan'].'<br>';
+        }
+
+        return $data;
+    }
+     // kirim resep racik ke resep biasa
+    public function simpan() {
+        if(count($this->obatTable) <=0){
+            $this->js("
+            Swal.fire(
+            'Ops!',
+            'Anda harus memilih obat terlebih dahulu!',
+            'error'
+          )
+        ");
+
+        return ;
+        }
+
+        $this->validate([
+            'paket' => 'required',
+            'satuanPaket' => 'required',
+            'dosisbelakang' => 'required',
+            'dosisdepan' => 'required',
+        ]);
+
+        $this->obatTableRacik = [
+            'item_cd'   => null,
+            'data_nm'   => $this->genTable(),
+            'quantity'  => $this->paket,
+            'info_01'   => $this->catatan,
+            'resep_tp'  => 'RESEP_TP_2',
+            'info_02'   => $this->satuanPaket,
+        ];
+
+        $this->dispatch('data-racikan', header: $this->obatTableRacik, body: $this->obatTable);
+        $this->obatTable = [];
+        $this->obatTableRacik = [];
+        $this->dispatch('show-racik');
     }
 
     public function deleteObat($id)
@@ -128,6 +175,8 @@ class FormResepRacik extends Component
 
     public function render()
     {
-        return view('livewire.component.form-resep-racik');
+        return view('livewire.component.form-resep-racik',[
+            'satuan' => InvUnit::all()
+        ]);
     }
 }

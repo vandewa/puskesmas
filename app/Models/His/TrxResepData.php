@@ -122,5 +122,9 @@ use \OwenIt\Auditing\Auditable;
 
     ];
 
+    public function resepRacik() {
+        return $this->hasMany(TrxResepRacik::class, 'resep_seqno');
+    }
+
 
 }
