@@ -458,25 +458,4 @@
 </section>
 </div>
 
-@push('css')
-    <style>
-        .detail-pasien {
-            background: #0193a9;
-            color: #fff;
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 15px;
-            text-align: left;
-            padding-left: 10px;
-            padding-top: 10px;
-            padding-bottom: 5px;
-            padding-right: 10px;
-            border-top-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-        }
 
-        .margin-bawah {
-            margin-bottom: 0.2rem;
-        }
-    </style>
-@endpush

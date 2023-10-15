@@ -17,5 +17,12 @@ class TrxMedicalResep extends Model
     public function resepData() {
         return $this->hasMany(TrxResepData::class, 'medical_resep_seqno');
     }
+    public function dokter() {
+        return $this->belongsTo(TrxDokter::class, 'dr_cd');
+    }
+
+    public function medical() {
+        return $this->belongsTo(TrxMedical::class, 'medical_cd');
+    }
 
 }

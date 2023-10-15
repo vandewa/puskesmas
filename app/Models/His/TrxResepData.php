@@ -126,5 +126,23 @@ use \OwenIt\Auditing\Auditable;
         return $this->hasMany(TrxResepRacik::class, 'resep_seqno');
     }
 
+    public function resepHeader() {
+        return $this->belongsTo(TrxMedicalResep::class, 'medical_resep_seqno');
+    }
+
+    public function scopeCari($filter, $value) {
+        if($value){
+            $filter->where('data_nm', 'ilike', "%$value%")
+            ->orWhereHas('resepHeader', function($a)use($value){
+                $a->where('resep_no', "ilike", "%$value%")
+                ->orwhere('resep_date', 'ilike', "%$value%")
+                ->orWhereHas('dokter', function($a) use($value){
+                    $a->where('dr_nm', 'ilike', "%$value%");
+                });
+            });
+        }
+
+    }
+
 
 }

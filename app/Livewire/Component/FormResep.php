@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Component;
 
+use App\Livewire\Component\Resep\TableResep;
 use App\Models\His\InvItemMaster;
 use App\Models\His\TrxDokter;
 use App\Models\His\TrxMedical;
@@ -208,6 +209,12 @@ class FormResep extends Component
             $this->resetForm();
             $this->form['resep_no'] = gen_no_resep();
             $this->obatTable = [];
+            $this->js(<<<'JS'
+             setTimeout(() => {
+                $('#custom-tabs-six-data-resep-tab').trigger('click');
+            }, 300);
+            JS);
+            $this->dispatch('refresh')->to(TableResep::class);
     }
 
     public function render()
