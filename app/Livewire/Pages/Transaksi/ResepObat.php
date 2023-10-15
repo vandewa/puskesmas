@@ -11,6 +11,13 @@ class ResepObat extends Component
     public $medicalcd;
 
     public $medik;
+    public $racik = false;
+
+    #[On('show-racik')]
+    public function racik()
+    {
+        $this->racik = !$this->racik;
+    }
 
     public function mount($id) {
         $this->medicalcd = $id;

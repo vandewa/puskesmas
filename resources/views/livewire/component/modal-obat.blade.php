@@ -6,6 +6,7 @@
           <button type="button" wire:click='showModal' class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+
         </div>
         <div class="modal-body">
             <input type="text" id="search-obat" class="form-control" wire:model.live='search' autofocus >
@@ -19,6 +20,7 @@
                 </thead>
                 <tbody>
                     @foreach ($posts as $item)
+
                     <tr>
                         <td>{{ $item->barcode }}</td>
                         <td>{{ $item->item_nm }}</td>

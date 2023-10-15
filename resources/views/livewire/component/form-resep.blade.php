@@ -1,15 +1,10 @@
 <div>
 
+   
 <div class="row"  wire:keydown.shift.up.window="$dispatch('show-modal-pasien')">
     <div id="div-form" class="col-sm-6">
         <form class="form-horizontal" method="post" id="form-resep" novalidate="" action="" enctype="multipart/form-data">
 
-          <div class=" mb-1 row">
-              <label class="col-sm-2 col-form-label">No Resep</label>
-              <div class="col-sm-5">
-                 <input type="text" name="no_resep" class="form-control" id="no_resep" style="width: 100%;" wire:model='form.resep_no' readonly="">
-              </div>
-          </div>
           <div class=" mb-1 row">
               <label class="col-sm-2 col-form-label">Obat</label>
               <div class="col-sm-6">
@@ -23,7 +18,7 @@
               </div>
               <div class="col-sm-3">
                   <label class="col-form-label">
-                      <input type="checkbox" class="form-check-label" name="resep_tp" id="racik">
+                      <input type="checkbox" class="form-check-label" name="resep_tp" id="racik" wire:change="$dispatch('show-racik')">
                       Racik
                   </label>
               </div>
@@ -173,13 +168,13 @@
               <tr role="row"><th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Nama Obat: activate to sort column ascending">Nama Obat</th><th class="table-cell-edit sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Jumlah: activate to sort column ascending">Jumlah</th><th class="table-cell-edit sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Dosis: activate to sort column ascending">Dosis</th><th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label="Satuan: activate to sort column ascending">Satuan</th><th class="sorting" tabindex="0" aria-controls="table-resep" rowspan="1" colspan="1" aria-label=": activate to sort column ascending"></th></tr>
             </thead>
             <tbody>
-               @foreach ($obatTable??[] as $item)
+               @foreach ($obatTable??[] as $index => $item)
                 <tr>
                     <td>{{ $item['item_cd'] }}</td>
                     <td>{{ $item['quantity'] }}</td>
                     <td>{{ $item['data_nm'] }}</td>
                     <td>{{ $item['info_01'] }}</td>
-                    <td><button class="btn btn-danger"><span class="fas fa-trash"></span></button></td>
+                    <td><button class="btn btn-danger" wire:click='deleteObat("{{ $index }}")'><span class="fas fa-trash"></span></button></td>
                 </tr>
                @endforeach
             </tbody>

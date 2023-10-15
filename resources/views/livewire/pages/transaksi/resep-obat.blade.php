@@ -79,7 +79,13 @@
                                                 </div>
                                             </div> --}}
 
-                                           <livewire:component.form-resep :dr_cd="$medik->dr_cd">
+                                            @if($racik)
+                                                <livewire:component.form-resep-racik :dr_cd="$medik->dr_cd">
+                                            @else
+                                                <livewire:component.form-resep :dr_cd="$medik->dr_cd">
+                                            @endif
+
+
                                         </div>
                                     </div>
                                     <!-- /.card -->

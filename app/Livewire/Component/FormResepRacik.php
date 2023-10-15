@@ -8,7 +8,7 @@ use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
-class FormResep extends Component
+class FormResepRacik extends Component
 {
 
     public $hari , $dosisdepan, $dosisbelakang;
@@ -128,6 +128,6 @@ class FormResep extends Component
 
     public function render()
     {
-        return view('livewire.component.form-resep');
+        return view('livewire.component.form-resep-racik');
     }
 }

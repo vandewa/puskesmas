@@ -13,9 +13,17 @@ class ModalObat extends Component
     use WithPagination;
     public $search;
     public $modal = false;
+    public $hasil;
 
     public function pilih($id) {
         $this->dispatch('pilih-obat', $id);
+        $this->showModal();
+    }
+    public function pilihEnter() {
+        if(count($this->hasil) == 1) {
+            $this->dispatch('pilih-obat', $this->hasil[0]->item_cd);
+        }
+
         $this->showModal();
     }
 
@@ -33,6 +41,7 @@ class ModalObat extends Component
         $data = InvItemMaster::with(['satuan'])
         ->cari($this->search)
             ->paginate(10);
+
         return view('livewire.component.modal-obat', [
             'posts' => $data
         ]);
