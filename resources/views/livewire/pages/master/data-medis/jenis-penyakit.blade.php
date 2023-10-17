@@ -27,7 +27,7 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Kode</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" wire:model='form.icd_cd'
-                                                    placeholder="Kode Tindakan"
+                                                    placeholder="Kode Penyakit"
                                                     @if ($edit) disabled @endif>
                                                 @error('form.icd_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
@@ -38,7 +38,7 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" wire:model='form.icd_nm'
-                                                    placeholder="Nama Tindakan">
+                                                    placeholder="Nama Penyakit">
                                                 @error('form.icd_nm')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror

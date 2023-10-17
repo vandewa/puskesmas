@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ComAccount extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'com_account';
@@ -32,6 +33,9 @@ use \OwenIt\Auditing\Auditable;
     public $incrementing = false;
 
     protected $guarded = [];
+
+    public $keyType = 'string';
+
 
 
     /**
@@ -59,5 +63,11 @@ use \OwenIt\Auditing\Auditable;
 
     ];
 
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('account_cd', 'ilike', "%$s%")->orWhere('account_nm', 'ilike', "%$s%");
+        }
+    }
 
 }

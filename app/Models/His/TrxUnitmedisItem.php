@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -21,7 +22,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxUnitmedisItem extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_unitmedis_item';
@@ -69,7 +70,12 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(TrxUnitMedis::class, 'medunit_cd');
     }
 
-
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('medicalunit_cd', 'ilike', "%$s%")->orWhere('medicalunit_nm', 'ilike', "%$s%");
+        }
+    }
 
 
 }

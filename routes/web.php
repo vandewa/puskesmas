@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kamar;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kelas;
@@ -13,13 +15,11 @@ use App\Livewire\Pages\Master\DataMedis\JadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\JenisPenyakit;
 use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
-use App\Livewire\Pages\Pendaftaran;
-use App\Livewire\Pages\Pasien\ListPasien;
-use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
+use App\Livewire\Pages\Master\DataMedis\Spesialis;
+use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Pages\Registrasi\RawatInap;
-use App\Http\Controllers\HelperController;
 use App\Livewire\Pages\Master\DataInventori\Golongan;
 use App\Livewire\Pages\Master\DataInventori\Inventori;
 use App\Livewire\Pages\Master\DataInventori\Kelompok;
@@ -31,13 +31,17 @@ use App\Livewire\Pages\Master\DataInventori\Principal;
 use App\Livewire\Pages\Master\DataInventori\Supplier;
 use App\Livewire\Pages\Master\DataInventori\Tipe;
 use App\Livewire\Pages\Master\DataInventori\UnitSatuan;
+use App\Livewire\Pages\Master\DataMedis\Tarif\General;
 use App\Livewire\Pages\Master\DataUmum\DataPuskesmas;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
 use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
 use App\Livewire\Pages\Transaksi\RekamMedis;
 use App\Livewire\Pages\Transaksi\ResepObat;
-
+use App\Livewire\Pages\Master\DataMedis\Tarif\Paramedis as TarifParamedis;
+use App\Livewire\Pages\Master\DataMedis\Tarif\Kelas as TarifKelas;
+use App\Livewire\Pages\Master\DataMedis\Tarif\UnitMedis;
+use App\Livewire\Pages\Master\DataMedis\Tarif\TindakanMedis as TarifTindakanMedis;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +101,14 @@ Route::middleware([
         Route::get('kelompok', Kelompok::class)->name('kelompok');
         Route::get('golongan', Golongan::class)->name('golongan');
         Route::get('list-tipe', ListTipe::class)->name('tipe-inventori.index');
+
+        Route::group(['prefix' => 'tarif', 'as' => 'tarif.'], function () {
+            Route::get('general', General::class)->name('general');
+            Route::get('paramedis', TarifParamedis::class)->name('paramedis');
+            Route::get('unit-medis', UnitMedis::class)->name('unit-medis');
+            Route::get('kelas', TarifKelas::class)->name('kelas');
+            Route::get('tindakan-medis', TarifTindakanMedis::class)->name('tindakan-medis');
+        });
 
 
     });

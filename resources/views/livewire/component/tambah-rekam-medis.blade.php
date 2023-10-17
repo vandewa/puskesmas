@@ -22,7 +22,7 @@
                                         <label for="" class="col-sm-3 col-form-label">Pencarian ICD</label>
                                         <div class="col-md-9">
                                             <div class="input-group ">
-                                                <p class="form-control">{{ $icd->icd_nm ?? '' }}</p>
+                                                <p class="form-control">{{ $icd->icd_cd ?? '' }}</p>
                                                 <span class="input-group-append">
                                                     <button type="button" class="btn btn-info btn-flat"
                                                         wire:click="$dispatch('show-modal-diagnosa')">Cari</button>
@@ -56,7 +56,7 @@
                                     <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" value="{{ now() }}"
+                                            <input type="date" class="form-control"
                                                 wire:model='form.datetime_record'>
                                             @error('form.datetime_record')
                                                 <span class="form-text text-danger">{{ $message }}</span>

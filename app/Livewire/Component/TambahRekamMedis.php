@@ -35,12 +35,15 @@ class TambahRekamMedis extends Component
         $this->dokter = TrxMedicalRecord::get()->toArray();
         $this->diagnosa = get_code('RM_TP');
         $this->kasus = get_code('CASE_TP');
+        $this->form['datetime_record'] = date('Y-m-d');
     }
 
     #[On('pilih-diagnosa')]
     public function pilihDiagnosa($id = "")
     {
         $this->icd = TrxIcd::find($id);
+        $this->form['icd_cd'] = $this->icd->icd_cd;
+        $this->form['medical_data'] = $this->icd->icd_nm;
     }
 
 

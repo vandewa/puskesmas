@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -24,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxTarifGeneral extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_tarif_general';
@@ -33,6 +34,7 @@ use \OwenIt\Auditing\Auditable;
 
     protected $guarded = [];
 
+    public $keyType = 'string';
 
 
     /**
@@ -73,17 +75,26 @@ use \OwenIt\Auditing\Auditable;
 
     ];
 
-    public function kelas(){
+    public function kelas()
+    {
         return $this->belongsTo(TrxKelas::class, 'kelas_cd');
     }
 
-    public function asuransi(){
+    public function asuransi()
+    {
         return $this->belongsTo(TrxInsurance::class, 'insurance_cd');
     }
 
     public function account()
     {
         return $this->belongsTo(ComAccount::class, 'account_cd');
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('tarif_nm', 'ilike', "%$s%");
+        }
     }
 
 

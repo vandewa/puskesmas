@@ -1,34 +1,63 @@
 <?php
 
-namespace App\Livewire\Pages\Master\DataMedis\InstalasiMedis;
+namespace App\Livewire\Pages\Master\DataMedis\Tarif;
 
-use App\Models\His\TrxUnitMedis;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Models\His\TrxKelas;
 use Livewire\WithPagination;
+use App\Models\His\ComAccount;
+use App\Models\His\TrxInsurance;
+use App\Models\His\TrxTarifKelas;
 
-class Poliklinik extends Component
+class Kelas extends Component
 {
     use WithPagination;
 
     public $form = [
-        'medunit_cd' => '',
-        'medunit_nm' => '',
-        'medicalunit_tp' => 'MEDICALUNIT_TP_1',
+        'tarif' => '0',
+        'kelas_cd' => '',
+        'insurance_cd' => '',
+        'account_cd' => '',
     ];
-    public $cari, $edit = false;
+    public $cari, $edit = false, $account;
     public $idHapus;
+
+    public function mount()
+    {
+        $this->ambilKelas();
+        $this->ambilAsuransi();
+    }
+
+    #[On('pilih-account')]
+    public function pilihAccount($id = "")
+    {
+        $this->account = ComAccount::find($id);
+        $this->form['account_cd'] = $this->account->account_cd;
+    }
+
+    public function ambilKelas()
+    {
+        return TrxKelas::all()->toArray();
+    }
+
+    public function ambilAsuransi()
+    {
+        return TrxInsurance::all()->toArray();
+    }
 
     public function getEdit($a)
     {
-        $this->form = TrxUnitMedis::find($a)->only(['medunit_cd', 'medunit_nm']);
+        $this->form = TrxTarifKelas::find($a)->only(['tarif', 'kelas_cd', 'insurance_cd', 'account_cd']);
+        $this->idHapus = $a;
         $this->edit = true;
+        $this->pilihAccount($this->form['account_cd']);
     }
 
     public function batal()
     {
         $this->edit = false;
         $this->reset();
-
     }
 
     public function save()
@@ -45,12 +74,10 @@ class Poliklinik extends Component
     public function store()
     {
         $this->validate([
-            'form.medunit_cd' => 'required',
-            'form.medunit_nm' => 'required',
+            'form.tarif' => 'required',
         ]);
 
-        TrxUnitMedis::create($this->form);
-
+        TrxTarifKelas::create($this->form);
     }
 
     public function delete($id)
@@ -76,22 +103,24 @@ class Poliklinik extends Component
 
     public function hapus()
     {
-        TrxUnitMedis::destroy($this->idHapus);
+        TrxTarifKelas::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
     {
-        TrxUnitMedis::find($this->form['medunit_cd'])->update($this->form);
+        TrxTarifKelas::find($this->idHapus)->update($this->form);
         $this->reset();
         $this->edit = false;
     }
 
     public function render()
     {
-        $data = TrxUnitMedis::cari($this->cari)->where('medicalunit_tp', 'MEDICALUNIT_TP_1')->paginate(10);
-        return view('livewire.pages.master.data-medis.instalasi-medis.poliklinik', [
-            'post' => $data
+        $data = TrxTarifKelas::orderBy('updated_at', 'desc')->paginate(10);
+        return view('livewire.pages.master.data-medis.tarif.kelas', [
+            'post' => $data,
+            'listKelas' => $this->ambilKelas(),
+            'listAsuransi' => $this->ambilAsuransi(),
         ]);
     }
 }

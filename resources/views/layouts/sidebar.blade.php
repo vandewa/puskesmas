@@ -131,6 +131,7 @@
                               {{ Request::segment(2) == 'tempat-tidur' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'list-jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'jadwal-praktek' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'tarif' ? 'menu-is-opening menu-open' : '' }}
                               ">
                                   <a href="#"
                                       class="nav-link
@@ -146,6 +147,7 @@
                                       {{ Request::segment(2) == 'tempat-tidur' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'list-jadwal-praktek' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'jadwal-praktek' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'tarif' ? 'active' : '' }}
                                       ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
@@ -309,6 +311,78 @@
                                                       <p>Tempat Tidur</p>
                                                   </a>
                                               </li>
+                                          </ul>
+                                      </li>
+                                      <li
+                                          class="nav-item
+                                          {{ Request::segment(2) == 'tarif' ? 'menu-is-opening menu-open' : '' }}
+                                          ">
+                                          <a href="#"
+                                              class="nav-link
+                                              {{ Request::segment(2) == 'tarif' ? 'active' : '' }}
+                                              ">
+                                              <i class="fa fa-folder nav-icon ml-3"></i>
+                                              <p>Tarif
+                                                  <i class="fas fa-angle-left right"></i>
+                                              </p>
+                                          </a>
+                                          <ul class="nav nav-treeview">
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tarif.general') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(3) == 'general' ? 'active' : '' }}">
+                                                      @if (Request::segment(3) == 'general')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>General</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tarif.paramedis') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(3) == 'paramedis' ? 'active' : '' }}">
+                                                      @if (Request::segment(3) == 'paramedis')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Paramedis</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tarif.unit-medis') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(3) == 'unit-medis' ? 'active' : '' }}">
+                                                      @if (Request::segment(3) == 'unit-medis')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Unit Medis</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tarif.kelas') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(3) == 'kelas' ? 'active' : '' }}">
+                                                      @if (Request::segment(3) == 'kelas')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Kelas</p>
+                                                  </a>
+                                              </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tarif.tindakan-medis') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
+                                                      @if (Request::segment(3) == 'tindakan-medis')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Tindakan Medis</p>
+                                                  </a>
+                                              </li>
+
                                           </ul>
                                       </li>
                                       <li class="nav-item">
