@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -52,6 +53,8 @@ class InvItemMaster extends Model implements Auditable
     public $incrementing = false;
 
     protected $primaryKey = 'item_cd';
+
+    public $keyType = 'string';
 
 
 
@@ -119,27 +122,32 @@ class InvItemMaster extends Model implements Auditable
 
     ];
 
-    public function satuan(){
+    public function satuan()
+    {
         return $this->belongsTo(InvUnit::class, 'unit_cd');
     }
 
-    public function type(){
+    public function type()
+    {
         return $this->belongsTo(InvItemType::class, 'type_cd');
     }
 
-    public function stock(){
+    public function stock()
+    {
 
     }
 
-    public function generic(){
+    public function generic()
+    {
         return $this->belongsTo(ComCode::class, 'generic_st');
     }
 
     // cari berdasarkan nama dan barcode
-    public function scopeCari($filter, $value) {
-        if($value){
-           return $filter->where('item_nm', 'ilike', "%$value%")
-            ->orWhere('barcode', 'ilike', "%$value%");
+    public function scopeCari($filter, $value)
+    {
+        if ($value) {
+            return $filter->where('item_nm', 'ilike', "%$value%")
+                ->orWhere('barcode', 'ilike', "%$value%");
         }
     }
 }

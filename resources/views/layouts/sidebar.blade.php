@@ -382,6 +382,17 @@
                                                       <p>Tindakan Medis</p>
                                                   </a>
                                               </li>
+                                              <li class="nav-item">
+                                                  <a href="{{ route('master.tarif.inventori') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(3) == 'inventori' ? 'active' : '' }}">
+                                                      @if (Request::segment(3) == 'inventori')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
+                                                      <p>Inventori</p>
+                                                  </a>
+                                              </li>
 
                                           </ul>
                                       </li>

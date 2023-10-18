@@ -42,6 +42,7 @@ use App\Livewire\Pages\Master\DataMedis\Tarif\Paramedis as TarifParamedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\Kelas as TarifKelas;
 use App\Livewire\Pages\Master\DataMedis\Tarif\UnitMedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\TindakanMedis as TarifTindakanMedis;
+use App\Livewire\Pages\Master\DataMedis\Tarif\Inventori as TarifInventori;
 
 /*
 |--------------------------------------------------------------------------
@@ -108,6 +109,7 @@ Route::middleware([
             Route::get('unit-medis', UnitMedis::class)->name('unit-medis');
             Route::get('kelas', TarifKelas::class)->name('kelas');
             Route::get('tindakan-medis', TarifTindakanMedis::class)->name('tindakan-medis');
+            Route::get('inventori', TarifInventori::class)->name('inventori');
         });
 
 
