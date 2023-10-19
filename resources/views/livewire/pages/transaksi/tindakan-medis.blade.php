@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Rekam Medis</h1>
+                <h1 class="m-0">Tindakan Medis</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item active">Tindakan Medis</li>
                 </ol>
             </div>
         </div>
@@ -20,78 +20,82 @@
                         <livewire:component.link-transaksi :medicalcd="$medik->medical_cd" />
                         <div class="card-body">
                             <div class="tab-pane fade active show">
-                                <div class="tab-pane active show fade" id="custom-tabs-one-rm" role="tabpanel"
-                                    aria-labelledby="custom-tabs-one-rm-tab">
+                                <div class="tab-pane active show fade" id="custom-tabs-one-tindakan" role="tabpanel"
+                                    aria-labelledby="custom-tabs-one-tindakan-tab">
                                     <livewire:component.detail-pasien :medicalcd="$medicalcd">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
                                                     <div class="card-header p-0 pt-1">
-                                                        <ul class="nav nav-tabs" id="custom-tabs-two-transaksi-tab"
+                                                        <ul class="nav nav-tabs" id="custom-tabs-three-transaksi-tab"
                                                             role="tablist">
                                                             <li class="nav-item">
                                                                 <a class="nav-link active"
-                                                                    id="custom-tabs-six-riwayat-rm-tab"
+                                                                    id="custom-tabs-three-permintaan-lab-tab"
                                                                     data-toggle="pill"
-                                                                    href="#custom-tabs-six-riwayat-rm" role="tab"
-                                                                    aria-controls="custom-tabs-six-riwayat-rm"
-                                                                    aria-selected="true">Riwayat Kunjungan</a>
+                                                                    href="#custom-tabs-three-permintaan-tindakan"
+                                                                    role="tab"
+                                                                    aria-controls="custom-tabs-three-permintaan-tindakan"
+                                                                    aria-selected="true">Permintaan Tindakan</a>
                                                             </li>
                                                             <li class="nav-item">
                                                                 <a class="nav-link"
-                                                                    id="custom-tabs-two-data-rekam-medis-tab"
+                                                                    id="custom-tabs-three-proses-lab-tab"
                                                                     data-toggle="pill"
-                                                                    href="#custom-tabs-two-data-rekam-medis"
+                                                                    href="#custom-tabs-three-tindakan-diproses"
                                                                     role="tab"
-                                                                    aria-controls="custom-tabs-two-data-rekam-medis"
-                                                                    aria-selected="false">Data Rekam Medis</a>
+                                                                    aria-controls="custom-tabs-three-proses-lab"
+                                                                    aria-selected="false">Tindakan Diproses</a>
                                                             </li>
                                                             <li class="nav-item">
                                                                 <a class="nav-link"
-                                                                    id="custom-tabs-two-riwayat-rekam-medis-tab"
+                                                                    id="custom-tabs-three-riwayat-tindakan-tab"
                                                                     data-toggle="pill"
-                                                                    href="#custom-tabs-two-riwayat-rekam-medis"
+                                                                    href="#custom-tabs-three-riwayat-tindakan"
                                                                     role="tab"
-                                                                    aria-controls="custom-tabs-two-riwayat-rekam-medis"
-                                                                    aria-selected="false">Riwayat Rekam
-                                                                    Medis</a>
+                                                                    aria-controls="custom-tabs-three-riwayat-tindakan"
+                                                                    aria-selected="false">Riwayat Tindakan</a>
                                                             </li>
 
                                                             <li class="nav-item"
-                                                                style="margin-left: auto; background:rgb(255, 255, 49);">
+                                                                style="margin-left: auto; background:yellow;">
                                                                 <a class="nav-link"
-                                                                    id="custom-tabs-two-tambah-rekam-medis-tab"
+                                                                    id="custom-tabs-three-tambah-tindakan-tab"
                                                                     data-toggle="pill"
-                                                                    href="#custom-tabs-two-tambah-rekam-medis"
+                                                                    href="#custom-tabs-three-tambah-tindakan"
                                                                     role="tab"
-                                                                    aria-controls="custom-tabs-two-tambah-rekam-medis"
+                                                                    aria-controls="custom-tabs-three-tambah-tindakan"
                                                                     aria-selected="false"><i
                                                                         class="fas fa-plus-square mr-2"
                                                                         style="color:black"></i><span
-                                                                        style="color:black">Tambah Rekam
-                                                                        Medis</span></a>
+                                                                        style="color:black">Tambah Tindakan</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                     <div class="card-body">
-                                                        <div class="tab-content" id="custom-tabs-six-tabContent">
+                                                        <div class="tab-content" id="custom-tabs-three-tabContent">
                                                             <div class="tab-pane fade show active"
-                                                                id="custom-tabs-six-riwayat-rm" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-six-riwayat-rm-tab">
-                                                                {{-- <livewire:component.resep.table-resep :medicalcd="$medik->medical_cd"> --}}
+                                                                id="custom-tabs-three-permintaan-tindakan"
+                                                                role="tabpanel"
+                                                                aria-labelledby="custom-tabs-three-permintaan-tindakan-tab">
+                                                                PERMINTAAN TINDAKAN
                                                             </div>
                                                             <div class="tab-pane fade"
-                                                                id="custom-tabs-two-data-rekam-medis" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-two-data-rekam-medis-tab">
-                                                                {{-- <livewire:component.resep.resep-table-resep-riwayat
-                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd"> --}}
+                                                                id="custom-tabs-three-tindakan-diproses" role="tabpanel"
+                                                                aria-labelledby="custom-tabs-three-tindakan-diproses-tab">
+                                                                TINDAKAN DIPROSES
+                                                            </div>
+                                                            <div class="tab-pane fade"
+                                                                id="custom-tabs-three-riwayat-tindakan" role="tabpanel"
+                                                                aria-labelledby="custom-tabs-three-riwayat-tindakan-tab">
+                                                                RIWAYAT TINDAKAN
                                                             </div>
 
                                                             <div class="tab-pane fade"
-                                                                id="custom-tabs-two-tambah-rekam-medis" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-two-tambah-rekam-medis-tab">
+                                                                id="custom-tabs-three-tambah-tindakan" role="tabpanel"
+                                                                aria-labelledby="custom-tabs-three-tambah-tindakan-tab">
                                                                 <div>
-                                                                    <livewire:component.tambah-rekam-medis
+                                                                    <livewire:component.tambah-tindakan-medis
                                                                         :medicalcd="$medik->medical_cd">
                                                                 </div>
 

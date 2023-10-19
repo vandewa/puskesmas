@@ -25,11 +25,11 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}"> --}}
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/toastr/toastr.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}"> --}}  
+    {{-- <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/hover-master/css/hover.css') }}">
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
@@ -102,7 +102,7 @@
     <script src="{{ asset('AdminLTE/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
     <!-- daterangepicker -->
     <script src="{{ asset('AdminLTE/plugins/moment/moment.min.js') }}"></script>
-    <script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script>
+    {{-- <script src="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.js') }}"></script> --}}
     <!-- Tempusdominus Bootstrap 4 -->
     <script src="{{ asset('AdminLTE/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
     <!-- Summernote -->
@@ -142,6 +142,18 @@
 
         });
     </script>
+
+    {{-- <script>
+        $(function() {
+
+            $('#reservationdatetime').datetimepicker({
+                icons: {
+                    time: 'far fa-clock'
+                }
+            });
+
+        });
+    </script> --}}
 </body>
 
 </html>

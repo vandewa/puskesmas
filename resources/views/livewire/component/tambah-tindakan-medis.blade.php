@@ -64,10 +64,15 @@
                                     <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Tgl
                                             Permintaan</label>
-                                        <div class="col-md-9">
-                                            <input type="datetime-local" class="form-control"
-                                                wire:model='form.datetime_trx'>
-                                            @error('form.datetime_trx')
+                                        <div class="col-md-5">
+                                            <input type="date" class="form-control" wire:model='tanggal'>
+                                            @error('tanggal')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="time" class="form-control" wire:model='jam'>
+                                            @error('jam')
                                                 <span class="form-text text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
@@ -77,7 +82,7 @@
                                         <div class="col-md-9">
                                             <select class="form-control" wire:model="form.dr_cd">
                                                 <option value="">Pilih Dokter</option>
-                                                @foreach ($listDokter ?? [] as $item)
+                                                @foreach ($dokter ?? [] as $item)
                                                     <option value="{{ $item['dr_cd'] }}">
                                                         {{ $item['dr_nm'] }}</option>
                                                 @endforeach

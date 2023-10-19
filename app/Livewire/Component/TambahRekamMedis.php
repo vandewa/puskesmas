@@ -6,6 +6,8 @@ use Livewire\Component;
 use App\Models\His\TrxIcd;
 use Livewire\Attributes\On;
 use Livewire\WithPagination;
+use App\Models\His\TrxDokter;
+use App\Models\His\TrxMedical;
 use App\Models\His\TrxMedicalRecord;
 
 class TambahRekamMedis extends Component
@@ -26,16 +28,20 @@ class TambahRekamMedis extends Component
         'pemeriksaan_penunjang' => '',
         'medical_note' => '',
     ];
-    public $cari, $edit = false, $dokter, $diagnosa, $kasus, $icd;
+    public $cari, $edit = false, $dokter, $dr_cd, $diagnosa, $kasus, $icd, $medicalcd;
     public $idHapus, $idnya;
 
 
-    public function mount($id = "")
+    public function mount()
     {
-        $this->dokter = TrxMedicalRecord::get()->toArray();
+
+        // dd($this->medicalcd);
         $this->diagnosa = get_code('RM_TP');
         $this->kasus = get_code('CASE_TP');
         $this->form['datetime_record'] = date('Y-m-d');
+        $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
+        $this->dokter = TrxDokter::all()->toArray();
+
     }
 
     #[On('pilih-diagnosa')]
@@ -62,15 +68,15 @@ class TambahRekamMedis extends Component
     {
         $this->validate([
             'form.icd_cd' => 'required',
-            'form.medical_cd' => 'required',
-            'form.dr_cd' => 'required',
-            'form.datetime_record' => 'required',
-            'form.anamnesa' => 'required',
-            'form.medical_data' => 'required',
-            'form.rm_tp' => 'required',
-            'form.case_tp' => 'required',
-            'form.pemeriksaan_fisik' => 'required',
-            'form.pemeriksaan_penunjang' => 'required',
+            // 'form.medical_cd' => 'required',
+            // 'form.dr_cd' => 'required',
+            // 'form.datetime_record' => 'required',
+            // 'form.anamnesa' => 'required',
+            // 'form.medical_data' => 'required',
+            // 'form.rm_tp' => 'required',
+            // 'form.case_tp' => 'required',
+            // 'form.pemeriksaan_fisik' => 'required',
+            // 'form.pemeriksaan_penunjang' => 'required',
         ]);
 
         TrxMedicalRecord::create($this->form);

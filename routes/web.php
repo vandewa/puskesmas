@@ -10,13 +10,15 @@ use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kamar;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kelas;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
-use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
 use App\Livewire\Pages\Master\DataMedis\JadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\JenisPenyakit;
 use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
+use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
+use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Laboratorium;
+use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Radiologi;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Pages\Registrasi\RawatInap;
@@ -38,6 +40,7 @@ use App\Livewire\Pages\Transaksi\DetailRawatJalan;
 use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
 use App\Livewire\Pages\Transaksi\RekamMedis;
 use App\Livewire\Pages\Transaksi\ResepObat;
+use App\Livewire\Pages\Transaksi\TindakanMedis as TransaksiTindakanMedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\Paramedis as TarifParamedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\Kelas as TarifKelas;
 use App\Livewire\Pages\Master\DataMedis\Tarif\UnitMedis;
@@ -82,6 +85,8 @@ Route::middleware([
         Route::get('dokter', Dokter::class)->name('dokter');
         Route::get('paramedis', Paramedis::class)->name('paramedis');
         Route::get('poliklinik', Poliklinik::class)->name('poliklinik');
+        Route::get('laboratorium', Laboratorium::class)->name('laboratorium');
+        Route::get('radiologi', Radiologi::class)->name('radiologi');
         Route::get('tindakan-medis', TindakanMedis::class)->name('tindakan-medis');
         Route::get('jenis-penyakit', JenisPenyakit::class)->name('jenis-penyakit');
         Route::get('bangsal', Bangsal::class)->name('bangsal');
@@ -121,6 +126,7 @@ Route::middleware([
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
             Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
             Route::get('resep-obat/{id?}', ResepObat::class)->name('resep-obat');
+            Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
         });
     });
 
@@ -130,7 +136,6 @@ Route::middleware([
     });
 
     Route::get('detail', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
-    Route::get('rekam-medis', RekamMedis::class)->name('rekam-medis');
 
     Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');

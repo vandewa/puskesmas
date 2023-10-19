@@ -6,7 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\His\TrxMedical;
 
-class RekamMedis extends Component
+class TindakanMedis extends Component
 {
     use WithPagination;
 
@@ -23,6 +23,6 @@ class RekamMedis extends Component
 
     public function render()
     {
-        return view('livewire.pages.transaksi.rekam-medis');
+        return view('livewire.pages.transaksi.tindakan-medis');
     }
 }

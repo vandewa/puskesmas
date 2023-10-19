@@ -123,6 +123,8 @@
                               {{ Request::segment(2) == 'dokter' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'paramedis' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'laboratorium' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'radiologi' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'tindakan-medis' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'jenis-penyakit' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'bangsal' ? 'menu-is-opening menu-open' : '' }}
@@ -139,6 +141,8 @@
                                       {{ Request::segment(2) == 'dokter' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'paramedis' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'poliklinik' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'laboratorium' ? 'active' : '' }}
+                                      {{ Request::segment(2) == 'radiologi' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'tindakan-medis' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'jenis-penyakit' ? 'active' : '' }}
                                       {{ Request::segment(2) == 'bangsal' ? 'active' : '' }}
@@ -190,7 +194,11 @@
                                           </a>
                                       </li>
                                       <li
-                                          class="nav-item  {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}">
+                                          class="nav-item  
+                                          {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}
+                                          {{ Request::segment(2) == 'laboratorium' ? 'menu-is-opening menu-open' : '' }}
+                                          {{ Request::segment(2) == 'radiologi' ? 'menu-is-opening menu-open' : '' }}
+                                          ">
                                           <a href="#"
                                               class="nav-link {{ Request::segment(2) == 'poliklinik' ? 'active' : '' }}">
                                               <i class="fa fa-folder nav-icon ml-3"></i>
@@ -211,14 +219,24 @@
                                                   </a>
                                               </li>
                                               <li class="nav-item">
-                                                  <a href="#" wire:navigate class="nav-link">
-                                                      <i class="far fa-circle nav-icon ml-5"></i>
+                                                  <a href="{{ route('master.laboratorium') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(2) == 'laboratorium' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'laboratorium')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
                                                       <p>Laboratorium</p>
                                                   </a>
                                               </li>
                                               <li class="nav-item">
-                                                  <a href="#" wire:navigate class="nav-link">
-                                                      <i class="far fa-circle nav-icon ml-5"></i>
+                                                  <a href="{{ route('master.radiologi') }}" wire:navigate
+                                                      class="nav-link  {{ Request::segment(2) == 'radiologi' ? 'active' : '' }}">
+                                                      @if (Request::segment(2) == 'radiologi')
+                                                          <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                                      @else
+                                                          <i class="far fa-circle nav-icon ml-5"></i>
+                                                      @endif
                                                       <p>Radiologi</p>
                                                   </a>
                                               </li>
@@ -628,9 +646,9 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="{{ route('transaksi.rawat-jalan.rekam-medis') }}"
-                                      class="nav-link  @if (Request::is('transaksi/rawat-jalan/rekam-medis*')) active @endif" wire:navigate>
-                                      @if (request()->is('transaksi/rawat-jalan/rekam-medis*') ? 'active' : '')
+                                  <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.rekam-medis') }}"
+                                      wire:navigate class="nav-link">
+                                      @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.rekam-medis') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
                                           <i class="far fa-circle nav-icon ml-3"></i>
@@ -645,8 +663,13 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.tindakan-medis') }}"
+                                      wire:navigate class="nav-link">
+                                      @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.tindakan-medis') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>

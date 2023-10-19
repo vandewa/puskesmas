@@ -69,11 +69,11 @@
                                     <div class="row mb-2">
                                         <label class="col-sm-3 col-form-label">Dokter</label>
                                         <div class="col-md-9">
-                                            <select class="form-control" wire:model="form.dr_cd">
-                                                <option value="">-- Pilih Dokter --</option>
+                                            <select name="" id="" class="form-control"
+                                                wire:model.live='form.dr_cd'>
+                                                <option value="">Pilih Dokter</option>
                                                 @foreach ($dokter ?? [] as $item)
-                                                    <option value="{{ $item['dr_cd'] }}">{{ $item['dr_nm'] }}
-                                                    </option>
+                                                    <option value="{{ $item['dr_cd'] }}">{{ $item['dr_nm'] }}</option>
                                                 @endforeach
                                             </select>
                                             @error('form.dr_cd')
