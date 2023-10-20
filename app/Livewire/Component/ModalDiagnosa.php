@@ -13,7 +13,8 @@ class ModalDiagnosa extends Component
     public $search;
     public $modal = false;
 
-    public function pilih($id) {
+    public function pilih($id)
+    {
         $this->dispatch('pilih-diagnosa', $id);
         $this->showModal();
     }
@@ -27,7 +28,8 @@ class ModalDiagnosa extends Component
     }
 
     public function render()
-    {   $data = TrxIcd::cari($this->search)->paginate(10);
+    {
+        $data = TrxIcd::cari($this->search)->paginate(7);
         return view('livewire.component.modal-diagnosa', [
             'posts' => $data
         ]);

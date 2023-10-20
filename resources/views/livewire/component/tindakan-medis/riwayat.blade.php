@@ -14,7 +14,7 @@
         <tbody>
             @foreach ($posts as $item)
                 <tr>
-                    <td>{{ $item->medical->medical_nm ?? '' }}</td>
+                    <td>{{ $item->tindakan->treatment_nm ?? '' }}</td>
                     <td>{{ date('Y-m-d', strtotime($item->datetime_trx)) }}</td>
                     <td>{{ $item->dokter->dr_nm ?? '-' }}</td>
                     <td>{{ $item->medical_note ?? '-' }}</td>

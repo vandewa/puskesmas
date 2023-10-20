@@ -16,7 +16,7 @@ class Riwayat extends Component
 
     public function render()
     {
-        $data = TrxMedicalTindakan::paginate(10);
+        $data = TrxMedicalTindakan::with(['tindakan', 'dokter', 'medical'])->paginate(10);
         return view('livewire.component.tindakan-medis.riwayat', [
             'posts' => $data
         ]);

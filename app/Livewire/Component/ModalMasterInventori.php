@@ -29,7 +29,7 @@ class ModalMasterInventori extends Component
 
     public function render()
     {
-        $data = InvItemMaster::cari($this->search)->paginate(5);
+        $data = InvItemMaster::cari($this->search)->paginate(7);
         return view('livewire.component.modal-master-inventori', [
             'posts' => $data
         ]);

@@ -13,7 +13,8 @@ class ModalPasien extends Component
     public $search;
     public $modal = false;
 
-    public function pilih($id) {
+    public function pilih($id)
+    {
         $this->dispatch('pilih-orang', $id);
         $this->showModal();
     }
@@ -30,9 +31,9 @@ class ModalPasien extends Component
     public function render()
     {
         $data = TrxPasien::with(['provinsi', 'kabupaten', 'kecamatan', 'kelurahan', 'asuransi'])
-        ->carikusus($this->search)
-        ->orderBy('updated_at', 'desc')
-        ->paginate(10);
+            ->carikusus($this->search)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(7);
         return view('livewire.component.modal-pasien', [
             'posts' => $data
         ]);

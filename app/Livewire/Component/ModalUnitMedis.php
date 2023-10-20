@@ -29,7 +29,7 @@ class ModalUnitMedis extends Component
 
     public function render()
     {
-        $data = TrxUnitmedisItem::cari($this->search)->paginate(5);
+        $data = TrxUnitmedisItem::cari($this->search)->paginate(7);
         return view('livewire.component.modal-unit-medis', [
             'posts' => $data
         ]);

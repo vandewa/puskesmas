@@ -28,7 +28,7 @@ class ModalMasterTindakanMedis extends Component
     }
     public function render()
     {
-        $data = TrxTindakan::cari($this->search)->paginate(10);
+        $data = TrxTindakan::cari($this->search)->paginate(7);
         return view('livewire.component.modal-master-tindakan-medis', [
             'posts' => $data
         ]);
