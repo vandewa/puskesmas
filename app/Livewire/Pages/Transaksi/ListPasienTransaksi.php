@@ -11,21 +11,22 @@ use App\Models\His\TrxUnitMedis;
 
 class ListPasienTransaksi extends Component
 {
-    use  WithPagination;
+    use WithPagination;
     public $rm;
     public $poliklinik;
-    public $tanggal ;
+    public $tanggal;
     public $poli;
     public $listDokter;
     public $dokter;
-    public $url = 'transaksi.rawat-jalan.detail.rawat-jalan';
+    public $url = 'transaksi.rawat-jalan.data-transaksi';
 
-    public function mount($url = ""){
+    public function mount($url = "")
+    {
         $this->poli = TrxUnitMedis::where('medicalunit_tp', 'MEDICALUNIT_TP_1')->get()->toArray();
         $this->tanggal = date('Y-m-d');
         $this->listDokter = TrxDokter::all()->toArray();
 
-        if($url != ""){
+        if ($url != "") {
             $this->url = $url;
         }
     }

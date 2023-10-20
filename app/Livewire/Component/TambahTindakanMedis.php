@@ -12,7 +12,7 @@ use App\Models\His\TrxMedicalTindakan;
 
 class TambahTindakanMedis extends Component
 {
-    public $medicalcd, $tindakan, $tanggal, $jam, $dokter, $dr_cd;
+    public $medicalcd, $tindakan, $tanggal, $jam, $dokter, $dr_cd, $poli;
 
     public $form = [
         'medical_cd' => '',
@@ -22,6 +22,7 @@ class TambahTindakanMedis extends Component
         'datetime_trx' => '',
         'dr_cd' => '',
         'medical_note' => '',
+        'medunit_cd' => '',
     ];
 
     #[On('pilih-master-tindakan-medis')]
@@ -33,16 +34,12 @@ class TambahTindakanMedis extends Component
 
     public function mount()
     {
-        $this->ambilPoli();
         $this->tanggal = date('Y-m-d');
         $this->jam = date('h:i');
         $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
         $this->dokter = TrxDokter::all()->toArray();
-    }
-
-    public function ambilPoli()
-    {
-        return TrxUnitMedis::all()->toArray();
+        $this->form['medunit_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->medunit_cd;
+        $this->poli = TrxUnitMedis::all()->toArray();
     }
 
     public function save()
@@ -54,7 +51,6 @@ class TambahTindakanMedis extends Component
 
     public function store()
     {
-
         $this->form['datetime_trx'] = $this->tanggal . ' ' . $this->jam;
 
         $this->validate([
@@ -75,7 +71,6 @@ class TambahTindakanMedis extends Component
 
         return view('livewire.component.tambah-tindakan-medis', [
             'post' => $data,
-            'listPoli' => $this->ambilPoli(),
         ]);
     }
 }

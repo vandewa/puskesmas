@@ -34,6 +34,8 @@ class TrxTindakan extends Model implements Auditable
     protected $guarded = [];
 
     public $incrementing = false;
+    public $keyType = 'string';
+
 
     /**
      * The attributes that should be casted to native types.

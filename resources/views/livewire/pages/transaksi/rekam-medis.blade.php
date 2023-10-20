@@ -78,13 +78,20 @@
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-riwayat-rm" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-riwayat-rm-tab">
-                                                                {{-- <livewire:component.resep.table-resep :medicalcd="$medik->medical_cd"> --}}
+                                                                <livewire:component.rekam-medis.riwayat-kunjungan
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-two-data-rekam-medis" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-two-data-rekam-medis-tab">
-                                                                {{-- <livewire:component.resep.resep-table-resep-riwayat
-                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd"> --}}
+                                                                <livewire:component.rekam-medis.table-rekam-medis
+                                                                    :medicalcd="$medik->medical_cd">
+                                                            </div>
+                                                            <div class="tab-pane fade"
+                                                                id="custom-tabs-two-riwayat-rekam-medis" role="tabpanel"
+                                                                aria-labelledby="custom-tabs-two-riwayat-rekam-medis-tab">
+                                                                <livewire:component.rekam-medis.riwayat-rekam-medis
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
 
                                                             <div class="tab-pane fade"

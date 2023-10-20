@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -47,14 +48,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxMedical extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_medical';
 
-
     protected $guarded = [];
-
 
 
     protected $primaryKey = 'medical_cd';
@@ -62,6 +61,9 @@ use \OwenIt\Auditing\Auditable;
     public $incrementing = false;
 
     public $timestamps = true;
+
+    public $keyType = 'string';
+
 
 
 
@@ -151,12 +153,12 @@ use \OwenIt\Auditing\Auditable;
 
     public function dokter()
     {
-      return $this->belongsTo('App\Models\His\TrxDokter','dr_cd');
+        return $this->belongsTo('App\Models\His\TrxDokter', 'dr_cd');
     }
 
     public function poli()
     {
-      return $this->belongsTo('App\Models\His\TrxUnitMedis','medunit_cd');
+        return $this->belongsTo('App\Models\His\TrxUnitMedis', 'medunit_cd');
     }
 
     public function pasien()
@@ -186,7 +188,7 @@ use \OwenIt\Auditing\Auditable;
 
     public function subAsuransi()
     {
-        return $this->belongsTo(TrxInsuranceMember::class,'trx_insurance_member', 'insurance_tp');
+        return $this->belongsTo(TrxInsuranceMember::class, 'trx_insurance_member', 'insurance_tp');
     }
 
     public function status()
@@ -194,40 +196,54 @@ use \OwenIt\Auditing\Auditable;
         return $this->belongsTo(ComCode::class, 'medical_trx_st');
     }
 
-    public function jenisPerawatan(){
+    public function jenisPerawatan()
+    {
         return $this->belongsTo(ComCode::class, 'medical_tp');
     }
 
     // transaksi
 
-    public function medicalRecord(){
+    public function medicalRecord()
+    {
         return $this->hasMany(TrxMedicalRecord::class, 'medical_cd');
     }
 
-    public function ruang(){
+    public function ruang()
+    {
         return $this->belongsTo(TrxRuang::class, 'ruang_cd');
     }
 
-    public function scopeCarirm($filter, $value) {
-        if($value){
-           return $filter->whereHas('pasien', function($a) use($value) {
+    public function scopeCarirm($filter, $value)
+    {
+        if ($value) {
+            return $filter->whereHas('pasien', function ($a) use ($value) {
                 $a->where('no_rm', 'ilike', "%$value%");
             });
         }
     }
-    public function scopeCaripoliklinik($filter, $value) {
-        if($value){
-           return $filter->where('medunit_cd', $value);
+    public function scopeCaripoliklinik($filter, $value)
+    {
+        if ($value) {
+            return $filter->where('medunit_cd', $value);
         }
     }
-    public function scopeCaritanggal($filter, $value) {
-        if($value){
-           return $filter->where('datetime_in', 'ilike' ,"%$value%");
+    public function scopeCaritanggal($filter, $value)
+    {
+        if ($value) {
+            return $filter->where('datetime_in', 'ilike', "%$value%");
         }
     }
-    public function scopeCaridokter($filter, $value) {
-        if($value){
-           return $filter->where('dr_cd', 'ilike' ,"%$value%");
+    public function scopeCaridokter($filter, $value)
+    {
+        if ($value) {
+            return $filter->where('dr_cd', 'ilike', "%$value%");
+        }
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('paramedis_cd', 'ilike', "%$s%")->orWhere('paramedis_nm', 'ilike', "%$s%");
         }
     }
 

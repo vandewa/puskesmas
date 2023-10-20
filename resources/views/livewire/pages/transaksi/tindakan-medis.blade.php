@@ -83,12 +83,14 @@
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-tindakan-diproses" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-tindakan-diproses-tab">
-                                                                TINDAKAN DIPROSES
+                                                                <livewire:component.tindakan-medis.table-tindakan-medis
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-riwayat-tindakan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-riwayat-tindakan-tab">
-                                                                RIWAYAT TINDAKAN
+                                                                <livewire:component.tindakan-medis.riwayat
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
 
                                                             <div class="tab-pane fade"

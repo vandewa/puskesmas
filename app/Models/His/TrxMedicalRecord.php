@@ -74,5 +74,12 @@ class TrxMedicalRecord extends Model implements Auditable
         return $this->belongsTo(TrxPasien::class, 'medical_cd');
     }
 
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('paramedis_cd', 'ilike', "%$s%")->orWhere('paramedis_nm', 'ilike', "%$s%");
+        }
+    }
+
 
 }

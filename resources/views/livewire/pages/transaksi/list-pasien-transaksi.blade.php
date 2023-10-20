@@ -2,12 +2,28 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Transaksi Rawat Jalan</h1>
+                @if (Request::segment('4') == 'transaksi.rawat-jalan.rekam-medis')
+                    <h1 class="m-0">Rekam Medis</h1>
+                @elseif (Request::segment('4') == 'transaksi.rawat-jalan.tindakan-medis')
+                    <h1 class="m-0">Tindakan Medis</h1>
+                @elseif (Request::segment('4') == 'transaksi.rawat-jalan.resep-obat')
+                    <h1 class="m-0">Resep Obat</h1>
+                @else
+                    <h1 class="m-0">Transaksi Rawat Jalan</h1>
+                @endif
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rawat Jalan</li>
+                    @if (Request::segment('4') == 'transaksi.rawat-jalan.rekam-medis')
+                        <li class="breadcrumb-item active">Rekam Medis</li>
+                    @elseif (Request::segment('4') == 'transaksi.rawat-jalan.tindakan-medis')
+                        <li class="breadcrumb-item active">Tindakan Medis</li>
+                    @elseif (Request::segment('4') == 'transaksi.rawat-jalan.resep-obat')
+                        <li class="breadcrumb-item active">Resep Obat</li>
+                    @else
+                        <li class="breadcrumb-item active">Rawat Jalan</li>
+                    @endif
                 </ol>
             </div>
         </div>
@@ -22,17 +38,20 @@
                             <div class="row mt-3">
                                 <div class="col-md-6">
                                     <div class="form-group row">
-                                       <label for="" class="col-sm-3 col-form-label">No RM</label>
+                                        <label for="" class="col-sm-3 col-form-label">No RM</label>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" wire:model.live='rm' placeholder="Ketik No RM">
+                                            <input type="text" class="form-control" wire:model.live='rm'
+                                                placeholder="Ketik No RM">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                       <label for="" class="col-sm-3 col-form-label">PoliKlinik</label>
+                                        <label for="" class="col-sm-3 col-form-label">PoliKlinik</label>
                                         <div class="col-md-9" wire:ignore>
-                                            <select name="" class="form-control select2bs4" id="select2" wire:model.live='poliklinik'>
-                                                @foreach ($poli??[] as $item)
-                                                <option value="{{ $item['medunit_cd'] }}">{{ $item['medunit_nm'] }}</option>
+                                            <select name="" class="form-control select2bs4" id="select2"
+                                                wire:model.live='poliklinik'>
+                                                @foreach ($poli ?? [] as $item)
+                                                    <option value="{{ $item['medunit_cd'] }}">{{ $item['medunit_nm'] }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -41,20 +60,21 @@
                                 <div class="col-md-6">
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Tanggal</label>
-                                         <div class="col-md-9">
+                                        <div class="col-md-9">
                                             <input type="date" class="form-control" wire:model.live='tanggal'>
-                                         </div>
-                                     </div>
-                                     <div class="form-group row">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Dokter</label>
-                                         <div class="col-md-9" wire:ignore>
-                                            <select name="" class="form-control select2bs4" id="select3" wire:model.live='dokter'>
-                                                @foreach ($listDokter??[] as $item)
-                                                <option value="{{ $item['dr_cd'] }}">{{ $item['dr_nm'] }}</option>
+                                        <div class="col-md-9" wire:ignore>
+                                            <select name="" class="form-control select2bs4" id="select3"
+                                                wire:model.live='dokter'>
+                                                @foreach ($listDokter ?? [] as $item)
+                                                    <option value="{{ $item['dr_cd'] }}">{{ $item['dr_nm'] }}</option>
                                                 @endforeach
                                             </select>
-                                         </div>
-                                     </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +82,8 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal" :dokter="$dokter" :url="$url">
+                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal"
+                                :dokter="$dokter" :url="$url">
                         </div>
 
                     </div>
@@ -76,28 +97,26 @@
 </div>
 
 @push('js')
-
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#select2').select2({
                 theme: 'bootstrap4',
                 placeholder: "Pilih Poliklinik",
                 allowClear: true
             });
-            $('#select2').on('change', function (e) {
+            $('#select2').on('change', function(e) {
                 var data = $('#select2').select2("val");
-            @this.set('poliklinik', data);
+                @this.set('poliklinik', data);
             });
             $('#select3').select2({
                 theme: 'bootstrap4',
                 placeholder: "Pilih Dokter",
                 allowClear: true
             });
-            $('#select3').on('change', function (e) {
+            $('#select3').on('change', function(e) {
                 var data = $('#select3').select2("val");
-            @this.set('dokter', data);
+                @this.set('dokter', data);
             });
         });
     </script>
-
 @endpush

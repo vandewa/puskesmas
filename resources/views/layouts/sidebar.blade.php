@@ -636,8 +636,8 @@
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list') }}" wire:navigate
-                                      class="nav-link @if (Request::is('transaksi/rawat-jalan/list*')) active @endif">
-                                      @if (request()->is('transaksi/rawat-jalan/list*') ? 'active' : '')
+                                      class="nav-link @if (Request::is('transaksi/rawat-jalan/list')) active @endif">
+                                      @if (request()->is('transaksi/rawat-jalan/list') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
                                           <i class="far fa-circle nav-icon ml-3"></i>
@@ -647,7 +647,10 @@
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.rekam-medis') }}"
-                                      wire:navigate class="nav-link">
+                                      wire:navigate
+                                      class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.rekam-medis') ? 'active' : '' }}
+                                      {{ request()->is('transaksi/rawat-jalan/list/rekam-medis/*') ? 'active' : '' }}
+                                      ">
                                       @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.rekam-medis') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
@@ -687,7 +690,8 @@
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.resep-obat') }}"
-                                      wire:navigate class="nav-link">
+                                      wire:navigate
+                                      class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '' }}">
                                       @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else

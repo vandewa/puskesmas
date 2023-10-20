@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 use DB;
@@ -41,11 +42,10 @@ class TrxMedicalTindakan extends Model implements Auditable
     public $timestamps = true;
     protected $guarded = [''];
 
-
-
-
-
     protected $primaryKey = 'medical_tindakan_seqno';
+
+    public $keyType = 'string';
+
 
     public $fillable = [
         'medical_cd',
@@ -120,7 +120,7 @@ class TrxMedicalTindakan extends Model implements Auditable
 
     ];
 
-    public  function  tindakan()
+    public function tindakan()
     {
         return $this->belongsTo(TrxTindakan::class, 'treatment_cd');
     }
@@ -143,6 +143,13 @@ class TrxMedicalTindakan extends Model implements Auditable
     public function medical()
     {
         return $this->belongsTo(TrxMedical::class, 'medical_cd');
+    }
+
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('paramedis_cd', 'ilike', "%$s%")->orWhere('paramedis_nm', 'ilike', "%$s%");
+        }
     }
 
 

@@ -25,6 +25,8 @@ class TrxParamedis extends Model implements Auditable
     protected $guarded = [];
     public $incrementing = false;
     protected $primaryKey = 'paramedis_cd';
+    public $keyType = 'string';
+
 
     /**
      * The attributes that should be casted to native types.

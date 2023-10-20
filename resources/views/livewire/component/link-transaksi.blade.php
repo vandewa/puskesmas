@@ -1,32 +1,32 @@
 <div class="card-header p-0 pt-1">
     <ul class="nav nav-tabs" id="custom-tabs-one-transaksi-tab" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-transaksi-tab"
-                href="{{  route('transaksi.rawat-jalan.detail.rawat-jalan', $medicalcd??"")  }}" >Data
+        <li class="nav-item {{ Request::segment(3) == 'data-transaksi' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'data-transaksi' ? 'active' : '' }}"
+                id="custom-tabs-one-transaksi-tab"
+                href="{{ route('transaksi.rawat-jalan.data-transaksi', $medicalcd ?? '') }}" wire:navigate>Data
                 Transaksi</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-rm-tab" data-toggle="pill"
-                href="#custom-tabs-one-rm" >Rekam Medis</a>
+        <li class="nav-item {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
+                href="{{ route('transaksi.rawat-jalan.rekam-medis', $medicalcd ?? '') }}" wire:navigate>Rekam
+                Medis</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-tindakan-tab" data-toggle="pill"
-                href="#custom-tabs-one-tindakan">Tindakan
+        <li class="nav-item {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}"
+                id="custom-tabs-one-tindakan-tab"
+                href="{{ route('transaksi.rawat-jalan.tindakan-medis', $medicalcd ?? '') }}" wire:navigate>Tindakan
                 Medis</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-lab-tab" data-toggle="pill"
-                href="#custom-tabs-one-lab">Laboratorium</a>
+            <a class="nav-link" id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab">Laboratorium</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-radiologi-tab" data-toggle="pill"
-                href="#custom-tabs-one-radiologi"
-                >Radiologi</a>
+            <a class="nav-link" id="custom-tabs-one-radiologi-tab" href="#custom-tabs-one-radiologi">Radiologi</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-resep-tab"
-                href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd??"") }}"
-                >Resep/Obat</a>
+        <li class="nav-item {{ Request::segment(3) == 'resep-obat' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'resep-obat' ? 'active' : '' }}"
+                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
+                wire:navigate>Resep/Obat</a>
         </li>
     </ul>
 </div>

@@ -47,16 +47,16 @@
                                     <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Unit</label>
                                         <div class="col-md-9">
-                                            <select class="form-control">
+                                            <select class="form-control" wire:model="form.medunit_cd">
                                                 <option value="">Pilih Poli</option>
-                                                @foreach ($listPoli ?? [] as $item)
+                                                @foreach ($poli ?? [] as $item)
                                                     <option value="{{ $item['medunit_cd'] }}">
                                                         {{ $item['medunit_nm'] }}</option>
                                                 @endforeach
                                             </select>
-                                            {{-- @error('form.spesialis_cd')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror --}}
+                                            @error('form.medunit_cd')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>

@@ -79,6 +79,8 @@ class TambahRekamMedis extends Component
             // 'form.pemeriksaan_penunjang' => 'required',
         ]);
 
+        $this->form['pasien_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pasien_cd;
+        $this->form['medical_cd'] = $this->medicalcd;
         TrxMedicalRecord::create($this->form);
         // $this->redirect(route('master.jadwal-praktek.index'));
     }
