@@ -67,6 +67,9 @@ Route::get('/login', function () {
 Route::get('docs', function () {
     return File::get(public_path() . '/documentation.html');
 });
+Route::get('a', function () {
+    return File::get(public_path() . '/a.html');
+});
 
 Route::middleware([
     'auth:sanctum',
