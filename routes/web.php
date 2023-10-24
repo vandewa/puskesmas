@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Pages\Transaksi\ListPasienTransaksiRawatInap;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -127,6 +128,15 @@ Route::middleware([
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
         Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {
             Route::get('list/{url?}', ListPasienTransaksi::class)->name('list');
+            Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
+            Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
+            Route::get('data-transaksi/{id?}', DataTransaksi::class)->name('data-transaksi');
+            Route::get('resep-obat/{id?}', ResepObat::class)->name('resep-obat');
+            Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
+        });
+
+        Route::group(['prefix' => 'rawat-inap', 'as' => 'rawat-inap.'], function () {
+            Route::get('list/{url?}', ListPasienTransaksiRawatInap::class)->name('list');
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
             Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
             Route::get('data-transaksi/{id?}', DataTransaksi::class)->name('data-transaksi');

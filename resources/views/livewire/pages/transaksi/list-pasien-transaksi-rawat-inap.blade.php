@@ -2,27 +2,27 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                @if (Request::segment('4') == 'transaksi.rawat-jalan.rekam-medis')
+                @if (Request::segment('4') == 'transaksi.rawat-inap.rekam-medis')
                     <h1 class="m-0">Rekam Medis</h1>
-                @elseif (Request::segment('4') == 'transaksi.rawat-jalan.tindakan-medis')
+                @elseif (Request::segment('4') == 'transaksi.rawat-inap.tindakan-medis')
                     <h1 class="m-0">Tindakan Medis</h1>
-                @elseif (Request::segment('4') == 'transaksi.rawat-jalan.resep-obat')
+                @elseif (Request::segment('4') == 'transaksi.rawat-inap.resep-obat')
                     <h1 class="m-0">Resep Obat</h1>
                 @else
-                    <h1 class="m-0">Transaksi Rawat Jalan</h1>
+                    <h1 class="m-0">Transaksi Rawat Inap</h1>
                 @endif
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    @if (Request::segment('4') == 'transaksi.rawat-jalan.rekam-medis')
+                    @if (Request::segment('4') == 'transaksi.rawat-inap.rekam-medis')
                         <li class="breadcrumb-item active">Rekam Medis</li>
-                    @elseif (Request::segment('4') == 'transaksi.rawat-jalan.tindakan-medis')
+                    @elseif (Request::segment('4') == 'transaksi.rawat-inap.tindakan-medis')
                         <li class="breadcrumb-item active">Tindakan Medis</li>
-                    @elseif (Request::segment('4') == 'transaksi.rawat-jalan.resep-obat')
+                    @elseif (Request::segment('4') == 'transaksi.rawat-inap.resep-obat')
                         <li class="breadcrumb-item active">Resep Obat</li>
                     @else
-                        <li class="breadcrumb-item active">Rawat Jalan</li>
+                        <li class="breadcrumb-item active">Rawat Inap</li>
                     @endif
                 </ol>
             </div>
@@ -45,12 +45,12 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="" class="col-sm-3 col-form-label">PoliKlinik</label>
+                                        <label for="" class="col-sm-3 col-form-label">Kelas</label>
                                         <div class="col-md-9">
                                             <select name="" class="form-control select2bs4" id="select2"
-                                                wire:model.live='poliklinik'>
-                                                @foreach ($poli ?? [] as $item)
-                                                    <option value="{{ $item['medunit_cd'] }}">{{ $item['medunit_nm'] }}
+                                                wire:model.live='kelas'>
+                                                @foreach ($listKelas ?? [] as $item)
+                                                    <option value="{{ $item['kelas_cd'] }}">{{ $item['kelas_nm'] }}
                                                     </option>
                                                 @endforeach
                                             </select>
@@ -65,12 +65,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="" class="col-sm-3 col-form-label">Dokter</label>
+                                        <label for="" class="col-sm-3 col-form-label">Bangsal</label>
                                         <div class="col-md-9">
                                             <select name="" class="form-control select2bs4" id="select3"
-                                                wire:model.live='dokter'>
-                                                @foreach ($listDokter ?? [] as $item)
-                                                    <option value="{{ $item['dr_cd'] }}">{{ $item['dr_nm'] }}</option>
+                                                wire:model.live='bangsal'>
+                                                @foreach ($listBangsal ?? [] as $item)
+                                                    <option value="{{ $item['bangsal_cd'] }}">{{ $item['bangsal_nm'] }}
+                                                    </option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -82,8 +83,8 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal"
-                                :dokter="$dokter" :url="$url">
+                            <livewire:component.table-pasien :rm="$rm" :kelas="$kelas" :tanggal="$tanggal"
+                                :bangsal="$bangsal" :url="$url" tipePasien="MEDICAL_TP_02">
                         </div>
 
                     </div>

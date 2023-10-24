@@ -25,15 +25,22 @@ class RawatInap extends Component
     public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
-        "dr_cd" => null,
+        "dr_cd" => 'TIMDOKTER',
         "datetime_in" => null,
-        "medical_tp" => 'MEDICAL_TP_01',
+        "medical_tp" => 'MEDICAL_TP_02',
         "medical_trx_st" => 'MEDICAL_TRX_ST_0',
         "medunit_cd" => null,
         "queue_no" => null,
         "pasien_tp" => null,
         'jadwal_seqno' => null,
+        'ruang_cd' => null,
         "visit_tp" => 'VISIT_TP_00',
+    ];
+
+    public $ruangan = [
+        'ruang_cd' => null,
+        'datetime_start' => null,
+        'kelas_cd' => null,
     ];
 
     public $medicalRecord = [
@@ -87,30 +94,19 @@ class RawatInap extends Component
             return;
         }
 
-        // masukkan unsur poli
-        $jadwal = TrxJadwal::find($id);
-        $this->form['dr_cd'] = $jadwal->dr_cd;
-        $this->form['medunit_cd'] = $jadwal->medunit_cd;
+        // masukkan unsur ruangan
+        $jadwal = TrxRuang::find($id);
+
+        $this->ruangan['ruang_cd'] = $id;
+        $this->form['ruang_cd'] = $id;
+        $this->ruangan['datetime_start'] = now();
+        $this->ruangan['kelas_cd'] = $jadwal->kelas_cd;
 
         $ceking = TrxMedical::where('medunit_cd', $jadwal->medunit_cd)
             ->where('pasien_cd', $this->pasien->pasien_cd)
             ->where('medical_trx_st', 'MEDICAL_TRX_ST_0');
 
-        // cek pendaftaran poli sama
-        if (
-            $ceking->whereDate('datetime_in', date('Y-m-d'))->where('medical_tp', 'MEDICAL_TP_01')
-                ->where('jadwal_seqno', $id)->first()
-        ) {
-
-            $this->js("Swal.fire(
-                    'Oops!',
-                    'Pasien sudah terdaftar di poli yang sama!',
-                    'error'
-                  )");
-            return;
-        }
         // cek sudah terdaftar di rawat inap
-
         if ($ceking->where('medical_tp', 'MEDICAL_TP_02')->first()) {
             $this->js("Swal.fire(
                 'Oops!',
@@ -168,18 +164,19 @@ class RawatInap extends Component
     public function save()
     {
         $this->form['medical_cd'] = gen_medical_cd();
-        $this->form['queue_no'] = $this->generateAntrian();
         $this->form['datetime_in'] = now();
         $rm = TrxMedical::create(
             $this->form
         );
 
+        $rm->ruanganInap()->create($this->ruangan);
+
+        // simpan ke trx_ruang
+
+
         if ($this->medicalRecord['icd_cd'] != "") {
             $rm->medicalRecord()->create($this->medicalRecord);
         }
-
-        $this->js('window.open("' . route('helper.print-antrian-poli', 1) . '", "Print Antrian Poli", "width=200,height=100");');
-        session()->flash('status', 'Post successfully updated.');
 
         $this->js(<<<'JS'
         Swal.fire({

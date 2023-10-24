@@ -23,20 +23,31 @@ class TablePasien extends Component
     #[Reactive]
     public $dokter;
 
-    public $url;
+    #[Reactive]
+    public $kelas;
 
+    #[Reactive]
+    public $bangsal;
+
+    public $url;
+    public $tipePasien = 'MEDICAL_TP_01';
 
 
     public function render()
     {
-        $data = TrxMedical::with(['poli', 'dokter', 'pasien', 'jenisPasien'])->carirm($this->rm)
-        ->caripoliklinik($this->poliklinik)
-        ->caritanggal($this->tanggal)
-        ->caridokter($this->dokter)
-        ->orderBy('medunit_cd', 'asc')
-        ->paginate(10);
+        $data = TrxMedical::with(['poli', 'dokter', 'pasien', 'jenisPasien', 'medicalRuang'])->carirm($this->rm)
+            ->caripoliklinik($this->poliklinik)
+            ->caritanggal($this->tanggal)
+            ->caridokter($this->dokter)
+            ->carikelas($this->kelas)
+            ->caribangsal($this->bangsal)
+            ->orderBy('medunit_cd', 'asc')
+            ->paginate(10);
+
+        // dd($data);
         return view('livewire.component.table-pasien', [
-            'posts' => $data
+            'posts' => $data,
+            'tipePasien' => $this->tipePasien
         ]);
     }
 }

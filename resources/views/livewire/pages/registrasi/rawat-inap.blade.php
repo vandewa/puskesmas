@@ -142,9 +142,10 @@
                                             <td>{{ $item->bangsal->bangsal_nm ?? '-' }}</td>
                                             <td>{{ $item->kamar->kamar_nm ?? '-' }}</td>
                                             <td>
-                                                <a href="" wire:navigate class="btn btn-success btn-flat btn-sm"
+                                                <button type="button" wire:click='pilih("{{ $item->ruang_cd }}")'
+                                                    id="daftar" class="btn btn-success btn-flat btn-sm"
                                                     data-toggle="tooltip" data-placement="left" title="Daftar"><i
-                                                        class="fas fa-bed"></i></a>
+                                                        class="fa fa-user-md"></i></button>
                                             </td>
                                         </tr>
                                     @endforeach

@@ -720,9 +720,8 @@
                               </li>
                               <li class="nav-item">
                                   <a href="{{ route('registrasi.rawat-inap') }}" wire:navigate
-                                      class="nav-link {{ request()->is('registrasi/rawat-inap/*') ? 'active' : '' }}"
-                                      class="nav-link">
-                                      @if (request()->is('registrasi/rawat-inap') || request()->is('registrasi/rawat-inap/*'))
+                                      class="nav-link {{ request()->is('registrasi/rawat-inap') ? 'active' : '' }}">
+                                      @if (request()->is('registrasi/rawat-inap'))
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
                                       @else
                                           <i class="far fa-circle nav-icon ml-3"></i>
@@ -731,14 +730,27 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('transaksi.rawat-inap.list') }}" wire:navigate
+                                      class="nav-link @if (Request::is('transaksi/rawat-inap/list')) active @endif">
+                                      @if (request()->is('transaksi/rawat-inap/list') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Transaksi Rawat Inap</p>
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.rekam-medis') }}"
+                                      wire:navigate
+                                      class="nav-link {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.rekam-medis') ? 'active' : '' }}
+                                    {{ request()->is('transaksi/rawat-inap/list/rekam-medis/*') ? 'active' : '' }}
+                                    ">
+                                      @if (request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.rekam-medis') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
@@ -749,8 +761,14 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.tindakan-medis') }}"
+                                      wire:navigate
+                                      class="nav-link  {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.tindakan-medis') ? 'active' : '' }}">
+                                      @if (request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.tindakan-medis') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>
@@ -767,10 +785,17 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="./index3.html" class="nav-link">
-                                      <i class="far fa-circle nav-icon ml-3"></i>
+                                  <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.resep-obat') }}"
+                                      wire:navigate
+                                      class="nav-link {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.resep-obat') ? 'active' : '' }}">
+                                      @if (request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.resep-obat') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Resep/Obat</p>
                                   </a>
+
                               </li>
                               <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">

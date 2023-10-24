@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models\His;
+
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -22,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class TrxMedicalRuang extends Model implements Auditable
 {
-use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable;
 
 
     public $table = 'trx_medical_ruang';
@@ -77,6 +78,16 @@ use \OwenIt\Auditing\Auditable;
     public static $rules = [
 
     ];
+
+
+    public function ruang()
+    {
+        return $this->belongsTo(TrxRuang::class, 'ruang_cd');
+    }
+    public function kelas()
+    {
+        return $this->belongsTo(TrxKelas::class, 'kelas_cd');
+    }
 
 
 }

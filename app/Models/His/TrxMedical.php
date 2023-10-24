@@ -208,6 +208,11 @@ class TrxMedical extends Model implements Auditable
         return $this->hasMany(TrxMedicalRecord::class, 'medical_cd');
     }
 
+    public function medicalRuang()
+    {
+        return $this->belongsTo(TrxMedicalRuang::class, 'medical_cd');
+    }
+
     public function ruang()
     {
         return $this->belongsTo(TrxRuang::class, 'ruang_cd');
@@ -233,10 +238,31 @@ class TrxMedical extends Model implements Auditable
             return $filter->where('datetime_in', 'ilike', "%$value%");
         }
     }
+
+    public function ruanganInap()
+    {
+        return $this->hasOne(TrxMedicalRuang::class, 'medical_cd');
+    }
     public function scopeCaridokter($filter, $value)
     {
         if ($value) {
             return $filter->where('dr_cd', 'ilike', "%$value%");
+        }
+    }
+    public function scopeCarikelas($filter, $value)
+    {
+        if ($value) {
+            return $filter->whereHas('ruanganInap', function ($a) use ($value) {
+                $a->where('kelas_cd', $value);
+            });
+        }
+    }
+    public function scopeCaribangsal($filter, $value)
+    {
+        if ($value) {
+            return $filter->whereHas('ruanganInap', function ($a) use ($value) {
+                $a->where('ruang_cd', $value);
+            });
         }
     }
 
