@@ -48,6 +48,7 @@ use App\Livewire\Pages\Master\DataMedis\Tarif\UnitMedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\TindakanMedis as TarifTindakanMedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\Inventori as TarifInventori;
 use App\Livewire\Pages\Transaksi\DataTransaksi;
+use App\Livewire\Pages\Transaksi\LaboratoriumTransaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -132,6 +133,7 @@ Route::middleware([
             Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
             Route::get('data-transaksi/{id?}', DataTransaksi::class)->name('data-transaksi');
             Route::get('resep-obat/{id?}', ResepObat::class)->name('resep-obat');
+            Route::get('laboratorium/{id?}', LaboratoriumTransaksi::class)->name('laboratorium');
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
         });
 
