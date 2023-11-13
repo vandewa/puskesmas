@@ -18,7 +18,7 @@
                 <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                    <h3 class="card-title"> <button class="btn btn-primary"> Lamar Sekarang</button>  </h3>
+                    <h3 class="card-title"> <button class="btn btn-primary" wire:click='simpan()'> Lamar Sekarang</button>  </h3>
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                         <input type="text" name="table_search" class="float-right form-control" placeholder="Search">
@@ -36,41 +36,25 @@
                     <table class="table table-hover text-nowrap">
                         <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>User</th>
-                            <th>Date</th>
+                            <th>No Pendaftaran</th>
+                            <th>Nama Pendaftar</th>
+                            <th>Tanggal Pendaftaran</th>
                             <th>Status</th>
-                            <th>Reason</th>
+                            <th>Tahapan</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>183</td>
-                            <td>John Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-success">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
-                        <tr>
-                            <td>219</td>
-                            <td>Alexander Pierce</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-warning">Pending</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
-                            <td>657</td>
-                            <td>Bob Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-primary">Approved</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
-                        <tr>
-                            <td>175</td>
-                            <td>Mike Doe</td>
-                            <td>11-7-2014</td>
-                            <td><span class="tag tag-danger">Denied</span></td>
-                            <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                        </tr>
+                            @foreach ( $posts as $item)
+                            <tr>
+                                <td>{{ $item->no_reg }}</td>
+                                <td>John Doe</td>
+                                <td>{{ $item->created_at }}</td>
+                                <td>{{ $item->status }}</td>
+                                <td>{{ $item->tahapan->name??"-" }}</td>
+                            </tr>
+                            @endforeach
+
+
                         </tbody>
                     </table>
                     </div>
