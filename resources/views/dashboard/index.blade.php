@@ -1,4 +1,4 @@
-@extends('layouts/app')
+{{-- @extends('layouts/app')
 
 @section('content')
     <div id="idnsticky_bar">
@@ -119,4 +119,4 @@
             color: #000000;
         }
     </style>
-@endpush
+@endpush --}}

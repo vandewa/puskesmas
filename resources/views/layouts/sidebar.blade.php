@@ -67,7 +67,7 @@
                           </a>
                       </li>
                       <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
+                          <a href="{{ route('pendaftaran.data-diri') }}"
                               class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
                               <i class="nav-icon fas fa-home"></i>
                               <p>
@@ -87,78 +87,78 @@
 
 
                       // sisi admin
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Seleksi Berkas
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Psikotes & Test Fisik
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Wawancara 1
-                            </p>
-                        </a>
-                    </li>
-                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                MCU
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Pendidikan
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Wawancara User
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Pengurusan Berkas Keberangkatan
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
-                            <p>
-                                Keberangkatan
-                            </p>
-                        </a>
-                    </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Seleksi Berkas
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Psikotes & Test Fisik
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Wawancara 1
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  MCU
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Pendidikan
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Wawancara User
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Pengurusan Berkas Keberangkatan
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Keberangkatan
+                              </p>
+                          </a>
+                      </li>
 
 
 

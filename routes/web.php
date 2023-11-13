@@ -1,32 +1,38 @@
 <?php
 
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
-use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
-use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kamar;
-use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kelas;
-use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
-use App\Livewire\Pages\Master\DataMedis\Dokter;
-use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
-use App\Livewire\Pages\Master\DataMedis\JadwalPraktek;
-use App\Livewire\Pages\Master\DataMedis\JenisPenyakit;
-use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
-use App\Livewire\Pages\Master\DataMedis\Paramedis;
-use App\Livewire\Pages\Pendaftaran;
-use App\Livewire\Pages\Pasien\ListPasien;
-use App\Livewire\Pages\Master\DataMedis\Spesialis;
-use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
-use App\Livewire\Pages\Registrasi\RawatJalan;
-use App\Livewire\Pages\Registrasi\RawatInap;
-use App\Http\Controllers\HelperController;
 use App\Livewire\Demo\Lamaran;
 use App\Livewire\Demo\LamaranPage;
-use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
-use App\Livewire\Pages\Transaksi\DetailRawatJalan;
-use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
-use App\Livewire\Pages\Transaksi\RekamMedis;
+use App\Livewire\Pages\Pendaftaran;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
+use App\Livewire\Demo\ListPendaftaran;
+use App\Livewire\Demo\DataKeluarga\List;
+use App\Livewire\Pages\Pasien\ListPasien;
+use App\Http\Controllers\HelperController;
 use App\Livewire\Pages\Transaksi\ResepObat;
+use App\Livewire\Pages\Registrasi\RawatInap;
+use App\Livewire\Pages\Transaksi\RekamMedis;
+use App\Http\Controllers\DashboardController;
+use App\Livewire\Demo\DataDiri;
+use App\Livewire\Demo\DataKeluarga\DataKeluarga;
+use App\Livewire\Demo\DataKeluarga\ListTransaksi;
+use App\Livewire\Demo\DataKeluarga\SuamiIstri;
+use App\Livewire\Pages\Registrasi\RawatJalan;
+use App\Livewire\Pages\Master\DataMedis\Dokter;
+use App\Livewire\Pages\Master\DataMedis\Paramedis;
+use App\Livewire\Pages\Master\DataMedis\Spesialis;
+use App\Livewire\Pages\Transaksi\DetailRawatJalan;
+use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
+use App\Livewire\Pages\Master\DataMedis\JadwalPraktek;
+use App\Livewire\Pages\Master\DataMedis\JenisPenyakit;
+use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
+use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kamar;
+use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kelas;
+use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
+use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
+use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
+use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
+use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
 
 
 /*
@@ -98,5 +104,11 @@ Route::middleware([
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
     });
 
+    Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
+        Route::get('list/{url?}', ListTransaksi::class)->name('list');
+        Route::get('data-diri', DataDiri::class)->name('data-diri');
+        Route::get('data-keluarga', DataKeluarga::class)->name('data-keluarga');
+        Route::get('suami-istri', SuamiIstri::class)->name('suami-istri');
+    });
 
 });
