@@ -38,12 +38,12 @@ class LaratrustSeeder extends Seeder
             ]);
             $permissions = [];
 
-            $this->command->info('Creating Role ' . strtoupper($key));
+            $this->command->info('Creating Role '. strtoupper($key));
 
             // Reading role permission modules
             foreach ($modules as $module => $value) {
 
-                foreach (explode(',', $value) as $p => $perm) {
+                foreach (explode(',', $value) as $perm) {
 
                     $permissionValue = $mapPermission->get($perm);
 
@@ -53,11 +53,11 @@ class LaratrustSeeder extends Seeder
                         'description' => ucfirst($permissionValue) . ' ' . ucfirst($module),
                     ])->id;
 
-                    $this->command->info('Creating Permission to ' . $permissionValue . ' for ' . $module);
+                    $this->command->info('Creating Permission to '.$permissionValue.' for '. $module);
                 }
             }
 
-            // Attach all permissions to the role
+            // Add all permissions to the role
             $role->permissions()->sync($permissions);
 
             if (Config::get('laratrust_seeder.create_users')) {
@@ -65,11 +65,10 @@ class LaratrustSeeder extends Seeder
                 // Create default user for each role
                 $user = \App\Models\User::create([
                     'name' => ucwords(str_replace('_', ' ', $key)),
-                    'email' => $key . '@app.com',
-                    'password' => bcrypt('password'),
-                    'email_verified_at' => date('Y-m-d H:i:s')
+                    'email' => $key.'@app.com',
+                    'password' => bcrypt('password')
                 ]);
-                $user->attachRole($role);
+                $user->addRole($role);
             }
 
         }

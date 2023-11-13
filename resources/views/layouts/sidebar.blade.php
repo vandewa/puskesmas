@@ -66,6 +66,7 @@
                               </p>
                           </a>
                       </li>
+                      @role('user')
                       <li class="nav-item">
                           <a href="{{ route('dashboard') }}"
                               class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
@@ -84,9 +85,10 @@
                               </p>
                           </a>
                       </li>
+                      @endrole
 
 
-
+                  @role('superadministrator')
                     <li class="nav-item">
                         <a href="{{ route('admin.seleksi-berkas') }}"
                             class="nav-link  {{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
@@ -99,7 +101,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.tes') }}"
                             class="nav-link  {{ Request::segment(2) == 'tes' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon fas fa-dove"></i>
                             <p>
                                 Psikotes & Test Fisik
                             </p>
@@ -108,7 +110,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.wawancara') }}"
                             class="nav-link  {{ Request::segment(2) == 'wawancara' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon far fa-comment"></i>
                             <p>
                                 Wawancara 1
                             </p>
@@ -117,7 +119,7 @@
                      <li class="nav-item">
                         <a href="{{ route('admin.mcu') }}"
                             class="nav-link  {{ Request::segment(2) == 'mcu' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon fas fa-heartbeat"></i>
                             <p>
                                 MCU
                             </p>
@@ -126,7 +128,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.pendidikan') }}"
                             class="nav-link  {{ Request::segment(2) == 'pendidikan' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon fas fa-graduation-cap"></i>
                             <p>
                                 Pendidikan
                             </p>
@@ -153,7 +155,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.keberangkatan') }}"
                             class="nav-link  {{ Request::segment(2) == 'keberangkatan' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon fas fa-fighter-jet"></i>
                             <p>
                                 Keberangkatan
                             </p>
@@ -162,7 +164,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.magang') }}"
                             class="nav-link  {{ Request::segment(2) == 'magang' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                            <i class="nav-icon fas fa-yen-sign"></i>
                             <p>
                                 Magang di Jepang
                             </p>
@@ -173,7 +175,7 @@
 
 
                   </ul>
-
+                  @endrole
               </nav>
               <!-- /.sidebar-menu -->
           </div>
