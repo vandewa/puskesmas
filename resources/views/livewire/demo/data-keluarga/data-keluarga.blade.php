@@ -25,84 +25,87 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
-                                                    <div class="card-header p-0 pt-1">
-                                                        <ul class="nav nav-tabs" id="custom-tabs-two-transaksi-tab"
-                                                            role="tablist">
-                                                            <li
-                                                                class="nav-item {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}">
-                                                                <a class="nav-link {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}"
-                                                                    id="custom-tabs-one-rm-tab"
-                                                                    href="{{ route('pendaftaran.suami-istri') }}"
-                                                                    wire:navigate>Suami / Istri</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
-                                                                    id="custom-tabs-two-data-rekam-medis-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-two-data-rekam-medis"
-                                                                    role="tab"
-                                                                    aria-controls="custom-tabs-two-data-rekam-medis"
-                                                                    aria-selected="false">Anak</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
-                                                                    id="custom-tabs-two-riwayat-rekam-medis-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-two-riwayat-rekam-medis"
-                                                                    role="tab"
-                                                                    aria-controls="custom-tabs-two-riwayat-rekam-medis"
-                                                                    aria-selected="false">Orang Tua</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
-                                                                    id="custom-tabs-two-riwayat-rekam-medis-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-two-riwayat-rekam-medis"
-                                                                    role="tab"
-                                                                    aria-controls="custom-tabs-two-riwayat-rekam-medis"
-                                                                    aria-selected="false">Saudara Kandung</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
-                                                                    id="custom-tabs-two-riwayat-rekam-medis-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-two-riwayat-rekam-medis"
-                                                                    role="tab"
-                                                                    aria-controls="custom-tabs-two-riwayat-rekam-medis"
-                                                                    aria-selected="false">Keluarga / Kenalan</a>
-                                                            </li>
+                                                    <livewire:demo.data-keluarga.list-transaksi>
 
-                                                        </ul>
-                                                    </div>
-
-                                                    <div class="card-body">
                                                         <div class="tab-content" id="custom-tabs-six-tabContent">
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-riwayat-rm" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-riwayat-rm-tab">
-                                                                <livewire:demo.data-keluarga.suami-istri>
-                                                            </div>
-                                                            <div class="tab-pane fade"
-                                                                id="custom-tabs-two-data-rekam-medis" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-two-data-rekam-medis-tab">
-
-                                                            </div>
-                                                            <div class="tab-pane fade"
-                                                                id="custom-tabs-two-riwayat-rekam-medis" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-two-riwayat-rekam-medis-tab">
-
-                                                            </div>
-
-                                                            <div class="tab-pane fade"
-                                                                id="custom-tabs-two-tambah-rekam-medis" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-two-tambah-rekam-medis-tab">
-                                                                <div>
-
+                                                                <div class="card-body">
+                                                                    <div class="col-md-12">
+                                                                        {{-- <div class="card card-success card-outline"> --}}
+                                                                        <form class="form-horizontal mt-2"
+                                                                            wire:submit='save'>
+                                                                            <div class="card-body">
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="row mb-2">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">No
+                                                                                                RM</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    wire:model="no_rm"
+                                                                                                    disabled>
+                                                                                                @error('no_rm')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row mb-2">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">Nama
+                                                                                                Pasien</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    wire:model="pasien_nm"
+                                                                                                    disabled>
+                                                                                                @error('pasien_nm')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row mb-2">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">Tanggal
+                                                                                                Lahir</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    wire:model="birth_date"
+                                                                                                    disabled>
+                                                                                                @error('birth_date')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row mb-2">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">Tanggal
+                                                                                                Masuk</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="date"
+                                                                                                    class="form-control"
+                                                                                                    wire:model="form.datetime_in">
+                                                                                                @error('form.datetime_in')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
                                                                 </div>
-
                                                             </div>
                                                         </div>
-                                                    </div>
                                                 </div>
                                                 <!-- /.card -->
                                             </div>
