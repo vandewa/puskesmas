@@ -20,6 +20,8 @@ use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Demo\Lamaran;
+use App\Livewire\Demo\LamaranPage;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
 use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
@@ -52,7 +54,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/', [DashboardController::class, 'index']);
+    Route::get('/', LamaranPage::class);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 

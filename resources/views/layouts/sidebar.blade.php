@@ -13,12 +13,12 @@
           </ul>
 
           <!-- Right navbar links -->
-          <ul class="navbar-nav ml-auto">
+          <ul class="ml-auto navbar-nav">
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('logout') }}"
                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                       <div class="d-flex align-items-center">
-                          <div class="ms-3"><i class="fas fa-sign-out-alt mr-2"></i></i>Keluar</div>
+                          <div class="ms-3"><i class="mr-2 fas fa-sign-out-alt"></i></i>Keluar</div>
                       </div>
                       <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                           @csrf
@@ -41,7 +41,7 @@
           <!-- Sidebar -->
           <div class="sidebar">
               <!-- Sidebar user panel (optional) -->
-              <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+              <div class="pb-3 mt-3 mb-3 user-panel d-flex">
                   <div class="image">
                       <img src="{{ asset('AdminLTE/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                           alt="User Image">
@@ -66,6 +66,100 @@
                               </p>
                           </a>
                       </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Data Diri
+                              </p>
+                          </a>
+                      </li>
+                      <li class="nav-item">
+                          <a href="{{ route('dashboard') }}"
+                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-home"></i>
+                              <p>
+                                  Lamaran
+                              </p>
+                          </a>
+                      </li>
+
+
+                      // sisi admin
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Seleksi Berkas
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Psikotes & Test Fisik
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Wawancara 1
+                            </p>
+                        </a>
+                    </li>
+                     <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                MCU
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Pendidikan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Wawancara User
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Pengurusan Berkas Keberangkatan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Keberangkatan
+                            </p>
+                        </a>
+                    </li>
+
 
 
 
