@@ -35,7 +35,7 @@
                                                                     data-toggle="pill"
                                                                     href="#custom-tabs-six-data-resep" role="tab"
                                                                     aria-controls="custom-tabs-six-data-resep"
-                                                                    aria-selected="true">Data Resep</a>
+                                                                    aria-selected="true">Tindakan</a>
                                                             </li>
                                                             <li class="nav-item">
                                                                 <a class="nav-link"
@@ -43,7 +43,7 @@
                                                                     data-toggle="pill"
                                                                     href="#custom-tabs-six-riwayat-resep" role="tab"
                                                                     aria-controls="custom-tabs-six-riwayat-resep"
-                                                                    aria-selected="false">Riwayat Resep</a>
+                                                                    aria-selected="false">Riwayat Tindakan</a>
                                                             </li>
 
                                                             <li class="nav-item"
@@ -54,7 +54,7 @@
                                                                     href="#custom-tabs-six-template-resep"><i
                                                                         class="mr-2 fas fa-plus-square"
                                                                         style="color:black"></i><span
-                                                                        style="color:black">Tambah Resep</span></a>
+                                                                        style="color:black">Tambah Tindakan</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -63,7 +63,7 @@
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-data-resep" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-data-resep-tab">
-                                                                <livewire:component.resep.table-resep :medicalcd="$medik->medical_cd">
+                                                                <livewire:component.laboratorium.list-proses-tindakan-lab :medicalcd="$medik->medical_cd">
                                                             </div>
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-six-riwayat-resep" role="tabpanel"
@@ -74,7 +74,7 @@
 
                                                             <div class="tab-pane fade" id="tambah-resep" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-template-resep-tab">
-                                                                <livewire:component.laboratorium.list-tindakan-lab>
+                                                                <livewire:component.laboratorium.list-tindakan-lab :pasiencd="$medik->pasien_cd" :dr='$medik->dr_cd' :medicalcd="$medik->medical_cd">
 
                                                             </div>
                                                         </div>

@@ -30,6 +30,7 @@ class TrxUnitmedisItem extends Model implements Auditable
     protected $primaryKey = 'medicalunit_cd';
 
     protected $guarded = [];
+    protected $keyType = 'string';
 
     /**
      * The attributes that should be casted to native types.

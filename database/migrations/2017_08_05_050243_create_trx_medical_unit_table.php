@@ -16,6 +16,7 @@ class CreateTrxMedicalUnitTable extends Migration {
 		{
 			$table->bigInteger('medical_unit_seqno', true);
 			$table->string('medical_cd', 20);
+			$table->string('pasien_cd', 20);
 			$table->string('group_no', 20)->nullable();
 			$table->string('medicalunit_cd', 20)->nullable();
 			$table->dateTime('datetime_trx')->nullable();
