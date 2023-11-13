@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('lamaran_id');
             $table->string('lokasi')->nullable();
-            $table->datetime('tanggal_mulai')->nullable();
-            $table->datetime('tanggal_selesai')->nullable();
-            $table->datetime('alamat')->nullable();
-            $table->datetime('telepon_perusahaan')->nullable();
+            $table->date('tanggal_mulai')->nullable();
+            $table->date('tanggal_selesai')->nullable();
+            $table->text('alamat')->nullable();
+            $table->string('telepon_perusahaan')->nullable();
             $table->string('status')->nullable();
             $table->timestamps();
         });

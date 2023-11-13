@@ -24,7 +24,8 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($data as $datum) {
-            User::create($datum);
+           $a = User::create($datum);
+           $a->attachRole('superadministrator');
         }
     }
 }

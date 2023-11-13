@@ -77,7 +77,7 @@
                       </li>
                       <li class="nav-item">
                           <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                              class="nav-link  {{ Request::segment(1) == '' ? 'active' : '' }}">
                               <i class="nav-icon fas fa-home"></i>
                               <p>
                                   Lamaran
@@ -86,10 +86,10 @@
                       </li>
 
 
-                      // sisi admin
+
                     <li class="nav-item">
                         <a href="{{ route('admin.seleksi-berkas') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
+                            class="nav-link  {{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-file"></i>
                             <p>
                                 Seleksi Berkas
@@ -98,7 +98,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.tes') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(2) == 'tes' ? 'active' : '' }}">
+                            class="nav-link  {{ Request::segment(2) == 'tes' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Psikotes & Test Fisik
@@ -106,8 +106,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.wawancara') }}"
+                            class="nav-link  {{ Request::segment(2) == 'wawancara' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Wawancara 1
@@ -115,8 +115,8 @@
                         </a>
                     </li>
                      <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.mcu') }}"
+                            class="nav-link  {{ Request::segment(2) == 'mcu' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 MCU
@@ -124,8 +124,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.pendidikan') }}"
+                            class="nav-link  {{ Request::segment(2) == 'pendidikan' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Pendidikan
@@ -133,8 +133,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.wawancara.user') }}"
+                            class="nav-link  {{ Request::segment(2) == 'wawancara-user' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Wawancara User
@@ -142,8 +142,8 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.pengurusan.berkas') }}"
+                            class="nav-link  {{ Request::segment(2) == 'pengurusan-berkas' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Pengurusan Berkas Keberangkatan
@@ -151,11 +151,20 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.keberangkatan') }}"
+                            class="nav-link  {{ Request::segment(2) == 'keberangkatan' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Keberangkatan
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.magang') }}"
+                            class="nav-link  {{ Request::segment(2) == 'magang' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-home"></i>
+                            <p>
+                                Magang di Jepang
                             </p>
                         </a>
                     </li>
@@ -164,6 +173,7 @@
 
 
                   </ul>
+
               </nav>
               <!-- /.sidebar-menu -->
           </div>

@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h1 class="m-0">Psikotes & Test Fisik</h1>
+                <h1 class="m-0">Pendidikan</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                    <li class="breadcrumb-item active">Psikotes & Test Fisik</li>
+                    <li class="breadcrumb-item active">Pendidikan</li>
                 </ol>
             </div>
         </div>
@@ -30,16 +30,16 @@
                                 <div class="col-md-10">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" value="1"  name="radio1" wire:model.live="persetujuan">
-                                        <label class="form-check-label">Tes Fisik dan Psikotes berhasil dan bisa dilakukan proses selanjutnya</label>
+                                        <label class="form-check-label">Peserta lolos pendidikan dan bisa dilakukan proses selanjutnya</label>
                                       </div>
                                       <div class="form-check">
                                         <input class="form-check-input" value="0" type="radio" name="radio1"  wire:model.live="persetujuan">
-                                        <label class="form-check-label">Tes Fisik dan Psikotes berhasil dinyatakan gagal proses dihentikan</label>
+                                        <label class="form-check-label">Peserta gagal pendidikan proses dihentikan</label>
                                       </div>
                                 </div>
                               </div>
                               @if($persetujuan)
-                              <h4>Proses Wawancara</h4>
+                              <h4>Wawancara User</h4>
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-2 col-form-label">Lokasi</label>
                                         <div class="col-sm-10">
@@ -83,17 +83,19 @@
 
                           </div>
                           <!-- /.card-body -->
+                          @if($persetujuan)
                           <div class="card-footer">
                             <button type="submit" class="btn btn-info">Simpan</button>
                             <button type="button" class="float-right btn btn-default" wire:click='clear'>Batalkan</button>
                           </div>
+                          @endif
                           <!-- /.card-footer -->
                         </form>
                       </div>
                       @endif
                       <div class="card card-info">
                     <div class="card-header">
-                    <h3 class="card-title"> Test Fisik & Psikotest</h3>
+                    <h3 class="card-title"> Pendidikan</h3>
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -141,9 +143,9 @@
                                     </td>
                                     <td>{{ $item->tahapan->name??"-" }}</td>
                                     <td>
-                                        <p> <span class="fas fa-landmark"></span>    Lokasi: {{ $item->tes->lokasi??"-" }}</p>
-                                        <p><span class="fas fa-calendar-check"></span> Tanggal Mulai: {{ $item->tes->tanggal_mulai??"-" }}</p>
-                                        <p><span class="fas fa-calendar-minus"></span>  Tanggal Selesai: {{ $item->tes->tanggal_selesai??"-" }}</p>
+                                        <p> <span class="fas fa-landmark"></span>    Lokasi: {{ $item->pendidikan->lokasi??"-" }}</p>
+                                        <p><span class="fas fa-calendar-check"></span> Tanggal Mulai: {{ $item->pendidikan->tanggal_mulai??"-" }}</p>
+                                        <p><span class="fas fa-calendar-minus"></span>  Tanggal Selesai: {{ $item->pendidikan->tanggal_selesai??"-" }}</p>
                                     </td>
                                     <td>
                                         <button class="btn btn-sm btn-primary" wire:click='proses({{ $item->id }})'>Proses</button>
