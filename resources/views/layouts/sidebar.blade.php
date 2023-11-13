@@ -88,17 +88,17 @@
 
                       // sisi admin
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-home"></i>
+                        <a href="{{ route('admin.seleksi-berkas') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-file"></i>
                             <p>
                                 Seleksi Berkas
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('dashboard') }}"
-                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                        <a href="{{ route('admin.tes') }}"
+                            class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(2) == 'tes' ? 'active' : '' }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
                                 Psikotes & Test Fisik

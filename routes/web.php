@@ -20,6 +20,8 @@ use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Demo\Admin\SeleksiBerkas;
+use App\Livewire\Demo\Admin\Tes;
 use App\Livewire\Demo\Lamaran;
 use App\Livewire\Demo\LamaranPage;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
@@ -55,8 +57,13 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/', LamaranPage::class);
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', LamaranPage::class)->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
+
+    Route::group(['prefix' => 'admin', 'as' => 'admin.'], function(){
+        Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
+        Route::get('tes', Tes::class)->name('tes');
+    });
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
         Route::get('list', ListPasien::class)->name('index');

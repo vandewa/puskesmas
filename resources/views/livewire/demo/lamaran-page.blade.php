@@ -41,16 +41,25 @@
                             <th>Tanggal Pendaftaran</th>
                             <th>Status</th>
                             <th>Tahapan</th>
+                            <th>Keterangan</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach ( $posts as $item)
                             <tr>
                                 <td>{{ $item->no_reg }}</td>
-                                <td>John Doe</td>
+                                <td>{{ $item->user->name??"-" }}</td>
                                 <td>{{ $item->created_at }}</td>
-                                <td>{{ $item->status }}</td>
+                                <td>
+                                    @if($item->status == 'Dibatalkan')
+                                    <span class="badge rounded-pill bg-danger text-dark">  {{ $item->status }}</span>
+                                    @else
+                                    <span class="badge rounded-pill bg-info text-dark">  {{ $item->status }}</span>
+                                    @endif
+
+                                </td>
                                 <td>{{ $item->tahapan->name??"-" }}</td>
+                                <td>{{ $item->keterangan }}</td>
                             </tr>
                             @endforeach
 

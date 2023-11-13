@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('no_reg')->nullable();
             $table->string('tahapan_id')->nullable();
             $table->string('status');
+            $table->longtext('keterangan')->nullable();
             $table->timestamps();
         });
     }
