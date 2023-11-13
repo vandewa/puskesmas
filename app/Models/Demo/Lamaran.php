@@ -3,10 +3,15 @@
 namespace App\Models\Demo;
 
 use App\Livewire\Demo\Admin\Tes;
+use App\Livewire\Demo\Admin\Wawancara;
+use App\Models\Magang;
 use App\Models\TestFisik;
 use App\Models\User;
+use App\Models\Wawancara1;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Mcu;
+use App\Models\Pendidikan;
 
 class Lamaran extends Model
 {
@@ -23,5 +28,18 @@ class Lamaran extends Model
 
     public function tes()  {
         return $this->hasOne(TestFisik::class, 'lamaran_id');
+    }
+
+    public function wawancara()  {
+        return $this->hasOne(Wawancara1::class, 'lamaran_id');
+    }
+    public function mcu()  {
+        return $this->hasOne(Mcu::class, 'lamaran_id');
+    }
+    public function pendidikan()  {
+        return $this->hasOne(Pendidikan::class, 'lamaran_id');
+    }
+    public function magang()  {
+        return $this->hasOne(Magang::class, 'lamaran_id');
     }
 }

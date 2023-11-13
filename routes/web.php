@@ -4,17 +4,24 @@ use App\Livewire\Demo\Lamaran;
 use App\Livewire\Demo\DataDiri;
 use App\Livewire\Demo\Admin\Tes;
 use App\Livewire\Demo\LamaranPage;
+use App\Livewire\Demo\Admin\Magang;
 use App\Livewire\Pages\Pendaftaran;
+use App\Livewire\Demo\Admin\McuPage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Demo\Admin\Wawancara;
+use App\Livewire\Demo\Admin\Pendidikan;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Demo\Admin\Keberangkatan;
 use App\Livewire\Demo\Admin\SeleksiBerkas;
 use App\Livewire\Pages\Transaksi\ResepObat;
+use App\Livewire\Demo\Admin\PengursanBerkas;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Livewire\Pages\Transaksi\RekamMedis;
 use App\Http\Controllers\DashboardController;
 use App\Livewire\Pages\Registrasi\RawatJalan;
+use App\Livewire\Demo\Admin\WawancaraPengguna;
 use App\Livewire\Demo\DataKeluarga\SuamiIstri;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Demo\DataKeluarga\DataKeluarga;
@@ -33,7 +40,6 @@ use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
 use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
 use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
-
 
 
 /*
@@ -68,6 +74,13 @@ Route::middleware([
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
         Route::get('tes', Tes::class)->name('tes');
+        Route::get('wawancara', Wawancara::class)->name('wawancara');
+        Route::get('mcu', McuPage::class)->name('mcu');
+        Route::get('pendidikan', Pendidikan::class)->name('pendidikan');
+        Route::get('wawancara-user', WawancaraPengguna::class)->name('wawancara.user');
+        Route::get('pengurusan-berkas', PengursanBerkas::class)->name('pengurusan.berkas');
+        Route::get('keberangkatan', Keberangkatan::class)->name('keberangkatan');
+        Route::get('magang', Magang::class)->name('magang');
     });
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
@@ -116,5 +129,6 @@ Route::middleware([
         Route::get('data-keluarga', DataKeluarga::class)->name('data-keluarga');
         Route::get('suami-istri', SuamiIstri::class)->name('suami-istri');
     });
+
 
 });

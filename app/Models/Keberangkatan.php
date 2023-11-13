@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Keberangkatan extends Model
 {
-    protected $guarded = [];
+     protected $guarded = [];
     use HasFactory;
 }

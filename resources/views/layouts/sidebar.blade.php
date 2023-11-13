@@ -66,100 +66,111 @@
                               </p>
                           </a>
                       </li>
-                      <li class="nav-item">
-                          <a href="{{ route('pendaftaran.data-diri') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Data Diri
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Lamaran
-                              </p>
-                          </a>
-                      </li>
+                      @role('user')
+                          <li class="nav-item">
+                              <a href="{{ route('pendaftaran.data-diri') }}"
+                                  class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-home"></i>
+                                  <p>
+                                      Data Diri
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('dashboard') }}"
+                                  class="nav-link  {{ Request::segment(1) == '' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-home"></i>
+                                  <p>
+                                      Lamaran
+                                  </p>
+                              </a>
+                          </li>
+                      @endrole
 
-
-                      // sisi admin
-                      <li class="nav-item">
-                          <a href="{{ route('admin.seleksi-berkas') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-file"></i>
-                              <p>
-                                  Seleksi Berkas
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('admin.tes') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(2) == 'tes' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Psikotes & Test Fisik
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Wawancara 1
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  MCU
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Pendidikan
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Wawancara User
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Pengurusan Berkas Keberangkatan
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Keberangkatan
-                              </p>
-                          </a>
-                      </li>
-                  </ul>
+                      @role('superadministrator')
+                          <li class="nav-item">
+                              <a href="{{ route('admin.seleksi-berkas') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-file"></i>
+                                  <p>
+                                      Seleksi Berkas
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.tes') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'tes' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-dove"></i>
+                                  <p>
+                                      Psikotes & Test Fisik
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.wawancara') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'wawancara' ? 'active' : '' }}">
+                                  <i class="nav-icon far fa-comment"></i>
+                                  <p>
+                                      Wawancara 1
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.mcu') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'mcu' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-heartbeat"></i>
+                                  <p>
+                                      MCU
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.pendidikan') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'pendidikan' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-graduation-cap"></i>
+                                  <p>
+                                      Pendidikan
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.wawancara.user') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'wawancara-user' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-home"></i>
+                                  <p>
+                                      Wawancara User
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.pengurusan.berkas') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'pengurusan-berkas' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-home"></i>
+                                  <p>
+                                      Pengurusan Berkas Keberangkatan
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.keberangkatan') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'keberangkatan' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-fighter-jet"></i>
+                                  <p>
+                                      Keberangkatan
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.magang') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'magang' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-yen-sign"></i>
+                                  <p>
+                                      Magang di Jepang
+                                  </p>
+                              </a>
+                          </li>
+                      </ul>
+                  @endrole
               </nav>
               <!-- /.sidebar-menu -->
           </div>
