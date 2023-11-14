@@ -57,19 +57,12 @@
                       data-accordion="false">
                       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-home"></i>
-                              <p>
-                                  Beranda
-                              </p>
-                          </a>
-                      </li>
-                      @role('user')
+           @role('user')
+
+
                           <li class="nav-item">
                               <a href="{{ route('pendaftaran.data-diri') }}"
-                                  class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}{{ Request::segment(1) == '' ? 'active' : '' }}">
+                                  class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
                                   <i class="nav-icon fas fa-home"></i>
                                   <p>
                                       Data Diri

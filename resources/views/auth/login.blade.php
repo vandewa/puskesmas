@@ -25,7 +25,7 @@
                     {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
                     <h2 class="heading-section">
                         <span
-                            style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Laporan keuangan
+                            style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
                         </span>
                     </h2>
                 </div>
@@ -65,13 +65,15 @@
                                transition: all .15s ease;
                                box-shadow: none;
                                color: #fff;"><b>Login</b></button>
+                                <a href="/register" class="px-3 mt-3 form-control btn btn-warning" id=""
+                                ><b>Register</b></a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="pt-3 container-fluid client bg-transparent">
+        <div class="pt-3 bg-transparent container-fluid client">
             <div class="container text-center">
                 <span class="small float-center" style="font-size: 10px; color:#fff;"><b>&copy;2023
                         <?php if (date('Y') == 2023) {
