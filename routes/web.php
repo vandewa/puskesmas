@@ -30,6 +30,7 @@ use App\Livewire\Demo\DataKeluarga\DataKeluarga;
 use App\Livewire\Demo\DataKeluarga\Kenalan;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
 use App\Livewire\Demo\DataKeluarga\Orangtua;
+use App\Livewire\Demo\DataPribadi;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
@@ -136,6 +137,7 @@ Route::middleware([
         Route::get('orangtua', Orangtua::class)->name('orangtua');
         Route::get('saudara', Saudara::class)->name('saudara');
         Route::get('kenalan', Kenalan::class)->name('kenalan');
+        Route::get('data-pribadi', DataPribadi::class)->name('data-pribadi');
     });
 
 

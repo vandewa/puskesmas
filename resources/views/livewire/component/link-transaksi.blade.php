@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}"
-                id="custom-tabs-one-tindakan-tab" href="#" wire:navigate>Data
+                id="custom-tabs-one-tindakan-tab" href="{{ route('pendaftaran.data-pribadi') }}" wire:navigate>Data
                 Pribadi</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
