@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0">Rekam Medis</h1>
             </div>
@@ -28,18 +28,18 @@
                                                     <livewire:demo.data-keluarga.list-transaksi>
 
                                                         <div class="tab-content" id="custom-tabs-six-tabContent">
-                                                            <div class="tab-pane fade show active"
+                                                            <div class="tab-pane "
                                                                 id="custom-tabs-six-riwayat-rm" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-riwayat-rm-tab">
                                                                 <div class="card-body">
                                                                     <div class="col-md-12">
                                                                         {{-- <div class="card card-success card-outline"> --}}
-                                                                        <form class="form-horizontal mt-2"
+                                                                        <form class="mt-2 form-horizontal"
                                                                             wire:submit='save'>
                                                                             <div class="card-body">
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">No
                                                                                                 RM</label>
@@ -54,7 +54,7 @@
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">Nama
                                                                                                 Pasien</label>
@@ -69,7 +69,7 @@
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">Tanggal
                                                                                                 Lahir</label>
@@ -84,7 +84,7 @@
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">Tanggal
                                                                                                 Masuk</label>

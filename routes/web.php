@@ -131,7 +131,7 @@ Route::middleware([
     Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
         Route::get('list/{url?}', ListTransaksi::class)->name('list');
         Route::get('data-diri', DataDiri::class)->name('data-diri');
-        Route::get('data-keluarga', DataKeluarga::class)->name('data-keluarga');
+        Route::get('data-keluarga', SuamiIstri::class)->name('data-keluarga');
         Route::get('suami-istri', SuamiIstri::class)->name('suami-istri');
         Route::get('anak', Anak::class)->name('anak');
         Route::get('orangtua', Orangtua::class)->name('orangtua');
