@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h1 class="m-0">Rekam Medis</h1>
+                <h1 class="m-0">Data Diri</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">

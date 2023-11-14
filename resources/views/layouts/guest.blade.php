@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -17,11 +17,11 @@
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
+    <body style="background-color: blue;">
+        <div class="font-sans antialiased text-gray-900">
             {{ $slot }}
         </div>
 
         @livewireScripts
     </body>
-</html>
+</html> --}}

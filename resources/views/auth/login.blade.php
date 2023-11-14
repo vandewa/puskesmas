@@ -10,7 +10,7 @@
     <meta name="author" content="Puskesmas">
     <meta name="keyword" content="Rekam Medis">
     <link rel="icon" href="{{ asset('snacked/ltr/assets/images/favicon/favicon-32x32.png') }}" type="image/png" />
-    <title>Login E-RM</title>
+    <title>Login</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
@@ -57,6 +57,12 @@
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             <div class="form-group">
+                                <input name="password" placeholder="Password" id="flogin_password" type="password"
+                                    class="form-control" required>
+                                <span toggle="#flogin_password"
+                                    class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="px-3 form-control btn submit" id="flogin_tb_ok"
                                     style="background-color: rgb(51, 88, 244) !important;
                                background-image: linear-gradient(to left bottom, rgb(29, 140, 248), rgb(51, 88, 244), rgb(29, 140, 248)) !important;
@@ -66,14 +72,14 @@
                                box-shadow: none;
                                color: #fff;"><b>Login</b></button>
                                 <a href="/register" class="px-3 mt-3 form-control btn btn-warning" id=""
-                                ><b>Register</b></a>
+                                ><b>Daftar</b></a>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="pt-3 bg-transparent container-fluid client">
+        {{-- <div class="pt-3 bg-transparent container-fluid client">
             <div class="container text-center">
                 <span class="small float-center" style="font-size: 10px; color:#fff;"><b>&copy;2023
                         <?php if (date('Y') == 2023) {
@@ -84,7 +90,7 @@
                         ?>
                         . Puskesmas</b></span>
             </div>
-        </div>
+        </div> --}}
     </section>
     <script src="{{ asset('jquery.min.js') }}"></script>
 
