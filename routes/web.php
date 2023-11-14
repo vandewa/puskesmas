@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Demo\DataKeluarga\Saudara;
 use App\Livewire\Demo\Lamaran;
 use App\Livewire\Demo\DataDiri;
 use App\Livewire\Demo\Admin\Tes;
@@ -22,10 +23,13 @@ use App\Livewire\Pages\Transaksi\RekamMedis;
 use App\Http\Controllers\DashboardController;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Demo\Admin\WawancaraPengguna;
+use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Demo\DataKeluarga\SuamiIstri;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Demo\DataKeluarga\DataKeluarga;
+use App\Livewire\Demo\DataKeluarga\Kenalan;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
+use App\Livewire\Demo\DataKeluarga\Orangtua;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
@@ -128,6 +132,10 @@ Route::middleware([
         Route::get('data-diri', DataDiri::class)->name('data-diri');
         Route::get('data-keluarga', DataKeluarga::class)->name('data-keluarga');
         Route::get('suami-istri', SuamiIstri::class)->name('suami-istri');
+        Route::get('anak', Anak::class)->name('anak');
+        Route::get('orangtua', Orangtua::class)->name('orangtua');
+        Route::get('saudara', Saudara::class)->name('saudara');
+        Route::get('kenalan', Kenalan::class)->name('kenalan');
     });
 
 

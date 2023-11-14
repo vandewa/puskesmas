@@ -5,7 +5,7 @@ namespace App\Livewire\Demo;
 use App\Models\His\ComCode;
 use Livewire\Component;
 
-class DataDiri extends Component
+class DataPribadi extends Component
 {
 
     public $form = [
@@ -52,7 +52,7 @@ class DataDiri extends Component
 
     public function render()
     {
-        return view('livewire.demo.data-diri', [
+        return view('livewire.demo.data-pribadi', [
             'listJenisKelamin' => $this->ambilJenisKelamin(),
             'listStatus' => $this->ambilStatus(),
             'listDarah' => $this->ambilDarah(),

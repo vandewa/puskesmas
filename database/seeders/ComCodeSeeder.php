@@ -419,5 +419,11 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "GENERIC_ST_02", "code_nm" => "Generik", "code_group" => "generic_st"]);
         $code = Code::create(["com_cd" => "CASE_TP_01", "code_nm" => "Baru", "code_group" => "CASE_TP"]);
         $code = Code::create(["com_cd" => "CASE_TP_02", "code_nm" => "Lama", "code_group" => "CASE_TP"]);
+        $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_01", "code_nm" => "Suami/Istri", "code_group" => "DATA_KELUARGA_TP"]);
+        $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_02", "code_nm" => "Anak", "code_group" => "DATA_KELUARGA_TP"]);
+        $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_03", "code_nm" => "Orangtua", "code_group" => "DATA_KELUARGA_TP"]);
+        $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_04", "code_nm" => "Saudara", "code_group" => "DATA_KELUARGA_TP"]);
+        $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_05", "code_nm" => "Kenalan", "code_group" => "DATA_KELUARGA_TP"]);
+
     }
 }
