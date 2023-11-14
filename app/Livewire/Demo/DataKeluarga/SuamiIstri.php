@@ -4,9 +4,13 @@ namespace App\Livewire\Demo\DataKeluarga;
 
 use App\Models\Demo\DataKeluarga;
 use Livewire\Component;
+use Livewire\WithPagination;
+
 
 class SuamiIstri extends Component
 {
+    use WithPagination;
+
     public $form = [
         'nama' => '',
         'tempat_lahir' => '',
@@ -24,7 +28,7 @@ class SuamiIstri extends Component
 
     public function render()
     {
-        $data = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->first();
+        $data = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->paginate(2);
 
         return view('livewire.demo.data-keluarga.suami-istri', [
             'post' => $data

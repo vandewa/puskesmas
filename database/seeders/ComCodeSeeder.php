@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\ComCode as Code;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ComCodeSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class ComCodeSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('com_codes')->truncate();
+        
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_01", "code_nm" => "Ringan", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_02", "code_nm" => "Sedang", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_03", "code_nm" => "Berat", "code_group" => "AKTIVITAS_TP", "code_value" => null]);

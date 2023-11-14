@@ -118,6 +118,64 @@
                                                                             </div>
                                                                         </form>
                                                                     </div>
+                                                                    <br>
+
+                                                                    <div class="card card-success card-outline">
+                                                                        <div class="card-header">
+                                                                            <div class="card-title">
+                                                                                Suami / Istri
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="card-body">
+                                                                            <div class="row">
+                                                                                <div class="col-md-2">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        placeholder="cari"
+                                                                                        wire:model.live='cari'>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <table class="table">
+                                                                                <thead>
+                                                                                    <th>Nama</th>
+                                                                                    <th>Tanggal Lahir</th>
+                                                                                    <th>Pendidikan</th>
+                                                                                    <th>Pekerjaan</th>
+                                                                                    <th>Action</th>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    @foreach ($post as $item)
+                                                                                        <tr
+                                                                                            wire:key='{{ $item->id }}'>
+                                                                                            <td> {{ $item->nama ?? '' }}
+                                                                                            </td>
+                                                                                            <td> {{ $item->tgl_lahir ?? '' }}
+                                                                                            </td>
+                                                                                            <td> {{ $item->pendidikan_tp ?? '' }}
+                                                                                            </td>
+                                                                                            <td> {{ $item->pekerjaan ?? '' }}
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <button type="button"
+                                                                                                    wire:click="getEdit('{{ $item->id }}')"
+                                                                                                    class="btn btn-warning btn-flat btn-sm"
+                                                                                                    data-toggle="tooltip"
+                                                                                                    data-placement="left"
+                                                                                                    title="Edit"><i
+                                                                                                        class="fas fa-pencil-alt"></i></button>
+                                                                                                <button type="button"
+                                                                                                    class="btn btn-danger btn-flat btn-sm"
+                                                                                                    wire:click="delete('{{ $item->id }}')"><i
+                                                                                                        class="fas fa-trash"></i></button>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    @endforeach
+                                                                                </tbody>
+                                                                            </table>
+                                                                            {{ $post->links() }}
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
