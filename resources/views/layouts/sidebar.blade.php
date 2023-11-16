@@ -614,8 +614,18 @@
                               </li>
                           </ul>
                       </li>
-                      <li class="nav-item {{ request()->is('*rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}">
-                          <a href="#" class="nav-link {{ request()->is('*rawat-jalan*') ? 'active' : '' }}">
+                      <li
+                          class="nav-item 
+                      {{ request()->is('rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('transaksi/rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('registrasi/rawat-jalan') ? 'menu-is-opening menu-open' : '' }}
+                      ">
+                          <a href="#"
+                              class="nav-link 
+                            {{ request()->is('rawat-jalan*') ? 'active' : '' }}
+                            {{ request()->is('transaksi/rawat-jalan*') ? 'active' : '' }}
+                            {{ request()->is('registrasi/rawat-jalan') ? 'active' : '' }}
+                          ">
                               <i class="nav-icon fas fa-wheelchair"></i>
                               <p>
                                   Rawat Jalan
@@ -703,8 +713,19 @@
                               </li>
                           </ul>
                       </li>
-                      <li class="nav-item {{ request()->is('*rawat-inap*') ? 'menu-is-opening menu-open' : '' }}">
-                          <a href="#" class="nav-link {{ request()->is('*rawat-inap*') ? 'active' : '' }}">
+                      <li
+                          class="nav-item 
+                      {{ request()->is('rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('transaksi/rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('registrasi/rawat-jalan') ? 'menu-is-opening menu-open' : '' }}
+                      ">
+                          <a href="#"
+                              class="nav-link 
+                          {{ request()->is('rawat-jalan*') ? 'active' : '' }}
+                          {{ request()->is('transaksi/rawat-jalan*') ? 'active' : '' }}
+                          {{ request()->is('registrasi/rawat-jalan') ? 'active' : '' }}
+                            
+                            ">
                               <i class="nav-icon fas fa-bed"></i>
                               <p>
                                   Rawat Inap
@@ -918,6 +939,59 @@
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pengambilan Obat</p>
                                   </a>
+                              </li>
+                          </ul>
+                      </li>
+                      <li
+                          class="nav-item
+                      {{ request()->is('keuangan*') ? 'menu-is-opening menu-open' : '' }}">
+                          <a href="#" class="nav-link  {{ request()->is('keuangan*') ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-money-check-alt"></i>
+                              <p>
+                                  Keuangan
+                                  <i class="right fas fa-angle-left"></i>
+                              </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                              <li
+                                  class="nav-item
+                                  {{ request()->is('keuangan*') ? 'menu-is-opening menu-open' : '' }}
+                                ">
+                                  <a href="#"
+                                      class="nav-link
+                                      {{ request()->is('keuangan*') ? 'active' : '' }}
+                                ">
+                                      <i class="fa fa-folder nav-icon ml-3"></i>
+                                      <p>Proses Pembayaran
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('keuangan.proses-pembayaran.rawat-jalan.list') }}"
+                                              wire:navigate
+                                              class="nav-link  {{ Request::segment(3) == 'rawat-jalan' ? 'active' : '' }}">
+                                              @if (Request::segment(3) == 'rawat-jalan')
+                                                  <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-5"></i>
+                                              @endif
+                                              <p>Rawat Jalan</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('keuangan.proses-pembayaran.rawat-inap.list') }}"
+                                              wire:navigate
+                                              class="nav-link {{ Request::segment(3) == 'rawat-inap' ? 'active' : '' }}">
+                                              @if (Request::segment(3) == 'rawat-inap')
+                                                  <i class="far fa-dot-circle nav-icon ml-5"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-5"></i>
+                                              @endif
+                                              <p>Rawat Inap</p>
+                                          </a>
+                                      </li>
+                                  </ul>
                               </li>
                           </ul>
                       </li>

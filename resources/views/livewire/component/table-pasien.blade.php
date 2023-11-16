@@ -43,14 +43,19 @@
                                 <li><a id="print-antrian" onclick="cetak(`180000003`)">Antrian</a></li>
                                 <li><a id="print-label" onclick="cetakLabel(`180000003`)">Label RM</a></li>
                             </ul>
-                        </div><button type="button" onclick="panggil(`180000003`)"
-                            class="btn btn-default btn-flat btn-sm" data-toggle="tooltip" data-placement="left"
-                            title="Panggil"><i class="fa fa-volume-up"></i></button>
+                        </div>
+                        <button type="button" onclick="panggil(`180000003`)" class="btn btn-default btn-flat btn-sm"
+                            data-toggle="tooltip" data-placement="left" title="Panggil"><i class="fa fa-volume-up"></i>
+                        </button>
                         <a href="{{ route($url, $item->medical_cd) }}" class="btn btn-success btn-flat btn-sm"
-                            data-toggle="tooltip" data-placement="left" title="Detail"><i
-                                class="fa fa-stethoscope"></i></a>
+                            data-toggle="tooltip" data-placement="left" title="Detail"><i class="fa fa-stethoscope"></i>
+                        </a>
                         <button type="button" class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
-                            data-placement="left" title="Mutasi"><i class="fa fa-building"></i></button>
+                            data-placement="left" title="Mutasi"><i class="fa fa-building"></i>
+                        </button>
+                        <a href="{{ route($url, $item->medical_cd) }}" class="btn btn-success btn-flat btn-sm"
+                            data-toggle="tooltip" data-placement="left" title="Proses"><i class="fas fa-user-md"></i>
+                        </a>
                     </td>
                 </tr>
             @endforeach
