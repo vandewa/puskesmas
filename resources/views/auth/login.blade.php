@@ -57,7 +57,7 @@
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             <div class="form-group">
-                                <input name="password" placeholder="Password" id="flogin_password" type="password"
+                                <input name="password" placeholder="Konfirmasi Password" id="flogin_password" type="password"
                                     class="form-control" required>
                                 <span toggle="#flogin_password"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
