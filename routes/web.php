@@ -51,6 +51,7 @@ use App\Livewire\Pages\Master\DataMedis\Tarif\TindakanMedis as TarifTindakanMedi
 use App\Livewire\Pages\Master\DataMedis\Tarif\Inventori as TarifInventori;
 use App\Livewire\Pages\Transaksi\DataTransaksi;
 use App\Livewire\Pages\Transaksi\LaboratoriumTransaksi;
+use App\Livewire\Pages\Transaksi\RadiologiTransaksi;
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +137,7 @@ Route::middleware([
             Route::get('data-transaksi/{id?}', DataTransaksi::class)->name('data-transaksi');
             Route::get('resep-obat/{id?}', ResepObat::class)->name('resep-obat');
             Route::get('laboratorium/{id?}', LaboratoriumTransaksi::class)->name('laboratorium');
+            Route::get('radiologi/{id?}', RadiologiTransaksi::class)->name('radiologi');
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
         });
 
@@ -145,6 +147,8 @@ Route::middleware([
             Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
             Route::get('data-transaksi/{id?}', DataTransaksi::class)->name('data-transaksi');
             Route::get('resep-obat/{id?}', ResepObat::class)->name('resep-obat');
+            Route::get('laboratorium/{id?}', LaboratoriumTransaksi::class)->name('laboratorium');
+            Route::get('radiologi/{id?}', RadiologiTransaksi::class)->name('radiologi');
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
         });
     });

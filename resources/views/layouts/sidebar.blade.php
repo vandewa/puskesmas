@@ -194,7 +194,7 @@
                                           </a>
                                       </li>
                                       <li
-                                          class="nav-item  
+                                          class="nav-item
                                           {{ Request::segment(2) == 'poliklinik' ? 'menu-is-opening menu-open' : '' }}
                                           {{ Request::segment(2) == 'laboratorium' ? 'menu-is-opening menu-open' : '' }}
                                           {{ Request::segment(2) == 'radiologi' ? 'menu-is-opening menu-open' : '' }}
@@ -430,7 +430,7 @@
                           </ul>
                           <ul class="nav nav-treeview">
                               <li
-                                  class="nav-item     
+                                  class="nav-item
                                    {{ Request::segment(2) == 'data-puskesmas' ? 'menu-is-opening menu-open' : '' }}">
                                   <a href="#"
                                       class="nav-link
@@ -461,7 +461,7 @@
                           </ul>
                           <ul class="nav nav-treeview">
                               <li
-                                  class="nav-item     
+                                  class="nav-item
                                  {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
                                  {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
                                  {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
@@ -492,7 +492,7 @@
                                   <ul class="nav nav-treeview">
                                       <li class="nav-item">
                                           <a href="{{ route('master.unit-satuan') }}"
-                                              class="nav-link  
+                                              class="nav-link
                                               {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
                                               "
                                               wire:navigate>
@@ -506,7 +506,7 @@
                                       </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.tipe-inventori.index') }}"
-                                              class="nav-link  
+                                              class="nav-link
                                               {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
                                               "
                                               wire:navigate>
@@ -520,7 +520,7 @@
                                       </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.inventori.index') }}"
-                                              class="nav-link  
+                                              class="nav-link
                                               {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
                                               {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
                                               "
@@ -535,7 +535,7 @@
                                       </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.supplier.index') }}"
-                                              class="nav-link  
+                                              class="nav-link
                                               {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
                                               {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
                                               "
@@ -550,7 +550,7 @@
                                       </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.principal.index') }}"
-                                              class="nav-link  
+                                              class="nav-link
                                               {{ Request::segment(2) == 'principal' ? 'active' : '' }}
                                               {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
                                               "
@@ -615,13 +615,13 @@
                           </ul>
                       </li>
                       <li
-                          class="nav-item 
+                          class="nav-item
                       {{ request()->is('rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
                       {{ request()->is('transaksi/rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
                       {{ request()->is('registrasi/rawat-jalan') ? 'menu-is-opening menu-open' : '' }}
                       ">
                           <a href="#"
-                              class="nav-link 
+                              class="nav-link
                             {{ request()->is('rawat-jalan*') ? 'active' : '' }}
                             {{ request()->is('transaksi/rawat-jalan*') ? 'active' : '' }}
                             {{ request()->is('registrasi/rawat-jalan') ? 'active' : '' }}
@@ -699,7 +699,7 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.resep-obat') }}"
+                                  <a href="{{ route('transaksi.rawat-jalan.resep-obat') }}"
                                       wire:navigate
                                       class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '' }}">
                                       @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '')
@@ -714,17 +714,17 @@
                           </ul>
                       </li>
                       <li
-                          class="nav-item 
+                          class="nav-item
                       {{ request()->is('rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
                       {{ request()->is('transaksi/rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
                       {{ request()->is('registrasi/rawat-jalan') ? 'menu-is-opening menu-open' : '' }}
                       ">
                           <a href="#"
-                              class="nav-link 
+                              class="nav-link
                           {{ request()->is('rawat-jalan*') ? 'active' : '' }}
                           {{ request()->is('transaksi/rawat-jalan*') ? 'active' : '' }}
                           {{ request()->is('registrasi/rawat-jalan') ? 'active' : '' }}
-                            
+
                             ">
                               <i class="nav-icon fas fa-bed"></i>
                               <p>
