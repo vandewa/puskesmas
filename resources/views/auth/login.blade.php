@@ -22,9 +22,9 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="mt-4 mb-0 text-center col-md-6">
-                    {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
-                    <img src="https://ti-asia.com/wp-content/uploads/2023/01/cropped-tia-sign.png"
-                        style="width: 250px;">
+                    <img src="{{ asset('puskesmas.png') }}" style="width: 120px;">
+                    {{-- <img src="https://ti-asia.com/wp-content/uploads/2023/01/cropped-tia-sign.png" --}}
+                    {{-- style="width: 250px;"> --}}
                     <h2 class="heading-section">
                         <span
                             style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">E

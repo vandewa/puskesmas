@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Pages\Keuangan\ListPasienKeuangan;
+use App\Livewire\Pages\Transaksi\KajianAwal;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksiRawatInap;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -130,6 +131,7 @@ Route::middleware([
     });
 
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
+        Route::get('kajian-awal/{id?}', KajianAwal::class)->name('kajian-awal');
         Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {
             Route::get('list/{url?}', ListPasienTransaksi::class)->name('list');
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
