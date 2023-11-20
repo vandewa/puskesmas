@@ -23,7 +23,7 @@ class ListProsesTIndakanLab extends Component
     {
         $item = TrxMedicalUnit::with(['drLab', 'tindakan', 'dokter'])
         ->whereHas('tindakan', function($a){
-            $a->where('medunit_cd', 'LAB00');
+            $a->where('medunit_cd', 'RADI');
         })->where('medical_cd', $this->medicalcd)
         ->paginate(10);
         return view('class ListProsesTindakanRad', [
