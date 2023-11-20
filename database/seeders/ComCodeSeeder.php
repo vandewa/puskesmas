@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\ComCode as Code;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ComCodeSeeder extends Seeder
 {
@@ -14,6 +15,8 @@ class ComCodeSeeder extends Seeder
      */
     public function run()
     {
+        DB::table('com_codes')->truncate();
+
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_01", "code_nm" => "Ringan", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_02", "code_nm" => "Sedang", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_03", "code_nm" => "Berat", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
@@ -419,5 +422,34 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "GENERIC_ST_02", "code_nm" => "Generik", "code_group" => "generic_st"]);
         $code = Code::create(["com_cd" => "CASE_TP_01", "code_nm" => "Baru", "code_group" => "CASE_TP"]);
         $code = Code::create(["com_cd" => "CASE_TP_02", "code_nm" => "Lama", "code_group" => "CASE_TP"]);
+        $code = Code::create(["com_cd" => "SUBYEKTIF_TP_01", "code_nm" => "Auto Anamnesa", "code_group" => "SUBYEKTIF_TP"]);
+        $code = Code::create(["com_cd" => "SUBYEKTIF_TP_02", "code_nm" => "Allo Anamnesa", "code_group" => "SUBYEKTIF_TP"]);
+        $code = Code::create(["com_cd" => "BICARA_TP_01", "code_nm" => "Jelas", "code_group" => "BICARA_TP"]);
+        $code = Code::create(["com_cd" => "BICARA_TP_02", "code_nm" => "Tidak Mengerti", "code_group" => "BICARA_TP"]);
+        $code = Code::create(["com_cd" => "KOMUNIKASI_TP_01", "code_nm" => "Verbal", "code_group" => "KOMUNIKASI_TP"]);
+        $code = Code::create(["com_cd" => "KOMUNIKASI_TP_02", "code_nm" => "Non Verbal", "code_group" => "KOMUNIKASI_TP"]);
+        $code = Code::create(["com_cd" => "KOMUNIKASI_TP_03", "code_nm" => "Apatis", "code_group" => "KOMUNIKASI_TP"]);
+        $code = Code::create(["com_cd" => "EMOSIONAL_ST_01", "code_nm" => "Stabil", "code_group" => "EMOSIONAL_ST"]);
+        $code = Code::create(["com_cd" => "EMOSIONAL_ST_02", "code_nm" => "Marah", "code_group" => "EMOSIONAL_ST"]);
+        $code = Code::create(["com_cd" => "EMOSIONAL_ST_03", "code_nm" => "Cemas", "code_group" => "EMOSIONAL_ST"]);
+        $code = Code::create(["com_cd" => "EMOSIONAL_ST_04", "code_nm" => "Takut", "code_group" => "EMOSIONAL_ST"]);
+        $code = Code::create(["com_cd" => "EMOSIONAL_ST_05", "code_nm" => "Sedih", "code_group" => "EMOSIONAL_ST"]);
+        $code = Code::create(["com_cd" => "SOSIOLOGI_TP_01", "code_nm" => "Komunikatif", "code_group" => "SOSIOLOGI_TP"]);
+        $code = Code::create(["com_cd" => "SOSIOLOGI_TP_02", "code_nm" => "Menarik Diri", "code_group" => "SOSIOLOGI_TP"]);
+        $code = Code::create(["com_cd" => "SOSIOLOGI_TP_03", "code_nm" => "Komunikatif Tidak Efektif", "code_group" => "SOSIOLOGI_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_01", "code_nm" => "Suntik", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_02", "code_nm" => "IUD", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_03", "code_nm" => "Kondom", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_04", "code_nm" => "Pil", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_05", "code_nm" => "Kalender", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_06", "code_nm" => "Implan", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_07", "code_nm" => "MOW", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_08", "code_nm" => "Menopause", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_01", "code_nm" => "DM", "code_group" => "KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_02", "code_nm" => "Hipertensi", "code_group" => "KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_03", "code_nm" => "Hiperemesis", "code_group" => "KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_04", "code_nm" => "ISK", "code_group" => "KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_05", "code_nm" => "Perdarahan", "code_group" => "KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_06", "code_nm" => "Tidak Ada", "code_group" => "RIWAYAT_KEHAMILAN_TP"]);
     }
 }
