@@ -23,11 +23,16 @@
             <div class="row justify-content-center">
                 <div class="mt-4 mb-0 text-center col-md-6">
                     {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
-                    <h2 class="heading-section">
-                        <span
-                            style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
-                        </span>
-                    </h2>
+                    <img src="https://ti-asia.com/wp-content/uploads/2023/01/cropped-tia-sign.png"
+                        style="width: 200px;">
+                    <div class="mt-3">
+                        <h2 class="heading-section">
+                            <span
+                                style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
+                            </span>
+                        </h2>
+                    </div>
+
                 </div>
             </div>
             <div class="mt-4 row justify-content-center">
@@ -56,12 +61,12 @@
                                 <span toggle="#flogin_password"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
-                            <div class="form-group">
-                                <input name="password" placeholder="Konfirmasi Password" id="flogin_password" type="password"
-                                    class="form-control" required>
+                            {{-- <div class="form-group">
+                                <input name="password" placeholder="Konfirmasi Password" id="flogin_password"
+                                    type="password" class="form-control" required>
                                 <span toggle="#flogin_password"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                            </div>
+                            </div> --}}
                             <div class="form-group">
                                 <button type="submit" class="px-3 form-control btn submit" id="flogin_tb_ok"
                                     style="background-color: rgb(51, 88, 244) !important;
@@ -71,8 +76,8 @@
                                transition: all .15s ease;
                                box-shadow: none;
                                color: #fff;"><b>Login</b></button>
-                                <a href="/register" class="px-3 mt-3 form-control btn btn-warning" id=""
-                                ><b>Daftar</b></a>
+                                <a href="/register" class="px-3 mt-3 form-control btn btn-warning"
+                                    id=""><b>Daftar</b></a>
                             </div>
                         </form>
                     </div>
