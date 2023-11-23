@@ -71,7 +71,8 @@ class RegisterController extends Controller
         $pesan = $request->name . ' telah terdaftar kedalam sistem LPK Marzuba Sejahtera Indonésia' . "\n" .
             'Username: ' . $request->email . "\n" .
             'Password : ' . $password . "\n" .
-            'Gunakan link berikut untuk melengkapi akun Anda.';
+            'Gunakan link berikut untuk melengkapi akun Anda.'."\n" .
+            url('/');
 
         kirimWhatsapp::dispatch($pesan, $nomor);
 
