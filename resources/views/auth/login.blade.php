@@ -23,8 +23,7 @@
             <div class="row justify-content-center">
                 <div class="mt-4 mb-0 text-center col-md-6">
                     {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
-                    <img src="https://ti-asia.com/wp-content/uploads/2023/01/cropped-tia-sign.png"
-                        style="width: 200px;">
+                    <img src="{{ asset('logo.png') }}" style="width: 200px;">
                     <div class="mt-3">
                         <h2 class="heading-section">
                             <span
@@ -46,8 +45,8 @@
                             <x-validation-errors class="mb-4" />
 
                             @if (session('status'))
-                                <div class="mb-4 text-sm font-medium text-green-600">
-                                    {{ session('status') }}
+                                <div class="mb-4 text-sm font-medium ">
+                                    <span class="badge bg-success">{{ session('status') }}</span>
                                 </div>
                             @endif
 
@@ -76,8 +75,12 @@
                                transition: all .15s ease;
                                box-shadow: none;
                                color: #fff;"><b>Login</b></button>
-                                <a href="/register" class="px-3 mt-3 form-control btn btn-warning"
-                                    id=""><b>Daftar</b></a>
+                                <a href="{{ route('register.index') }}" class="px-3 mt-3 form-control btn btn-warning"
+                                    id="">
+                                    <div class="mt-1">
+                                        <b>Daftar</b>
+                                    </div>
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -125,6 +128,19 @@
             });
         })(jQuery);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        function sweetAlert() {
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Silahkan cek WhatsApp Anda untuk melihat username dan password.",
+                icon: "success"
+            });
+        }
+
+        @if (session('status'))
+            sweetAlert();
+        @endif
 </body>
 
 </html>

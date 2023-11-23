@@ -21,6 +21,7 @@ use App\Livewire\Demo\Admin\PengursanBerkas;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Livewire\Pages\Transaksi\RekamMedis;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RegisterController;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Demo\Admin\WawancaraPengguna;
 use App\Livewire\Demo\DataKeluarga\Anak;
@@ -63,6 +64,7 @@ Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
 
+Route::resource('register', RegisterController::class);
 
 Route::get('docs', function () {
     return File::get(public_path() . '/documentation.html');

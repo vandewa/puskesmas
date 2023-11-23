@@ -35,9 +35,9 @@
           <a href="{{ route('dashboard') }}" class="brand-link">
               {{-- <img src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                   class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-              <img src="https://ti-asia.com/wp-content/uploads/2023/01/cropped-tia-sign.png" alt="AdminLTE Logo"
-                  class="brand-image img-circle elevation-3" style="opacity: .8">
-              <span class="brand-text font-weight-light">TIA</span>
+              <img src="{{ asset('logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                  style="opacity: .8">
+              <span class="brand-text font-weight-light">LPK Marzuba</span>
           </a>
 
           <!-- Sidebar -->

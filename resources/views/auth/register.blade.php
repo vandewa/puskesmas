@@ -23,8 +23,7 @@
             <div class="row justify-content-center">
                 <div class="mt-4 mb-0 text-center col-md-6">
                     {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
-                    <img src="https://ti-asia.com/wp-content/uploads/2023/01/cropped-tia-sign.png"
-                        style="width: 200px;">
+                    <img src="{{ asset('logo.png') }}" style="width: 200px;">
                     <div class="mt-3">
                         <h2 class="heading-section">
                             <span
@@ -38,40 +37,30 @@
                 <div class="col-md-6 col-lg-4">
                     <div class="p-0 login-wrap">
                         <h6 class="mb-4 text-center" style="color: #ffffff;">Lengkapi Form Dibawah Ini</h6>
-                        <form action="{{ route('register') }}" class="signin-form" id="flogin"
+                        <form action="{{ route('register.store') }}" class="signin-form" id="flogin"
                             onsubmit="return lsogin();" method="post" accept-charset="utf-8">
                             @csrf
 
                             <x-validation-errors class="mb-4" />
 
                             @if (session('status'))
-                                <div class="mb-4 text-sm font-medium text-green-600">
+                                <div class="mb-4 text-sm font-medium text-danger">
                                     {{ session('status') }}
                                 </div>
                             @endif
 
                             <div class="form-group">
                                 <input type="text" class="form-control" name="name" placeholder="Nama"
-                                    id="flogin_username" autofocus required>
+                                    id="name" autofocus required>
                             </div>
 
                             <div class="form-group">
                                 <input type="email" class="form-control" name="email" placeholder="Email"
-                                    id="flogin_username" autofocus required>
+                                    id="email" autofocus required>
                             </div>
-
                             <div class="form-group">
-                                <input name="password" placeholder="Password" id="flogin_password" type="password"
-                                    class="form-control" required>
-                                <span toggle="#flogin_password"
-                                    class="fa fa-fw fa-eye field-icon toggle-password"></span>
-                            </div>
-
-                            <div class="form-group">
-                                <input name="password_confirmation" placeholder="Konfirmasi Password"
-                                    id="flogin_password" type="password" class="form-control" required>
-                                <span toggle="#flogin_password"
-                                    class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                <input type="number" class="form-control" name="telepon" placeholder="Nomor WhatsApp"
+                                    id="telepon" autofocus required>
                             </div>
 
                             <div class="form-group">
@@ -83,8 +72,13 @@
                                transition: all .15s ease;
                                box-shadow: none;
                                color: #fff;"><b>Daftar</b></button>
-                                <a href="/login" class="px-3 mt-3 form-control btn btn-warning" id=""><b>Sudah
-                                        Punya Akun</b></a>
+                                <a href="/login" class="px-3 mt-3 form-control btn btn-warning" id="">
+                                    <div class="mt-1">
+                                        <b>Sudah
+                                            Punya Akun</b>
+                                    </div>
+
+                                </a>
                             </div>
                         </form>
                     </div>
@@ -132,6 +126,30 @@
             });
         })(jQuery);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script type="text/javascript">
+        function sweetAlert() {
+            Swal.fire({
+                title: "Berhasil!",
+                text: "Silahkan cek WhatsApp Anda untuk melihat username dan password.",
+                icon: "success"
+            });
+        }
+
+        @if (session('status'))
+            sweetAlert();
+        @endif
+    </script>
+
+    <!-- Javascript Requirements -->
+    {{-- <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> --}}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Laravel Javascript Validation -->
+    <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js') }}"></script>
+
+    {!! JsValidator::formRequest('App\Http\Requests\userCreateValidation') !!}
+
 </body>
 
 </html>
