@@ -23,12 +23,12 @@ class AktivasiPage extends Component
 
     public function save()
     {
-        // $this->validate([
-        //     'bukti' => 'image'
-        // ]);
+        $this->validate([
+            'bukti' => 'image|max:20480'
+        ]);
         $a = $this->bukti->store('public/bukti');
 
-       User::find(auth()->user()->id)->update([
+        User::find(auth()->user()->id)->update([
             'tanggal_upload' => date('Y-m-d'),
             'path_dokumen' => $a,
         ]);
