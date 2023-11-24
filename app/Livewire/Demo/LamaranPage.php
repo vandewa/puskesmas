@@ -10,6 +10,11 @@ class LamaranPage extends Component
 {
     use WithPagination;
 
+    public function mount() {
+        if(auth()->user()->hasRole('superadministrator')){
+            redirect()->route('admin.aktivasi-user');
+        }
+    }
     public $jenisLamaran = '';
 
     public function simpan($id) {
