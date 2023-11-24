@@ -66,6 +66,7 @@
                                                         <div class="col-md-9">
                                                             <select class="form-control"
                                                                 wire:model.defer="form.marital_tp">
+                                                                <option value="">-- Pilih Status --</option>
                                                                 @foreach ($listStatus ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
@@ -83,6 +84,8 @@
                                                             Kelamin</label>
                                                         <div class="col-md-9">
                                                             <select class="form-control" wire:model.defer="form.sex_tp">
+                                                                <option value="">-- Pilih Jenis Kelamin --
+                                                                </option>
                                                                 @foreach ($listJenisKelamin ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
@@ -143,12 +146,19 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+
+                                                </div>
+
+                                                <div class="col-md-6">
                                                     <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">Golongan
                                                             Darah</label>
                                                         <div class="col-md-9">
                                                             <select class="form-control"
                                                                 wire:model.defer="form.blood_tp">
+                                                                <option value="">-- Pilih Golongan Darah --
+                                                                </option>
                                                                 @foreach ($listDarah ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
@@ -160,11 +170,7 @@
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-md-6">
+                                                    </div>  
                                                     <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">Ukuran
                                                             Sepatu</label>
@@ -217,6 +223,7 @@
                                                         <div class="col-md-9">
                                                             <select class="form-control"
                                                                 wire:model="form.education_tp">
+                                                                <option value="">-- Pilih Pendidikan --</option>
                                                                 @foreach ($listPendidikan ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
