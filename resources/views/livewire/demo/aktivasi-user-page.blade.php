@@ -64,7 +64,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="text-right col-md-12">
+                                    <div class="mt-3 text-right col-md-12">
                                         <button class="btn btn-primary" wire:click='save'>Terima</button>
                                         <button class="btn btn-danger"  wire:click='tolak'>Tolak</button>
                                         <button class="btn btn-warning"  wire:click='cancel'>Cancel</button>
