@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-md-9">:
 
-                                        <img class="img-fluid pad" src="{{ asset('storage'. str_replace('public','', $info->path_dokumen ))}}" alt="Photo">
+                                        <img class="img-fluid" src="{{ asset('storage'. str_replace('public','', $info->path_dokumen ))}}" alt="Photo">
 
                                     </div>
                                 </div>
