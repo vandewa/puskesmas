@@ -28,8 +28,10 @@
                                                         <label for=""
                                                             class="col-sm-3 col-form-label">KTP</label>
                                                         <div class="col-md-9">
-                                                            <img src="{{ $post->preview_ktp }}"
-                                                                style="max-width: 200px;">
+                                                            @if ($post->ktp != null)
+                                                                <img src="{{ $post->preview_ktp }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                             <input type="file" class="form-control" wire:model="ktp"
                                                                 accept="image/png, image/gif, image/jpeg">
                                                             @error('ktp')
@@ -41,8 +43,10 @@
                                                     <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">KK</label>
                                                         <div class="col-md-9">
-                                                            <img src="{{ $post->preview_kk }}"
-                                                                style="max-width: 200px;">
+                                                            @if ($post->kk != null)
+                                                                <img src="{{ $post->preview_kk }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                             <input type="file" class="form-control" wire:model="kk"
                                                                 accept="image/png, image/gif, image/jpeg">
                                                             @error('kk')
@@ -57,8 +61,10 @@
                                                         <label for="" class="col-sm-3 col-form-label">Akta
                                                             Lahir</label>
                                                         <div class="col-md-9">
-                                                            <img src="{{ $post->preview_akta }}"
-                                                                style="max-width: 200px;">
+                                                            @if ($post->akta != null)
+                                                                <img src="{{ $post->preview_akta }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                             <input type="file" class="form-control" wire:model="akta"
                                                                 accept="image/png, image/gif, image/jpeg">
                                                             @error('akta')
@@ -71,8 +77,10 @@
                                                         <label for="" class="col-sm-3 col-form-label">MCU
                                                             Awal</label>
                                                         <div class="col-md-9">
-                                                            <img src="{{ $post->preview_mcu }}"
-                                                                style="max-width: 200px;">
+                                                            @if ($post->mcu != null)
+                                                                <img src="{{ $post->preview_mcu }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                             <input type="file" class="form-control" wire:model="mcu"
                                                                 accept="image/png, image/gif, image/jpeg">
                                                             @error('mcu')
