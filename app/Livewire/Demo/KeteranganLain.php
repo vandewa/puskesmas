@@ -15,6 +15,7 @@ class KeteranganLain extends Component
         'bersedia_ditempatkan' => '',
         'mematuhi_peraturan' => '',
         'keterangan_lain' => '',
+        'status' => '',
     ];
 
     public function mount()
@@ -22,6 +23,8 @@ class KeteranganLain extends Component
         $demo = DemoKeteranganLain::firstOrCreate(
             ['user_id' => auth()->user()->id],
         )->toArray();
+        $this->form = $demo;
+
     }
 
     public function save()
@@ -45,6 +48,7 @@ class KeteranganLain extends Component
 
     public function simpan()
     {
+        $this->form['status'] = true;
         DemoKeteranganLain::where('user_id', auth()->user()->id)->update(Arr::except($this->form, ['created_at', 'updated_at']));
 
         $this->js(<<<'JS'

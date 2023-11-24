@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Diri</h1>
+                <h1 class="m-0">Keterangan Lain</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Data Diri</a></li>
+                    <li class="breadcrumb-item"><a href="#">Keterangan Lain</a></li>
                 </ol>
             </div>
         </div>
@@ -30,8 +30,10 @@
                                                             / fasilitas yang diterima sekarang dan sumber pendapatan
                                                             yang lain</label>
                                                         <div class="col-md-7">
+
                                                             <input type="text" class="form-control"
-                                                                wire:model="form.tunjangan_diterima">
+                                                                wire:model="form.tunjangan_diterima"
+                                                                @if ($form['status'] == true) disabled @endif>
                                                             @error('form.tunjangan_diterima')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -43,7 +45,8 @@
                                                             fasilitas / tunjangan yang diharap</label>
                                                         <div class="col-md-7">
                                                             <input type="text" class="form-control"
-                                                                wire:model="form.gaji_diharap">
+                                                                wire:model="form.gaji_diharap"
+                                                                @if ($form['status'] == true) disabled @endif>
                                                             @error('form.gaji_diharap')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -56,7 +59,8 @@
                                                             perusahaan</label>
                                                         <div class="col-md-7">
                                                             <select class="form-control"
-                                                                wire:model.live="form.bersedia_ditempatkan">
+                                                                wire:model.live="form.bersedia_ditempatkan"
+                                                                @if ($form['status'] == true) disabled @endif>
                                                                 <option value="">
                                                                     -- Pilih --
                                                                 </option>
@@ -79,7 +83,8 @@
                                                             yang akan dikeluarkan oleh perusahaan </label>
                                                         <div class="col-md-7">
                                                             <select class="form-control"
-                                                                wire:model.live="form.mematuhi_peraturan">
+                                                                wire:model.live="form.mematuhi_peraturan"
+                                                                @if ($form['status'] == true) disabled @endif>
                                                                 <option value="">
                                                                     -- Pilih --
                                                                 </option>
@@ -102,7 +107,8 @@
                                                             Saudara kemukakan</label>
                                                         <div class="col-md-7">
                                                             <input type="text" class="form-control"
-                                                                wire:model="form.keterangan_lain">
+                                                                wire:model="form.keterangan_lain"
+                                                                @if ($form['status'] == true) disabled @endif>
                                                             @error('form.keterangan_lain')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -115,7 +121,10 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit" class="btn btn-info">Simpan</button>
+                                            @if ($form['status'] == true)
+                                            @else
+                                                <button type="submit" class="btn btn-info">Simpan</button>
+                                            @endif
                                         </div>
                                     </form>
                                 </div>
