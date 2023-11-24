@@ -141,7 +141,7 @@ Route::middleware([
         Route::get('saudara', Saudara::class)->name('saudara');
         Route::get('kenalan', Kenalan::class)->name('kenalan');
         Route::get('data-pribadi', DataPribadi::class)->name('data-pribadi');
-        Route::get('riwayat-hidup', Sekolah::class)->name('riwayat-hidup');
+        // Route::get('riwayat-hidup', Sekolah::class)->name('riwayat-hidup');
         Route::get('sekolah', Sekolah::class)->name('sekolah');
     });
 

@@ -14,9 +14,9 @@
                 id="custom-tabs-one-tindakan-tab" href="{{ route('pendaftaran.data-pribadi') }}" wire:navigate>Data
                 Pribadi</a>
         </li>
-        <li class="nav-item {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
+        {{-- <li class="nav-item {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}"
                 id="custom-tabs-one-tindakan-tab" href="{{ route('pendaftaran.riwayat-hidup') }}" wire:navigate>Riwayat Hidup</a>
-        </li>
+        </li> --}}
     </ul>
 </div>

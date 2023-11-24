@@ -57,26 +57,33 @@ class RegisterController extends Controller
     public function store(userCreateValidation $request)
     {
 
+
         $password = Str::random(8);
 
         $nomor = $this->konversi_nomor($request->telepon);
 
-        User::create([
+        $a = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'telepon' => $nomor,
             'password' => bcrypt($password)
         ]);
 
+        // $data = User::find($a->id);
+        $a->addrole('user');
+
         $pesan = $request->name . ' telah terdaftar kedalam sistem LPK Marzuba Sejahtera Indonésia' . "\n" .
             'Username: ' . $request->email . "\n" .
             'Password : ' . $password . "\n" .
-            'Gunakan link berikut untuk melengkapi akun Anda.'."\n" .
-            url('/');
+            'Gunakan link berikut untuk melengkapi akun Anda.'."\n" ;
 
         kirimWhatsapp::dispatch($pesan, $nomor);
 
-        return redirect(route('login'))->with('status', 'Silahkan cek WhatsApp Anda untuk melihat username dan password.');
+        $devan = url('/');
+
+        kirimWhatsapp::dispatch($devan, $nomor);
+        // dd("Sadas");
+        return redirect(url('/'))->with('status', 'Silahkan cek WhatsApp Anda untuk melihat username dan password.');
 
 
     }
