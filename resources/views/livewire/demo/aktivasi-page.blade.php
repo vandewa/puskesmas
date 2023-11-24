@@ -49,7 +49,7 @@
                                 @if($aktivasi)
                               <form action="" wire:submit="save">
                                 <div class="form-group">
-                                  <label for="inputName">Bukti Bayar (PDF)</label>
+                                  <label for="inputName">Bukti Bayar </label>
                                   <input type="file" id="inputName" class="form-control @error('bukti') is-invalid @enderror" wire:model='bukti'>
                                   @error('bukti')
                                   <span id="exampleInputEmail1-error" class="error invalid-feedback">{{ $message }}</span>
