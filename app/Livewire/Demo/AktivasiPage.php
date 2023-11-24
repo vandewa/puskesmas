@@ -23,9 +23,9 @@ class AktivasiPage extends Component
 
     public function save()
     {
-        $this->validate([
-            'bukti' => 'image'
-        ]);
+        // $this->validate([
+        //     'bukti' => 'image'
+        // ]);
         $a = $this->bukti->store('public/bukti');
 
      $a =    User::find(auth()->user()->id)->update([
