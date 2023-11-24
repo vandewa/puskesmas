@@ -146,6 +146,11 @@
                                                             @enderror
                                                         </div>
                                                     </div>
+
+
+                                                </div>
+
+                                                <div class="col-md-6">
                                                     <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">Golongan
                                                             Darah</label>
@@ -165,11 +170,7 @@
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-md-6">
+                                                    </div>  
                                                     <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">Ukuran
                                                             Sepatu</label>
