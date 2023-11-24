@@ -60,7 +60,14 @@
                                 </div>
                               </form>
                               @else
+                              @if(auth()->user()->active_st)
+                              <div class="text-center d-flex align-items-center justify-content-center">
+                                <h4>Akun anda telah aktif</h4>
+                              </div>
+
+                                @else
                                 <h4>Aktivasi akun anda sedang dalam proses ...</h4>
+                                @endif
                               @endif
                             </div>
                           </div>

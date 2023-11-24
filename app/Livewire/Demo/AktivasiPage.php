@@ -24,7 +24,7 @@ class AktivasiPage extends Component
     public function save()
     {
         $this->validate([
-            'bukti' => 'mimes:pdf|max:2048'
+            'bukti' => 'image|max:2048'
         ]);
         $a = $this->bukti->store('public/bukti');
 

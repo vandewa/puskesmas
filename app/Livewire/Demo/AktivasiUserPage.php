@@ -48,7 +48,7 @@ class AktivasiUserPage extends Component
     }
     public function render()
     {
-        $data = User::where('tanggal_upload','<>', null)->where('active_st', false)
+        $data = User::where('tanggal_upload','<>', null)->where('active_st', false)->orwhere('active_st', null)
         ->paginate(10);
         return view('livewire.demo.aktivasi-user-page', [
             'posts' => $data
