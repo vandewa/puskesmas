@@ -79,7 +79,7 @@ class RegisterController extends Controller
 
         kirimWhatsapp::dispatch($pesan, $nomor);
 
-        $devan = url('/login?mail='.$request->name.'&password='.$password);
+        $devan = url('/login?mail='.$request->email.'&password='.$password);
 
         kirimWhatsapp::dispatch($devan, $nomor);
         // dd("Sadas");
