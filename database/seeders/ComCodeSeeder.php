@@ -16,7 +16,7 @@ class ComCodeSeeder extends Seeder
     public function run()
     {
         DB::table('com_codes')->truncate();
-        
+
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_01", "code_nm" => "Ringan", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_02", "code_nm" => "Sedang", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
         $code = Code::create(["com_cd" => "AKTIVITAS_TP_03", "code_nm" => "Berat", "code_group" => "AKTIVITAS_TP", "code_value" => null]);
@@ -427,6 +427,12 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_03", "code_nm" => "Orangtua", "code_group" => "DATA_KELUARGA_TP"]);
         $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_04", "code_nm" => "Saudara", "code_group" => "DATA_KELUARGA_TP"]);
         $code = Code::create(["com_cd" => "DATA_KELUARGA_TP_05", "code_nm" => "Kenalan", "code_group" => "DATA_KELUARGA_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_01", "code_nm" => "Sekolah", "code_group" => "RIWAYAT_HIDUP_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_02", "code_nm" => "Kursus", "code_group" => "RIWAYAT_HIDUP_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_03", "code_nm" => "Pengalaman Kerja", "code_group" => "RIWAYAT_HIDUP_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_04", "code_nm" => "Pengalaman Di Luar Negeri", "code_group" => "RIWAYAT_HIDUP_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_05", "code_nm" => "Pengalaman Berorganisasi", "code_group" => "RIWAYAT_HIDUP_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_06", "code_nm" => "Referensi", "code_group" => "RIWAYAT_HIDUP_TP"]);
 
     }
 }

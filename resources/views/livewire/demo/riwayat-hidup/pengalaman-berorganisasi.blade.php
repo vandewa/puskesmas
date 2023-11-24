@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Riwayat Hidup</a></li>
-                    <li class="breadcrumb-item active">Sekolah</li>
+                    <li class="breadcrumb-item active">Pengalaman Berorganisasi</li>
                 </ol>
             </div>
         </div>
@@ -41,9 +41,9 @@
                                                                                     <div class="col-md-6">
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Nama
-                                                                                                Sekolah</label>
-                                                                                            <div class="col-md-9">
+                                                                                                class="col-sm-4 col-form-label">Nama
+                                                                                                Organisasi</label>
+                                                                                            <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     wire:model="form.nama">
@@ -55,86 +55,42 @@
                                                                                         </div>
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Tempat/Kota</label>
-                                                                                            <div class="col-md-9">
+                                                                                                class="col-sm-4 col-form-label">Di</label>
+                                                                                            <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.kota">
-                                                                                                @error('form.kota')
+                                                                                                    wire:model="form.lokasi">
+                                                                                                @error('form.lokasi')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
+
 
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Sampai
-                                                                                                Kelas</label>
-                                                                                            <div class="col-md-9">
+                                                                                                class="col-sm-4 col-form-label">Sebagai</label>
+                                                                                            <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.sampai_kls">
-                                                                                                @error('form.sampai_kls')
+                                                                                                    wire:model="form.sebagai">
+                                                                                                @error('form.sebagai')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="row mb-2">
-                                                                                            <label for=""
-                                                                                                class="col-sm-4 col-form-label">Dari/Sampai
-                                                                                                Tahun </label>
-                                                                                            <div class="col-md-8">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.dari_sampai_tahun">
-                                                                                                @error('form.dari_sampai_tahun')
-                                                                                                    <span
-                                                                                                        class="form-text text-danger">{{ $message }}</span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row mb-2">
-                                                                                            <label for=""
-                                                                                                class="col-sm-4 col-form-label">Jurusan</label>
-                                                                                            <div class="col-md-8">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.jurusan">
-                                                                                                @error('form.jurusan')
-                                                                                                    <span
-                                                                                                        class="form-text text-danger">{{ $message }}</span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row mb-2">
-                                                                                            <label for=""
-                                                                                                class="col-sm-4 col-form-label">Tahun
-                                                                                                Ijazah</label>
-                                                                                            <div class="col-md-8">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.ijazah">
-                                                                                                @error('form.ijazah')
-                                                                                                    <span
-                                                                                                        class="form-text text-danger">{{ $message }}</span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
 
-                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="card-footer">
                                                                                 <button type="submit"
                                                                                     class="btn btn-info">Simpan</button>
-                                                                                {{-- <button type="button"
+                                                                                <button type="button"
                                                                                     class="btn btn-default float-right"
-                                                                                    wire:click='batal'>Batal</button> --}}
+                                                                                    wire:click='batal'>Batal</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -143,7 +99,7 @@
                                                                     <div class="card card-success card-outline">
                                                                         <div class="card-header">
                                                                             <div class="card-title">
-                                                                                Data Sekolah
+                                                                                Data Pengalaman Beroganisasi
                                                                             </div>
                                                                         </div>
                                                                         <div class="card-body">
@@ -159,10 +115,9 @@
                                                                             <div class="table-responsive">
                                                                                 <table class="table">
                                                                                     <thead>
-                                                                                        <th>Nama Sekolah</th>
-                                                                                        <th>Tempat/Kota</th>
-                                                                                        <th>Jurusan</th>
-                                                                                        <th>Tahun</th>
+                                                                                        <th>Nama Organisasi</th>
+                                                                                        <th>Di</th>
+                                                                                        <th>Sebagai</th>
                                                                                         <th>Action</th>
                                                                                     </thead>
                                                                                     <tbody>
@@ -171,11 +126,9 @@
                                                                                                 wire:key='{{ $item->id }}'>
                                                                                                 <td> {{ $item->nama ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->kota ?? '-' }}
+                                                                                                <td> {{ $item->lokasi ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->jurusan ?? '-' }}
-                                                                                                </td>
-                                                                                                <td> {{ $item->ijazah ?? '-' }}
+                                                                                                <td> {{ $item->sebagai ?? '-' }}
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div

@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Diri</h1>
+                <h1 class="m-0">Data Keluarga</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item"><a href="#">Data Transaksi</a></li>
+                    <li class="breadcrumb-item active">Suami Istri</li>
                 </ol>
             </div>
         </div>
@@ -26,7 +26,6 @@
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
                                                     <livewire:demo.data-keluarga.list-transaksi>
-
                                                         <div class="tab-content" id="custom-tabs-six-tabContent">
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-riwayat-rm" role="tabpanel"
@@ -45,8 +44,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="nama">
-                                                                                                @error('nama')
+                                                                                                    wire:model="form.nama">
+                                                                                                @error('form.nama')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -59,8 +58,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="tempat_lahir">
-                                                                                                @error('tempat_lahir')
+                                                                                                    wire:model="form.tempat_lahir">
+                                                                                                @error('form.tempat_lahir')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -73,8 +72,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="date"
                                                                                                     class="form-control"
-                                                                                                    wire:model="tgl_lahir">
-                                                                                                @error('tgl_lahir')
+                                                                                                    wire:model="form.tgl_lahir">
+                                                                                                @error('form.tgl_lahir')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -86,8 +85,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="pendidikan">
-                                                                                                @error('pendidikan')
+                                                                                                    wire:model="form.pendidikan">
+                                                                                                @error('form.pendidikan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -99,8 +98,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="pekerjaan">
-                                                                                                @error('pekerjaan')
+                                                                                                    wire:model="form.pekerjaan">
+                                                                                                @error('form.pekerjaan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -112,69 +111,11 @@
                                                                             <div class="card-footer">
                                                                                 <button type="submit"
                                                                                     class="btn btn-info">Simpan</button>
-                                                                                <button type="button"
+                                                                                {{-- <button type="button"
                                                                                     class="float-right btn btn-default"
-                                                                                    wire:click='batal'>Batal</button>
+                                                                                    wire:click='batal'>Batal</button> --}}
                                                                             </div>
                                                                         </form>
-                                                                    </div>
-                                                                    <br>
-
-                                                                    <div class="card card-success card-outline">
-                                                                        <div class="card-header">
-                                                                            <div class="card-title">
-                                                                                Suami / Istri
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-body">
-                                                                            <div class="row">
-                                                                                <div class="col-md-2">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        placeholder="cari"
-                                                                                        wire:model.live='cari'>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <table class="table">
-                                                                                <thead>
-                                                                                    <th>Nama</th>
-                                                                                    <th>Tanggal Lahir</th>
-                                                                                    <th>Pendidikan</th>
-                                                                                    <th>Pekerjaan</th>
-                                                                                    <th>Action</th>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    @foreach ($post as $item)
-                                                                                        <tr
-                                                                                            wire:key='{{ $item->id }}'>
-                                                                                            <td> {{ $item->nama ?? '' }}
-                                                                                            </td>
-                                                                                            <td> {{ $item->tgl_lahir ?? '' }}
-                                                                                            </td>
-                                                                                            <td> {{ $item->pendidikan_tp ?? '' }}
-                                                                                            </td>
-                                                                                            <td> {{ $item->pekerjaan ?? '' }}
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                <button type="button"
-                                                                                                    wire:click="getEdit('{{ $item->id }}')"
-                                                                                                    class="btn btn-warning btn-flat btn-sm"
-                                                                                                    data-toggle="tooltip"
-                                                                                                    data-placement="left"
-                                                                                                    title="Edit"><i
-                                                                                                        class="fas fa-pencil-alt"></i></button>
-                                                                                                <button type="button"
-                                                                                                    class="btn btn-danger btn-flat btn-sm"
-                                                                                                    wire:click="delete('{{ $item->id }}')"><i
-                                                                                                        class="fas fa-trash"></i></button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    @endforeach
-                                                                                </tbody>
-                                                                            </table>
-                                                                            {{ $post->links() }}
-                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>

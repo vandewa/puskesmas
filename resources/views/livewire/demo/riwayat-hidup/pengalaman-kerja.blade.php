@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Riwayat Hidup</a></li>
-                    <li class="breadcrumb-item active">Sekolah</li>
+                    <li class="breadcrumb-item active">Pengalaman Kerja</li>
                 </ol>
             </div>
         </div>
@@ -41,8 +41,7 @@
                                                                                     <div class="col-md-6">
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Nama
-                                                                                                Sekolah</label>
+                                                                                                class="col-sm-3 col-form-label">Instansi/Perusahaan</label>
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
@@ -55,12 +54,12 @@
                                                                                         </div>
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Tempat/Kota</label>
+                                                                                                class="col-sm-3 col-form-label">Jabatan</label>
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.kota">
-                                                                                                @error('form.kota')
+                                                                                                    wire:model="form.jabatan">
+                                                                                                @error('form.jabatan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -69,13 +68,13 @@
 
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Sampai
-                                                                                                Kelas</label>
+                                                                                                class="col-sm-3 col-form-label">Dari/Sampai
+                                                                                                Tgl, Bln, Th </label>
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.sampai_kls">
-                                                                                                @error('form.sampai_kls')
+                                                                                                    wire:model="form.dari_sampai_tahun">
+                                                                                                @error('form.dari_sampai_tahun')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -86,13 +85,12 @@
                                                                                     <div class="col-md-6">
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-4 col-form-label">Dari/Sampai
-                                                                                                Tahun </label>
+                                                                                                class="col-sm-4 col-form-label">Gaji</label>
                                                                                             <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.dari_sampai_tahun">
-                                                                                                @error('form.dari_sampai_tahun')
+                                                                                                    wire:model="form.gaji">
+                                                                                                @error('form.gaji')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -100,12 +98,12 @@
                                                                                         </div>
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-4 col-form-label">Jurusan</label>
+                                                                                                class="col-sm-4 col-form-label">Tunjangan</label>
                                                                                             <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.jurusan">
-                                                                                                @error('form.jurusan')
+                                                                                                    wire:model="form.tunjangan">
+                                                                                                @error('form.tunjangan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -113,13 +111,13 @@
                                                                                         </div>
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-4 col-form-label">Tahun
-                                                                                                Ijazah</label>
+                                                                                                class="col-sm-4 col-form-label">Alasan
+                                                                                                Berhenti</label>
                                                                                             <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.ijazah">
-                                                                                                @error('form.ijazah')
+                                                                                                    wire:model="form.alasan_berhenti">
+                                                                                                @error('form.alasan_berhenti')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -143,7 +141,7 @@
                                                                     <div class="card card-success card-outline">
                                                                         <div class="card-header">
                                                                             <div class="card-title">
-                                                                                Data Sekolah
+                                                                                Pengalaman Kerja
                                                                             </div>
                                                                         </div>
                                                                         <div class="card-body">
@@ -159,10 +157,9 @@
                                                                             <div class="table-responsive">
                                                                                 <table class="table">
                                                                                     <thead>
-                                                                                        <th>Nama Sekolah</th>
-                                                                                        <th>Tempat/Kota</th>
-                                                                                        <th>Jurusan</th>
-                                                                                        <th>Tahun</th>
+                                                                                        <th>Instansi/Perusahaan</th>
+                                                                                        <th>Jabatan</th>
+                                                                                        <th>Dari/Sampai</th>
                                                                                         <th>Action</th>
                                                                                     </thead>
                                                                                     <tbody>
@@ -171,11 +168,10 @@
                                                                                                 wire:key='{{ $item->id }}'>
                                                                                                 <td> {{ $item->nama ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->kota ?? '-' }}
+                                                                                                <td> {{ $item->jabatan ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->jurusan ?? '-' }}
+                                                                                                <td> {{ $item->dari_sampai_tahun ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->ijazah ?? '-' }}
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div

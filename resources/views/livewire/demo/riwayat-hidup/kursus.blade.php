@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Riwayat Hidup</a></li>
-                    <li class="breadcrumb-item active">Sekolah</li>
+                    <li class="breadcrumb-item active">Kursus</li>
                 </ol>
             </div>
         </div>
@@ -41,8 +41,8 @@
                                                                                     <div class="col-md-6">
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Nama
-                                                                                                Sekolah</label>
+                                                                                                class="col-sm-3 col-form-label">Macam
+                                                                                                Kursus</label>
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
@@ -55,12 +55,13 @@
                                                                                         </div>
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Tempat/Kota</label>
+                                                                                                class="col-sm-3 col-form-label">Lama
+                                                                                                Kursus</label>
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.kota">
-                                                                                                @error('form.kota')
+                                                                                                    wire:model="form.lama_kursus">
+                                                                                                @error('form.lama_kursus')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -69,26 +70,9 @@
 
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Sampai
-                                                                                                Kelas</label>
+                                                                                                class="col-sm-3 col-form-label">Dari/Sampai
+                                                                                                Tgl,Bln,Tahun</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.sampai_kls">
-                                                                                                @error('form.sampai_kls')
-                                                                                                    <span
-                                                                                                        class="form-text text-danger">{{ $message }}</span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="row mb-2">
-                                                                                            <label for=""
-                                                                                                class="col-sm-4 col-form-label">Dari/Sampai
-                                                                                                Tahun </label>
-                                                                                            <div class="col-md-8">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
                                                                                                     wire:model="form.dari_sampai_tahun">
@@ -100,41 +84,27 @@
                                                                                         </div>
                                                                                         <div class="row mb-2">
                                                                                             <label for=""
-                                                                                                class="col-sm-4 col-form-label">Jurusan</label>
-                                                                                            <div class="col-md-8">
+                                                                                                class="col-sm-3 col-form-label">Sertifikat/Ket</label>
+                                                                                            <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.jurusan">
-                                                                                                @error('form.jurusan')
+                                                                                                    wire:model="form.sertifikat">
+                                                                                                @error('form.sertifikat')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
-                                                                                            <label for=""
-                                                                                                class="col-sm-4 col-form-label">Tahun
-                                                                                                Ijazah</label>
-                                                                                            <div class="col-md-8">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.ijazah">
-                                                                                                @error('form.ijazah')
-                                                                                                    <span
-                                                                                                        class="form-text text-danger">{{ $message }}</span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
-
                                                                                     </div>
+
                                                                                 </div>
                                                                             </div>
                                                                             <div class="card-footer">
                                                                                 <button type="submit"
                                                                                     class="btn btn-info">Simpan</button>
-                                                                                {{-- <button type="button"
+                                                                                <button type="button"
                                                                                     class="btn btn-default float-right"
-                                                                                    wire:click='batal'>Batal</button> --}}
+                                                                                    wire:click='batal'>Batal</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -143,7 +113,7 @@
                                                                     <div class="card card-success card-outline">
                                                                         <div class="card-header">
                                                                             <div class="card-title">
-                                                                                Data Sekolah
+                                                                                Data Kursus
                                                                             </div>
                                                                         </div>
                                                                         <div class="card-body">
@@ -159,10 +129,10 @@
                                                                             <div class="table-responsive">
                                                                                 <table class="table">
                                                                                     <thead>
-                                                                                        <th>Nama Sekolah</th>
-                                                                                        <th>Tempat/Kota</th>
-                                                                                        <th>Jurusan</th>
-                                                                                        <th>Tahun</th>
+                                                                                        <th>Macam Kurus</th>
+                                                                                        <th>Lama Kursus</th>
+                                                                                        <th>Dari/Sampai</th>
+                                                                                        <th>Sertifikat/Ket</th>
                                                                                         <th>Action</th>
                                                                                     </thead>
                                                                                     <tbody>
@@ -171,11 +141,11 @@
                                                                                                 wire:key='{{ $item->id }}'>
                                                                                                 <td> {{ $item->nama ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->kota ?? '-' }}
+                                                                                                <td> {{ $item->lama_kursus ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->jurusan ?? '-' }}
+                                                                                                <td> {{ $item->dari_sampai_tahun ?? '-' }}
                                                                                                 </td>
-                                                                                                <td> {{ $item->ijazah ?? '-' }}
+                                                                                                <td> {{ $item->sertifikat ?? '-' }}
                                                                                                 </td>
                                                                                                 <td>
                                                                                                     <div

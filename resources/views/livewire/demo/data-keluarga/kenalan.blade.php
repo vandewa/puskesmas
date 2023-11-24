@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Diri</h1>
+                <h1 class="m-0">Data Keluarga</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item"><a href="#">Data Keluarga</a></li>
+                    <li class="breadcrumb-item active">Keluarga Kenalan</li>
                 </ol>
             </div>
         </div>
@@ -45,8 +45,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="nama">
-                                                                                                @error('nama')
+                                                                                                    wire:model="form.nama">
+                                                                                                @error('form.nama')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -58,8 +58,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="jabatan">
-                                                                                                @error('jabatan')
+                                                                                                    wire:model="form.jabatan">
+                                                                                                @error('form.jabatan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -71,8 +71,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="instansi">
-                                                                                                @error('instansi')
+                                                                                                    wire:model="form.instansi">
+                                                                                                @error('form.instansi')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -84,8 +84,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="hubungan">
-                                                                                                @error('hubungan')
+                                                                                                    wire:model="form.hubungan">
+                                                                                                @error('form.hubungan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -122,39 +122,57 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <table class="table">
-                                                                                <thead>
-                                                                                    <th>Nama</th>
-                                                                                    <th>Jabatan</th>
-                                                                                    <th>Instansi</th>
-                                                                                    <th>Action</th>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    @foreach ($post as $item)
-                                                                                        <tr
-                                                                                            wire:key='{{ $item->id }}'>
-                                                                                            <td> {{ $item->nama ?? '' }}
-                                                                                            </td>
-                                                                                            </td>
-                                                                                            <td> {{ $item->pendidikan_tp ?? '' }}
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                <button type="button"
-                                                                                                    wire:click="getEdit('{{ $item->id }}')"
-                                                                                                    class="btn btn-warning btn-flat btn-sm"
-                                                                                                    data-toggle="tooltip"
-                                                                                                    data-placement="left"
-                                                                                                    title="Edit"><i
-                                                                                                        class="fas fa-pencil-alt"></i></button>
-                                                                                                <button type="button"
-                                                                                                    class="btn btn-danger btn-flat btn-sm"
-                                                                                                    wire:click="delete('{{ $item->id }}')"><i
-                                                                                                        class="fas fa-trash"></i></button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    @endforeach
-                                                                                </tbody>
-                                                                            </table>
+                                                                            <div class="table-responsive">
+                                                                                <table class="table">
+                                                                                    <thead>
+                                                                                        <th>Nama</th>
+                                                                                        <th>Jabatan</th>
+                                                                                        <th>Instansi</th>
+                                                                                        <th>Action</th>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        @foreach ($post as $item)
+                                                                                            <tr
+                                                                                                wire:key='{{ $item->id }}'>
+                                                                                                <td> {{ $item->nama ?? '' }}
+                                                                                                </td>
+                                                                                                <td> {{ $item->jabatan ?? '' }}
+                                                                                                </td>
+                                                                                                <td> {{ $item->instansi ?? '' }}
+                                                                                                </td>
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <div
+                                                                                                        class="gap-3 table-actions d-flex align-items-center fs-6">
+                                                                                                        <div
+                                                                                                            class="mr-2">
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                wire:click="getEdit('{{ $item->id }}')"
+                                                                                                                class="btn btn-warning btn-flat btn-sm"
+                                                                                                                data-toggle="tooltip"
+                                                                                                                data-placement="left"
+                                                                                                                title="Edit"><i
+                                                                                                                    class="fas fa-pencil-alt"></i>
+                                                                                                            </button>
+                                                                                                        </div>
+
+                                                                                                        <div>
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                class="btn btn-danger btn-flat btn-sm"
+                                                                                                                wire:click="delete('{{ $item->id }}')"><i
+                                                                                                                    class="fas fa-trash"></i>
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        @endforeach
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                             {{ $post->links() }}
                                                                         </div>
                                                                     </div>

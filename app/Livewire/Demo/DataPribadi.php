@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Demo;
 
-use App\Models\His\ComCode;
 use Livewire\Component;
+use Illuminate\Support\Arr;
+use App\Models\DataPribadi as Pribadi;
+
 
 class DataPribadi extends Component
 {
@@ -19,6 +21,7 @@ class DataPribadi extends Component
         'kecelakaan' => '',
         'kecelakaan_ket' => '',
         'kecelakaan_kapan' => '',
+        'kecelakaan_apa' => '',
         'kecelakaan_akibat' => '',
         'kegiatan_terlarang' => '',
         'polisi' => '',
@@ -36,9 +39,34 @@ class DataPribadi extends Component
         'sim' => '',
     ];
 
+    public $idnya, $user_id;
+
+    public function mount()
+    {
+        $demo_data_pribadi = Pribadi::firstOrCreate(
+            ['user_id' => auth()->user()->id],
+        )->toArray();
+        $this->form = $demo_data_pribadi;
+    }
+
     public function save()
     {
+        // dd($this->form);
 
+        Pribadi::where('user_id', auth()->user()->id)->update(Arr::except($this->form, ['created_at', 'updated_at']));
+
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Good job!',
+            text: 'You clicked the button!',
+            icon: 'success',
+          })
+        JS);
+    }
+
+    public function batal()
+    {
+        $this->reset();
     }
 
     public function render()

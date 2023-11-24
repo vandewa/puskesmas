@@ -2,12 +2,18 @@
 
 namespace App\Models\Demo;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\His\ComCode;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DataKeluarga extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
+
+    public function jenisKelamin()
+    {
+        return $this->belongsTo(ComCode::class, 'gender_tp');
+    }
 }

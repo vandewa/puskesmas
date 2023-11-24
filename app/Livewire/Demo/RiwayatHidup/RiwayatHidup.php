@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Livewire\Demo\DataKeluarga;
+namespace App\Livewire\Demo\RiwayatHidup;
 
-use App\Models\ComCode;
 use Livewire\Component;
-use App\Models\Demo\DataKeluarga;
 use Livewire\WithPagination;
+use App\Models\Demo\RiwayatHidup as Riwayat;
 
-
-class Anak extends Component
+class RiwayatHidup extends Component
 {
     use WithPagination;
 
@@ -16,28 +14,18 @@ class Anak extends Component
 
     public $form = [
         'nama' => null,
-        'tempat_lahir' => null,
-        'tgl_lahir' => null,
-        'pendidikan' => null,
-        'pekerjaan' => null,
-        'gender_tp' => null,
-        'data_keluarga_tp' => 'DATA_KELUARGA_TP_02',
+        'kota' => null,
+        'sampai_kls' => null,
+        'dari_sampai_tahun' => null,
+        'jurusan' => null,
+        'ijazah' => null,
+        'riwayat_hidup_tp' => 'RIWAYAT_HIDUP_TP_01',
         'user_id' => null
     ];
 
-    public function mount()
-    {
-        $this->ambilJenisKelamin();
-    }
-
-    public function ambilJenisKelamin()
-    {
-        return ComCode::where('code_group', 'GENDER_TP')->get()->toArray();
-    }
-
     public function getEdit($a)
     {
-        $this->form = DataKeluarga::find($a)->only(['nama', 'gender_tp', 'tempat_lahir', 'tgl_lahir', 'pendidikan']);
+        $this->form = Riwayat::find($a)->only(['nama', 'kota', 'sampai_kls', 'jurusan', 'ijazah', 'dari_sampai_tahun']);
         $this->idHapus = $a;
         $this->edit = true;
     }
@@ -62,7 +50,7 @@ class Anak extends Component
     public function store()
     {
         $this->form['user_id'] = auth()->user()->id;
-        DataKeluarga::create($this->form);
+        Riwayat::create($this->form);
     }
 
     public function delete($id)
@@ -88,7 +76,7 @@ class Anak extends Component
 
     public function hapus()
     {
-        DataKeluarga::destroy($this->idHapus);
+        Riwayat::destroy($this->idHapus);
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Good job!',
@@ -100,7 +88,7 @@ class Anak extends Component
 
     public function storeUpdate()
     {
-        DataKeluarga::find($this->idHapus)->update($this->form);
+        Riwayat::find($this->idHapus)->update($this->form);
         $this->reset();
         $this->edit = false;
     }
@@ -115,11 +103,10 @@ class Anak extends Component
 
     public function render()
     {
-        $data = DataKeluarga::with(['jenisKelamin'])->where('data_keluarga_tp', 'DATA_KELUARGA_TP_02')->paginate(10);
+        $data = Riwayat::where('riwayat_hidup_tp', 'RIWAYAT_HIDUP_TP_01')->paginate(10);
 
-        return view('livewire.demo.data-keluarga.anak', [
+        return view('livewire.demo.riwayat-hidup.riwayat-hidup', [
             'post' => $data,
-            'listJenisKelamin' => $this->ambilJenisKelamin(),
         ]);
     }
 }

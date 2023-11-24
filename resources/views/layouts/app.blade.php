@@ -68,10 +68,20 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy;
+                @if (date('Y') == 2023)
+                    2023
+                @else
+                    {{ '2023 - ' . date('Y') }};
+                @endif
+
+                <a href="https://instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA==" target="_blank">LPK Marzuba Sejahtera
+                    Indonesia</a>.
+            </strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">
-                <b>Version</b> 3.2.0
+                <strong><a href="https://instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA==" target="_blank">Instagram LPK
+                        Marzuba Sejahtera Indonesia</a></strong>
             </div>
         </footer>
 
@@ -120,6 +130,7 @@
     {{-- <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('AdminLTE/dist/js/pages/dashboard.js') }}"></script>
+    <script src="https://kit.fontawesome.com/bb9305debb.js" crossorigin="anonymous"></script>
     @stack('js')
     @livewireScripts
     @livewireChartsScripts

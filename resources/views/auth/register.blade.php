@@ -23,14 +23,14 @@
             <div class="row justify-content-center">
                 <div class="mt-4 mb-0 text-center col-md-6">
                     {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
-                    <img src="{{ asset('logo.png') }}" style="width: 200px;">
-                    <div class="mt-3">
-                        <h2 class="heading-section">
-                            <span
-                                style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
-                            </span>
-                        </h2>
-                    </div>
+                    <img src="{{ asset('logoo.png') }}" style="width: 150px;">
+                    {{-- <div class="mt-3"> --}}
+                    <h2 class="heading-section">
+                        <span
+                            style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
+                        </span>
+                    </h2>
+                    {{-- </div> --}}
                 </div>
             </div>
             <div class="mt-4 row justify-content-center">
