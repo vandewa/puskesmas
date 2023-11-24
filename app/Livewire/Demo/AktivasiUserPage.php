@@ -3,6 +3,7 @@
 namespace App\Livewire\Demo;
 
 use Livewire\Component;
+use App\Jobs\kirimWhatsapp;
 use Livewire\WithPagination;
 use App\Models\User;
 
@@ -30,7 +31,9 @@ class AktivasiUserPage extends Component
         User::find($this->pilih)->update([
             'active_st' => true
         ]);
+        $pesan ='Proses lamaran kerja anda sudah selesai dan akan diinformasikan untuk melakukan proses penyelesaian persyaratan pelatihan bahasa Jepang'."\n" ;
 
+        kirimWhatsapp::dispatch($pesan, $this->info->telepon);
         session()->flash('status', 'Pemohon berhasil diaktivasi.');
 
         $this->cancel();
