@@ -79,10 +79,10 @@
                     Indonesia</a>.
             </strong>
             All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
+            {{-- <div class="float-right d-none d-sm-inline-block">
                 <strong><a href="https://instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA==" target="_blank">Instagram LPK
                         Marzuba Sejahtera Indonesia</a></strong>
-            </div>
+            </div> --}}
         </footer>
 
         <!-- Control Sidebar -->
