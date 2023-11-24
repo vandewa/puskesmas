@@ -63,7 +63,7 @@
                           <li class="nav-item">
                               <a href="{{ route('pendaftaran.data-diri') }}"
                                   class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
-                                  <i class="nav-icon fas fa-home"></i>
+                                  <i class="nav-icon fa-solid fa-user-pen"></i>
                                   <p>
                                       Data Diri
                                   </p>
@@ -72,7 +72,7 @@
                           <li class="nav-item">
                               <a href="{{ route('dashboard') }}"
                                   class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
-                                  <i class="nav-icon fas fa-home"></i>
+                                  <i class="nav-icon fa-solid fa-file-pen"></i>
                                   <p>
                                       Lamaran
                                   </p>
@@ -81,9 +81,18 @@
                           <li class="nav-item">
                               <a href="{{ route('pendaftaran.aktivasi') }}"
                                   class="nav-link  {{ Request::segment(2) == 'aktivasi' ? 'active' : '' }}">
-                                  <i class="nav-icon fas fa-home"></i>
+                                  <i class="nav-icon fa-solid fa-file-circle-check"></i>
                                   <p>
                                       Aktivasi
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="https://www.instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA%3D%3D" target="_blank"
+                                  class="nav-link">
+                                  <i class="nav-icon fa-brands fa-instagram"></i>
+                                  <p>
+                                      Instagram
                                   </p>
                               </a>
                           </li>
