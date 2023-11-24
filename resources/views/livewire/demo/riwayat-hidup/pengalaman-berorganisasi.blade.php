@@ -112,40 +112,56 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <table class="table">
-                                                                                <thead>
-                                                                                    <th>Nama Organisasi</th>
-                                                                                    <th>Di</th>
-                                                                                    <th>Sebagai</th>
-                                                                                    <th>Action</th>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    @foreach ($post as $item)
-                                                                                        <tr
-                                                                                            wire:key='{{ $item->id }}'>
-                                                                                            <td> {{ $item->nama ?? '-' }}
-                                                                                            </td>
-                                                                                            <td> {{ $item->lokasi ?? '-' }}
-                                                                                            </td>
-                                                                                            <td> {{ $item->sebagai ?? '-' }}
-                                                                                            </td>
-                                                                                            <td>
-                                                                                                <button type="button"
-                                                                                                    wire:click="getEdit('{{ $item->id }}')"
-                                                                                                    class="btn btn-warning btn-flat btn-sm"
-                                                                                                    data-toggle="tooltip"
-                                                                                                    data-placement="left"
-                                                                                                    title="Edit"><i
-                                                                                                        class="fas fa-pencil-alt"></i></button>
-                                                                                                <button type="button"
-                                                                                                    class="btn btn-danger btn-flat btn-sm"
-                                                                                                    wire:click="delete('{{ $item->id }}')"><i
-                                                                                                        class="fas fa-trash"></i></button>
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    @endforeach
-                                                                                </tbody>
-                                                                            </table>
+                                                                            <div class="table-responsive">
+                                                                                <table class="table">
+                                                                                    <thead>
+                                                                                        <th>Nama Organisasi</th>
+                                                                                        <th>Di</th>
+                                                                                        <th>Sebagai</th>
+                                                                                        <th>Action</th>
+                                                                                    </thead>
+                                                                                    <tbody>
+                                                                                        @foreach ($post as $item)
+                                                                                            <tr
+                                                                                                wire:key='{{ $item->id }}'>
+                                                                                                <td> {{ $item->nama ?? '-' }}
+                                                                                                </td>
+                                                                                                <td> {{ $item->lokasi ?? '-' }}
+                                                                                                </td>
+                                                                                                <td> {{ $item->sebagai ?? '-' }}
+                                                                                                </td>
+                                                                                                <td>
+                                                                                                    <div
+                                                                                                        class="gap-3 table-actions d-flex align-items-center fs-6">
+                                                                                                        <div
+                                                                                                            class="mr-2">
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                wire:click="getEdit('{{ $item->id }}')"
+                                                                                                                class="btn btn-warning btn-flat btn-sm"
+                                                                                                                data-toggle="tooltip"
+                                                                                                                data-placement="left"
+                                                                                                                title="Edit"><i
+                                                                                                                    class="fas fa-pencil-alt"></i>
+                                                                                                            </button>
+                                                                                                        </div>
+
+                                                                                                        <div>
+                                                                                                            <button
+                                                                                                                type="button"
+                                                                                                                class="btn btn-danger btn-flat btn-sm"
+                                                                                                                wire:click="delete('{{ $item->id }}')"><i
+                                                                                                                    class="fas fa-trash"></i>
+                                                                                                            </button>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </td>
+                                                                                            </tr>
+                                                                                        @endforeach
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                             {{ $post->links() }}
                                                                         </div>
                                                                     </div>

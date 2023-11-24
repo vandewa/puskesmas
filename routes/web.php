@@ -40,6 +40,7 @@ use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Demo\DataKeluarga\DataKeluarga;
 use App\Livewire\Demo\RiwayatHidup\RiwayatHidup;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
+use App\Livewire\Demo\KeteranganLain;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
@@ -160,6 +161,7 @@ Route::middleware([
         Route::get('pengalaman-berorganisasi', PengalamanBerorganisasi::class)->name('pengalaman-berorganisasi');
         Route::get('dokumen', Dokumen::class)->name('dokumen');
         Route::get('aktivasi', AktivasiPage::class)->name('aktivasi');
+        Route::get('keterangan-lain', KeteranganLain::class)->name('keterangan-lain');
     });
 
 

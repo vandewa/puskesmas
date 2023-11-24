@@ -29,7 +29,7 @@ class Dokumen extends Component
             $this->validate([
                 'kk' => 'image|max:1024', // 1MB Max
             ]);
-            $kk = $this->kk->store('photos');
+            $kk = $this->kk->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
                 'kk' => $kk
             ]);
@@ -40,7 +40,7 @@ class Dokumen extends Component
             $this->validate([
                 'ktp' => 'image|max:1024', // 1MB Max
             ]);
-            $ktp = $this->ktp->store('photos');
+            $ktp = $this->ktp->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
                 'ktp' => $ktp
             ]);
@@ -50,7 +50,7 @@ class Dokumen extends Component
             $this->validate([
                 'akta' => 'image|max:1024', // 1MB Max
             ]);
-            $akta = $this->akta->store('photos');
+            $akta = $this->akta->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
                 'akta' => $akta
             ]);
@@ -60,16 +60,28 @@ class Dokumen extends Component
             $this->validate([
                 'mcu' => 'image|max:1024', // 1MB Max
             ]);
-            $mcu = $this->mcu->store('photos');
+            $mcu = $this->mcu->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
                 'mcu' => $mcu
             ]);
         }
+
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Good job!',
+            text: 'You clicked the button!',
+            icon: 'success',
+          })
+        JS);
     }
 
     public function render()
     {
-        return view('livewire.demo.dokumen');
+        $data = Document::where('user_id', auth()->user()->id)->first();
+
+        return view('livewire.demo.dokumen', [
+            'post' => $data
+        ]);
     }
 
 }

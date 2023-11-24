@@ -180,6 +180,15 @@
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="https://www.instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA%3D%3D" target="_blank"
+                                  class="nav-link">
+                                  <i class="nav-icon fa-brands fa-instagram"></i>
+                                  <p>
+                                      Instagram
+                                  </p>
+                              </a>
+                          </li>
                       </ul>
                   @endrole
               </nav>

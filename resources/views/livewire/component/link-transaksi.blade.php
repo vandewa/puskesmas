@@ -59,5 +59,10 @@
                 id="custom-tabs-one-tindakan-tab" href="{{ route('pendaftaran.dokumen') }}" wire:navigate>Upload
                 Dokumen</a>
         </li>
+        <li class="nav-item {{ Request::segment(2) == 'keterangan-lain' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(2) == 'keterangan-lain' ? 'active' : '' }}"
+                id="custom-tabs-one-tindakan-tab" href="{{ route('pendaftaran.keterangan-lain') }}"
+                wire:navigate>Keterangan Lain</a>
+        </li>
     </ul>
 </div>
