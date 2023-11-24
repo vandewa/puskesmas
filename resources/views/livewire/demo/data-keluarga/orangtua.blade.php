@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Diri</h1>
+                <h1 class="m-0">Data Keluarga</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item"><a href="#">Data Keluarga</a></li>
+                    <li class="breadcrumb-item active">Orangtua</li>
                 </ol>
             </div>
         </div>
@@ -45,8 +45,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="nama">
-                                                                                                @error('nama')
+                                                                                                    wire:model="form.nama">
+                                                                                                @error('form.nama')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -59,8 +59,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="date"
                                                                                                     class="form-control"
-                                                                                                    wire:model="tgl_lahir">
-                                                                                                @error('tgl_lahir')
+                                                                                                    wire:model="form.tgl_lahir">
+                                                                                                @error('form.tgl_lahir')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -72,8 +72,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="pendidikan">
-                                                                                                @error('pendidikan')
+                                                                                                    wire:model="form.pendidikan">
+                                                                                                @error('form.pendidikan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -85,8 +85,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="pekerjaan">
-                                                                                                @error('pekerjaan')
+                                                                                                    wire:model="form.pekerjaan">
+                                                                                                @error('form.pekerjaan')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -98,8 +98,8 @@
                                                                                             <div class="col-md-9">
                                                                                                 <input type="text"
                                                                                                     class="form-control"
-                                                                                                    wire:model="alamat">
-                                                                                                @error('alamat')
+                                                                                                    wire:model="form.alamat">
+                                                                                                @error('form.alamat')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
@@ -148,8 +148,10 @@
                                                                                             wire:key='{{ $item->id }}'>
                                                                                             <td> {{ $item->nama ?? '' }}
                                                                                             </td>
+                                                                                            <td> {{ $item->tgl_lahir ?? '' }}
                                                                                             </td>
-                                                                                            <td> {{ $item->pendidikan_tp ?? '' }}
+                                                                                            </td>
+                                                                                            <td> {{ $item->pendidikan ?? '' }}
                                                                                             </td>
                                                                                             <td>
                                                                                                 <button type="button"

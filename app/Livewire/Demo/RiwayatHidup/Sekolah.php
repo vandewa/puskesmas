@@ -2,32 +2,112 @@
 
 namespace App\Livewire\Demo\RiwayatHidup;
 
-use App\Models\Demo\DataKeluarga;
 use Livewire\Component;
+use Livewire\WithPagination;
+use App\Models\Demo\RiwayatHidup;
+
 
 class Sekolah extends Component
 {
+    use WithPagination;
+
+    public $idHapus, $edit = false;
+
     public $form = [
-        'nama' => '',
-        'tempat_lahir' => '',
-        'tgl_lahir' => '',
-        'pendidikan' => '',
-        'pekerjaan' => '',
-        'gender_tp' => '',
+        'nama' => null,
+        'kota' => null,
+        'sampai_kls' => null,
+        'dari_sampai_tahun' => null,
+        'jurusan' => null,
+        'ijazah' => null,
+        'riwayat_hidup_tp' => 'RIWAYAT_HIDUP_TP_01',
+        'user_id' => null
     ];
 
+    public function getEdit($a)
+    {
+        $this->form = RiwayatHidup::find($a)->only(['nama', 'kota', 'sampai_kls', 'jurusan', 'ijazah', 'dari_sampai_tahun']);
+        $this->idHapus = $a;
+        $this->edit = true;
+    }
 
     public function save()
     {
-       
+        if ($this->edit) {
+            $this->storeUpdate();
+        } else {
+            $this->store();
+        }
+
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Good job!',
+            text: 'You clicked the button!',
+            icon: 'success',
+          })
+        JS);
+    }
+
+    public function store()
+    {
+        $this->form['user_id'] = auth()->user()->id;
+        RiwayatHidup::create($this->form);
+    }
+
+    public function delete($id)
+    {
+        $this->idHapus = $id;
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+                text: "Apakah kamu ingin menghapus data ini? proses ini tidak dapat dikembalikan.",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus!',
+                cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $wire.hapus()
+            }
+          })
+        JS);
+    }
+
+    public function hapus()
+    {
+        RiwayatHidup::destroy($this->idHapus);
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Good job!',
+            text: 'You clicked the button!',
+            icon: 'success',
+          })
+        JS);
+    }
+
+    public function storeUpdate()
+    {
+        RiwayatHidup::find($this->idHapus)->update($this->form);
+        $this->reset();
+        $this->edit = false;
+    }
+
+
+    public function batal()
+    {
+        $this->edit = false;
+        $this->reset();
+
     }
 
     public function render()
     {
-        $data = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->first();
+        $data = RiwayatHidup::where('riwayat_hidup_tp', 'RIWAYAT_HIDUP_TP_01')->paginate(10);
 
         return view('livewire.demo.riwayat-hidup.sekolah', [
-            'post' => $data
+            'post' => $data,
         ]);
     }
 }

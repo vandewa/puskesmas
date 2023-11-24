@@ -6,8 +6,7 @@
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Data Transaksi</li>
+                    <li class="breadcrumb-item"><a href="#">Data Diri</a></li>
                 </ol>
             </div>
         </div>
@@ -65,7 +64,8 @@
                                                         <label for=""
                                                             class="col-sm-3 col-form-label">Status</label>
                                                         <div class="col-md-9">
-                                                            <select class="form-control" wire:model.defer="form.marital_tp">
+                                                            <select class="form-control"
+                                                                wire:model.defer="form.marital_tp">
                                                                 @foreach ($listStatus ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
@@ -147,7 +147,8 @@
                                                         <label for="" class="col-sm-3 col-form-label">Golongan
                                                             Darah</label>
                                                         <div class="col-md-9">
-                                                            <select class="form-control" wire:model.defer="form.blood_tp">
+                                                            <select class="form-control"
+                                                                wire:model.defer="form.blood_tp">
                                                                 @foreach ($listDarah ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
@@ -192,7 +193,7 @@
                                                         <label for="" class="col-sm-3 col-form-label">Alamat
                                                             Sekarang</label>
                                                         <div class="col-md-9">
-                                                            <textarea  wire:model='form.alamat_sekarang' class="form-control" rows="2"></textarea>
+                                                            <textarea wire:model='form.alamat_sekarang' class="form-control" rows="2"></textarea>
                                                             @error('form.alamat_sekarang')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -214,7 +215,8 @@
                                                         <label for=""
                                                             class="col-sm-3 col-form-label">Pendidikan Terakhir</label>
                                                         <div class="col-md-9">
-                                                            <select class="form-control" wire:model="form.education_tp">
+                                                            <select class="form-control"
+                                                                wire:model="form.education_tp">
                                                                 @foreach ($listPendidikan ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
                                                                         {{ $item['code_nm'] }}
@@ -246,10 +248,8 @@
                                             </div>
                                         </div>
                                         <div class="card-footer">
-                                            <button type="submit"
-                                                class="btn btn-info">Simpan</button>
-                                            <button type="button"
-                                                class="float-right btn btn-default"
+                                            <button type="submit" class="btn btn-info">Simpan</button>
+                                            <button type="button" class="float-right btn btn-default"
                                                 wire:click='batal'>Batal</button>
                                         </div>
                                     </form>

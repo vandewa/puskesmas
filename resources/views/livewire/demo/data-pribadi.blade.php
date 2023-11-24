@@ -2,12 +2,11 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Diri</h1>
+                <h1 class="m-0">Data Pribadi</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Data Transaksi</li>
+                    <li class="breadcrumb-item"><a href="#">Data Pribadi</a></li>
                 </ol>
             </div>
         </div>
@@ -27,11 +26,11 @@
                                                 <div class="col-md-6">
                                                     <div class="row mb-2">
                                                         <label for="" class="col-sm-3 col-form-label">Tinggi
-                                                            Badan</label>
+                                                            Badan <small>(cm)</small></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="tinggi">
-                                                            @error('tinggi')
+                                                                wire:model="form.tinggi" placeholder="cm">
+                                                            @error('form.tinggi')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -39,11 +38,11 @@
                                                     </div>
                                                     <div class="row mb-2">
                                                         <label for="" class="col-sm-3 col-form-label">Berat
-                                                            Badan</label>
+                                                            Badan <small>(kg)</small></label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="berat">
-                                                            @error('berat')
+                                                                wire:model="form.berat" placeholder="kg">
+                                                            @error('form.berat')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -54,8 +53,8 @@
                                                             class="col-sm-3 col-form-label">Hobby</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="hoby">
-                                                            @error('hoby')
+                                                                wire:model="form.hoby" placeholder="Masukkan Hobby">
+                                                            @error('form.hoby')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -66,8 +65,9 @@
                                                             kegiatan olah raga yang dikuasai </label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="or_yg_dikuasai">
-                                                            @error('or_yg_dikuasai')
+                                                                wire:model="form.or_yg_dikuasai"
+                                                                placeholder="Sepakbola, Voli">
+                                                            @error('form.or_yg_dikuasai')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -78,8 +78,8 @@
                                                             sakit keras ?</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="sakit">
-                                                            @error('sakit')
+                                                                wire:model="form.sakit" placeholder="Ya / Tidak">
+                                                            @error('form.sakit')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -90,8 +90,8 @@
                                                             class="col-sm-3 col-form-label">Kapan</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="sakit_kapan">
-                                                            @error('sakit_kapan')
+                                                                wire:model="form.sakit_kapan" placeholder="Tahun">
+                                                            @error('form.sakit_kapan')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -102,8 +102,8 @@
                                                             Apa</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="sakit_apa">
-                                                            @error('sakit_apa')
+                                                                wire:model="form.sakit_apa" placeholder="Jelaskan">
+                                                            @error('form.sakit_apa')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -114,8 +114,8 @@
                                                             mendapat kecelakaan ?</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="kecelakaan">
-                                                            @error('kecelakaan')
+                                                                wire:model="form.kecelakaan" placeholder="Ya / Tidak">
+                                                            @error('form.kecelakaan')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -126,20 +126,22 @@
                                                             class="col-sm-3 col-form-label">Kapan</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="kecelakaan_kapan">
-                                                            @error('kecelakaan_kapan')
+                                                                wire:model="form.kecelakaan_kapan" placeholder="Tahun">
+                                                            @error('form.kecelakaan_kapan')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                     <div class="row mb-2">
-                                                        <label for="" class="col-sm-3 col-form-label">Kecelakaan
+                                                        <label for=""
+                                                            class="col-sm-3 col-form-label">Kecelakaan
                                                             Apa</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="kecelakaan_apa">
-                                                            @error('kecelakaan_apa')
+                                                                wire:model="form.kecelakaan_apa"
+                                                                placeholder="Jelaskan">
+                                                            @error('form.kecelakaan_apa')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -151,8 +153,9 @@
                                                         </label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="kecelakaan_akibat">
-                                                            @error('kecelakaan_akibat')
+                                                                wire:model="form.kecelakaan_akibat"
+                                                                placeholder="Jelaskan">
+                                                            @error('form.kecelakaan_akibat')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -163,20 +166,29 @@
                                                             terlibat kegiatan terlarang ?</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="kegiatan_terlarang">
-                                                            @error('kegiatan_terlarang')
+                                                                wire:model="form.kegiatan_terlarang"
+                                                                placeholder="Ya / Tidak">
+                                                            @error('form.kegiatan_terlarang')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+
+
+                                                </div>
+
+                                                <div class="col-md-6">
+
+
                                                     <div class="row mb-2">
                                                         <label for="" class="col-sm-3 col-form-label">Pernah
                                                             tersangkut urusan dengan pihak kepolisian ?</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="polisi">
-                                                            @error('polisi')
+                                                                wire:model="form.polisi" placeholder="Ya / Tidak">
+                                                            @error('form.polisi')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -187,25 +199,20 @@
                                                             class="col-sm-3 col-form-label">Jelaskan</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="polisi_ket">
-                                                            @error('polisi_ket')
+                                                                wire:model="form.polisi_ket" placeholder="Jelaskan">
+                                                            @error('form.polisi_ket')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
-
-
-                                                </div>
-
-                                                <div class="col-md-6">
                                                     <div class="row mb-2">
                                                         <label for="" class="col-sm-3 col-form-label">Pernah
                                                             terdaftar sebagai peserta/anggota program ASTEK ?</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="astek">
-                                                            @error('astek')
+                                                                wire:model="form.astek" placeholder="Ya / Tidak">
+                                                            @error('form.astek')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -216,8 +223,8 @@
                                                             Peserta/KPA</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="no_kpa">
-                                                            @error('no_kpa')
+                                                                wire:model="form.no_kpa" placeholder="Nomor">
+                                                            @error('form.no_kpa')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -228,8 +235,8 @@
                                                             mengikuti Penataran P4</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="penataran">
-                                                            @error('penataran')
+                                                                wire:model="form.penataran" placeholder="Ya / Tidak">
+                                                            @error('form.penataran')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -240,8 +247,8 @@
                                                             class="col-sm-3 col-form-label">Kapan</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="penataran_kapan">
-                                                            @error('penataran_kapan')
+                                                                wire:model="form.penataran_kapan" placeholder="Tahun">
+                                                            @error('form.penataran_kapan')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -252,8 +259,9 @@
                                                             class="col-sm-3 col-form-label">Pola/Type</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="penataran_pola">
-                                                            @error('penataran_pola')
+                                                                wire:model="form.penataran_pola"
+                                                                placeholder="Masukkan Pola/Type">
+                                                            @error('form.penataran_pola')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -264,8 +272,9 @@
                                                             class="col-sm-3 col-form-label">Penyelenggara</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="penataran_penyelenggara">
-                                                            @error('penataran_penyelenggara')
+                                                                wire:model="form.penataran_penyelenggara"
+                                                                placeholder="Nama Penyelenggara">
+                                                            @error('form.penataran_penyelenggara')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -276,8 +285,21 @@
                                                             class="col-sm-3 col-form-label">SIM</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="sim">
-                                                            @error('sim')
+                                                                wire:model="form.sim" placeholder="Nomor SIM">
+                                                            @error('form.sim')
+                                                                <span
+                                                                    class="form-text text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mb-2">
+                                                        <label for=""
+                                                            class="col-sm-3 col-form-label">Kecakapan Bahasa</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"
+                                                                wire:model="form.bahasa1"
+                                                                placeholder="Contoh: Inggris (aktif), Mandarin (pasif)">
+                                                            @error('form.bahasa1')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -285,7 +307,6 @@
                                                     </div>
 
                                                 </div>
-
                                             </div>
                                         </div>
                                         <div class="card-footer">

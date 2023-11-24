@@ -35,7 +35,7 @@
           <a href="{{ route('dashboard') }}" class="brand-link">
               {{-- <img src="{{ asset('AdminLTE/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
                   class="brand-image img-circle elevation-3" style="opacity: .8"> --}}
-              <img src="{{ asset('logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+              <img src="{{ asset('logoo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                   style="opacity: .8">
               <span class="brand-text font-weight-light">LPK Marzuba</span>
           </a>

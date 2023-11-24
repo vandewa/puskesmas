@@ -1,9 +1,10 @@
 <?php
 
-use App\Livewire\Demo\DataKeluarga\Saudara;
+use App\Livewire\Demo\Dokumen;
 use App\Livewire\Demo\Lamaran;
 use App\Livewire\Demo\DataDiri;
 use App\Livewire\Demo\Admin\Tes;
+use App\Livewire\Demo\DataPribadi;
 use App\Livewire\Demo\LamaranPage;
 use App\Livewire\Demo\Admin\Magang;
 use App\Livewire\Pages\Pendaftaran;
@@ -12,42 +13,47 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Demo\Admin\Wawancara;
 use App\Livewire\Demo\Admin\Pendidikan;
+use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Http\Controllers\HelperController;
 use App\Livewire\Demo\Admin\Keberangkatan;
 use App\Livewire\Demo\Admin\SeleksiBerkas;
+use App\Livewire\Demo\RiwayatHidup\Kursus;
+use App\Livewire\Demo\DataKeluarga\Kenalan;
+use App\Livewire\Demo\DataKeluarga\Saudara;
+use App\Livewire\Demo\RiwayatHidup\Sekolah;
 use App\Livewire\Pages\Transaksi\ResepObat;
+use App\Http\Controllers\RegisterController;
 use App\Livewire\Demo\Admin\PengursanBerkas;
+use App\Livewire\Demo\DataKeluarga\Orangtua;
 use App\Livewire\Pages\Registrasi\RawatInap;
 use App\Livewire\Pages\Transaksi\RekamMedis;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\RegisterController;
+use App\Livewire\Demo\RiwayatHidup\Referensi;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Demo\Admin\WawancaraPengguna;
-use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Demo\DataKeluarga\SuamiIstri;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Demo\DataKeluarga\DataKeluarga;
-use App\Livewire\Demo\DataKeluarga\Kenalan;
+use App\Livewire\Demo\RiwayatHidup\RiwayatHidup;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
-use App\Livewire\Demo\DataKeluarga\Orangtua;
-use App\Livewire\Demo\DataPribadi;
-use App\Livewire\Demo\RiwayatHidup\Sekolah;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
+use App\Livewire\Demo\RiwayatHidup\PengalamanKerja;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksi;
 use App\Livewire\Pages\Master\DataMedis\JadwalPraktek;
 use App\Livewire\Pages\Master\DataMedis\JenisPenyakit;
 use App\Livewire\Pages\Master\DataMedis\TindakanMedis;
+use App\Livewire\Demo\RiwayatHidup\PengalamanLuarNegeri;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kamar;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Kelas;
 use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
 use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
+use App\Livewire\Demo\RiwayatHidup\PengalamanBerorganisasi;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
 use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -141,8 +147,14 @@ Route::middleware([
         Route::get('saudara', Saudara::class)->name('saudara');
         Route::get('kenalan', Kenalan::class)->name('kenalan');
         Route::get('data-pribadi', DataPribadi::class)->name('data-pribadi');
-        // Route::get('riwayat-hidup', Sekolah::class)->name('riwayat-hidup');
+        Route::get('riwayat-hidup', RiwayatHidup::class)->name('riwayat-hidup');
         Route::get('sekolah', Sekolah::class)->name('sekolah');
+        Route::get('kursus', Kursus::class)->name('kursus');
+        Route::get('referensi', Referensi::class)->name('referensi');
+        Route::get('pengalaman-kerja', PengalamanKerja::class)->name('pengalaman-kerja');
+        Route::get('pengalaman-luar-negeri', PengalamanLuarNegeri::class)->name('pengalaman-luar-negeri');
+        Route::get('pengalaman-berorganisasi', PengalamanBerorganisasi::class)->name('pengalaman-berorganisasi');
+        Route::get('dokumen', Dokumen::class)->name('dokumen');
     });
 
 
