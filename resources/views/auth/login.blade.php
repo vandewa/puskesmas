@@ -51,11 +51,11 @@
                             @endif
 
                             <div class="form-group">
-                                <input type="email" class="form-control" name="email" placeholder="Email"
+                                <input type="email" value="{{ request('mail') }}" class="form-control" name="email" placeholder="Email"
                                     id="flogin_username" autofocus required>
                             </div>
                             <div class="form-group">
-                                <input name="password" placeholder="Password" id="flogin_password" type="password"
+                                <input name="password" placeholder="Password" value="{{ request('password') }}" id="flogin_password" type="password"
                                     class="form-control" required>
                                 <span toggle="#flogin_password"
                                     class="fa fa-fw fa-eye field-icon toggle-password"></span>
