@@ -28,7 +28,7 @@ class AktivasiPage extends Component
         // ]);
         $a = $this->bukti->store('public/bukti');
 
-     $a =    User::find(auth()->user()->id)->update([
+       User::find(auth()->user()->id)->update([
             'tanggal_upload' => date('Y-m-d'),
             'path_dokumen' => $a,
         ]);
