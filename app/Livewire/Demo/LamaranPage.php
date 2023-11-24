@@ -10,8 +10,11 @@ class LamaranPage extends Component
 {
     use WithPagination;
 
-    public function simpan() {
+    public $jenisLamaran = '';
 
+    public function simpan($id) {
+
+        $this->jenisLamaran = $id;
         $cek = Lamaran::where('user_id', auth()->user()->id)->where('status', 'Dalam Proses')->first();
         if($cek) {
             $this->js(<<<'JS'
@@ -24,6 +27,32 @@ class LamaranPage extends Component
                     });
 
         JS);
+
+        return ;
+        }
+        // cek activasi
+        if(!auth()->user()->active_st){
+            $this->js(<<<'JS'
+
+            Swal.fire({
+            title: 'Anda belum melakukan aktivasi akun, aktivasi sekarang?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Iya',
+            denyButtonText: `Tidak`,
+        }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                $wire.redirectBayar()
+            //   Swal.fire('Saved!', '', 'success')
+            } else if (result.isDenied) {
+            Swal.fire('Anda tidak jadi aktivasi', '', 'info')
+            }})
+
+        JS);
+
+
+
 
         return ;
         }
@@ -44,10 +73,13 @@ class LamaranPage extends Component
                 } else if (result.isDenied) {
                 Swal.fire('Anda tidak jadi melamar', '', 'info')
                 }})
-
             JS);
 
 
+    }
+
+    public function redirectBayar() {
+        redirect()->route('pendaftaran.aktivasi');
     }
 
     public function save()
@@ -57,7 +89,8 @@ class LamaranPage extends Component
             'user_id' => auth()->user()->id,
             'no_reg' => date('Y/m/d-').auth()->user()->id,
             'tahapan_id' => 1,
-            'status' => 'Dalam Proses'
+            'status' => 'Dalam Proses',
+            'lamaran_tp' =>  $this->jenisLamaran,
         ]);
     }
     public function render()

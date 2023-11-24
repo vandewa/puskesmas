@@ -71,16 +71,34 @@
                           </li>
                           <li class="nav-item">
                               <a href="{{ route('dashboard') }}"
-                                  class="nav-link  {{ Request::segment(1) == '' ? 'active' : '' }}">
+                                  class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
                                   <i class="nav-icon fas fa-home"></i>
                                   <p>
                                       Lamaran
                                   </p>
                               </a>
                           </li>
+                          <li class="nav-item">
+                              <a href="{{ route('pendaftaran.aktivasi') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'aktivasi' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-home"></i>
+                                  <p>
+                                      Aktivasi
+                                  </p>
+                              </a>
+                          </li>
                       @endrole
 
                       @role('superadministrator')
+                          <li class="nav-item">
+                              <a href="{{ route('admin.aktivasi-user') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'aktivasi-user' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-file"></i>
+                                  <p>
+                                      Aktivasi User
+                                  </p>
+                              </a>
+                          </li>
                           <li class="nav-item">
                               <a href="{{ route('admin.seleksi-berkas') }}"
                                   class="nav-link  {{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">

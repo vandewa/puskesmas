@@ -18,10 +18,10 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            @role('user')
+                            {{-- @role('user')
                                 <h3 class="card-title"> <button class="btn btn-primary" wire:click='simpan()'> Lamar
                                         Sekarang</button> </h3>
-                            @endrole
+                            @endrole --}}
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
                                     <input type="text" name="table_search" class="float-right form-control"
@@ -35,13 +35,62 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="p-0 card-body table-responsive">
+
+                        <div class="col-md-12">
+
+
+                        <div class="row">
+                            <div class="col-lg-4 col-6" wire:click="simpan('Program Ginoujissusei')">
+                                <div class="small-box bg-info">
+                                    <div class="inner">
+                                        <h4>Program Ginoujissusei</h4>
+                                        <p>Pemagangan</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-bag"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">Daftar Sekarang <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-6" wire:click="simpan('Program Tokuteiginou')">
+                                <div class="small-box bg-success">
+                                    <div class="inner">
+                                        <h4>Program Tokuteiginou</h4>
+                                        <p>Visa Kerja</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-stats-bars"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">Daftar Sekarang <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4 col-6" wire:click="simpan('Nihonggo Gakko')">
+                                <div class="small-box bg-warning">
+                                    <div class="inner">
+                                        <h5>Nihonggo Gakko</h5>
+                                        <p>Sekolah Bahasa Jepang Di Negara Jepang</p>
+                                    </div>
+                                    <div class="icon">
+                                        <i class="ion ion-person-add"></i>
+                                    </div>
+                                    <a href="#" class="small-box-footer">Daftar Sekarang <i class="fas fa-arrow-circle-right"></i></a>
+                                </div>
+                            </div>
+
+
+                            </div>
+                        </div>
+                                                <!-- /.card-header -->
+
+                            <div class="p-0 card-body table-responsive">
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
                                         <th>No Pendaftaran</th>
                                         <th>Nama Pendaftar</th>
+                                        <th>Jenis Lamaran</th>
                                         <th>Tanggal Pendaftaran</th>
                                         <th>Status</th>
                                         <th>Tahapan</th>
@@ -53,6 +102,7 @@
                                         <tr>
                                             <td>{{ $item->no_reg }}</td>
                                             <td>{{ $item->user->name ?? '-' }}</td>
+                                            <td>{{ $item->lamaran_tp ?? '-' }}</td>
                                             <td>{{ $item->created_at }}</td>
                                             <td>
                                                 @if ($item->status == 'Dibatalkan')

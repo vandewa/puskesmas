@@ -24,6 +24,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RegisterController;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Demo\Admin\WawancaraPengguna;
+use App\Livewire\Demo\AktivasiPage;
+use App\Livewire\Demo\AktivasiUserPage;
 use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Demo\DataKeluarga\SuamiIstri;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
@@ -80,6 +82,7 @@ Route::middleware([
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('aktivasi-user', AktivasiUserPage::class)->name('aktivasi-user');
         Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
         Route::get('tes', Tes::class)->name('tes');
         Route::get('wawancara', Wawancara::class)->name('wawancara');
@@ -143,6 +146,7 @@ Route::middleware([
         Route::get('data-pribadi', DataPribadi::class)->name('data-pribadi');
         // Route::get('riwayat-hidup', Sekolah::class)->name('riwayat-hidup');
         Route::get('sekolah', Sekolah::class)->name('sekolah');
+        Route::get('aktivasi', AktivasiPage::class)->name('aktivasi');
     });
 
 
