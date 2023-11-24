@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Demo\Admin\Wawancara;
 use App\Livewire\Demo\Admin\Pendidikan;
-use App\Livewire\Demo\DataKeluarga\Anak;
+// use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Pages\Pasien\ListPasien;
 use App\Http\Controllers\HelperController;
 use App\Livewire\Demo\Admin\Keberangkatan;
@@ -32,6 +32,9 @@ use App\Http\Controllers\DashboardController;
 use App\Livewire\Demo\RiwayatHidup\Referensi;
 use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Demo\Admin\WawancaraPengguna;
+use App\Livewire\Demo\AktivasiPage;
+use App\Livewire\Demo\AktivasiUserPage;
+use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Demo\DataKeluarga\SuamiIstri;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
 use App\Livewire\Demo\DataKeluarga\DataKeluarga;
@@ -86,6 +89,7 @@ Route::middleware([
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+        Route::get('aktivasi-user', AktivasiUserPage::class)->name('aktivasi-user');
         Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
         Route::get('tes', Tes::class)->name('tes');
         Route::get('wawancara', Wawancara::class)->name('wawancara');
@@ -155,6 +159,7 @@ Route::middleware([
         Route::get('pengalaman-luar-negeri', PengalamanLuarNegeri::class)->name('pengalaman-luar-negeri');
         Route::get('pengalaman-berorganisasi', PengalamanBerorganisasi::class)->name('pengalaman-berorganisasi');
         Route::get('dokumen', Dokumen::class)->name('dokumen');
+        Route::get('aktivasi', AktivasiPage::class)->name('aktivasi');
     });
 
 
