@@ -58,7 +58,9 @@
                                         <Label> Lihat Bukti</Label>
                                     </div>
                                     <div class="col-md-9">:
-                                       <a href="{{ asset('storage'. str_replace('public','', $info->path_dokumen ))}}" class="btn btn-primary btn-sm" target=" _blank" >Lihat</a>
+
+                                        <img class="img-fluid pad" src="{{ asset('storage'. str_replace('public','', $info->path_dokumen ))}}" alt="Photo">
+
                                     </div>
                                 </div>
                                 <div class="row">

@@ -29,7 +29,7 @@
                     <div class="card-body ">
 
                         <div class="card-body row">
-                            <div class="text-center col-5 d-flex align-items-center justify-content-center">
+                            <div class="text-center col-md-5 col-sm-12 d-flex align-items-center justify-content-center">
                               <div class="">
                                 <h2>BCA<strong> 5660485343</strong></h2>
                                 <h2><strong> Rp 300.000 </strong></h2>
@@ -39,7 +39,7 @@
                                 </p>
                               </div>
                             </div>
-                            <div class="col-7">
+                            <div class="col-md-7 col-sm-12">
                                 @if (session('status'))
                                     <div class="alert alert-success">
                                         {{ session('status') }}
@@ -60,7 +60,14 @@
                                 </div>
                               </form>
                               @else
+                              @if(auth()->user()->active_st)
+                              <div class="text-center d-flex align-items-center justify-content-center">
+                                <h4>Akun anda telah aktif</h4>
+                              </div>
+
+                                @else
                                 <h4>Aktivasi akun anda sedang dalam proses ...</h4>
+                                @endif
                               @endif
                             </div>
                           </div>
