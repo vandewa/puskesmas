@@ -23,6 +23,17 @@
                     <h3 class="card-title"> Pengguna</h3>
 
 
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="float-right form-control " placeholder="Search" wire:model.live='cari'>
+
+                        <div class="input-group-append">
+                        <button type="submit" class="btn btn-default">
+                            <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                        </div>
+                    </div>
                     </div>
                     <!-- /.card-header -->
 
@@ -51,7 +62,13 @@
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->telepon }}</td>
-                                                <td>{{ $item->active_st }}</td>
+                                                <td>
+                                                    @if($item->active_st)
+                                                    <span class="badge bg-primary">Active</span>
+                                                        @else
+                                                    <span class="badge bg-warning">Non Active</span>
+                                                    @endif
+                                                </td>
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->tanggal_upload }}</td>
                                                 <td>

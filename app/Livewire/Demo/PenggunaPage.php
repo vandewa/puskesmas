@@ -9,9 +9,10 @@ use Livewire\WithPagination;
 class PenggunaPage extends Component
 {
     use WithPagination;
+    public $cari;
     public function render()
     {
-        $data = User::paginate(10);
+        $data = User::cari($this->cari)->paginate(10);
         return view('livewire.demo.pengguna-page',  [
             'posts' => $data
         ]);
