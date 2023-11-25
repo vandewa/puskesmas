@@ -100,7 +100,7 @@ class LamaranPage extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user'])
+        $data = Lamaran::cari($this->cari)->with(['tahapan', 'user'])
         ->where('user_id', auth()->user()->id)
         ->paginate(10);
         return view('livewire.demo.lamaran-page', [

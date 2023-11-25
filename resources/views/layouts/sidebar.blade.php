@@ -192,7 +192,7 @@
                           <li class="nav-item">
                               <a href="{{ route('admin.pengguna') }}"
                                   class="nav-link  {{ Request::segment(2) == 'pengguna' ? 'active' : '' }}">
-                                  <i class="nav-icon fas fa-yen-sign"></i>
+                                  <i class="nav-icon fas fa-users"></i>
                                   <p>
                                       Pengguna
                                   </p>

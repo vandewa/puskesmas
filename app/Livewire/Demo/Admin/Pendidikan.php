@@ -12,6 +12,7 @@ use App\Models\Wawancarauser;
 class Pendidikan extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

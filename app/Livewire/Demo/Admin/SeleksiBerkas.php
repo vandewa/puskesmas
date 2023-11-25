@@ -10,6 +10,7 @@ use App\Models\TestFisik;
 class SeleksiBerkas extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

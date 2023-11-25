@@ -11,6 +11,7 @@ use App\Models\Wawancara1;
 class Wawancara extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

@@ -12,6 +12,7 @@ use App\Models\Wawancara1;
 class McuPage extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

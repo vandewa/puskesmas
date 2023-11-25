@@ -13,6 +13,7 @@ use App\Models\Keberangkatan as Berangkat;
 class Keberangkatan extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

@@ -13,6 +13,7 @@ use App\Models\Wawancarauser;
 class PengursanBerkas extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

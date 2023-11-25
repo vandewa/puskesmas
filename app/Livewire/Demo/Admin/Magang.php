@@ -14,6 +14,7 @@ use App\Models\Magang as ModelsMagang;
 class Magang extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

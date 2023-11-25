@@ -42,4 +42,12 @@ class Lamaran extends Model
     public function magang()  {
         return $this->hasOne(Magang::class, 'lamaran_id');
     }
+
+    public function scopeCari($filter, $value)  {
+        if($value){
+            return $this->whereHas('user', function($a) use($value){
+                $a->where('name', 'ilike', "%$value%");
+            });
+        }
+    }
 }

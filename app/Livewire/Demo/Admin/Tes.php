@@ -10,6 +10,7 @@ use App\Models\Wawancara1;
 class Tes extends Component
 {
     use WithPagination;
+    public $cari;
 
     public $persetujuan;
     public $info;

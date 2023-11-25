@@ -24,7 +24,7 @@
                             @endrole --}}
                             <div class="card-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="float-right form-control"
+                                    <input type="text" name="table_search" class="float-right form-control" wire:model.live='cari'
                                         placeholder="Search">
 
                                     <div class="input-group-append">
