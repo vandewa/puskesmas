@@ -10,18 +10,20 @@ class LamaranPage extends Component
 {
     use WithPagination;
 
-    public function mount() {
-        if(auth()->user()->hasRole('superadministrator')){
+    public function mount()
+    {
+        if (auth()->user()->hasRole('superadministrator')) {
             redirect()->route('admin.aktivasi-user');
         }
     }
-    public $jenisLamaran = '';
+    public $jenisLamaran = '', $cari;
 
-    public function simpan($id) {
+    public function simpan($id)
+    {
 
         $this->jenisLamaran = $id;
         $cek = Lamaran::where('user_id', auth()->user()->id)->where('status', 'Dalam Proses')->first();
-        if($cek) {
+        if ($cek) {
             $this->js(<<<'JS'
 
                     Swal.fire({
@@ -33,10 +35,10 @@ class LamaranPage extends Component
 
         JS);
 
-        return ;
+            return;
         }
         // cek activasi
-        if(!auth()->user()->active_st){
+        if (!auth()->user()->active_st) {
             $this->js(<<<'JS'
 
             Swal.fire({
@@ -59,7 +61,7 @@ class LamaranPage extends Component
 
 
 
-        return ;
+            return;
         }
 
         $this->js(<<<'JS'
@@ -83,7 +85,8 @@ class LamaranPage extends Component
 
     }
 
-    public function redirectBayar() {
+    public function redirectBayar()
+    {
         redirect()->route('pendaftaran.aktivasi');
     }
 
@@ -92,17 +95,17 @@ class LamaranPage extends Component
 
         Lamaran::create([
             'user_id' => auth()->user()->id,
-            'no_reg' => date('Y/m/d-').auth()->user()->id,
+            'no_reg' => date('Y/m/d-') . auth()->user()->id,
             'tahapan_id' => 1,
             'status' => 'Dalam Proses',
-            'lamaran_tp' =>  $this->jenisLamaran,
+            'lamaran_tp' => $this->jenisLamaran,
         ]);
     }
     public function render()
     {
         $data = Lamaran::cari($this->cari)->with(['tahapan', 'user'])
-        ->where('user_id', auth()->user()->id)
-        ->paginate(10);
+            ->where('user_id', auth()->user()->id)
+            ->paginate(10);
         return view('livewire.demo.lamaran-page', [
             'posts' => $data
         ]);

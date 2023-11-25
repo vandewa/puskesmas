@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi>
+                        <livewire:component.link-transaksi :idnya="$idnya">
                             <div class="card-body">
                                 <div class="col-md-12">
                                     {{-- <div class="card card-success card-outline"> --}}
@@ -297,9 +297,9 @@
                                                             class="col-sm-3 col-form-label">Kecakapan Bahasa</label>
                                                         <div class="col-md-9">
                                                             <input type="text" class="form-control"
-                                                                wire:model="form.bahasa1"
+                                                                wire:model="form.bahasa_1"
                                                                 placeholder="Contoh: Inggris (aktif), Mandarin (pasif)">
-                                                            @error('form.bahasa1')
+                                                            @error('form.bahasa_1')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
@@ -309,11 +309,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-info">Simpan</button>
-                                            <button type="button" class="btn btn-default float-right"
-                                                wire:click='batal'>Batal</button>
-                                        </div>
+                                        @if (!auth()->user()->hasRole('superadministrator'))
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-info">Simpan</button>
+                                                <button type="button" class="btn btn-default float-right"
+                                                    wire:click='batal'>Batal</button>
+                                            </div>
+                                        @endif
                                     </form>
                                 </div>
                             </div>

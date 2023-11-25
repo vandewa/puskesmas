@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi>
+                        <livewire:component.link-transaksi :idnya="$idnya">
                             <div class="card-body">
                                 <div class="tab-pane fade active show">
                                     <div class="tab-pane active show fade" id="custom-tabs-one-rm" role="tabpanel"
@@ -25,7 +25,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
-                                                    <livewire:demo.data-keluarga.list-transaksi>
+                                                    <livewire:demo.data-keluarga.list-transaksi :idnya="$idnya">
                                                         <div class="tab-content" id="custom-tabs-six-tabContent">
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-riwayat-rm" role="tabpanel"
@@ -108,13 +108,15 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="card-footer">
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info">Simpan</button>
-                                                                                {{-- <button type="button"
+                                                                            @if (!auth()->user()->hasRole('superadministrator'))
+                                                                                <div class="card-footer">
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-info">Simpan</button>
+                                                                                    {{-- <button type="button"
                                                                                     class="float-right btn btn-default"
                                                                                     wire:click='batal'>Batal</button> --}}
-                                                                            </div>
+                                                                                </div>
+                                                                            @endif
                                                                         </form>
                                                                     </div>
                                                                 </div>

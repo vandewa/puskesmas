@@ -6,6 +6,10 @@ use Livewire\Component;
 
 class LinkTransaksi extends Component
 {
+
+    public $idnya;
+
+
     public function render()
     {
         return view('livewire.component.link-transaksi');

@@ -41,11 +41,18 @@ class DataPribadi extends Component
 
     public $idnya, $user_id;
 
-    public function mount()
+    public function mount($id = '')
     {
-        $demo_data_pribadi = Pribadi::firstOrCreate(
-            ['user_id' => auth()->user()->id],
-        )->toArray();
+        if (auth()->user()->hasRole('superadministrator')) {
+            $demo_data_pribadi = Pribadi::firstOrCreate(
+                ['user_id' => $id],
+            )->toArray();
+        } else {
+            $demo_data_pribadi = Pribadi::firstOrCreate(
+                ['user_id' => auth()->user()->id],
+            )->toArray();
+        }
+        $this->idnya = $id;
         $this->form = $demo_data_pribadi;
     }
 

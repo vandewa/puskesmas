@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi>
+                        <livewire:component.link-transaksi :idnya="$idnya">
                             <div class="card-body">
                                 <div class="col-md-12">
                                     {{-- <div class="card card-success card-outline"> --}}
@@ -120,12 +120,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-footer">
-                                            @if ($form['status'] == true)
-                                            @else
-                                                <button type="submit" class="btn btn-info">Simpan</button>
-                                            @endif
-                                        </div>
+                                        @if (!auth()->user()->hasRole('superadministrator'))
+                                            <div class="card-footer">
+                                                @if ($form['status'] == true)
+                                                @else
+                                                    <button type="submit" class="btn btn-info">Simpan</button>
+                                                @endif
+                                            </div>
+                                        @endif
                                     </form>
                                 </div>
                             </div>

@@ -12,7 +12,7 @@ class Anak extends Component
 {
     use WithPagination;
 
-    public $idHapus, $edit = false;
+    public $idHapus, $edit = false, $idnya;
 
     public $form = [
         'nama' => null,
@@ -25,8 +25,9 @@ class Anak extends Component
         'user_id' => null
     ];
 
-    public function mount()
+    public function mount($id = '')
     {
+        $this->idnya = $id;
         $this->ambilJenisKelamin();
     }
 
@@ -115,7 +116,12 @@ class Anak extends Component
 
     public function render()
     {
-        $data = DataKeluarga::with(['jenisKelamin'])->where('data_keluarga_tp', 'DATA_KELUARGA_TP_02')->paginate(10);
+        if (auth()->user()->hasRole('superadministrator')) {
+            $data = DataKeluarga::with(['jenisKelamin'])->where('data_keluarga_tp', 'DATA_KELUARGA_TP_02')->where('user_id', $this->idnya)->paginate(10);
+        } else {
+            $data = DataKeluarga::with(['jenisKelamin'])->where('data_keluarga_tp', 'DATA_KELUARGA_TP_02')->where('user_id', auth()->user()->id)->paginate(10);
+        }
+
 
         return view('livewire.demo.data-keluarga.anak', [
             'post' => $data,

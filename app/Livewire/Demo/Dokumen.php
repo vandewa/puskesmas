@@ -12,14 +12,24 @@ class Dokumen extends Component
 
     use WithFileUploads;
 
-    public $kk, $ktp, $akta, $mcu, $info;
+    public $kk, $ktp, $akta, $mcu, $info, $idnya;
 
-    public function mount()
+    public function mount($id = '')
     {
-        $dokumen = Document::firstOrCreate(
-            ['user_id' => auth()->user()->id],
-        )->toArray();
+        if (auth()->user()->hasRole('superadministrator')) {
+            $dokumen = Document::firstOrCreate(
+                ['user_id' => $id],
+            )->toArray();
+        } else {
+            $dokumen = Document::firstOrCreate(
+                ['user_id' => auth()->user()->id],
+            )->toArray();
+        }
+
+        $this->idnya = $id;
         $this->info = $dokumen;
+
+        // dd($this->info);
     }
 
 
@@ -77,10 +87,14 @@ class Dokumen extends Component
 
     public function render()
     {
-        $data = Document::where('user_id', auth()->user()->id)->first();
+        // if (auth()->user()->hasRole('superadministrator')) {
+        //     $data = Document::where('user_id', $this->idnya);
+        // } else {
+        //     $data = Document::where('user_id', auth()->user()->id)->first();
+        // }
 
         return view('livewire.demo.dokumen', [
-            'post' => $data
+            // 'post' => $data
         ]);
     }
 

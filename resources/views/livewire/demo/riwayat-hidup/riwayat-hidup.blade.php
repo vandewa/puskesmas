@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi>
+                        <livewire:component.link-transaksi :idnya="$idnya">
                             <div class="card-body">
                                 <div class="tab-pane fade active show">
                                     <div class="tab-pane active show fade" id="custom-tabs-one-rm" role="tabpanel"
@@ -25,7 +25,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
-                                                    <livewire:demo.riwayat-hidup.list-transaksi>
+                                                    <livewire:demo.riwayat-hidup.list-transaksi :idnya="$idnya">
 
                                                         <div class="tab-content" id="custom-tabs-six-tabContent">
                                                             <div class="tab-pane fade show active"
@@ -129,13 +129,15 @@
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="card-footer">
-                                                                                <button type="submit"
-                                                                                    class="btn btn-info">Simpan</button>
-                                                                                {{-- <button type="button"
+                                                                            @if (!auth()->user()->hasRole('superadministrator'))
+                                                                                <div class="card-footer">
+                                                                                    <button type="submit"
+                                                                                        class="btn btn-info">Simpan</button>
+                                                                                    {{-- <button type="button"
                                                                                     class="btn btn-default float-right"
                                                                                     wire:click='batal'>Batal</button> --}}
-                                                                            </div>
+                                                                                </div>
+                                                                            @endif
                                                                         </form>
                                                                     </div>
                                                                     <br>
@@ -193,14 +195,16 @@
                                                                                                             </button>
                                                                                                         </div>
 
-                                                                                                        <div>
-                                                                                                            <button
-                                                                                                                type="button"
-                                                                                                                class="btn btn-danger btn-flat btn-sm"
-                                                                                                                wire:click="delete('{{ $item->id }}')"><i
-                                                                                                                    class="fas fa-trash"></i>
-                                                                                                            </button>
-                                                                                                        </div>
+                                                                                                        @if (!auth()->user()->hasRole('superadministrator'))
+                                                                                                            <div>
+                                                                                                                <button
+                                                                                                                    type="button"
+                                                                                                                    class="btn btn-danger btn-flat btn-sm"
+                                                                                                                    wire:click="delete('{{ $item->id }}')"><i
+                                                                                                                        class="fas fa-trash"></i>
+                                                                                                                </button>
+                                                                                                            </div>
+                                                                                                        @endif
                                                                                                     </div>
 
                                                                                                 </td>

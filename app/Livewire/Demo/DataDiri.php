@@ -31,17 +31,25 @@ class DataDiri extends Component
         'agama' => '',
     ];
 
-    public $idnya, $user_id;
+    public $idnya;
 
-    public function mount()
+
+    public function mount($id = '')
     {
-        $demo_data_diri = DemoDataDiri::firstOrCreate(
-            ['user_id' =>auth()->user()->id],
-        )->toArray();
+        if (auth()->user()->hasRole('superadministrator')) {
+            $demo_data_diri = DemoDataDiri::firstOrCreate(
+                ['user_id' => $id],
+            )->toArray();
+        } else {
+            $demo_data_diri = DemoDataDiri::firstOrCreate(
+                ['user_id' => auth()->user()->id],
+            )->toArray();
+        }
+
         $this->form = $demo_data_diri;
-        // dd(DemoDataDiri::where('user_id', auth()->user()->id)->first());
         $this->ambilJenisKelamin();
         $this->ambilStatus();
+        $this->idnya = $id;
     }
 
     public function ambilJenisKelamin()
@@ -63,10 +71,10 @@ class DataDiri extends Component
 
     public function save()
     {
-            // dd($this->form);
+        // dd($this->form);
 
         DemoDataDiri::where('user_id', auth()->user()->id)->update(Arr::except($this->form, ['created_at', 'updated_at']));
- 
+
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Good job!',

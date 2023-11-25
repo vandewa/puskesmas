@@ -146,24 +146,24 @@ Route::middleware([
 
     Route::group(['prefix' => 'pendaftaran', 'as' => 'pendaftaran.'], function () {
         Route::get('list/{url?}', ListTransaksi::class)->name('list');
-        Route::get('data-diri', DataDiri::class)->name('data-diri');
-        Route::get('data-keluarga', SuamiIstri::class)->name('data-keluarga');
-        Route::get('suami-istri', SuamiIstri::class)->name('suami-istri');
-        Route::get('anak', Anak::class)->name('anak');
-        Route::get('orangtua', Orangtua::class)->name('orangtua');
-        Route::get('saudara', Saudara::class)->name('saudara');
-        Route::get('kenalan', Kenalan::class)->name('kenalan');
-        Route::get('data-pribadi', DataPribadi::class)->name('data-pribadi');
-        Route::get('riwayat-hidup', RiwayatHidup::class)->name('riwayat-hidup');
-        Route::get('sekolah', Sekolah::class)->name('sekolah');
-        Route::get('kursus', Kursus::class)->name('kursus');
-        Route::get('referensi', Referensi::class)->name('referensi');
-        Route::get('pengalaman-kerja', PengalamanKerja::class)->name('pengalaman-kerja');
-        Route::get('pengalaman-luar-negeri', PengalamanLuarNegeri::class)->name('pengalaman-luar-negeri');
-        Route::get('pengalaman-berorganisasi', PengalamanBerorganisasi::class)->name('pengalaman-berorganisasi');
-        Route::get('dokumen', Dokumen::class)->name('dokumen');
+        Route::get('data-diri/{id?}', DataDiri::class)->name('data-diri');
+        Route::get('data-keluarga/{id?}', SuamiIstri::class)->name('data-keluarga');
+        Route::get('suami-istri/{id?}', SuamiIstri::class)->name('suami-istri');
+        Route::get('anak/{id?}', Anak::class)->name('anak');
+        Route::get('orangtua/{id?}', Orangtua::class)->name('orangtua');
+        Route::get('saudara/{id?}', Saudara::class)->name('saudara');
+        Route::get('kenalan/{id?}', Kenalan::class)->name('kenalan');
+        Route::get('data-pribadi/{id?}', DataPribadi::class)->name('data-pribadi');
+        Route::get('riwayat-hidup/{id?}', RiwayatHidup::class)->name('riwayat-hidup');
+        Route::get('sekolah/{id?}', Sekolah::class)->name('sekolah');
+        Route::get('kursus/{id?}', Kursus::class)->name('kursus');
+        Route::get('referensi/{id?}', Referensi::class)->name('referensi');
+        Route::get('pengalaman-kerja/{id?}', PengalamanKerja::class)->name('pengalaman-kerja');
+        Route::get('pengalaman-luar-negeri/{id?}', PengalamanLuarNegeri::class)->name('pengalaman-luar-negeri');
+        Route::get('pengalaman-berorganisasi/{id?}', PengalamanBerorganisasi::class)->name('pengalaman-berorganisasi');
+        Route::get('dokumen/{id?}', Dokumen::class)->name('dokumen');
         Route::get('aktivasi', AktivasiPage::class)->name('aktivasi');
-        Route::get('keterangan-lain', KeteranganLain::class)->name('keterangan-lain');
+        Route::get('keterangan-lain/{id?}', KeteranganLain::class)->name('keterangan-lain');
     });
 
 

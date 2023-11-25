@@ -18,11 +18,21 @@ class KeteranganLain extends Component
         'status' => '',
     ];
 
-    public function mount()
+    public $idnya;
+
+    public function mount($id = '')
     {
-        $demo = DemoKeteranganLain::firstOrCreate(
-            ['user_id' => auth()->user()->id],
-        )->toArray();
+        if (auth()->user()->hasRole('superadministrator')) {
+            $demo = DemoKeteranganLain::firstOrCreate(
+                ['user_id' => $id],
+            )->toArray();
+        } else {
+            $demo = DemoKeteranganLain::firstOrCreate(
+                ['user_id' => auth()->user()->id],
+            )->toArray();
+        }
+
+        $this->idnya = $id;
         $this->form = $demo;
 
     }

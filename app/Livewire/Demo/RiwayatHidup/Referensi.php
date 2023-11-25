@@ -11,7 +11,8 @@ class Referensi extends Component
 {
     use WithPagination;
 
-    public $idHapus, $edit = false;
+    public $idHapus, $edit = false, $idnya;
+
 
     public $form = [
         'nama' => null,
@@ -22,6 +23,12 @@ class Referensi extends Component
         'riwayat_hidup_tp' => 'RIWAYAT_HIDUP_TP_06',
         'user_id' => null
     ];
+
+    public function mount($id = '')
+    {
+        $this->idnya = $id;
+    }
+
 
     public function getEdit($a)
     {
@@ -103,7 +110,11 @@ class Referensi extends Component
 
     public function render()
     {
-        $data = RiwayatHidup::where('riwayat_hidup_tp', 'RIWAYAT_HIDUP_TP_06')->paginate(10);
+        if (auth()->user()->hasRole('superadministrator')) {
+            $data = RiwayatHidup::where('riwayat_hidup_tp', 'RIWAYAT_HIDUP_TP_06')->where('user_id', $this->idnya)->paginate(10);
+        } else {
+            $data = RiwayatHidup::where('riwayat_hidup_tp', 'RIWAYAT_HIDUP_TP_06')->where('user_id', auth()->user()->id)->paginate(10);
+        }
 
         return view('livewire.demo.riwayat-hidup.referensi', [
             'post' => $data,

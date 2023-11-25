@@ -22,18 +22,30 @@ class SuamiIstri extends Component
         'data_keluarga_tp' => 'DATA_KELUARGA_TP_01',
     ];
 
+    public $idnya, $user_id, $cek;
 
-    public function mount()
+
+    public function mount($id = '')
     {
-        $demo_data_keluarga = DataKeluarga::firstOrCreate(
-            ['user_id' => auth()->user()->id],
-        )->toArray();
+        if (auth()->user()->hasRole('superadministrator')) {
+            $demo_data_keluarga = DataKeluarga::firstOrCreate(
+                ['data_keluarga_tp' => 'DATA_KELUARGA_TP_01'],
+                ['user_id' => $id],
+            )->toArray();
+        } else {
+            $demo_data_keluarga = DataKeluarga::firstOrCreate(
+                ['data_keluarga_tp' => 'DATA_KELUARGA_TP_01'],
+                ['user_id' => auth()->user()->id],
+            )->toArray();
+        }
+        $this->idnya = $id;
         $this->form = $demo_data_keluarga;
+        $this->idnya = $demo_data_keluarga['user_id'];
     }
 
     public function save()
     {
-        DataKeluarga::where('user_id', auth()->user()->id)->update(Arr::except($this->form, ['created_at', 'updated_at']));
+        DataKeluarga::where('user_id', auth()->user()->id)->where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->update(Arr::except($this->form, ['created_at', 'updated_at']));
 
         $this->js(<<<'JS'
         Swal.fire({
@@ -47,7 +59,15 @@ class SuamiIstri extends Component
 
     public function render()
     {
-        $data = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->get();
+        if (auth()->user()->hasRole('superadministrator')) {
+            $data = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->where('user_id', $this->idnya)->get();
+        } else {
+            $data = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->where('user_id', auth()->user()->id)->get();
+        }
+
+
+        // dd($data);
+
 
         return view('livewire.demo.data-keluarga.suami-istri', [
             'post' => $data

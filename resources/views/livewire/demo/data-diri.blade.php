@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi>
+                        <livewire:component.link-transaksi :idnya="$idnya">
                             <div class="card-body">
                                 <div class="col-md-12">
                                     {{-- <div class="card card-success card-outline"> --}}
@@ -170,7 +170,7 @@
                                                                     class="form-text text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
-                                                    </div>  
+                                                    </div>
                                                     <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">Ukuran
                                                             Sepatu</label>
@@ -254,11 +254,13 @@
 
                                             </div>
                                         </div>
-                                        <div class="card-footer">
-                                            <button type="submit" class="btn btn-info">Simpan</button>
-                                            <button type="button" class="float-right btn btn-default"
-                                                wire:click='batal'>Batal</button>
-                                        </div>
+                                        @if (!auth()->user()->hasRole('superadministrator'))
+                                            <div class="card-footer">
+                                                <button type="submit" class="btn btn-info">Simpan</button>
+                                                <button type="button" class="float-right btn btn-default"
+                                                    wire:click='batal'>Batal</button>
+                                            </div>
+                                        @endif
                                     </form>
                                 </div>
                             </div>
