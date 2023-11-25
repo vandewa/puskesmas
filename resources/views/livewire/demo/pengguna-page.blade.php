@@ -55,7 +55,7 @@
                                                 <td>{{ $item->name }}</td>
                                                 <td>{{ $item->tanggal_upload }}</td>
                                                 <td>
-                                                    <button class="btn btn-sm btn-primary" wire:click='proses({{ $item->id }})'>Proses</button>
+                                                    <button class="btn btn-sm btn-primary" >Detail</button>
                                                 </td>
                                             </tr>
                                             @endforeach
