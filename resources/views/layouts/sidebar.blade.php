@@ -190,6 +190,15 @@
                               </a>
                           </li>
                           <li class="nav-item">
+                              <a href="{{ route('admin.pengguna') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'pengguna' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-yen-sign"></i>
+                                  <p>
+                                      Pengguna
+                                  </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
                               <a href="https://www.instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA%3D%3D" target="_blank"
                                   class="nav-link">
                                   <i class="nav-icon fa-brands fa-instagram"></i>

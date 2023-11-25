@@ -41,6 +41,7 @@ use App\Livewire\Demo\DataKeluarga\DataKeluarga;
 use App\Livewire\Demo\RiwayatHidup\RiwayatHidup;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
 use App\Livewire\Demo\KeteranganLain;
+use App\Livewire\Demo\PenggunaPage;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
 use App\Livewire\Pages\Transaksi\DetailRawatJalan;
@@ -100,6 +101,7 @@ Route::middleware([
         Route::get('pengurusan-berkas', PengursanBerkas::class)->name('pengurusan.berkas');
         Route::get('keberangkatan', Keberangkatan::class)->name('keberangkatan');
         Route::get('magang', Magang::class)->name('magang');
+        Route::get('pengguna', PenggunaPage::class)->name('pengguna');
     });
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
