@@ -69,7 +69,7 @@
                                                     <span class="badge bg-warning">Non Active</span>
                                                     @endif
                                                 </td>
-                                                <td>{{ $item->name }}</td>
+                                                <td>{{ $item->roles()->first()->name??"-" }}</td>
                                                 <td>{{ $item->tanggal_upload }}</td>
                                                 <td>
                                                     <button class="btn btn-sm btn-primary" >Detail</button>
