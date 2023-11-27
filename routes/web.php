@@ -7,6 +7,7 @@ use App\Livewire\Demo\Admin\Tes;
 use App\Livewire\Demo\DataPribadi;
 use App\Livewire\Demo\LamaranPage;
 use App\Livewire\Demo\Admin\Magang;
+use App\Livewire\Demo\TampilanPengguna;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Demo\Admin\McuPage;
 use Illuminate\Support\Facades\File;
@@ -164,6 +165,7 @@ Route::middleware([
         Route::get('dokumen/{id?}', Dokumen::class)->name('dokumen');
         Route::get('aktivasi', AktivasiPage::class)->name('aktivasi');
         Route::get('keterangan-lain/{id?}', KeteranganLain::class)->name('keterangan-lain');
+        Route::get('detail-pengguna/{id?}', TampilanPengguna::class)->name('detail-pengguna');
     });
 
 

@@ -10,4 +10,8 @@ class DataDiri extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    // public function satuan(){
+    //     return $this->belongsTo(InvUnit::class, 'unit_cd');
+    // }
 }
