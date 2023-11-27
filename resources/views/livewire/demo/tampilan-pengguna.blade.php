@@ -788,6 +788,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
+                                            <div class="mt-4">
+                                                <legend>Keterangan Lain</legend>
+                                            </div>
                                             <div class="mb-2 row">
                                                 <label for="" class="col-sm-5 col-form-label">Tunjangan
                                                     / fasilitas yang diterima sekarang dan sumber pendapatan
