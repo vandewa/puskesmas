@@ -20,7 +20,7 @@ class TempatTidur extends Component
         'bangsal_cd' => '',
         'kamar_cd' => '',
     ];
-    public $cari, $edit = false;
+    public $cari, $edit = false, $idedit;
 
     public $idHapus;
 
@@ -48,6 +48,7 @@ class TempatTidur extends Component
     {
         $this->form = TrxRuang::find($a)->only(['ruang_cd', 'ruang_nm', 'kelas_cd', 'bangsal_cd', 'kamar_cd']);
         $this->edit = true;
+        $this->idedit = $this->form['ruang_cd'];
     }
 
     public function batal()
@@ -110,9 +111,11 @@ class TempatTidur extends Component
 
     public function storeUpdate()
     {
-        TrxRuang::find($this->form['ruang_cd'])->update($this->form);
+        TrxRuang::find($this->idedit)->update($this->form);
         $this->reset();
         $this->edit = false;
+        $this->idedit = null;
+
     }
 
     public function render()

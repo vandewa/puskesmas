@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0">Master Data</h1>
             </div>
@@ -19,14 +19,14 @@
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
-                        <form class="form-horizontal mt-2" wire:submit='save'>
+                        <form class="mt-2 form-horizontal" wire:submit='save'>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-5">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Kode</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model='form.ruang_cd'
+                                                <input type="number" class="form-control" wire:model='form.ruang_cd'
                                                     placeholder="Kode Tempat Tidur">
                                                 @error('form.ruang_cd')
                                                     <span class="form-text text-danger">{{ $message }}</span>
@@ -94,7 +94,7 @@
                             <!-- /.card-body -->
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <button type="button" class="btn btn-default float-right"
+                                <button type="button" class="float-right btn btn-default"
                                     wire:click='batal'>Batal</button>
                             </div>
                             <!-- /.card-footer -->
