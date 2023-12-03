@@ -99,6 +99,75 @@
                       @endrole
 
                       @role('superadministrator')
+                      <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                            Master Data
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="../examples/invoice.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Layanan</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="../examples/profile.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Kelas</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="../examples/e-commerce.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Sales</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="{{ route('admin.pengguna') }}"
+                                class="nav-link  {{ Request::segment(2) == 'pengguna' ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Siswa
+                                </p>
+                            </a>
+                        </li>
+
+                        </ul>
+                      </li>
+                      <li class="nav-item">
+                        <a href="#" class="nav-link ">
+                          <i class="nav-icon fas fa-book"></i>
+                          <p>
+                            Keuangan
+                            <i class="fas fa-angle-left right"></i>
+                          </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                            <a href="../examples/invoice.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Aktivasi Pendaftaran</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="../examples/profile.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Tagihan</p>
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a href="../examples/e-commerce.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p>Terbayar</p>
+                            </a>
+                          </li>
+
+                        </ul>
+                      </li>
                           <li class="nav-item">
                               <a href="{{ route('admin.aktivasi-user') }}"
                                   class="nav-link  {{ Request::segment(2) == 'aktivasi-user' ? 'active' : '' }}">
@@ -189,15 +258,7 @@
                                   </p>
                               </a>
                           </li>
-                          <li class="nav-item">
-                              <a href="{{ route('admin.pengguna') }}"
-                                  class="nav-link  {{ Request::segment(2) == 'pengguna' ? 'active' : '' }}">
-                                  <i class="nav-icon fas fa-users"></i>
-                                  <p>
-                                      Pengguna
-                                  </p>
-                              </a>
-                          </li>
+
                           <li class="nav-item">
                               <a href="https://www.instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA%3D%3D" target="_blank"
                                   class="nav-link">

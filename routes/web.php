@@ -42,6 +42,7 @@ use App\Livewire\Demo\DataKeluarga\DataKeluarga;
 use App\Livewire\Demo\RiwayatHidup\RiwayatHidup;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
 use App\Livewire\Demo\KeteranganLain;
+use App\Livewire\Demo\Master\LayananPage;
 use App\Livewire\Demo\PenggunaPage;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
 use App\Livewire\Pages\Master\DataMedis\Spesialis;
@@ -92,6 +93,9 @@ Route::middleware([
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+       Route::group(['prefix' => 'master'], function(){
+            Route::get('layanan', LayananPage::class)->name('layanan');
+       });
         Route::get('aktivasi-user', AktivasiUserPage::class)->name('aktivasi-user');
         Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
         Route::get('tes', Tes::class)->name('tes');

@@ -62,6 +62,15 @@
                                 <input type="number" class="form-control" name="telepon" placeholder="Nomor WhatsApp"
                                     id="telepon" autofocus required>
                             </div>
+                            <div class="form-group">
+                                @if(request('ref')??"" != '')
+                                <input type="ref" class="form-control" name="ref" placeholder="Kode Sales"
+                                    id="ref">
+                                    @else
+                                <input type="ref" readonly class="form-control" name="ref" placeholder="Kode Sales"
+                                    id="ref" value="{{ request('ref') }}">
+                                    @endif
+                            </div>
 
                             <div class="form-group">
                                 <button type="submit" class="px-3 form-control btn submit" id="flogin_tb_ok"

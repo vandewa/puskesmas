@@ -27,7 +27,7 @@
                     <div class="mt-3">
                         <h2 class="heading-section">
                             <span
-                                style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
+                                style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Login
                             </span>
                         </h2>
                     </div>
