@@ -153,13 +153,15 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
+
+                                                                        @foreach ($posts as $item)
                                                                         <tr role="row" class="odd">
-                                                                            <td>13/10/2023</td>
-                                                                            <td>TRIFAMOL</td>
-                                                                            <td>4.00</td>
-                                                                            <td>Rp 60,00</td>
-                                                                            <td>Rp 240,00</td>
-                                                                            <td>Tarif Inventori(Obat/BHP)</td>
+                                                                            <td>{{ $item->datetime_trx }}</td>
+                                                                            <td>{{ $item->data_nm }}</td>
+                                                                            <td>{{ $item->quantity }}</td>
+                                                                            <td>{{ $item->item_price }}</td>
+                                                                            <td>{{ $item->amount }}</td>
+                                                                            <td>{{ $item->account->account_nm??"-" }}</td>
                                                                             <td><button type="button"
                                                                                     onclick="ubah(`629`)"
                                                                                     class="btn btn-success btn-flat btn-sm"
@@ -169,28 +171,16 @@
                                                                                         class="fas fa-money-check-alt"></i></button>
                                                                             </td>
                                                                         </tr>
-                                                                        <tr role="row" class="even">
-                                                                            <td>16/11/2023</td>
-                                                                            <td>JASA SARANA FARMASI</td>
-                                                                            <td>1.00</td>
-                                                                            <td>Rp 450,00</td>
-                                                                            <td>Rp 450,00</td>
-                                                                            <td>Tarif Inventori(Obat/BHP)</td>
-                                                                            <td><button type="button"
-                                                                                    onclick="ubah(`630`)"
-                                                                                    class="btn btn-success btn-flat btn-sm"
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="left"
-                                                                                    title="Diskon"><i
-                                                                                        class="fas fa-money-check-alt"></i></button>
-                                                                            </td>
-                                                                        </tr>
+                                                                        @endforeach
+
                                                                     </tbody>
                                                                 </table>
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-
+                                                                        <button class="btn btn-primary" wire:click='confirmHitung'>Hitung Biaya</button>
+                                                                        <button class="btn btn-warning">Proses Pembayaran</button>
+                                                                        <button class="btn btn-info">Bayar Satuan</button>
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <table style="width: 100%">

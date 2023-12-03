@@ -111,6 +111,10 @@ use \OwenIt\Auditing\Auditable;
         'diskon_angka'
     ];
 
+    public function  account() {
+        return $this->belongsTo(ComAccount::class, 'account_cd');
+    }
+
     /**
      * Validation rules
      *

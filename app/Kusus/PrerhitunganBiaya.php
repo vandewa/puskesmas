@@ -39,7 +39,7 @@ class PrerhitunganBiaya
 
             TrxMedicalSettlement::where('medical_cd', $medicalcd)
             ->where('tarif_tp', '<>', 'TARIF_TP_03')->update([
-                'amount_tarif_default' => 0,
+
                 'item_price' => 0,
                 'amount' => 0
             ]);
@@ -60,10 +60,12 @@ class PrerhitunganBiaya
         if($data){
             $cekTarif = TrxTarifKelas::where('kelas_cd', $data->kelas_cd)->first();
             // hitung hari
-            $date1=date_create($data->datetime_start);
+            $date1=date_create(date('Y-m-d', strtotime($data->datetime_start)));
             $date2=date_create($data->datetime_end??date('Y-m-d'));
+            $hariTerakhir = $data->datetime_end??date('Y-m-d');
             $jumlahHari = date_diff($date1,$date2);
-            if($jumlahHari >1) {
+            $jumlahHari = $jumlahHari->format("%a%");
+            if($jumlahHari < 1) {
                 $jumlahHari = 1;
             }
 
@@ -73,17 +75,14 @@ class PrerhitunganBiaya
                 'account_cd' => $cekTarif->account_cd,
                 'datetime_trx' => $data->created_at,
                 'data_cd' => $cekTarif->seq_no,
-                'data_nm' =>  'Akomodasi  @Total '.$jumlahHari.' hari',
-                'amount' => $cekTarif->tarif,
+                'data_nm' =>  'Akomodasi tanggal '.date('Y-m-d', strtotime($data->datetime_start)).' S/D '.$hariTerakhir.'  @Total '.$jumlahHari.' hari',
+                'amount' => $this->getTarif('TARIF_TP_03', $cekTarif->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $this->dataMedical->medical_to) *  $jumlahHari,
                 'note' => '',
                 'manual_st' => '0',
                 'payment_st' => 'PAYMENT_ST_0',
                 'quantity' =>  $jumlahHari,
                 'item_price' =>  $cekTarif->tarif,
-                'kelas_cd' => $this->dataMedical->ruang->kelas_cd??"",
-                'kelas_cd_insurance' => "",
-                'tarif_default' => $this->getTarif('TARIF_TP_03', $cekTarif->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $this->dataMedical->medical_to), // tarif sebelum dikalikan
-                'amount_tarif_default' => $this->getTarif('TARIF_TP_03', $cekTarif->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $this->dataMedical->medical_to) *  $jumlahHari,
+
             ]);
 
             // masukkan ke model perhitungan
@@ -169,8 +168,9 @@ class PrerhitunganBiaya
 
     // digunakan untuk menghitung biaya lab dan radiologi
     protected function hitungTarifUnitMedis($medicalcd) {
-        $data = TrxMedicalUnit::whit(['tindakan'])->where('medical_cd', $medicalcd)->where('payment_st', '<>', 'PAYMENT_ST_1')
-        ->where('proses_st', '1')->orderBy('datetime_trx', 'asc')->get();
+        $data = TrxMedicalUnit::with(['tindakan'])->where('medical_cd', $medicalcd)->where('payment_st', '<>', 'PAYMENT_ST_1')
+        ->orderBy('datetime_trx', 'asc')->get();
+
 
         foreach($data as $item) {
 
@@ -191,10 +191,7 @@ class PrerhitunganBiaya
                     'payment_st' => 'PAYMENT_ST_0',
                     'quantity' => 1,
                     'item_price' =>  $ambilAccount->tarif,
-                    'kelas_cd' => $this->dataMedical->ruang->kelas_cd??"",
-                    'kelas_cd_insurance' =>  $this->dataMedical->pasien->asuransi->insurance_cd??"",
-                    'tarif_default' => $this->getTarif('TARIF_TP_02', $item->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $medicalTp), // tarif sebelum dikalikan
-                    'amount_tarif_default' => $this->getTarif('TARIF_TP_02', $item->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $medicalTp) * 1,
+
                 ]);
             }
 
@@ -208,7 +205,9 @@ class PrerhitunganBiaya
     protected function hitungTarifTindakan ($medicalcd) {
 
         $data = TrxMedicalTindakan::where('medical_cd', $medicalcd)
-        ->where('payment_st', '<>', 'PAYMENT_ST_1')->get();
+        ->where(function($a){
+            $a->where('payment_st', '<>', 'PAYMENT_ST_1')->orwhere('payment_st', null);
+        })->get();
 
         foreach($data as $item) {
             $cektaritindakan = TrxTarifTindakan::where('treatment_cd', $item->treatment_cd)->first();
@@ -217,8 +216,7 @@ class PrerhitunganBiaya
                     'medical_cd' => $this->dataMedical->medical_cd,
                     'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
                     'account_cd' => $item->account_cd,
-                    'datetime_trx' => $data->created_at,
-                    'data_cd' => $item->seq_no,
+                    'datetime_trx' => $item->datetime_trx,
                     'data_nm' =>  $cektaritindakan->tarif_nm,
                     'amount' => $cektaritindakan->tarif,
                     'note' => '',
@@ -226,10 +224,7 @@ class PrerhitunganBiaya
                     'payment_st' => 'PAYMENT_ST_0',
                     'quantity' => 1,
                     'item_price' =>  $cektaritindakan->tarif,
-                    'kelas_cd' => $this->dataMedical->ruang->kelas_cd??"",
-                    'kelas_cd_insurance' => "",
-                    'tarif_default' => $this->getTarif('TARIF_TP_04', $item->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $this->dataMedical->medical_to), // tarif sebelum dikalikan
-                    'amount_tarif_default' => $this->getTarif('TARIF_TP_04', $item->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $this->dataMedical->medical_to) * 1,
+
                 ]);
             }
         }
@@ -276,10 +271,7 @@ class PrerhitunganBiaya
                 'payment_st' => 'PAYMENT_ST_0',
                 'quantity' => 1,
                 'item_price' =>  $item->tarif,
-                'kelas_cd' => $this->dataMedical->ruang->kelas_cd??"",
-                'kelas_cd_insurance' => "",
-                'tarif_default' => $this->getTarif('TARIF_TP_00', $item->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $medicalTp), // tarif sebelum dikalikan
-                'amount_tarif_default' => $this->getTarif('TARIF_TP_00', $item->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $medicalTp) * 1,
+
             ]);
 
         }
