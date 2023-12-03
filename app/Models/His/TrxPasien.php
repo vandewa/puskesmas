@@ -265,6 +265,7 @@ class TrxPasien extends Model implements Auditable
     return $this->belongsTo(TrxUnitMedis::class, 'medunit_cd');
   }
 
+
   public function scopeCarirm($filter, $value)
   {
     if ($value) {
