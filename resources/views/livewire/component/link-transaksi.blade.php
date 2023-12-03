@@ -21,12 +21,12 @@
                 href="{{ route('transaksi.rawat-jalan.tindakan-medis', $medicalcd ?? '') }}" wire:navigate>Tindakan
                 Medis</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab">Laboratorium</a>
+        <li class="nav-item {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}">
+            <a href="{{ route('transaksi.rawat-jalan.laboratorium', $medicalcd) }}" class="nav-link {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}" id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab">Laboratorium</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link" id="custom-tabs-one-radiologi-tab" href="#custom-tabs-one-radiologi">Radiologi</a>
-        </li>
+        </li> --}}
         <li class="nav-item {{ Request::segment(3) == 'resep-obat' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'resep-obat' ? 'active' : '' }}"
                 id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"

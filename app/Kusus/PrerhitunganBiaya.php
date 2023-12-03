@@ -40,8 +40,8 @@ class PrerhitunganBiaya
             TrxMedicalSettlement::where('medical_cd', $medicalcd)
             ->where('tarif_tp', '<>', 'TARIF_TP_03')->update([
 
-                'item_price' => 0,
-                'amount' => 0
+                // 'item_price' => 0,
+                // 'amount' => 0
             ]);
         }
 
@@ -168,15 +168,25 @@ class PrerhitunganBiaya
 
     // digunakan untuk menghitung biaya lab dan radiologi
     protected function hitungTarifUnitMedis($medicalcd) {
-        $data = TrxMedicalUnit::with(['tindakan'])->where('medical_cd', $medicalcd)->where('payment_st', '<>', 'PAYMENT_ST_1')
+        $data = TrxMedicalUnit::with(['tindakan'])->where('medical_cd', $medicalcd)->where(function($a){
+            $a->where('payment_st', '<>', 'PAYMENT_ST_1')->orwhere('payment_st', null);
+        })
         ->orderBy('datetime_trx', 'asc')->get();
+
+        // dd($data);
 
 
         foreach($data as $item) {
 
-            $ambilAccount = TrxTarifUnitmedis::where('medicalunit_cd', $item->medicalunit_cd)->where(function($a) {
-                $a->where('kelas_cd', $this->dataMedical->ruang->kelas_cd ??"")->where('insurance_cd', $this->dataMedical->pasien->asuransi->insurance_cd ??"");
-            })->first();
+            $ambilAccount = TrxTarifUnitmedis::where('medicalunit_cd', $item->medicalunit_cd)
+            ->where('kelas_cd', $this->dataMedical->ruang->kelas_cd ??'')
+            ->where('insurance_cd', $this->dataMedical->pasien->asuransi->insurance_cd ??'')
+            ->first();
+            if(!$ambilAccount){
+                $ambilAccount = TrxTarifUnitmedis::where('medicalunit_cd', $item->medicalunit_cd)
+                ->first();
+            }
+            // dd($ambilAccount);
             if($ambilAccount) {
                 TrxMedicalSettlement::create([
                     'medical_cd' => $medicalcd,
@@ -204,20 +214,23 @@ class PrerhitunganBiaya
     // hitung biaya dari setiap tindakan yang dilakukan
     protected function hitungTarifTindakan ($medicalcd) {
 
-        $data = TrxMedicalTindakan::where('medical_cd', $medicalcd)
+        $data = TrxMedicalTindakan::with(['tindakan'])->where('medical_cd', $medicalcd)
         ->where(function($a){
             $a->where('payment_st', '<>', 'PAYMENT_ST_1')->orwhere('payment_st', null);
         })->get();
 
+
+
         foreach($data as $item) {
             $cektaritindakan = TrxTarifTindakan::where('treatment_cd', $item->treatment_cd)->first();
+            // dd( $cektaritindakan );
             if($cektaritindakan) {
                 TrxMedicalSettlement::create([
                     'medical_cd' => $this->dataMedical->medical_cd,
                     'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
-                    'account_cd' => $item->account_cd,
+                    'account_cd' => $cektaritindakan->account_cd,
                     'datetime_trx' => $item->datetime_trx,
-                    'data_nm' =>  $cektaritindakan->tarif_nm,
+                    'data_nm' =>  $item->tindakan->treatment_nm,
                     'amount' => $cektaritindakan->tarif,
                     'note' => '',
                     'manual_st' => '0',
