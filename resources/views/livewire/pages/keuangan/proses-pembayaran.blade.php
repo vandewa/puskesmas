@@ -195,7 +195,7 @@
                                                                                         <h3 style="margin-top: 10px;">
                                                                                             <strong>
                                                                                                 <div id="total">Rp.
-                                                                                                    690,00</div>
+                                                                                                    {{ $total }},00</div>
                                                                                             </strong>
                                                                                         </h3>
                                                                                     </td>

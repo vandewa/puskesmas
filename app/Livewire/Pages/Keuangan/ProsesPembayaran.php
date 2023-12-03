@@ -51,8 +51,10 @@ class ProsesPembayaran extends Component
     public function render()
     {
         $data = TrxMedicalSettlement::with(['account'])->where('medical_cd', $this->medicalcd)->paginate(10);
+        $total = TrxMedicalSettlement::where('medical_cd', $this->medicalcd)->sum('amount');
         return view('livewire.pages.keuangan.proses-pembayaran', [
-            'posts' => $data
+            'posts' => $data,
+            'total' => $total
         ]);
     }
 }
