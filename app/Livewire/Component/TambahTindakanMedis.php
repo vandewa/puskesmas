@@ -59,7 +59,7 @@ class TambahTindakanMedis extends Component
             'form.diskon_percent' => 'required',
         ]);
 
-        $this->form['medical_cd'] = $this->medicalcd;
+        $this->form['medical_cd'] = $this->medicalcd + [ 'payment_st' => 'PAYMENT_ST_0'];
 
         TrxMedicalTindakan::create($this->form);
 

@@ -10,6 +10,7 @@ use App\Models\His\TrxMedicalSettlement;
 
 class ProsesPembayaran extends Component
 {
+    public $modal = false;
     use WithPagination;
 
     public $medicalcd;
@@ -41,6 +42,10 @@ class ProsesPembayaran extends Component
         })
         JS);
 
+    }
+
+    public function tampilkanPembayaran() {
+        $this->modal = ! $this->modal;
     }
 
     public function hitung() {

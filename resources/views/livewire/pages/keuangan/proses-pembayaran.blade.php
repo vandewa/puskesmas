@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0">Rekam Medis</h1>
             </div>
@@ -25,7 +25,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
-                                                    <div class="card-header p-0 pt-1">
+                                                    <div class="p-0 pt-1 card-header">
                                                         <ul class="nav nav-tabs" id="custom-tabs-two-transaksi-tab"
                                                             role="tablist">
                                                             <li class="nav-item">
@@ -179,7 +179,7 @@
                                                                 <div class="row">
                                                                     <div class="col-md-6">
                                                                         <button class="btn btn-primary" wire:click='confirmHitung'>Hitung Biaya</button>
-                                                                        <button class="btn btn-warning">Proses Pembayaran</button>
+                                                                        <button class="btn btn-warning" wire:click='tampilkanPembayaran' >Proses Pembayaran</button>
                                                                         <button class="btn btn-info">Bayar Satuan</button>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -277,4 +277,77 @@
             </div>
         </div>
     </section>
+
+    <div class="modal fade @if($modal) show @endif" id="modal-xl" aria-hidden="true" @if(!$modal) style="display: none;" aria-hidden="true" @else style="display: block;" aria-modal="true" role="dialog" @endif>
+        <div class="modal-dialog modal-xl">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Penutupan Transaksi Pasien</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"  wire:click='tampilkanPembayaran'>
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+                    <form action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-1 row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            Nama
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            Tanggal Transaksi
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            Jenis Pembayaran
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                                <div class="mb-1 row">
+                                    <div class="col-md-4">
+                                        <label for="">
+                                            Nominal
+                                        </label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+
+                        </div>
+                    </form>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal" wire:click='tampilkanPembayaran' >Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 </div>
