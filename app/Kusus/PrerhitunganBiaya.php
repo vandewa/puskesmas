@@ -1,12 +1,14 @@
 <?php
 namespace App\Kusus;
 use App\Models\His\TrxMedical;
+use App\Models\His\TrxMedicalResep;
 use App\Models\His\TrxMedicalRuang;
 use App\Models\His\TrxMedicalSettlement;
 use App\Models\His\TrxMedicalSettlementInv;
 use App\Models\His\TrxMedicalSettlementShare;
 use App\Models\His\TrxMedicalTindakan;
 use App\Models\His\TrxMedicalUnit;
+use App\Models\His\TrxResepData;
 use App\Models\His\TrxTarifGeneral;
 use App\Models\His\TrxTarifKelas;
 use App\Models\His\TrxTarifParamedis;
@@ -33,6 +35,7 @@ class PrerhitunganBiaya
         $this->hitungTarifTindakan($medicalcd); // biaya dari tindakan yang dilakukan
         $this->hitungTarifUnitMedis($medicalcd); // biaya dari lab
         $this->hitungRawatInap($medicalcd);
+        $this->hitungInventory($medicalcd);
 
         // kusus puskesmas reset semua biaya ke 0  karena sudah ikut paket ruangan
         if($this->dataMedical->medical_tp == 'MEDICAL_TP_02'){
@@ -111,6 +114,53 @@ class PrerhitunganBiaya
         // hapus dari settlemen share
 
         TrxMedicalSettlementShare::where('medical_cd', $medicalcd);
+
+    }
+
+    protected function hitungInventory($medicalcd)
+    {
+        $data = TrxMedicalResep::with('resepData')->where('medical_cd', $medicalcd)->get();
+
+        foreach($data as $a) {
+            $trxResepData = TrxResepData::where('medical_resep_seqno', $a->seq_no)->where('resep_tp', 'RESEP_TP_2')->get();
+            if($trxResepData) {
+                TrxMedicalSettlement::create([
+                    'medical_cd' => $this->dataMedical->medical_cd,
+                    'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
+                    'account_cd' => 'AC301',
+                    'datetime_trx' => date('Y-m-d'),
+                    'data_cd' => $a->seq_no,
+                    'data_nm' => 'Biaya Obat Resep Racik @ 1 Resep',
+                    'amount' => 6500,
+                    'note' => '',
+                    'manual_st' => '0',
+                    'payment_st' => 'PAYMENT_ST_0',
+                    'quantity' => 1,
+                    'item_price' =>  6500,
+
+                ]);
+            } else {
+                $cekNonRacik = TrxResepData::where('medical_resep_seqno', $a->seq_no)->where('resep_tp', 'RESEP_TP_1')->get();
+                if( $cekNonRacik) {
+                    TrxMedicalSettlement::create([
+                        'medical_cd' => $this->dataMedical->medical_cd,
+                        'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
+                        'account_cd' => 'AC301',
+                        'datetime_trx' => date('Y-m-d'),
+                        'data_cd' => $a->seq_no,
+                        'data_nm' => 'Biaya Obat Resep @ 1 Resep',
+                        'amount' => 6000,
+                        'note' => '',
+                        'manual_st' => '0',
+                        'payment_st' => 'PAYMENT_ST_0',
+                        'quantity' => 1,
+                        'item_price' =>  6500,
+
+                    ]);
+                }
+            }
+        }
+
 
     }
 

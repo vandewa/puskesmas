@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0">Resep Obat</h1>
             </div>
@@ -20,13 +20,13 @@
                         <livewire:component.link-transaksi :medicalcd="$medik->medical_cd" />
                         <div class="card-body">
                             <div class="tab-pane fade active show">
-                                <div class="tab-pane active show fade" id="custom-tabs-one-resep" role="tabpanel"
+                                <div class="tab-pane" id="custom-tabs-one-resep" role="tabpanel"
                                     aria-labelledby="custom-tabs-one-resep-tab">
                                     <livewire:component.detail-pasien :medicalcd="$medicalcd">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
-                                                    <div class="card-header p-0 pt-1">
+                                                    <div class="p-0 pt-1 card-header">
                                                         <ul class="nav nav-tabs" id="custom-tabs-six-transaksi-tab"
                                                             role="tablist">
                                                             <li class="nav-item">
@@ -52,7 +52,7 @@
                                                                     href="#tambah-resep" role="tab"
                                                                     aria-controls="tambah-resep"
                                                                     href="#custom-tabs-six-template-resep"><i
-                                                                        class="fas fa-plus-square mr-2"
+                                                                        class="mr-2 fas fa-plus-square"
                                                                         style="color:black"></i><span
                                                                         style="color:black">Tambah Resep</span></a>
                                                             </li>
@@ -60,7 +60,7 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="tab-content" id="custom-tabs-six-tabContent">
-                                                            <div class="tab-pane fade show active"
+                                                            <div class="tab-pane"
                                                                 id="custom-tabs-six-data-resep" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-data-resep-tab">
                                                                 <livewire:component.resep.table-resep :medicalcd="$medik->medical_cd">
@@ -72,7 +72,7 @@
                                                                     :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
 
-                                                            <div class="tab-pane fade" id="tambah-resep" role="tabpanel"
+                                                            <div class="tab-pane fade show active" id="tambah-resep" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-template-resep-tab">
                                                                 <div
                                                                     style="@if (!$racik) display:none @endif">
