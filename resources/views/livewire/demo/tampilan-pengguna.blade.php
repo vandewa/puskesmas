@@ -376,9 +376,11 @@
                                                 <div class="mb-2 row">
                                                     <label for="" class="col-sm-3 col-form-label">KTP</label>
                                                     <div class="col-md-9">
-                                                        @if ($dataDokumen->ktp != null)
-                                                            <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->ktp)) }}"
-                                                                style="max-width: 200px;">
+                                                        @if ($dataDokumen)
+                                                            @if ($dataDokumen->ktp != null)
+                                                                <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->ktp)) }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -387,9 +389,11 @@
                                                 <div class="mb-2 row">
                                                     <label for="" class="col-sm-3 col-form-label">KK</label>
                                                     <div class="col-md-9">
-                                                        @if ($dataDokumen->kk != null)
-                                                            <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->kk)) }}"
-                                                                style="max-width: 200px;">
+                                                        @if ($dataDokumen)
+                                                            @if ($dataDokumen->kk != null)
+                                                                <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->kk)) }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -404,9 +408,11 @@
                                                     <label for="" class="col-sm-3 col-form-label">Akta
                                                         Lahir</label>
                                                     <div class="col-md-9">
-                                                        @if ($dataDokumen->akta != null)
-                                                            <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->akta)) }}"
-                                                                style="max-width: 200px;">
+                                                        @if ($dataDokumen)
+                                                            @if ($dataDokumen->akta != null)
+                                                                <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->akta)) }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
@@ -416,9 +422,11 @@
                                                     <label for="" class="col-sm-3 col-form-label">MCU
                                                         Awal</label>
                                                     <div class="col-md-9">
-                                                        @if ($dataDokumen->mcu != null)
-                                                            <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->mcu)) }}"
-                                                                style="max-width: 200px;">
+                                                        @if ($dataDokumen)
+                                                            @if ($dataDokumen->mcu != null)
+                                                                <img src="{{ asset('storage' . str_replace('public', '', $dataDokumen->mcu)) }}"
+                                                                    style="max-width: 200px;">
+                                                            @endif
                                                         @endif
                                                     </div>
                                                 </div>
