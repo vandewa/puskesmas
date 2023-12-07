@@ -179,6 +179,14 @@
                               </ul>
                           </li>
                           <li class="nav-item">
+                              <a href="{{ route('admin.tiket') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'tiket' ? 'active' : '' }}">
+                                  <i class="nav-icon fa-solid fa-file-circle-check"></i>
+                                  <p>
+                                      Monitoring
+                                  </p>
+                              </a>
+                          <li class="nav-item">
                               <a href="{{ route('admin.aktivasi-user') }}"
                                   class="nav-link  {{ Request::segment(2) == 'aktivasi-user' ? 'active' : '' }}">
                                   <i class="nav-icon fa-solid fa-file-circle-check"></i>
