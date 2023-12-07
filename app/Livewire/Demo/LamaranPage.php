@@ -6,11 +6,23 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Demo\Lamaran;
 use App\Models\Demo\Layanan;
+use App\Models\Demo\Kelas;
 
 class LamaranPage extends Component
 {
     use WithPagination;
     public $layanan = [];
+
+    public $layanan_id;
+    public $kelas_id;
+    public $status_pembayaran;
+    public $metode_bayar;
+    public $deskripsi;
+    public $harga;
+    public $kelas;
+    public $detailLayanan;
+
+
 
     public function mount()
     {
@@ -22,6 +34,24 @@ class LamaranPage extends Component
         }
 
         $this->layanan = Layanan::all();
+    }
+
+    public function updated($property)
+    {
+        // $property: The name of the current property that was updated
+
+        if ($property === 'layanan_id') {
+
+            if($this->layanan_id){
+                $this->detailLayanan = Layanan::find($this->layanan_id);
+                $this->kelas = Kelas::where('layanan_id', $this->layanan_id)->get();
+            } else {
+                $this->detailLayanan = null;
+                $this->kelas = null;
+            }
+
+        }
+
     }
     public $jenisLamaran = '', $cari;
 

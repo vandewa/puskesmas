@@ -16,8 +16,76 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                          <h3 class="card-title">Pendaftaran Pelatihan</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form>
+                          <div class="card-body">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Nama Pelatihan</label>
+                                <select name="" class="form-control" id="" wire:model.live='layanan_id'>
+                                    <option value="">Pilih Jenis Pelatihan</option>
+                                   @foreach ($layanan as $a)
+                                   <option value="{{ $a->id }}">{{ $a->name }}</option>
+                                   @endforeach
+                                </select>
+                                @if( $detailLayanan)
+                                <p class="mt-2">Deskripsi:  {{ $detailLayanan->description??"" }}</p>
+                                @endif
+
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Biaya</label>
+                              <input type="text" class="form-control" id="exampleInputPassword1" placeholder="biaya">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Metode Bayar</label>
+                                  <select name="" class="form-control" id="">
+                                    <option value="Manual">Manual</option>
+                                    <option value="Online">Online</option>
+                                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Termin Pembayaran</label>
+                                  <select name="" class="form-control" id="">
+                                    <option value="1"> 1 Kali</option>
+                                    <option value="2"> 2 Kali</option>
+                                  </select>
+                            </div>
+                            <h5>Pilih Kelas</h5>
+                                <table class="table">
+                                    <thead>
+                                        <th>No</th>
+                                        <th>Waktu Pelatihan</th>
+                                        <th>Action</th>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach ($kelas??[] as $index => $item)
+                                        <tr>
+                                            <td>{{  $index = $index+1 }}</td>
+                                            <td>{{ $item->tanggal_mulai }} - {{ $item->tanggal_selesai }} </td>
+                                            <td><button type="button" class="btn btn-sm btn-primary">Pilih</button></td>
+                                        </tr>
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+
+                          </div>
+                          <!-- /.card-body -->
+
+                          <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                          </div>
+                        </form>
+                      </div>
                     <div class="card">
                         <div class="card-header">
+                            <h3 class="card-title">Pelatihan Yang diikuti</h3>
                             {{-- @role('user')
                                 <h3 class="card-title"> <button class="btn btn-primary" wire:click='simpan()'> Lamar
                                         Sekarang</button> </h3>
@@ -39,8 +107,10 @@
                         <div class="col-md-12">
 
 
+
                         <div class="row">
-                            <div class="col-lg-4 col-6" wire:click="simpan('Program Ginoujissusei')">
+                            {{-- @foreach ($layanan as $a) --}}
+                            {{-- <div class="col-lg-4 col-6" wire:click="simpan({{ $a->id }})">
                                 <div class="small-box bg-info">
                                     <div class="inner">
                                         <h4>Program Ginoujissusei</h4>
@@ -52,6 +122,8 @@
                                     <a href="#" class="small-box-footer">Daftar Sekarang <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
+                            @endforeach
+
 
                             <div class="col-lg-4 col-6" wire:click="simpan('Program Tokuteiginou')">
                                 <div class="small-box bg-success">
@@ -77,7 +149,7 @@
                                     </div>
                                     <a href="#" class="small-box-footer">Daftar Sekarang <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
-                            </div>
+                            </div> --}}
 
 
                             </div>
@@ -85,6 +157,9 @@
                                                 <!-- /.card-header -->
 
                             <div class="p-0 card-body table-responsive">
+                                <form action="">
+
+                                </form>
                             <table class="table table-hover text-nowrap">
                                 <thead>
                                     <tr>
