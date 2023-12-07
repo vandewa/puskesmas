@@ -73,7 +73,7 @@
                                                     <td>{{ $item->roles()->first()->name ?? '-' }}</td>
                                                     <td>{{ $item->tanggal_upload }}</td>
                                                     <td>
-                                                        <a href="{{ route('pendaftaran.data-diri', $item->id) }}"
+                                                        <a href="{{ route('pendaftaran.detail-pengguna', $item->id) }}"
                                                             class="btn btn-sm btn-primary">Detail</button>
                                                     </td>
                                                 </tr>
