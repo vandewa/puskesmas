@@ -181,7 +181,7 @@
                           <li class="nav-item">
                               <a href="{{ route('admin.tiket') }}"
                                   class="nav-link  {{ Request::segment(2) == 'tiket' ? 'active' : '' }}">
-                                  <i class="nav-icon fa-solid fa-file-circle-check"></i>
+                                  <i class="nav-icon fa-solid fa-laptop"></i>
                                   <p>
                                       Monitoring
                                   </p>

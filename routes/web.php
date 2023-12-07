@@ -110,7 +110,7 @@ Route::middleware([
         Route::get('keberangkatan', Keberangkatan::class)->name('keberangkatan');
         Route::get('magang', Magang::class)->name('magang');
         Route::get('pengguna', PenggunaPage::class)->name('pengguna');
-        Route::get('monitoring', Tiket::class)->name('tiket');
+        Route::get('tiket', Tiket::class)->name('tiket');
     });
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
