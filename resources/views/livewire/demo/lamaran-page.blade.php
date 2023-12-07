@@ -14,7 +14,7 @@
     </x-slot>
     <section class="content">
         <div class="container-fluid">
-        <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
@@ -40,12 +40,11 @@
 
 
                         <div class="row">
-                            @foreach ($layanan??[] as $a )
                             <div class="col-lg-4 col-6" wire:click="simpan('Program Ginoujissusei')">
                                 <div class="small-box bg-info">
                                     <div class="inner">
-                                        <h4>{{ $a->name }}</h4>
-                                        <p>{{ $a->description }}</p>
+                                        <h4>Program Ginoujissusei</h4>
+                                        <p>Pemagangan</p>
                                     </div>
                                     <div class="icon">
                                         <i class="ion ion-bag"></i>
@@ -53,7 +52,6 @@
                                     <a href="#" class="small-box-footer">Daftar Sekarang <i class="fas fa-arrow-circle-right"></i></a>
                                 </div>
                             </div>
-                            @endforeach
 
                             <div class="col-lg-4 col-6" wire:click="simpan('Program Tokuteiginou')">
                                 <div class="small-box bg-success">
