@@ -159,19 +159,19 @@
                               <ul class="nav nav-treeview">
                                   <li class="nav-item">
                                       <a href="../examples/invoice.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon"></i>
+                                          <i class="far fa-circle nav-icon ml-2"></i>
                                           <p>Aktivasi Pendaftaran</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="../examples/profile.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon"></i>
+                                          <i class="far fa-circle nav-icon ml-2"></i>
                                           <p>Tagihan</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="../examples/e-commerce.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon"></i>
+                                          <i class="far fa-circle nav-icon ml-2"></i>
                                           <p>Terbayar</p>
                                       </a>
                                   </li>
