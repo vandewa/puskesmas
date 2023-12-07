@@ -97,21 +97,28 @@ class TampilanPengguna extends Component
         $dataKeteranganLain = KeteranganLain::where('user_id', $id)->first();
 
         if ($demo_data_diri) {
-            $demo_data_diri->toArray();
-        } elseif ($demo_data_pribadi) {
-            $demo_data_pribadi->toArray();
-        } elseif ($data_suami_istri) {
-            $data_suami_istri->toArray();
-        } elseif ($dataKeteranganLain) {
-            $dataKeteranganLain->toArray();
+            $demo_data_diri = DemoDataDiri::where('user_id', $id)->first()->toArray();
         } else {
             $this->route = url()->previous();
         }
 
-        // $demo_data_diri = DemoDataDiri::where('user_id', $id)->first()->toArray();
-        // $demo_data_pribadi = DataPribadi::where('user_id', $id)->first()->toArray();
-        // $data_suami_istri = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->where('user_id', $id)->first()->toArray();
-        // $dataKeteranganLain = KeteranganLain::where('user_id', $id)->first()->toArray();
+        if ($demo_data_pribadi) {
+            $demo_data_pribadi = DataPribadi::where('user_id', $id)->first()->toArray();
+        } else {
+            $this->route = url()->previous();
+        }
+
+        if ($data_suami_istri) {
+            $data_suami_istri = DataKeluarga::where('data_keluarga_tp', 'DATA_KELUARGA_TP_01')->where('user_id', $id)->first()->toArray();
+        } else {
+            $this->route = url()->previous();
+        }
+
+        if ($dataKeteranganLain) {
+            $dataKeteranganLain = KeteranganLain::where('user_id', $id)->first()->toArray();
+        } else {
+            $this->route = url()->previous();
+        }
 
 
         $this->form = $demo_data_diri;
