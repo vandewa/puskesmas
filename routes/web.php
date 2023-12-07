@@ -42,6 +42,8 @@ use App\Livewire\Demo\DataKeluarga\DataKeluarga;
 use App\Livewire\Demo\RiwayatHidup\RiwayatHidup;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
 use App\Livewire\Demo\KeteranganLain;
+use App\Livewire\Demo\Master\Kelas as MasterKelas;
+use App\Livewire\Demo\Master\Layanan;
 use App\Livewire\Demo\Master\LayananPage;
 use App\Livewire\Demo\PenggunaPage;
 use App\Livewire\Pages\Master\DataMedis\Paramedis;
@@ -93,9 +95,9 @@ Route::middleware([
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-       Route::group(['prefix' => 'master'], function(){
+        Route::group(['prefix' => 'master'], function () {
             Route::get('layanan', LayananPage::class)->name('layanan');
-       });
+        });
         Route::get('aktivasi-user', AktivasiUserPage::class)->name('aktivasi-user');
         Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
         Route::get('tes', Tes::class)->name('tes');
@@ -126,6 +128,9 @@ Route::middleware([
         Route::get('tempat-tidur', TempatTidur::class)->name('tempat-tidur');
         Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
+        Route::get('layanan', Layanan::class)->name('layanan');
+        Route::get('kelas', MasterKelas::class)->name('kelas');
+
     });
 
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
