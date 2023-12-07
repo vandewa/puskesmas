@@ -10,15 +10,18 @@ use App\Models\Demo\Layanan;
 class LamaranPage extends Component
 {
     use WithPagination;
-    public $lamaran = [];
+    public $layanan = [];
 
     public function mount()
     {
         if (auth()->user()->hasRole('superadministrator')) {
             redirect()->route('admin.aktivasi-user');
-           $this->lamaran = Layanan::all();
+
+        //    dd($this->layanan);
 
         }
+
+        $this->layanan = Layanan::all();
     }
     public $jenisLamaran = '', $cari;
 
