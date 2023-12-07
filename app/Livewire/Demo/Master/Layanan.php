@@ -54,12 +54,16 @@ class Layanan extends Component
 
     public function store()
     {
-        $this->validate([
-            'path' => 'image|max:2000', // 2MB Max
-        ]);
 
-        $this->path = $this->path->store('public/photos');
-        dd($this->path);
+
+        if($this->form['path']) {
+            $this->validate([
+                'path' => 'image|max:2000', // 2MB Max
+            ]);
+            $this->form[''] = $this->path->store('layanan', 'public');
+        }
+
+
 
         DemoLayanan::create($this->form);
     }

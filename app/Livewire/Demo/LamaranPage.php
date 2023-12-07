@@ -5,16 +5,23 @@ namespace App\Livewire\Demo;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Demo\Lamaran;
+use App\Models\Demo\Layanan;
 
 class LamaranPage extends Component
 {
     use WithPagination;
+    public $layanan = [];
 
     public function mount()
     {
         if (auth()->user()->hasRole('superadministrator')) {
             redirect()->route('admin.aktivasi-user');
+
+        //    dd($this->layanan);
+
         }
+
+        $this->layanan = Layanan::all();
     }
     public $jenisLamaran = '', $cari;
 
