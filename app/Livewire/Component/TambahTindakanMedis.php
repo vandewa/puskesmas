@@ -15,14 +15,15 @@ class TambahTindakanMedis extends Component
     public $medicalcd, $tindakan, $tanggal, $jam, $dokter, $dr_cd, $poli;
 
     public $form = [
-        'medical_cd' => '',
-        'treatment_cd' => '',
-        'quantity' => '',
-        'diskon_percent' => '',
-        'datetime_trx' => '',
-        'dr_cd' => '',
-        'medical_note' => '',
-        'medunit_cd' => '',
+        'medical_cd' => null,
+        'treatment_cd' => null,
+        'quantity' => 1,
+        'diskon_percent' => null,
+        'datetime_trx' => null,
+        'dr_cd' => null,
+        'medical_note' => null,
+        'medunit_cd' => null,
+        'payment_st' => 'PAYMENT_ST_0'
     ];
 
     #[On('pilih-master-tindakan-medis')]
@@ -56,10 +57,10 @@ class TambahTindakanMedis extends Component
         $this->validate([
             'form.treatment_cd' => 'required',
             'form.quantity' => 'required',
-            'form.diskon_percent' => 'required',
+            // 'form.diskon_percent' => 'required',
         ]);
 
-        $this->form['medical_cd'] = $this->medicalcd + [ 'payment_st' => 'PAYMENT_ST_0'];
+        $this->form['medical_cd'] = $this->medicalcd;
 
         TrxMedicalTindakan::create($this->form);
 
