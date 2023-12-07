@@ -61,6 +61,7 @@ use App\Livewire\Pages\Transaksi\NavbarDetailRawatJalan;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
 use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
 use App\Livewire\Demo\RiwayatHidup\PengalamanBerorganisasi;
+use App\Livewire\Demo\Tiket;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
 use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
 
@@ -109,6 +110,7 @@ Route::middleware([
         Route::get('keberangkatan', Keberangkatan::class)->name('keberangkatan');
         Route::get('magang', Magang::class)->name('magang');
         Route::get('pengguna', PenggunaPage::class)->name('pengguna');
+        Route::get('tiket', Tiket::class)->name('tiket');
     });
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {

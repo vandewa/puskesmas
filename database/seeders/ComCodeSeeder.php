@@ -433,6 +433,8 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_04", "code_nm" => "Pengalaman Di Luar Negeri", "code_group" => "RIWAYAT_HIDUP_TP"]);
         $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_05", "code_nm" => "Pengalaman Berorganisasi", "code_group" => "RIWAYAT_HIDUP_TP"]);
         $code = Code::create(["com_cd" => "RIWAYAT_HIDUP_TP_06", "code_nm" => "Referensi", "code_group" => "RIWAYAT_HIDUP_TP"]);
+        $code = Code::create(["com_cd" => "STATUS_TIKET_TP_01", "code_nm" => "Open", "code_group" => "STATUS_TIKET_TP"]);
+        $code = Code::create(["com_cd" => "STATUS_TIKET_TP_02", "code_nm" => "Closed", "code_group" => "STATUS_TIKET_TP"]);
 
     }
 }

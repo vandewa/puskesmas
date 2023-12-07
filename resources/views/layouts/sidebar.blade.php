@@ -60,15 +60,17 @@
                       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                       @role('user')
-                          <li class="nav-item">
-                              <a href="{{ route('pendaftaran.data-diri') }}"
-                                  class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
-                                  <i class="nav-icon fa-solid fa-user-pen"></i>
-                                  <p>
-                                      Data Diri
-                                  </p>
-                              </a>
-                          </li>
+                          @if (auth()->user()->active_st == true)
+                              <li class="nav-item">
+                                  <a href="{{ route('pendaftaran.data-diri') }}"
+                                      class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
+                                      <i class="nav-icon fa-solid fa-user-pen"></i>
+                                      <p>
+                                          Data Diri
+                                      </p>
+                                  </a>
+                              </li>
+                          @endif
                           <li class="nav-item">
                               <a href="{{ route('dashboard') }}"
                                   class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
@@ -178,6 +180,14 @@
 
                               </ul>
                           </li>
+                          <li class="nav-item">
+                              <a href="{{ route('admin.tiket') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'tiket' ? 'active' : '' }}">
+                                  <i class="nav-icon fa-solid fa-laptop"></i>
+                                  <p>
+                                      Monitoring
+                                  </p>
+                              </a>
                           <li class="nav-item">
                               <a href="{{ route('admin.aktivasi-user') }}"
                                   class="nav-link  {{ Request::segment(2) == 'aktivasi-user' ? 'active' : '' }}">
