@@ -7,14 +7,15 @@ use App\Models\His\TrxSettlement;
 class ProsesSettlement {
 
     public function prosesSetelahSettlemen($data) {
-
+        $this->rubahMedicalSettlemen($data);
+        $this->rubahTrxMedical($data);
     }
 
     protected function rubahMedicalSettlemen($data)
     {
         TrxSettlement::where('medical_cd', $data->medical_cd)->update([
             'invoice_no' => $data->invoice_no,
-            'pament_st' => 'PAYMENT_ST_1'
+            'payment_st' => 'PAYMENT_ST_1'
         ]);
     }
 

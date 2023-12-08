@@ -83,7 +83,7 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <livewire:component.table-pasien :rm="$rm" :kelas="$kelas" :tanggal="$tanggal"
+                            <livewire:component.table-pasien-rawat-inap :rm="$rm" :kelas="$kelas" :tanggal="$tanggal"
                                 :bangsal="$bangsal" :url="$url" tipePasien="MEDICAL_TP_02">
                         </div>
 

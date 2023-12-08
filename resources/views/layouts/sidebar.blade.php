@@ -600,18 +600,18 @@
                                       <p>Pendaftaran Pasien</p>
                                   </a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>View Pasien</p>
                                   </a>
-                              </li>
-                              <li class="nav-item">
+                              </li> --}}
+                              {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Pasien Rujukan</p>
                                   </a>
-                              </li>
+                              </li> --}}
                           </ul>
                       </li>
                       <li

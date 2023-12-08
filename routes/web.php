@@ -51,6 +51,7 @@ use App\Livewire\Pages\Master\DataMedis\Tarif\UnitMedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\TindakanMedis as TarifTindakanMedis;
 use App\Livewire\Pages\Master\DataMedis\Tarif\Inventori as TarifInventori;
 use App\Livewire\Pages\Transaksi\DataTransaksi;
+use App\Livewire\Pages\Transaksi\KajianLanjutan;
 use App\Livewire\Pages\Transaksi\LaboratoriumTransaksi;
 use App\Livewire\Pages\Transaksi\RadiologiTransaksi;
 
@@ -132,6 +133,7 @@ Route::middleware([
 
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
         Route::get('kajian-awal/{id?}', KajianAwal::class)->name('kajian-awal');
+        Route::get('kajian-lanjutan/{id?}', KajianLanjutan::class)->name('kajian-lanjutan');
         Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {
             Route::get('list/{url?}', ListPasienTransaksi::class)->name('list');
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
@@ -144,6 +146,7 @@ Route::middleware([
         });
 
         Route::group(['prefix' => 'rawat-inap', 'as' => 'rawat-inap.'], function () {
+            Route::get('kajian-lanjutan/{id?}', KajianLanjutan::class)->name('kajian-lanjutan');
             Route::get('list/{url?}', ListPasienTransaksiRawatInap::class)->name('list');
             Route::get('detail/{id?}', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
             Route::get('rekam-medis/{id?}', RekamMedis::class)->name('rekam-medis');
@@ -164,7 +167,7 @@ Route::middleware([
 
     Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
-        Route::get('print-kwitansi/{id?}', [HelperController::class, 'cetakInvoice'])->name('print-antrian-poli');
+        Route::get('print-kwitansi/{id?}', [HelperController::class, 'cetakInvoice'])->name('cetak-invoice');
     });
 
     Route::group(['prefix' => 'keuangan', 'as' => 'keuangan.'], function () {

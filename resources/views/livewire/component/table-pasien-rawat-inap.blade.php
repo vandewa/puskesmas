@@ -12,7 +12,7 @@
         <tbody>
             @foreach ($posts as $item)
                 <tr>
-                    <td>{{ $item->poli->medunit_nm }}</td>
+                    <td>{{ $item->ruang->ruang_nm??"-" }}</td>
                     <td>{{ $item->dokter->dr_nm }}</td>
                     <td>{{ $item->pasien->no_rm }}</td>
                     <td>{{ $item->pasien->pasien_nm }}</td>

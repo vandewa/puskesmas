@@ -41,6 +41,8 @@ class TablePasien extends Component
             ->caridokter($this->dokter)
             ->carikelas($this->kelas)
             ->caribangsal($this->bangsal)
+            ->where('medical_tp', 'MEDICAL_TP_01')
+            ->where('medical_trx_st', 'MEDICAL_TRX_ST_0')
             ->orderBy('medunit_cd', 'asc')
             ->paginate(10);
 

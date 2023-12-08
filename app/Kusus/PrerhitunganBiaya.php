@@ -28,7 +28,7 @@ class PrerhitunganBiaya
 
         $this->dataMedical = TrxMedical::with(['pasien' => function($a) {
           $a->with(['asuransi']);
-        },'ruang' ])->first();
+        },'ruang' ])->where('medical_cd', $medicalcd)->first();
 
         $this->deletePerhitungan($medicalcd); // clear semua data
         $this->hitungTarifGeneral($this->dataMedical->medical_tp); // masukkan tarif otomatis
@@ -59,15 +59,18 @@ class PrerhitunganBiaya
         $data = TrxMedicalRuang::where('medical_cd', $medicalcd)
         ->where('datetime_end', null)
         ->first();
+        // dd($data);
             // belum di tambahakan sesuai asuransinya
         if($data){
             $cekTarif = TrxTarifKelas::where('kelas_cd', $data->kelas_cd)->first();
+            // dd($cekTarif);
             // hitung hari
             $date1=date_create(date('Y-m-d', strtotime($data->datetime_start)));
             $date2=date_create($data->datetime_end??date('Y-m-d'));
             $hariTerakhir = $data->datetime_end??date('Y-m-d');
             $jumlahHari = date_diff($date1,$date2);
             $jumlahHari = $jumlahHari->format("%a%");
+            // dd($jumlahHari);
             if($jumlahHari < 1) {
                 $jumlahHari = 1;
             }
@@ -79,7 +82,7 @@ class PrerhitunganBiaya
                 'datetime_trx' => $data->created_at,
                 'data_cd' => $cekTarif->seq_no,
                 'data_nm' =>  'Akomodasi tanggal '.date('Y-m-d', strtotime($data->datetime_start)).' S/D '.$hariTerakhir.'  @Total '.$jumlahHari.' hari',
-                'amount' => $this->getTarif('TARIF_TP_03', $cekTarif->seq_no, $this->dataMedical->ruang->kelas_cd??"",  $this->dataMedical->pasien->asuransi->insurance_cd ??"", $this->dataMedical->medical_to) *  $jumlahHari,
+                'amount' => $cekTarif->tarif *  $jumlahHari,
                 'note' => '',
                 'manual_st' => '0',
                 'payment_st' => 'PAYMENT_ST_0',
@@ -175,29 +178,29 @@ class PrerhitunganBiaya
                 ->where(function($a)use($medicaltp){
                     $a->where('medical_tp', '')->orWhere('medical_tp', null)->orWwhere('medical_tp',$medicaltp);
                 });
-                return $data->tarif;
+                return $data->tarif??0;
             break;
             case "TARIF_TP_01":
                 $data = TrxTarifParamedis::where('paramedis_tp', 'PARAMEDIS_TP_01')
                 ->where('kelas_cd', $kelascd)
                 ->where('insurance_cd', $insurancecd)->first();
-                return $data->tarif;
+                return $data->tarif??0;
                 break;
             case "TARIF_TP_02": // merupakan tarif unit medis yaitu lab, dan radiologi, bisa juga bank darah
                 $data = TrxUnitMedis::where('medicalunit_cd', $datacd)->where('kelas_cd', $kelascd)->where('insurance_cd', $insurancecd)->first();
-                return $data->tarif;
+                return $data->tarif??0;
                 break;
             case "TARIF_TP_03": // merupakan tarif kelas (tarif ruangan yang di pakai)
                 $data = TrxTarifKelas::where('kelas_cd', $kelascd)->where(function($a)use($kelascd, $insurancecd) {
                     $a->where('insurance_cd', $insurancecd)->orWhere('insurance_cd', '')->orWhere('insurance_cd', null);
                 })->first();
-                return $data->tarif;
+                return $data->tarif??0;
                 break;
             case "TARIF_TP_04": // merupakan tarif kelas (tarif ruangan yang di pakai)
                 $data = TrxTarifTindakan::where('treatment_cd', $datacd)->where(function($a)use($kelascd, $insurancecd) {
                     $a->where('kelas_cd', $kelascd)->orwhere('insurance_cd', $insurancecd)->orWhere('insurance_cd', '')->orWhere('insurance_cd', null);
                 })->first();
-                return $data->tarif;
+                return $data->tarif??0;
                 break;
             default:
               return 0;

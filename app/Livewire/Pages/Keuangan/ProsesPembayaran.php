@@ -67,6 +67,7 @@ class ProsesPembayaran extends Component
 
     public function hitung() {
         $data = new PrerhitunganBiaya;
+        // dd($this->medicalcd);
         $data->hitungBiaya($this->medicalcd);
     }
 
@@ -91,15 +92,25 @@ class ProsesPembayaran extends Component
 
         $a = new ProsesSettlement;
         $a->prosesSetelahSettlemen($data);
+
+        $this->js('window.open("' . route('helper.cetak-invoice',  $data->settlement_no) . '", "Print Antrian Poli", "width=200,height=100");');
+        session()->flash('status', 'Post successfully updated.');
+        $this->js("Swal.fire(
+            'Berhasil!',
+            'Closing Pasien berhasil dilakukan!',
+            'success'
+          )");
+          $this->redirectRoute('keuangan.proses-pembayaran.rawat-jalan.list');
     }
 
     public function render()
     {
         $jenisPayment = ComCode::whereIn('com_cd', ['PAYMENT_TP_11', 'PAYMENT_TP_21'])->get();
-        $data = TrxMedicalSettlement::with(['account'])->where('medical_cd', $this->medicalcd)->paginate(10);
+        $data = TrxMedicalSettlement::with(['account'])->where('medical_cd', $this->medik->medical_cd)->paginate(10);
         $total = TrxMedicalSettlement::where('medical_cd', $this->medicalcd)->sum('amount');
         $this->sebelumPotongan =  $total ;
         $this->nilaiTotal = $total;
+        // dd(  $data );
 
 
         if($this->caraBayar == 'PAYMENT_TP_21') {

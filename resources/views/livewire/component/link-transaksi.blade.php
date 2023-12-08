@@ -10,6 +10,10 @@
             <a class="nav-link {{ Request::segment(2) == 'kajian-awal' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
                 href="{{ route('transaksi.kajian-awal', $medicalcd ?? '') }}" wire:navigate>Kajian Awal</a>
         </li>
+        <li class="nav-item {{ Request::segment(2) == 'kajian-awal' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(2) == 'kajian-lanjutan' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
+                href="{{ route('transaksi.kajian-lanjutan', $medicalcd ?? '') }}" wire:navigate>Kajian Lanjutan</a>
+        </li>
         <li class="nav-item {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
                 href="{{ route('transaksi.rawat-jalan.rekam-medis', $medicalcd ?? '') }}" wire:navigate>Rekam
