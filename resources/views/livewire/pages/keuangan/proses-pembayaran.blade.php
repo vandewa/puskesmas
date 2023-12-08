@@ -7,7 +7,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item active">Keuangan</li>
                 </ol>
             </div>
         </div>
@@ -36,7 +36,7 @@
                                                                     aria-controls="custom-tabs-six-riwayat-rm"
                                                                     aria-selected="true">Semua</a>
                                                             </li>
-                                                            <li class="nav-item">
+                                                            {{-- <li class="nav-item">
                                                                 <a class="nav-link"
                                                                     id="custom-tabs-two-data-rekam-medis-tab"
                                                                     data-toggle="pill"
@@ -90,7 +90,7 @@
                                                                     role="tab" aria-controls="custom-tabs-two-bhp"
                                                                     aria-selected="false">BHP
                                                                 </a>
-                                                            </li>
+                                                            </li> --}}
 
                                                         </ul>
                                                     </div>
@@ -180,7 +180,7 @@
                                                                     <div class="col-md-6">
                                                                         <button class="btn btn-primary" wire:click='confirmHitung'>Hitung Biaya</button>
                                                                         <button class="btn btn-warning" wire:click='tampilkanPembayaran' >Proses Pembayaran</button>
-                                                                        <button class="btn btn-info">Bayar Satuan</button>
+                                                                        {{-- <button class="btn btn-info">Bayar Satuan</button> --}}
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                         <table style="width: 100%">
@@ -194,8 +194,7 @@
                                                                                     <td style="text-align: right;">
                                                                                         <h3 style="margin-top: 10px;">
                                                                                             <strong>
-                                                                                                <div id="total">Rp.
-                                                                                                    {{ $total }},00</div>
+                                                                                                <div id="total">{{ "Rp " . number_format($total,2,',','.'); }}</div>
                                                                                             </strong>
                                                                                         </h3>
                                                                                     </td>
@@ -209,7 +208,7 @@
 
 
                                                             </div>
-                                                            <div class="tab-pane fade"
+                                                            {{-- <div class="tab-pane fade"
                                                                 id="custom-tabs-two-data-rekam-medis" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-two-data-rekam-medis-tab">
                                                                 umum
@@ -259,7 +258,7 @@
                                                                 <div>
                                                                     bhp
                                                                 </div>
-                                                            </div>
+                                                            </div> --}}
 
 
                                                         </div>
@@ -295,11 +294,11 @@
                                 <div class="mb-1 row">
                                     <div class="col-md-4">
                                         <label for="">
-                                            Nama
+                                            Nama Pasien
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" readonly>
+                                        <input type="text" class="form-control" value="{{ $medik->pasien->pasien_nm??"" }}" readonly>
                                     </div>
                                 </div>
                                 <div class="mb-1 row">
@@ -309,7 +308,7 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" readonly>
+                                        <input type="text" class="form-control" value="{{ date('Y-m-d') }}" readonly>
                                     </div>
                                 </div>
                                 <div class="mb-1 row">
@@ -319,22 +318,75 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" readonly>
+                                        <select name="" class="form-control" id="" wire:model.live='caraBayar'>
+                                            @foreach ($jenisPayment as $item)
+                                                <option value="{{ $item->com_cd }}"> {{ $item->code_nm }} </option>
+                                            @endforeach
+
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="mb-1 row">
                                     <div class="col-md-4">
                                         <label for="">
-                                            Nominal
+                                            Jumlah Tagihan
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" readonly>
+                                       <p class="form-control">{{ "Rp " . number_format($total,2,',','.'); }}</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
 
+                                <div class="row">
+                                    <table style="width: 100%">
+                                        <tbody>
+                                            <tr style="background-color: #eee;">
+                                                <td>
+                                                    <h4 style="margin-top: 10px;">
+                                                        <strong>Biaya</strong>
+                                                    </h4>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <h3 style="margin-top: 10px;">
+                                                        <strong>
+                                                            <div id="total">{{ "Rp " . number_format($total,2,',','.'); }}</div>
+                                                        </strong>
+                                                    </h3>
+                                                </td>
+                                            </tr>
+                                            <tr style="background-color: #eee;">
+                                                <td>
+                                                    <h4 style="margin-top: 10px;">
+                                                        <strong>Asuransi</strong>
+                                                    </h4>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <h3 style="margin-top: 10px;">
+                                                        <strong>
+                                                            <div id="total">{{ "Rp " . number_format($potongan,2,',','.'); }}</div>
+                                                        </strong>
+                                                    </h3>
+                                                </td>
+                                            </tr>
+                                            <tr style="background-color: #eee;">
+                                                <td>
+                                                    <h3 style="margin-top: 10px;">
+                                                        <strong>Total Biaya</strong>
+                                                    </h3>
+                                                </td>
+                                                <td style="text-align: right;">
+                                                    <h3 style="margin-top: 10px;">
+                                                        <strong>
+                                                            <div id="total">{{ "Rp " . number_format($nilaiTotal,2,',','.'); }}</div>
+                                                        </strong>
+                                                    </h3>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                         </div>
@@ -343,7 +395,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal" wire:click='tampilkanPembayaran' >Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+              <button type="button" class="btn btn-primary" wire:click='bayar'>Bayar</button>
             </div>
           </div>
           <!-- /.modal-content -->

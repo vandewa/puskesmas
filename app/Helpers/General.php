@@ -251,6 +251,18 @@ if (!function_exists('gen_pasien_cd')) {
         return $no;
     }
 }
+
+if (!function_exists('gen_no_kwitansi')) {
+    function gen_no_kwitansi()
+    {
+        $no = Date('y') . str_pad(1, 8, '0', STR_PAD_LEFT);
+        $terakhir = \App\Models\His\TrxSettlement::orderBy('created_at', 'desc')->first();
+        if ($terakhir) {
+            $no = Date('y') . str_pad((int) substr($terakhir->invoice_no, -8) + 1, 8, 0, STR_PAD_LEFT);
+        }
+        return $no;
+    }
+}
 if (!function_exists('gen_no_resep')) {
     function gen_no_resep()
     {

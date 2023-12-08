@@ -206,5 +206,16 @@ use \OwenIt\Auditing\Auditable;
 
     ];
 
+    public function tindakan() {
+        return $this->hasMany(TrxMedicalSettlement::class, 'medical_cd', 'medical_cd');
+    }
+    public function pasien() {
+        return $this->belongsTo(TrxPasien::class, 'pasien_cd', 'pasien_cd');
+    }
+
+    public function medical() {
+        return $this->belongsTo(TrxMedical::class, 'medical_cd', 'medical_cd');
+    }
+
 
 }

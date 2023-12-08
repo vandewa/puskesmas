@@ -669,12 +669,12 @@
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
-                              </li>
+                              </li> --}}
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.tindakan-medis') }}"
                                       wire:navigate class="nav-link">
@@ -733,12 +733,12 @@
                               </p>
                           </a>
                           <ul class="nav nav-treeview">
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="./index2.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Booking</p>
                                   </a>
-                              </li>
+                              </li> --}}
                               <li class="nav-item">
                                   <a href="{{ route('registrasi.rawat-inap') }}" wire:navigate
                                       class="nav-link {{ request()->is('registrasi/rawat-inap') ? 'active' : '' }}">
@@ -775,12 +775,12 @@
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
-                              </li>
+                              </li> --}}
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.tindakan-medis') }}"
                                       wire:navigate
@@ -826,7 +826,7 @@
                               </li>
                           </ul>
                       </li>
-                      <li class="nav-item">
+                      {{-- <li class="nav-item">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-folder-open"></i>
                               <p>
@@ -848,8 +848,8 @@
                                   </a>
                               </li>
                           </ul>
-                      </li>
-                      <li class="nav-item">
+                      </li> --}}
+                      {{-- <li class="nav-item">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-user-md"></i>
                               <p>
@@ -883,7 +883,7 @@
                                   </a>
                               </li>
                           </ul>
-                      </li>
+                      </li> --}}
                       <li class="nav-item">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-copy"></i>
@@ -922,18 +922,18 @@
                                       <p>Proses Resep</p>
                                   </a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Retur</p>
                                   </a>
-                              </li>
-                              <li class="nav-item">
+                              </li> --}}
+                              {{-- <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Penjualan Bebas</p>
                                   </a>
-                              </li>
+                              </li> --}}
                               <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>

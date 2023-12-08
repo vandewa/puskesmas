@@ -164,6 +164,7 @@ Route::middleware([
 
     Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
+        Route::get('print-kwitansi/{id?}', [HelperController::class, 'cetakInvoice'])->name('print-antrian-poli');
     });
 
     Route::group(['prefix' => 'keuangan', 'as' => 'keuangan.'], function () {
