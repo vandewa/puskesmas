@@ -18,7 +18,7 @@ class RiwayatPsikologis extends Component
         'bicara_tp' => null,
         'komunikasi_tp' => null,
         'emosional_st' => null,
-        'sosiologi_tp' => null,
+        '' => null,
         'riwayat_kb_tp' => null,
         'kehamilan_tp' => null,
     ];
