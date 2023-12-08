@@ -95,20 +95,20 @@
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-riwayat-tindakan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-riwayat-tindakan-tab">
-                                                                <livewire:component.tindakan-medis.riwayat
+                                                                <livewire:component.kajian-awal.kesehatan-reproduksi
                                                                     :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-pertumbuhan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-pertumbuhan-tab">
-                                                                Pertumbuhan
+                                                                <livewire:component.kajian-awal.pertumbuhan-perkembangan.pertumbuhan
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
                                                             <div class="tab-pane fade" id="custom-tabs-three-odontogram"
                                                                 role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-odontogram-tab">
                                                                 Odontogram
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
