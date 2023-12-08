@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Demo\BuktiBayarTagihan;
 use App\Livewire\Demo\Dokumen;
 use App\Livewire\Demo\Lamaran;
 use App\Livewire\Demo\DataDiri;
@@ -7,6 +8,7 @@ use App\Livewire\Demo\Admin\Tes;
 use App\Livewire\Demo\DataPribadi;
 use App\Livewire\Demo\LamaranPage;
 use App\Livewire\Demo\Admin\Magang;
+use App\Livewire\Demo\ListTagihan;
 use App\Livewire\Demo\TampilanPengguna;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Demo\Admin\McuPage;
@@ -177,6 +179,9 @@ Route::middleware([
         Route::get('aktivasi', AktivasiPage::class)->name('aktivasi');
         Route::get('keterangan-lain/{id?}', KeteranganLain::class)->name('keterangan-lain');
         Route::get('detail-pengguna/{id?}', TampilanPengguna::class)->name('detail-pengguna');
+        Route::get('list-tagihan', ListTagihan::class)->name('list-tagihan');
+        Route::get('bukti-bayar/{id?}', BuktiBayarTagihan::class)->name('bukti-bayar');
+
     });
 
 
