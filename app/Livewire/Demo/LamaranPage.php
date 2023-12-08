@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Demo\Lamaran;
 use App\Models\Demo\Layanan;
 use App\Models\Demo\Kelas;
+use App\Models\Demo\Tagihan;
 
 class LamaranPage extends Component
 {
@@ -21,6 +22,9 @@ class LamaranPage extends Component
     public $harga;
     public $kelas;
     public $detailLayanan;
+    public $pilihkelas ;
+    public $termin;
+    public $cek;
 
 
 
@@ -34,6 +38,7 @@ class LamaranPage extends Component
         }
 
         $this->layanan = Layanan::all();
+        $this->cek = Lamaran::where('user_id', auth()->user()->id)->where('status', 'Dalam Proses')->first();
     }
 
     public function updated($property)
@@ -55,10 +60,9 @@ class LamaranPage extends Component
     }
     public $jenisLamaran = '', $cari;
 
-    public function simpan($id)
+    public function simpan()
     {
 
-        $this->jenisLamaran = $id;
         $cek = Lamaran::where('user_id', auth()->user()->id)->where('status', 'Dalam Proses')->first();
         if ($cek) {
             $this->js(<<<'JS'
@@ -73,6 +77,22 @@ class LamaranPage extends Component
         JS);
 
             return;
+        }
+
+        if(!$this->pilihkelas){
+
+                $this->js(<<<'JS'
+
+                        Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Harap memilih kelas terlebih dahulu!",
+
+                        });
+
+            JS);
+
+             return ;
         }
         // cek activasi
         if (!auth()->user()->active_st) {
@@ -127,16 +147,65 @@ class LamaranPage extends Component
         redirect()->route('pendaftaran.aktivasi');
     }
 
+    public function ambilKelas($id) {
+        $this->pilihkelas = $id;
+
+    }
+
     public function save()
     {
 
-        Lamaran::create([
+
+      $data =  Lamaran::create([
             'user_id' => auth()->user()->id,
             'no_reg' => date('Y/m/d-') . auth()->user()->id,
             'tahapan_id' => 1,
             'status' => 'Dalam Proses',
-            'lamaran_tp' => $this->jenisLamaran,
+            'lamaran_tp' => $this->detailLayanan->name,
+            'layanan_id' => $this->layanan_id,
+            'kelas_id' => $this->pilihkelas,
+            'status_pembayaran' => 'Belum Lunas',
+            'metode_bayar' => $this->metode_bayar,
+
         ]);
+
+        // jika pembayaran menggunakan termin 2 kali
+        if($this->termin == 2){
+            Tagihan::create([
+                'lamaran_id' => $data->id,
+                'tanggal_tagihan' => now(),
+                'user_id' => auth()->user()->id,
+                'layanan_id' => $this->layanan_id,
+                'nama_tagihan' => "Pembayaran $this->detailLayanan->name  termin 1",
+                'status' => 'Belum Lunas',
+                'jumlah' => $this->detailLayanan->harga / 2,
+                'pembayaran_tp' => $this->metode_bayar,
+
+            ]);
+            Tagihan::create([
+                'lamaran_id' => $data->id,
+                'tanggal_tagihan' => now(),
+                'user_id' => auth()->user()->id,
+                'layanan_id' => $this->layanan_id,
+                'nama_tagihan' => "Pembayaran $this->detailLayanan->name  termin 2",
+                'status' => 'Belum Lunas',
+                'jumlah' => $this->detailLayanan->harga/2,
+                'pembayaran_tp' => $this->metode_bayar,
+
+            ]);
+        } else {
+             // jika pembayaran menggunakan termin 1 kali
+            Tagihan::create([
+                'lamaran_id' => $data->id,
+                'tanggal_tagihan' => now(),
+                'user_id' => auth()->user()->id,
+                'layanan_id' => $this->layanan_id,
+                'nama_tagihan' => "Pembayaran". $this->detailLayanan->name,
+                'status' => 'Belum Lunas',
+                'jumlah' => $this->detailLayanan->harga,
+                'pembayaran_tp' => $this->metode_bayar,
+            ]);
+        }
     }
     public function render()
     {

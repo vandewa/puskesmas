@@ -89,6 +89,7 @@
                                   </p>
                               </a>
                           </li>
+                          <livewire:component.sidebar.tagihan-sidebar>
                           <li class="nav-item">
                               <a href="https://www.instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA%3D%3D" target="_blank"
                                   class="nav-link">
@@ -102,7 +103,7 @@
 
                       @role('superadministrator')
                           <li
-                              class="nav-item 
+                              class="nav-item
                               {{ Request::segment(2) == 'layanan' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
                           ">
@@ -121,27 +122,27 @@
                                   <li class="nav-item">
                                       <a href="{{ route('master.layanan') }}"
                                           class="nav-link {{ Request::segment(2) == 'layanan' ? 'active' : '' }}">
-                                          <i class="far fa-circle nav-icon ml-2"></i>
+                                          <i class="ml-2 far fa-circle nav-icon"></i>
                                           <p>Layanan</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="{{ route('master.kelas') }}"
                                           class="nav-link {{ Request::segment(2) == 'kelas' ? 'active' : '' }}">
-                                          <i class="far fa-circle nav-icon ml-2"></i>
+                                          <i class="ml-2 far fa-circle nav-icon"></i>
                                           <p>Kelas</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="../examples/e-commerce.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon ml-2"></i>
+                                          <i class="ml-2 far fa-circle nav-icon"></i>
                                           <p>Sales</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="{{ route('admin.pengguna') }}"
                                           class="nav-link  {{ Request::segment(2) == 'pengguna' ? 'active' : '' }}">
-                                          <i class="nav-icon ml-2 fas fa-users"></i>
+                                          <i class="ml-2 nav-icon fas fa-users"></i>
                                           <p>
                                               Siswa
                                           </p>
@@ -161,19 +162,19 @@
                               <ul class="nav nav-treeview">
                                   <li class="nav-item">
                                       <a href="../examples/invoice.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon ml-2"></i>
+                                          <i class="ml-2 far fa-circle nav-icon"></i>
                                           <p>Aktivasi Pendaftaran</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="../examples/profile.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon ml-2"></i>
+                                          <i class="ml-2 far fa-circle nav-icon"></i>
                                           <p>Tagihan</p>
                                       </a>
                                   </li>
                                   <li class="nav-item">
                                       <a href="../examples/e-commerce.html" class="nav-link">
-                                          <i class="far fa-circle nav-icon ml-2"></i>
+                                          <i class="ml-2 far fa-circle nav-icon"></i>
                                           <p>Terbayar</p>
                                       </a>
                                   </li>

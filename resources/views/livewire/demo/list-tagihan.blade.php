@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0">Tagihan</h1>
             </div>
@@ -51,13 +51,13 @@
                                                                     <th>Action</th>
                                                                 </thead>
                                                                 <tbody>
-                                                                    @foreach ($post as $item)
+                                                                    @foreach ($post as $index => $item)
                                                                         <tr wire:key='{{ $item->id }}'>
-                                                                            <td>-</td>
-                                                                            <td>-</td>
-                                                                            <td>-</td>
-                                                                            <td>-</td>
-                                                                            <td>-</td>
+                                                                            <td>{{ $$index = $index + 1}}</td>
+                                                                            <td>{{ $item->tanggal_tagihan }}</td>
+                                                                            <td>{{ $item->nama_tagihan }}</td>
+                                                                            <td>{{  "Rp " . number_format( $item->jumlah??"0",2,',','.'); }}</td>
+                                                                            <td>{{  $item->status  }}</td>
                                                                             <td>
                                                                                 <div
                                                                                     class="gap-3 table-actions d-flex align-items-center fs-6">

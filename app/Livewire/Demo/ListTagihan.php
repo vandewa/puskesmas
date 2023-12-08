@@ -7,6 +7,7 @@ use App\Models\Demo\Layanan as DemoLayanan;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Models\Demo\Tagihan;
 
 
 class ListTagihan extends Component
@@ -106,7 +107,7 @@ class ListTagihan extends Component
 
     public function render()
     {
-        $data = DemoKelas::with(['layanan'])->paginate(10);
+        $data = Tagihan::with(['layanan'])->paginate(10);
 
         return view('livewire.demo.list-tagihan', [
             'post' => $data,
