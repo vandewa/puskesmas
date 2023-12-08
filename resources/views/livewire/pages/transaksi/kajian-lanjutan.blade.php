@@ -99,12 +99,13 @@
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-pertumbuhan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-pertumbuhan-tab">
-                                                                Pertumbuhan
+                                                                On Development
                                                             </div>
                                                             <div class="tab-pane fade" id="custom-tabs-three-odontogram"
                                                                 role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-odontogram-tab">
-                                                                Odontogram
+                                                                <livewire:component.kajian-lanjutan.kajian-sakit-component
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
 
                                                         </div>

@@ -5,7 +5,7 @@ namespace App\Livewire\Component\KajianLanjutan;
 use App\Models\His\TrxMedical;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\TandaVital as ModelTandaVital;
+use App\Models\KajianNyeri as ModelTandaVital;
 use Illuminate\Support\Arr;
 
 class KajianSakitComponent extends Component

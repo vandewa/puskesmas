@@ -36,5 +36,15 @@
                 id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
                 wire:navigate>Resep/Obat</a>
         </li>
+        <li class="nav-item {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}"
+                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
+                wire:navigate>Odontogram</a>
+        </li>
+        <li class="nav-item {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}"
+                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
+                wire:navigate>Dokumen Pasien</a>
+        </li>
     </ul>
 </div>

@@ -10,19 +10,21 @@
                             <label for="" class="col-sm-3 col-form-label">Nyeri</label>
                             <div class="col-md-9">
                                 <div class="input-group mb-3">
-                                    <input type="number" class="form-control" wire:model='form.td'>
-                                    <div class="input-group-append">
-                                      <span class="input-group-text">mmHg</span>
-                                    </div>
-                                </div>
+                                    <select name="" id="" class="form-control" wire:model.live='form.nyeri'>
+                                     <option value="">Pilih Skala Nyeri</option>
+                                     <option value="Tidak Sakit">Tidak Sakit</option>
+                                     <option value="Sedikit Sakit">Sedikit Sakit</option>
+                                     <option value="Agak Menganggu">Agak Menganggu</option>
+                                     <option value="Mengganggu Aktivitas">Mengganggu Aktivitas</option>
+                                     <option value="Sangat Mengganggu">Sangat Mengganggu</option>
+                                     <option value="Tak Tertahankan">Tak Tertahankan</option>
+                                    </select>
+                                 </div>
                                 @error('form.bicara_tp')
                                     <span class="form-text text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div>
-
-                    </div>
-                    <div class="col-md-6">
 
                         <div class="card-footer mt-4">
                             <div class="row">
@@ -34,7 +36,15 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                    <div class="col-md-6 text-center">
+                        @if($form['nyeri'])
+                        <img src="{{ asset('gambar/'.$form['nyeri'].".jpg") }}" class="img-thumbnail" alt="{{ $form['nyeri'] }}">
+                        <p>{{ $form['nyeri'] }}</p>
+                        @endif
+                    </div>
+
                 <form>
                 </div>
                 <div class="row mt-3">
@@ -42,10 +52,8 @@
                     <table class="table table-striped">
                         <thead>
                             <th>Waktu</th>
-                            <th>Td</th>
-                            <th>N</th>
-                            <th>P</th>
-                            <th>Suhu</th>
+                            <th>Nyeri</th>
+
                             <th>action</th>
                         </thead>
                         <tbody>
@@ -54,10 +62,8 @@
                                 <td>
                                   {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                 </td>
-                                <td>{{ $item->td }}</td>
-                                <td>{{ $item->n }}</td>
-                                <td>{{ $item->p }}</td>
-                                <td>{{ $item->suhu }}</td>
+                                <td>{{ $item->nyeri }}</td>
+
                                 <td>
                                     <button type="button" class="btn btn-sm btn-danger" wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
                                     <button  type="button" class="btn btn-sm btn-warning" wire:click='rubah({{ $item->id }})'>Edit</button>
