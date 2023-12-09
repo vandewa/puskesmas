@@ -148,7 +148,7 @@ class User extends Component
 
     public function render()
     {
-        $data = ModelsUser::paginate(10);
+        $data = ModelsUser::where('ref', auth()->user()->id)->paginate(10);
 
         return view('livewire.demo.sales.user', [
             'post' => $data,
