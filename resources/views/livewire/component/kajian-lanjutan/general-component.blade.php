@@ -1,15 +1,15 @@
 <div>
     <div class="col-md-12">
         {{-- <div class="card card-success card-outline"> --}}
-        <form class="form-horizontal mt-2" wire:submit='save'>
+        <form class="mt-2 form-horizontal" wire:submit='save'>
             <div class="card-body">
                 <div class="row">
                    <form action="" wire.submit='save'>
                     <div class="col-md-6">
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Kepala</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                    <select name="" id="" class="form-control" wire:model='form.kepala'>
                                     <option value="TAK">TAK</option>
                                     <option value="Asimetris">Asimetris</option>
@@ -20,10 +20,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Mata</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <select name="" id="" class="form-control" wire:model='form.mata'>
                                      <option value="TAK">TAK</option>
                                      <option value="Anemis">Anemis</option>
@@ -38,10 +38,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Telinga</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <select name="" id="" class="form-control" wire:model='form.teling'>
                                      <option value="TAK">TAK</option>
                                      <option value="Berdengung">Berdengung</option>
@@ -54,10 +54,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Leher</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <select name="" id="" class="form-control" wire:model='form.teling'>
                                      <option value="TAK">TAK</option>
                                      <option value="Pembesaran Tyroid">Pembesaran Tyroid</option>
@@ -74,10 +74,10 @@
                     </div>
                     <div class="col-md-6">
 
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Dada</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <select name="" id="" class="form-control" wire:model='form.dada'>
                                      <option value="TAK">TAK</option>
                                      <option value="Asimetris">Asimetris</option>
@@ -96,10 +96,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Abdomen</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <select name="" id="" class="form-control" wire:model='form.abdomen'>
                                      <option value="TAK">TAK</option>
                                      <option value="Kembung">Kembung</option>
@@ -114,10 +114,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
+                        <div class="mb-2 row">
                             <label for="" class="col-sm-3 col-form-label">Extremistis</label>
                             <div class="col-md-9">
-                                <div class="input-group mb-3">
+                                <div class="mb-3 input-group">
                                     <select name="" id="" class="form-control" wire:model='form.extremistis'>
                                      <option value="TAK">TAK</option>
                                      <option value="CRT < 2">CRT < 2</option>
@@ -130,10 +130,10 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="card-footer mt-4">
+                        <div class="mt-4 card-footer">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class=" ">
+                                    <div class="">
                                         <button type="button" class="btn btn-warning" wire:click='clear'>Batal</button>
                                         <button type="submit" class="btn btn-info">Simpan</button>
                                     </div>
@@ -143,7 +143,16 @@
                     </div>
                 <form>
                 </div>
-                <div class="row mt-3">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                      <a class="nav-link @if($tab ==1) active @endif" wire:click='ubahTab(1)' href="#">Pemeriksaan</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link @if($tab ==2) active @endif"  wire:click='ubahTab(2)'  href="#">Riwayat</a>
+                    </li>
+                  </ul>
+                <div class="mt-3 row">
+                    @if($tab ==1)
 
                     <table class="table table-striped">
                         <thead>
@@ -180,6 +189,44 @@
                         </tbody>
                     </table>
                     {{ $posts->links() }}
+                    @else
+
+                    <table class="table table-striped">
+                        <thead>
+                            <th>Waktu</th>
+                            <th>Kepala</th>
+                            <th>Mata</th>
+                            <th>Telinga</th>
+                            <th>Leher</th>
+                            <th>Dada</th>
+                            <th>Abdomen</th>
+                            <th>Extrimistis</th>
+                            {{-- <th>action</th> --}}
+                        </thead>
+                        <tbody>
+                            @foreach ($riwayat as $item)
+                            <tr @if($this->edit == $item->id) class="bg-secondary" @endif>
+                                <td>
+                                  {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
+                                </td>
+
+                                <td>{{ $item->kepala }}</td>
+                                <td>{{ $item->mata }}</td>
+                                <td>{{ $item->teling }}</td>
+                                <td>{{ $item->leher }}</td>
+                                <td>{{ $item->dada }}</td>
+                                <td>{{ $item->abdomen }}</td>
+                                <td>{{ $item->extremistis }}</td>
+                                {{-- <td>
+                                    <button type="button" class="btn btn-sm btn-danger" wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
+                                    <button  type="button" class="btn btn-sm btn-warning" wire:click='rubah({{ $item->id }})'>Edit</button>
+                                </td> --}}
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $riwayat->links() }}
+                    @endif
                 </div>
             </div>
         </form>

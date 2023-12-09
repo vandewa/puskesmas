@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 class GeneralComponent extends Component
 {
     use WithPagination;
+    public $tab = 1;
     public $edit;
     public $delete;
     public $form = [
@@ -74,6 +75,11 @@ class GeneralComponent extends Component
         $this->form = Arr::except($data->toArray(), ['created_at', 'updated_at', 'id']);
     }
 
+    public function ubahTab($id)
+    {
+        $this->tab = $id;
+    }
+
     public function save() {
 
         if($this->edit){
@@ -100,10 +106,13 @@ class GeneralComponent extends Component
     }
     public function render()
     {
-        $data = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)
+        $data = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', $this->medik->medical_cd)
+        ->orderBy('created_at', 'desc')->paginate(10);
+        $riwayat = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd','<>', $this->medik->medical_cd)
         ->orderBy('created_at', 'desc')->paginate(10);
         return view('livewire.component.kajian-lanjutan.general-component',[
-            'posts' => $data
+            'posts' => $data,
+            'riwayat' => $riwayat
         ]);
     }
 }

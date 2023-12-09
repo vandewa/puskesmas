@@ -11,6 +11,7 @@ use Illuminate\Support\Arr;
 class TandaVital extends Component
 {
     use WithPagination;
+    public $tab = 1;
     public $edit;
     public $delete;
     public $form = [
@@ -92,12 +93,19 @@ class TandaVital extends Component
         }
             $this->clear();
     }
+    public function ubahTab($id)
+    {
+        $this->tab = $id;
+    }
     public function render()
     {
-        $data = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)
+        $data = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', $this->medik->medical_cd)
+        ->orderBy('created_at', 'desc')->paginate(10);
+        $riwayat = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd','<>', $this->medik->medical_cd)
         ->orderBy('created_at', 'desc')->paginate(10);
         return view('livewire.component.kajian-lanjutan.tanda-vital',[
-            'posts' => $data
+            'posts' => $data,
+            'riwayat' => $riwayat
         ]);
     }
 }
