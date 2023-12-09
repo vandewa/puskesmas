@@ -27,6 +27,9 @@ return [
         'role_name' => [
             'module_1_name' => 'c,r,u,d',
         ],
+        'sales' => [
+            'users' => 'c,r,u,d',
+        ],
     ],
 
     'permissions_map' => [

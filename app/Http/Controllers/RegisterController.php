@@ -65,6 +65,7 @@ class RegisterController extends Controller
         $a = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'ref' => $request->ref,
             'telepon' => $nomor,
             'password' => bcrypt($password)
         ]);
@@ -75,11 +76,11 @@ class RegisterController extends Controller
         $pesan = $request->name . ' telah terdaftar kedalam sistem LPK Marzuba Sejahtera Indonésia' . "\n" .
             'Username: ' . $request->email . "\n" .
             'Password : ' . $password . "\n" .
-            'Gunakan link berikut untuk melengkapi akun Anda.'."\n" ;
+            'Gunakan link berikut untuk melengkapi akun Anda.' . "\n";
 
         kirimWhatsapp::dispatch($pesan, $nomor);
 
-        $devan = url('/login?mail='.$request->email.'&password='.$password);
+        $devan = url('/login?mail=' . $request->email . '&password=' . $password);
 
         kirimWhatsapp::dispatch($devan, $nomor);
         // dd("Sadas");
