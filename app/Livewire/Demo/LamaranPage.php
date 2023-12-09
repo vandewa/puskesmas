@@ -22,7 +22,7 @@ class LamaranPage extends Component
     public $harga;
     public $kelas;
     public $detailLayanan;
-    public $pilihkelas ;
+    public $pilihkelas;
     public $termin;
     public $cek;
 
@@ -32,9 +32,10 @@ class LamaranPage extends Component
     {
         if (auth()->user()->hasRole('superadministrator')) {
             redirect()->route('admin.aktivasi-user');
+        }
 
-        //    dd($this->layanan);
-
+        if (auth()->user()->hasRole('sales')) {
+            redirect()->route('admin.user');
         }
 
         $this->layanan = Layanan::all();
@@ -47,7 +48,7 @@ class LamaranPage extends Component
 
         if ($property === 'layanan_id') {
 
-            if($this->layanan_id){
+            if ($this->layanan_id) {
                 $this->detailLayanan = Layanan::find($this->layanan_id);
                 $this->kelas = Kelas::where('layanan_id', $this->layanan_id)->get();
             } else {
@@ -79,9 +80,9 @@ class LamaranPage extends Component
             return;
         }
 
-        if(!$this->pilihkelas){
+        if (!$this->pilihkelas) {
 
-                $this->js(<<<'JS'
+            $this->js(<<<'JS'
 
                         Swal.fire({
                         icon: "error",
@@ -92,7 +93,7 @@ class LamaranPage extends Component
 
             JS);
 
-             return ;
+            return;
         }
         // cek activasi
         if (!auth()->user()->active_st) {
@@ -147,7 +148,8 @@ class LamaranPage extends Component
         redirect()->route('pendaftaran.aktivasi');
     }
 
-    public function ambilKelas($id) {
+    public function ambilKelas($id)
+    {
         $this->pilihkelas = $id;
 
     }
@@ -156,7 +158,7 @@ class LamaranPage extends Component
     {
 
 
-      $data =  Lamaran::create([
+        $data = Lamaran::create([
             'user_id' => auth()->user()->id,
             'no_reg' => date('Y/m/d-') . auth()->user()->id,
             'tahapan_id' => 1,
@@ -170,7 +172,7 @@ class LamaranPage extends Component
         ]);
 
         // jika pembayaran menggunakan termin 2 kali
-        if($this->termin == 2){
+        if ($this->termin == 2) {
             Tagihan::create([
                 'lamaran_id' => $data->id,
                 'tanggal_tagihan' => now(),
@@ -189,18 +191,18 @@ class LamaranPage extends Component
                 'layanan_id' => $this->layanan_id,
                 'nama_tagihan' => "Pembayaran $this->detailLayanan->name  termin 2",
                 'status' => 'Belum Lunas',
-                'jumlah' => $this->detailLayanan->harga/2,
+                'jumlah' => $this->detailLayanan->harga / 2,
                 'pembayaran_tp' => $this->metode_bayar,
 
             ]);
         } else {
-             // jika pembayaran menggunakan termin 1 kali
+            // jika pembayaran menggunakan termin 1 kali
             Tagihan::create([
                 'lamaran_id' => $data->id,
                 'tanggal_tagihan' => now(),
                 'user_id' => auth()->user()->id,
                 'layanan_id' => $this->layanan_id,
-                'nama_tagihan' => "Pembayaran". $this->detailLayanan->name,
+                'nama_tagihan' => "Pembayaran" . $this->detailLayanan->name,
                 'status' => 'Belum Lunas',
                 'jumlah' => $this->detailLayanan->harga,
                 'pembayaran_tp' => $this->metode_bayar,
