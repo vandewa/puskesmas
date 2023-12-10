@@ -113,8 +113,18 @@
                           @endrole
 
                           @role('superadministrator')
-                              <li class="nav-item">
-                                  <a href="#" class="nav-link ">
+                              <li
+                                  class="nav-item
+                                {{ Request::segment(2) == 'list-role' ? 'menu-is-opening menu-open' : '' }}
+                                {{ Request::segment(2) == 'role' ? 'menu-is-opening menu-open' : '' }}
+                                {{ Request::segment(2) == 'permission' ? 'menu-is-opening menu-open' : '' }}
+                              ">
+                                  <a href="#"
+                                      class="nav-link 
+                                  {{ Request::segment(2) == 'list-role' ? 'active' : '' }}
+                                  {{ Request::segment(2) == 'role' ? 'active' : '' }}
+                                  {{ Request::segment(2) == 'permission' ? 'active' : '' }}
+                                  ">
                                       <i class="nav-icon fa-solid fa-users"></i>
                                       <p>
                                           User
@@ -123,13 +133,15 @@
                                   </a>
                                   <ul class="nav nav-treeview">
                                       <li class="nav-item">
-                                          <a href="{{ route('admin.list-role') }}" class="nav-link">
+                                          <a href="{{ route('admin.list-role') }}"
+                                              class="nav-link {{ Request::segment(2) == 'list-role' ? 'active' : '' }} {{ Request::segment(2) == 'role' ? 'active' : '' }}">
                                               <i class="ml-2 far fa-circle nav-icon"></i>
                                               <p>Role</p>
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('admin.permission') }}" class="nav-link">
+                                          <a href="{{ route('admin.permission') }}"
+                                              class="nav-link {{ Request::segment(2) == 'permission' ? 'active' : '' }}">
                                               <i class="ml-2 far fa-circle nav-icon"></i>
                                               <p>Permission</p>
                                           </a>
