@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\userCreateValidation;
 use App\Jobs\kirimWhatsapp;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -58,7 +59,7 @@ class RegisterController extends Controller
     public function store(userCreateValidation $request)
     {
 
-        DB::traansaction(function()use($request){
+        DB::transaction(function()use($request){
             $password = Str::random(8);
 
             $nomor = $this->konversi_nomor($request->telepon);
@@ -72,7 +73,8 @@ class RegisterController extends Controller
             ]);
 
             // $data = User::find($a->id);
-            $a->attachRole('user');
+            $role = Role::where('name', 'user')->first();
+            $a->addRole( $role->id);
 
             $pesan = $request->name . ' telah terdaftar kedalam sistem LPK Marzuba Sejahtera Indonésia' . "\n" .
                 'Username: ' . $request->email . "\n" .

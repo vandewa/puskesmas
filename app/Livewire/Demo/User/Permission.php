@@ -1,50 +1,35 @@
 <?php
 
-namespace App\Livewire\Demo;
+namespace App\Livewire\Demo\User;
 
-use App\Models\User;
+use App\Models\Permission as ModelsPermission;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Demo\Tiket as DemoTiket;
-use App\Models\His\ComCode;
-use Livewire\Attributes\On;
 
 
-class Tiket extends Component
+class Permission extends Component
 {
 
     use WithPagination;
 
-    public $idHapus, $edit = false, $idnya, $pelapor;
-
-    public $listUser, $listTiket;
+    public $idHapus, $edit = false, $idnya;
 
     public $form = [
-        'user_id' => null,
-        'masalah' => null,
-        'status_tiket_tp' => null,
-        'tindak_lanjut' => null,
+        'name' => null,
+        'description' => null,
+        'display_name' => null,
     ];
 
-    public function mount($id = '')
+    public function mount()
     {
-        $this->listUser = User::all()->toArray();
-        $this->listTiket = ComCode::where('code_group', 'STATUS_TIKET_TP')->get()->toArray();
-    }
-
-    #[On('pilih-pelapor')]
-    public function pilihPelapor($id = "")
-    {
-        $this->pelapor = User::find($id);
-        $this->form['user_id'] = $this->pelapor->id;
+        //
     }
 
     public function getEdit($a)
     {
-        $this->form = DemoTiket::find($a)->only(['user_id', 'masalah', 'status_tiket_tp', 'tindak_lanjut']);
+        $this->form = ModelsPermission::find($a)->only(['name', 'description', 'display_name']);
         $this->idHapus = $a;
         $this->edit = true;
-        $this->pilihPelapor($this->form['user_id']);
     }
 
     public function save()
@@ -66,7 +51,7 @@ class Tiket extends Component
 
     public function store()
     {
-        DemoTiket::create($this->form);
+        ModelsPermission::create($this->form);
     }
 
     public function delete($id)
@@ -92,7 +77,7 @@ class Tiket extends Component
 
     public function hapus()
     {
-        DemoTiket::destroy($this->idHapus);
+        ModelsPermission::destroy($this->idHapus);
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Good job!',
@@ -104,7 +89,7 @@ class Tiket extends Component
 
     public function storeUpdate()
     {
-        DemoTiket::find($this->idHapus)->update($this->form);
+        ModelsPermission::find($this->idHapus)->update($this->form);
         $this->reset();
         $this->edit = false;
     }
@@ -119,9 +104,9 @@ class Tiket extends Component
 
     public function render()
     {
-        $data = DemoTiket::with(['status', 'nama'])->orderBy('created_at', 'desc')->paginate(10);
+        $data = ModelsPermission::paginate(10);
 
-        return view('livewire.demo.tiket', [
+        return view('livewire.demo.user.permission', [
             'post' => $data,
         ]);
     }

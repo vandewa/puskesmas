@@ -14,6 +14,8 @@ use Laratrust\Traits\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
+
+
 class User extends Authenticatable implements LaratrustUser
 {
     use HasApiTokens;
@@ -60,11 +62,11 @@ class User extends Authenticatable implements LaratrustUser
         'profile_photo_url',
     ];
 
-
-    public function scopeCari($filter, $value) {
-        if($value){
-            return $this->where('name', 'ilike', "%$value%")
-            ->orWhere('email', 'ilike', "%$value%");
+    public function scopeCari($filter, $value)
+    {
+        if ($value) {
+            return $this->where('name', 'like', "%$value%")
+                ->orWhere('email', 'like', "%$value%");
         }
 
     }

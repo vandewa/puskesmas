@@ -2,11 +2,11 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Monitoring</h1>
+                <h1 class="m-0">Permission</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Monitoring</a></li>
+                    <li class="breadcrumb-item"><a href="#">Permission</a></li>
                     {{-- <li class="breadcrumb-item active">Monitoring</li> --}}
                 </ol>
             </div>
@@ -32,69 +32,46 @@
                                                             <form class="form-horizontal mt-2" wire:submit='save'>
                                                                 <div class="card-body">
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-8">
+
                                                                             <div class="row mb-2">
-                                                                                <label for=""
-                                                                                    class="col-sm-3 col-form-label">Pilih
-                                                                                    Pelapor</label>
-                                                                                <div class="col-md-9">
-                                                                                    <div class="input-group ">
-                                                                                        <p class="form-control">
-                                                                                            {{ $pelapor->name ?? '' }}
-                                                                                        </p>
-                                                                                        <span
-                                                                                            class="input-group-append">
-                                                                                            <button type="button"
-                                                                                                class="btn btn-info btn-flat"
-                                                                                                wire:click="$dispatch('show-modal-pelapor')">Cari</button>
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row mb-2">
-                                                                                <label for=""
-                                                                                    class="col-sm-3 col-form-label">Permasalahan</label>
-                                                                                <div class="col-md-9">
-                                                                                    <textarea rows="2" wire:model='form.masalah' class="form-control"></textarea>
-                                                                                    @error('form.masalah')
+                                                                                <label for="inputEmail3"
+                                                                                    class="col-sm-3 col-form-label">Nama
+                                                                                    (tanpa spasi)<small
+                                                                                        class="text-danger">*</small></label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        wire:model='form.name'
+                                                                                        placeholder="Name">
+                                                                                    @error('form.name')
                                                                                         <span
                                                                                             class="form-text text-danger">{{ $message }}</span>
                                                                                     @enderror
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
                                                                             <div class="row mb-2">
-                                                                                <label for=""
-                                                                                    class="col-sm-3 col-form-label">Status</label>
-                                                                                <div class="col-md-9">
-                                                                                    <select class="form-control"
-                                                                                        wire:model='form.status_tiket_tp'>
-                                                                                        <option value="">-- Pilih
-                                                                                            Status
-                                                                                            --</option>
-
-                                                                                        @foreach ($listTiket ?? [] as $item)
-                                                                                            <option
-                                                                                                value="{{ $item['com_cd'] }}">
-                                                                                                {{ $item['code_nm'] }}
-                                                                                            </option>
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                    @error('form.status_tiket_tp')
+                                                                                <label for="inputEmail3"
+                                                                                    class="col-sm-3 col-form-label">Display
+                                                                                    Nama<small
+                                                                                        class="text-danger">*</small></label>
+                                                                                <div class="col-sm-9">
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        wire:model='form.display_name'
+                                                                                        placeholder="Display Name">
+                                                                                    @error('form.name')
                                                                                         <span
                                                                                             class="form-text text-danger">{{ $message }}</span>
                                                                                     @enderror
                                                                                 </div>
                                                                             </div>
-
                                                                             <div class="row mb-2">
                                                                                 <label for=""
-                                                                                    class="col-sm-3 col-form-label">Tindak
-                                                                                    Lanjut</label>
+                                                                                    class="col-sm-3 col-form-label">Deskripsi</label>
                                                                                 <div class="col-md-9">
-                                                                                    <textarea rows="2" wire:model='form.tindak_lanjut' class="form-control"></textarea>
-                                                                                    @error('form.tindak_lanjut')
+                                                                                    <textarea rows="2" wire:model='form.description' class="form-control"></textarea>
+                                                                                    @error('form.description')
                                                                                         <span
                                                                                             class="form-text text-danger">{{ $message }}</span>
                                                                                     @enderror
@@ -115,7 +92,7 @@
                                                         <div class="card card-success card-outline">
                                                             <div class="card-header">
                                                                 <div class="card-title">
-                                                                    Monitoring
+                                                                    Permission
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
@@ -130,9 +107,9 @@
                                                                     <table class="table">
                                                                         <thead>
                                                                             <th>No</th>
-                                                                            <th>Nama</th>
-                                                                            <th>Permasalahan</th>
-                                                                            <th>Status</th>
+                                                                            <th>Name</th>
+                                                                            <th>Display Name</th>
+                                                                            <th>Deskripsi</th>
                                                                             <th>Action</th>
                                                                         </thead>
                                                                         <tbody>
@@ -140,11 +117,11 @@
                                                                                 <tr wire:key='{{ $item->id }}'>
                                                                                     <td>{{ $loop->index + $post->firstItem() }}
                                                                                     </td>
-                                                                                    <td> {{ $item->nama->name ?? '-' }}
+                                                                                    <td> {{ $item->name ?? '-' }}
                                                                                     </td>
-                                                                                    <td> {{ $item->masalah ?? '-' }}
+                                                                                    <td> {{ $item->display_name ?? '-' }}
                                                                                     </td>
-                                                                                    <td> {{ $item->status->code_nm ?? '-' }}
+                                                                                    <td> {{ $item->description ?? '-' }}
                                                                                     </td>
                                                                                     <td>
                                                                                         <div

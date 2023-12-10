@@ -51,6 +51,10 @@ return [
             'wawancara'  => 'c,r,u,d',
             'wawancara-user'  => 'c,r,u,d',
         ],
+
+        'user' => [
+            'profile' => 'r,u',
+        ]
     ],
 
     'permissions_map' => [
