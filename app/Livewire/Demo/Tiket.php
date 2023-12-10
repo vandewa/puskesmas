@@ -7,13 +7,15 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Demo\Tiket as DemoTiket;
 use App\Models\His\ComCode;
+use Livewire\Attributes\On;
+
 
 class Tiket extends Component
 {
 
     use WithPagination;
 
-    public $idHapus, $edit = false, $idnya;
+    public $idHapus, $edit = false, $idnya, $pelapor;
 
     public $listUser, $listTiket;
 
@@ -24,10 +26,17 @@ class Tiket extends Component
         'tindak_lanjut' => null,
     ];
 
-    public function mount()
+    public function mount($id = '')
     {
         $this->listUser = User::all()->toArray();
         $this->listTiket = ComCode::where('code_group', 'STATUS_TIKET_TP')->get()->toArray();
+    }
+
+    #[On('pilih-pelapor')]
+    public function pilihPelapor($id = "")
+    {
+        $this->pelapor = User::find($id);
+        $this->form['user_id'] = $this->pelapor->id;
     }
 
     public function getEdit($a)

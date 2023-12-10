@@ -35,25 +35,20 @@
                                                                         <div class="col-md-6">
                                                                             <div class="row mb-2">
                                                                                 <label for=""
-                                                                                    class="col-sm-3 col-form-label">Nama
+                                                                                    class="col-sm-3 col-form-label">Pilih
                                                                                     Pelapor</label>
                                                                                 <div class="col-md-9">
-                                                                                    <select class="form-control"
-                                                                                        wire:model='form.user_id'>
-                                                                                        <option value="">-- Pilih
-                                                                                            --</option>
-
-                                                                                        @foreach ($listUser ?? [] as $item)
-                                                                                            <option
-                                                                                                value="{{ $item['id'] }}">
-                                                                                                {{ $item['name'] }}
-                                                                                            </option>
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                    @error('form.user_id')
+                                                                                    <div class="input-group ">
+                                                                                        <p class="form-control">
+                                                                                            {{ $pelapor->name ?? '' }}
+                                                                                        </p>
                                                                                         <span
-                                                                                            class="form-text text-danger">{{ $message }}</span>
-                                                                                    @enderror
+                                                                                            class="input-group-append">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-info btn-flat"
+                                                                                                wire:click="$dispatch('show-modal-pelapor')">Cari</button>
+                                                                                        </span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mb-2">
@@ -198,4 +193,5 @@
             </div>
         </div>
     </section>
+    <livewire:demo.modal-pelapor wire:key='modal-pelapor'>
 </div>
