@@ -14,6 +14,8 @@ use Laratrust\Traits\HasRolesAndPermissions;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 
+
+
 class User extends Authenticatable implements LaratrustUser
 {
     use HasApiTokens;

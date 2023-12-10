@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h1 class="m-0">Pengguna</h1>
+                <h1 class="m-0">Siswa</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                    <li class="breadcrumb-item active">Pengguna
+                    <li class="breadcrumb-item active">Siswa
             </div>
         </div>
     </x-slot>
@@ -20,7 +20,7 @@
 
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"> Pengguna</h3>
+                            <h3 class="card-title"> Siswa</h3>
 
 
                             <div class="card-tools">

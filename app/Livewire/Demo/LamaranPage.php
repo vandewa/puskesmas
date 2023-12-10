@@ -30,13 +30,20 @@ class LamaranPage extends Component
 
     public function mount()
     {
-        if (auth()->user()->hasRole('superadministrator')) {
+
+        if (auth()->user()->hasRole('user')) {
+            if(!auth()->user()->active_st){
+                redirect()->route('pendaftaran.aktivasi');
+            }
+        }
+        if (auth()->user()->hasRole('admin')) {
             redirect()->route('admin.aktivasi-user');
         }
 
         if (auth()->user()->hasRole('sales')) {
             redirect()->route('admin.user');
         }
+
 
         $this->layanan = Layanan::all();
         $this->cek = Lamaran::where('user_id', auth()->user()->id)->where('status', 'Dalam Proses')->first();

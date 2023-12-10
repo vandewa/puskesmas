@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="mb-2 row">
             <div class="col-sm-6">
-                <h1 class="m-0">Bukti Bayar</h1>
+                <h1 class="m-0">Upload Bukti Bayar</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Pendaftaran</a></li>
-                    <li class="breadcrumb-item active">Bukti Bayar</li>
+                    <li class="breadcrumb-item active">Upload Bukti Bayar</li>
                 </ol>
             </div>
         </div>
@@ -20,7 +20,7 @@
 
                     <div class="card card-info">
                         <div class="card-header">
-                            <h3 class="card-title"> Bukti Bayar</h3>
+                            <h3 class="card-title">Upload Bukti Bayar</h3>
                         </div>
                         <!-- /.card-header -->
 
@@ -29,10 +29,31 @@
                             <div class="card-body row">
                                 <div class="text-left col-md-5 col-sm-12">
                                     <div class="">
-                                        <span>Tanggal Tagihan :</span><br>
-                                        <span>Nama Layanan :</span><br>
-                                        <span>Jumlah Tagihan :</span>
+                                        <h2>BCA<strong> 5660485343</strong></h2>
+                                        <p class="mb-5 lead"> <strong>An. Riphani Nurasifa Munawar</strong> <br>
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Tanggal Tagihan</td>
+                                                        <td>: {{ $pembayaran->tanggal_tagihan??"" }}</td>
+                                                    <tr>
+                                                        <td>Nama Layanan</td>
+                                                        <td>: {{ $pembayaran->nama_tagihan??""}}</td>
+                                                    <tr>
+                                                        <td>Jumlah Tagihan</td>
+                                                        <td>: {{  $pembayaran->jumlah??"" }}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Status</td>
+                                                        <td>: {{  $pembayaran->status??""}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
+
                                     </div>
+
                                 </div>
                                 <div class="col-md-7 col-sm-12">
                                     @if (session('status'))
@@ -41,13 +62,14 @@
                                         </div>
                                     @endif
 
-                                    <form action="" wire:submit="save">
+                                    @if(!$pembayaran->bukti_bayar)
+                                    <form  wire:submit="storeUpdate">
                                         <div class="form-group">
                                             <label for="inputName">Bukti Bayar </label>
                                             <input type="file" id="inputName"
                                                 class="form-control @error('bukti') is-invalid @enderror"
-                                                wire:model='bukti'>
-                                            @error('bukti')
+                                                wire:model='bukti_bayar'>
+                                            @error('bukti-bayar')
                                                 <span id="exampleInputEmail1-error"
                                                     class="error invalid-feedback">{{ $message }}</span>
                                             @enderror
@@ -56,6 +78,12 @@
                                             <input type="submit" class="btn btn-primary" value="Simpan">
                                         </div>
                                     </form>
+                                    @else
+                                    <div class="col-md-12 text-center">
+                                        <img src="{{ asset('storage/'.$pembayaran->bukti_bayar) }}" class="img-thumbnail" alt="{{ $pembayaran->nama_tagihan??""}}">
+                                    </div>
+
+                                    @endif
                                 </div>
                             </div>
 

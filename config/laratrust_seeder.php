@@ -12,24 +12,49 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
-        'superadministrator' => [
+        'owner' => [
             'users' => 'c,r,u,d',
             'payments' => 'c,r,u,d',
             'profile' => 'r,u',
+            'payments' => 'c,r,u,d',
         ],
-        'administrator' => [
+        'admin' => [
+            'profile' =>  'c,r,u,d',
             'users' => 'c,r,u,d',
+            'master-data' =>  'c,r,u,d',
+            'keuangan' => 'c,r,u,d',
             'profile' => 'r,u',
+            'payments' => 'c,r,u,d',
+            'seleksi-berkas' => 'c,r,u,d',
+            'psikotest'  => 'c,r,u,d',
+            'wawancara'  => 'c,r,u,d',
+            'mcu'  => 'c,r,u,d',
+            'pendidikan'  => 'c,r,u,d',
+            'wawancara-user'  => 'c,r,u,d',
+            'pengurusan-berkas'  => 'c,r,u,d',
+            'keberangkatan'  => 'c,r,u,d',
+            'siswa' => 'c,r,u,d',
+            'monitoring' => 'c,r,u,d',
+            'magang' => 'c,r,u,d',
         ],
-        'user' => [
+        'lpk' => [
             'profile' => 'r,u',
+            'siswa' => 'c,r,u,d',
         ],
-        'role_name' => [
-            'module_1_name' => 'c,r,u,d',
+        'psikotest' => [
+            'psikotest'  => 'c,r,u,d',
         ],
         'sales' => [
-            'users' => 'c,r,u,d',
+            'siswa' => 'c,r,u,d',
         ],
+        'pewawancara' => [
+            'wawancara'  => 'c,r,u,d',
+            'wawancara-user'  => 'c,r,u,d',
+        ],
+
+        'user' => [
+            'profile' => 'r,u',
+        ]
     ],
 
     'permissions_map' => [
