@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="{{ asset('style.css') }}">
 </head>
 
-<body class="img js-fullheight" style="background-image:url({{ asset('bg-1.jpg') }});object-fit:cover">
+<body class="img js-fullheight" style="background-image:url({{ asset('japan1.jpg') }});object-fit:cover">
     <section class="ftco-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="mt-4 mb-0 text-center col-md-6">
                     {{-- <img src="{{ asset('puskesmas.png') }}" style="width: 120px;"> --}}
-                    <img src="{{ asset('logoo.png') }}" style="width: 150px;">
+                    <img src="{{ asset('logooo.png') }}" style="width: 150px;">
                     {{-- <div class="mt-3"> --}}
                     <h2 class="heading-section">
                         <span
@@ -63,13 +63,13 @@
                                     id="telepon" autofocus required>
                             </div>
                             <div class="form-group">
-                                @if(request('ref')??"" != '')
-                                <input type="ref" class="form-control" name="ref" placeholder="Kode Sales"
-                                    id="ref">
-                                    @else
-                                <input type="ref" readonly class="form-control" name="ref" placeholder="Kode Sales"
-                                    id="ref" value="{{ request('ref') }}">
-                                    @endif
+                                @if (request('ref') ?? '' != '')
+                                    <input type="ref" class="form-control" name="ref" placeholder="Kode Sales"
+                                        id="ref">
+                                @else
+                                    <input type="ref" readonly class="form-control" name="ref"
+                                        placeholder="Kode Sales" id="ref" value="{{ request('ref') }}">
+                                @endif
                             </div>
 
                             <div class="form-group">
