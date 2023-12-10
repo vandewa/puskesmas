@@ -7,6 +7,7 @@ use App\Jobs\kirimWhatsapp;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use DB;
 
 class RegisterController extends Controller
 {
@@ -57,32 +58,35 @@ class RegisterController extends Controller
     public function store(userCreateValidation $request)
     {
 
+        DB::traansaction(function()use($request){
+            $password = Str::random(8);
 
-        $password = Str::random(8);
+            $nomor = $this->konversi_nomor($request->telepon);
 
-        $nomor = $this->konversi_nomor($request->telepon);
+            $a = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'ref' => $request->ref,
+                'telepon' => $nomor,
+                'password' => bcrypt($password)
+            ]);
 
-        $a = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'ref' => $request->ref,
-            'telepon' => $nomor,
-            'password' => bcrypt($password)
-        ]);
+            // $data = User::find($a->id);
+            $a->attachRole('user');
 
-        // $data = User::find($a->id);
-        $a->addrole('user');
+            $pesan = $request->name . ' telah terdaftar kedalam sistem LPK Marzuba Sejahtera Indonésia' . "\n" .
+                'Username: ' . $request->email . "\n" .
+                'Password : ' . $password . "\n" .
+                'Gunakan link berikut untuk melengkapi akun Anda.' . "\n";
 
-        $pesan = $request->name . ' telah terdaftar kedalam sistem LPK Marzuba Sejahtera Indonésia' . "\n" .
-            'Username: ' . $request->email . "\n" .
-            'Password : ' . $password . "\n" .
-            'Gunakan link berikut untuk melengkapi akun Anda.' . "\n";
+            kirimWhatsapp::dispatch($pesan, $nomor);
 
-        kirimWhatsapp::dispatch($pesan, $nomor);
+            $devan = url('/login?mail=' . $request->email . '&password=' . $password);
 
-        $devan = url('/login?mail=' . $request->email . '&password=' . $password);
+            kirimWhatsapp::dispatch($devan, $nomor);
+        });
 
-        kirimWhatsapp::dispatch($devan, $nomor);
+
         // dd("Sadas");
         return redirect(url('/'))->with('status', 'Silahkan cek WhatsApp Anda untuk melihat username dan password.');
 

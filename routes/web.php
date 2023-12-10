@@ -115,28 +115,17 @@ Route::middleware([
         Route::get('pengguna', PenggunaPage::class)->name('pengguna');
         Route::get('tiket', Tiket::class)->name('tiket');
         Route::get('user', User::class)->name('user');
+        Route::get('list-tagihan', ListTagihan::class)->name('list-tagihan');
+        Route::get('bukti-bayar/{id?}', BuktiBayarTagihan::class)->name('bukti-bayar');
 
     });
 
-    Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
-        Route::get('list', ListPasien::class)->name('index');
-        Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
-    });
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
-        Route::get('spesialis', Spesialis::class)->name('spesialis');
-        Route::get('dokter', Dokter::class)->name('dokter');
-        Route::get('paramedis', Paramedis::class)->name('paramedis');
-        Route::get('poliklinik', Poliklinik::class)->name('poliklinik');
-        Route::get('tindakan-medis', TindakanMedis::class)->name('tindakan-medis');
-        Route::get('jenis-penyakit', JenisPenyakit::class)->name('jenis-penyakit');
-        Route::get('bangsal', Bangsal::class)->name('bangsal');
-        Route::get('kelas', Kelas::class)->name('kelas');
-        Route::get('kamar', Kamar::class)->name('kamar');
-        Route::get('tempat-tidur', TempatTidur::class)->name('tempat-tidur');
-        Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
-        Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
+
+      ;
         Route::get('layanan', Layanan::class)->name('layanan');
         Route::get('kelas', MasterKelas::class)->name('kelas');
+
 
     });
 

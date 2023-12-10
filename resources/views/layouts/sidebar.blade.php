@@ -111,8 +111,8 @@
                                   </a>
                               </li>
                           @endrole
+                          @permission('master-data-read')
 
-                          @role('superadministrator')
                               <li
                                   class="nav-item
                               {{ Request::segment(2) == 'layanan' ? 'menu-is-opening menu-open' : '' }}
@@ -162,6 +162,8 @@
 
                                   </ul>
                               </li>
+                              @endpermission
+                              @permission('keuangan-read')
                               <li class="nav-item">
                                   <a href="#" class="nav-link ">
                                       <i class="nav-icon fa-solid fa-money-check-dollar"></i>
@@ -171,14 +173,18 @@
                                       </p>
                                   </a>
                                   <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('admin.aktivasi-user') }}"
+                                            class="nav-link  {{ Request::segment(2) == 'aktivasi-user' ? 'active' : '' }}">
+                                            <i class="ml-2 far fa-circle nav-icon"></i>
+                                            <p>
+                                                Aktivasi User
+                                            </p>
+                                        </a>
+                                    </li>
                                       <li class="nav-item">
-                                          <a href="../examples/invoice.html" class="nav-link">
-                                              <i class="ml-2 far fa-circle nav-icon"></i>
-                                              <p>Aktivasi Pendaftaran</p>
-                                          </a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a href="../examples/profile.html" class="nav-link">
+                                        <a href="{{ route('admin.list-tagihan') }}"
+                                        class="nav-link  {{ Request::segment(2) == 'list-tagihan' ? 'active' : '' }}">
                                               <i class="ml-2 far fa-circle nav-icon"></i>
                                               <p>Tagihan</p>
                                           </a>
@@ -192,6 +198,8 @@
 
                                   </ul>
                               </li>
+                              @endpermission
+                              @permission('monitoring-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.tiket') }}"
                                       class="nav-link  {{ Request::segment(2) == 'tiket' ? 'active' : '' }}">
@@ -200,15 +208,9 @@
                                           Monitoring
                                       </p>
                                   </a>
-                              <li class="nav-item">
-                                  <a href="{{ route('admin.aktivasi-user') }}"
-                                      class="nav-link  {{ Request::segment(2) == 'aktivasi-user' ? 'active' : '' }}">
-                                      <i class="nav-icon fa-solid fa-file-circle-check"></i>
-                                      <p>
-                                          Aktivasi User
-                                      </p>
-                                  </a>
                               </li>
+                              @endpermission
+                              @permission('seleksi-berkas-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.seleksi-berkas') }}"
                                       class="nav-link  {{ Request::segment(2) == 'seleksi-berkas' ? 'active' : '' }}">
@@ -218,6 +220,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('psikotest-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.tes') }}"
                                       class="nav-link  {{ Request::segment(2) == 'tes' ? 'active' : '' }}">
@@ -227,6 +231,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('wawancara-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.wawancara') }}"
                                       class="nav-link  {{ Request::segment(2) == 'wawancara' ? 'active' : '' }}">
@@ -236,6 +242,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('keuangan-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.mcu') }}"
                                       class="nav-link  {{ Request::segment(2) == 'mcu' ? 'active' : '' }}">
@@ -245,6 +253,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('mcu-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.pendidikan') }}"
                                       class="nav-link  {{ Request::segment(2) == 'pendidikan' ? 'active' : '' }}">
@@ -254,6 +264,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('wawancara-user-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.wawancara.user') }}"
                                       class="nav-link  {{ Request::segment(2) == 'wawancara-user' ? 'active' : '' }}">
@@ -263,6 +275,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('pengurusan-berkas-create')
                               <li class="nav-item">
                                   <a href="{{ route('admin.pengurusan.berkas') }}"
                                       class="nav-link  {{ Request::segment(2) == 'pengurusan-berkas' ? 'active' : '' }}">
@@ -272,6 +286,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('keberangkatan-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.keberangkatan') }}"
                                       class="nav-link  {{ Request::segment(2) == 'keberangkatan' ? 'active' : '' }}">
@@ -281,6 +297,8 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('magang-read')
                               <li class="nav-item">
                                   <a href="{{ route('admin.magang') }}"
                                       class="nav-link  {{ Request::segment(2) == 'magang' ? 'active' : '' }}">
@@ -290,6 +308,7 @@
                                       </p>
                                   </a>
                               </li>
+                              @endpermission
 
                               <li class="nav-item">
                                   <a href="https://www.instagram.com/lpkmarzuba?igshid=OGQ5ZDc2ODk2ZA%3D%3D"
@@ -301,7 +320,7 @@
                                   </a>
                               </li>
                       </ul>
-                  @endrole
+
               </nav>
               <!-- /.sidebar-menu -->
           </div>
