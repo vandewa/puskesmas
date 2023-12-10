@@ -65,8 +65,10 @@ use App\Livewire\Pages\Master\DataMedis\ListJadwalPraktek;
 use App\Livewire\Demo\RiwayatHidup\PengalamanBerorganisasi;
 use App\Livewire\Demo\Sales\User;
 use App\Livewire\Demo\Tiket;
+use App\Livewire\Demo\User\Permission;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\TempatTidur;
 use App\Livewire\Pages\Master\DataMedis\InstalasiMedis\Poliklinik;
+use App\Livewire\User\ListRole;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +117,8 @@ Route::middleware([
         Route::get('pengguna', PenggunaPage::class)->name('pengguna');
         Route::get('tiket', Tiket::class)->name('tiket');
         Route::get('user', User::class)->name('user');
+        Route::get('list-role', ListRole::class)->name('list-role');
+        Route::get('permission', Permission::class)->name('permission');
 
     });
 

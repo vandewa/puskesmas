@@ -113,16 +113,39 @@
                           @endrole
 
                           @role('superadministrator')
+                              <li class="nav-item">
+                                  <a href="#" class="nav-link ">
+                                      <i class="nav-icon fa-solid fa-users"></i>
+                                      <p>
+                                          User
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('admin.list-role') }}" class="nav-link">
+                                              <i class="ml-2 far fa-circle nav-icon"></i>
+                                              <p>Role</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('admin.permission') }}" class="nav-link">
+                                              <i class="ml-2 far fa-circle nav-icon"></i>
+                                              <p>Permission</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </li>
                               <li
                                   class="nav-item
-                              {{ Request::segment(2) == 'layanan' ? 'menu-is-opening menu-open' : '' }}
-                              {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
-                          ">
+                                    {{ Request::segment(2) == 'layanan' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
+                                ">
                                   <a href="#"
                                       class="nav-link
-                              {{ Request::segment(2) == 'layanan' ? 'active' : '' }}
-                              {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
-                              ">
+                                    {{ Request::segment(2) == 'layanan' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
+                                    ">
                                       <i class="nav-icon fas fa-book"></i>
                                       <p>
                                           Master Data
