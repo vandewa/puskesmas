@@ -44,6 +44,7 @@ class Tiket extends Component
         $this->form = DemoTiket::find($a)->only(['user_id', 'masalah', 'status_tiket_tp', 'tindak_lanjut']);
         $this->idHapus = $a;
         $this->edit = true;
+        $this->pilihPelapor($a);
     }
 
     public function save()
