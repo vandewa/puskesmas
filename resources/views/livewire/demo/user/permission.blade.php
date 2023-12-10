@@ -43,7 +43,8 @@
                                                                                     <input type="text"
                                                                                         class="form-control"
                                                                                         wire:model='form.name'
-                                                                                        placeholder="Name">
+                                                                                        placeholder="Name"
+                                                                                        @if ($edit) disabled @endif>
                                                                                     @error('form.name')
                                                                                         <span
                                                                                             class="form-text text-danger">{{ $message }}</span>
@@ -137,15 +138,13 @@
                                                                                                 </button>
                                                                                             </div>
 
-                                                                                            {{-- @if (!auth()->user()->hasRole('superadministrator')) --}}
-                                                                                            <div>
+                                                                                            {{-- <div>
                                                                                                 <button type="button"
                                                                                                     class="btn btn-danger btn-flat btn-sm"
                                                                                                     wire:click="delete('{{ $item->id }}')"><i
                                                                                                         class="fas fa-trash"></i>
                                                                                                 </button>
-                                                                                            </div>
-                                                                                            {{-- @endif --}}
+                                                                                            </div> --}}
 
                                                                                         </div>
 
