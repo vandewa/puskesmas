@@ -129,6 +129,7 @@
                                                                 <div class="table-responsive">
                                                                     <table class="table">
                                                                         <thead>
+                                                                            <th>No</th>
                                                                             <th>Nama</th>
                                                                             <th>Permasalahan</th>
                                                                             <th>Status</th>
@@ -137,6 +138,8 @@
                                                                         <tbody>
                                                                             @foreach ($post as $item)
                                                                                 <tr wire:key='{{ $item->id }}'>
+                                                                                    <td>{{ $loop->index + $post->firstItem() }}
+                                                                                    </td>
                                                                                     <td> {{ $item->nama->name ?? '-' }}
                                                                                     </td>
                                                                                     <td> {{ $item->masalah ?? '-' }}

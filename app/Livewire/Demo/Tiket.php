@@ -118,7 +118,7 @@ class Tiket extends Component
 
     public function render()
     {
-        $data = DemoTiket::with(['status', 'nama'])->paginate(10);
+        $data = DemoTiket::with(['status', 'nama'])->orderBy('created_at', 'desc')->paginate(10);
 
         return view('livewire.demo.tiket', [
             'post' => $data,
