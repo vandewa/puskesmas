@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('tanggal_pelunasan')->nullable();
             $table->string('pembayaran_tp')->nullable();
             $table->string('bukti_bayar')->nullable();
+            $table->unsignedBigInteger('ref_id')->nullable()->comment('referensi ketika di tolak bikin isian baru');
             $table->timestamps();
         });
     }

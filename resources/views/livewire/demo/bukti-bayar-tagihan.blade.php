@@ -82,7 +82,14 @@
                                     <div class="col-md-12 text-center">
                                         <img src="{{ asset('storage/'.$pembayaran->bukti_bayar) }}" class="img-thumbnail" alt="{{ $pembayaran->nama_tagihan??""}}">
                                     </div>
-
+                                    @permission(['keuangan-update'])
+                                    @if($pembayaran->status == 'Belum Lunas')
+                                    <div class="card-footer text-right">
+                                        <button type="button" class="btn btn-danger" wire:click='confirmTolak()'>Tolak</button>
+                                        <button type="button" class="btn btn-info" wire:click='confirmBayar()'>Terima</button>
+                                      </div>
+                                      @endif
+                                    @endpermission
                                     @endif
                                 </div>
                             </div>

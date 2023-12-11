@@ -107,7 +107,14 @@ class ListTagihan extends Component
 
     public function render()
     {
-        $data = Tagihan::with(['layanan'])->paginate(10);
+        $data = Tagihan::with(['layanan']);
+        if(auth()->user()->hasRole('user')){
+            $data->where('user_id', auth()->user()->id);
+        }else {
+            $data->where('bukti_bayar', '<>', '')->orWhere('bukti_bayar', '<>', null);
+        }
+
+        $data =   $data->paginate(10);
 
         return view('livewire.demo.list-tagihan', [
             'post' => $data,

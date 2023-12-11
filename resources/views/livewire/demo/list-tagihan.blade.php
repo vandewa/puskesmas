@@ -57,16 +57,35 @@
                                                                             <td>{{ $item->tanggal_tagihan }}</td>
                                                                             <td>{{ $item->nama_tagihan }}</td>
                                                                             <td>{{  "Rp " . number_format( $item->jumlah??"0",2,',','.'); }}</td>
-                                                                            <td>{{  $item->status  }}</td>
+                                                                            <td>
+                                                                                @if( $item->status == 'Belum Lunas')
+
+                                                                                <span class="right badge badge-info"> {{  $item->status  }}</span>
+
+                                                                                @elseif ($item->status == 'Lunas')
+                                                                                <span class="right badge badge-success"> {{  $item->status  }}</span>
+                                                                                @else
+
+                                                                                <span class="right badge badge-danger"> {{  $item->status  }}</span>
+                                                                                @endif
+                                                                            </td>
                                                                             <td>
                                                                                 <div
                                                                                     class="gap-3 table-actions d-flex align-items-center fs-6">
                                                                                     <div class="mr-2">
-                                                                                        <a href="{{ route('pendaftaran.bukti-bayar', $item->id) }}"
-                                                                                            class="btn btn-warning btn-flat btn-sm"></i>Upload
-                                                                                            Bukti Bayar
-                                                                                        </a>
+                                                                                        @if(auth()->user()->isAbleTo(['keuangan-read'], true))
+                                                                                            <a href="{{ route('pendaftaran.bukti-bayar', $item->id) }}"
+                                                                                                class="btn btn-success btn-flat btn-sm"></i>
+                                                                                                Konfirmasi Pembayaran
+                                                                                            </a>
+                                                                                        @else
+                                                                                            <a href="{{ route('pendaftaran.bukti-bayar', $item->id) }}"
+                                                                                                class="btn btn-info btn-flat btn-sm"></i>
+                                                                                                Upload Bukti Bayar
+                                                                                            </a>
+                                                                                        @endif
                                                                                     </div>
+
 
                                                                                 </div>
 

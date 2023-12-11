@@ -52,6 +52,25 @@
                                             <option value="2"> 2 Kali</option>
                                           </select>
                                     </div>
+                                    <h5 class="text-center">Pilih Kelas</h5>
+                                    <table class="table">
+                                        <thead>
+                                            <th>No</th>
+                                            <th>Waktu Pelatihan</th>
+                                            <th>Action</th>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($kelas??[] as $index => $item)
+                                            <tr @if($pilihkelas) class="bg-secondary"@endif>
+                                                <td>{{  $index = $index+1 }}</td>
+                                                <td>{{ $item->tanggal_mulai }} - {{ $item->tanggal_selesai }} </td>
+                                                <td><button type="button" class="btn btn-sm btn-primary" wire:click='ambilKelas({{ $item->id }})'>Pilih</button></td>
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
                                 </div>
                                 <div class="col-md-6">
                                     @if( $detailLayanan)
@@ -73,25 +92,7 @@
 
 
 
-                            <h5 class="text-center">Pilih Kelas</h5>
-                                <table class="table">
-                                    <thead>
-                                        <th>No</th>
-                                        <th>Waktu Pelatihan</th>
-                                        <th>Action</th>
-                                    </thead>
-                                    <tbody>
 
-                                        @foreach ($kelas??[] as $index => $item)
-                                        <tr @if($pilihkelas) class="bg-secondary"@endif>
-                                            <td>{{  $index = $index+1 }}</td>
-                                            <td>{{ $item->tanggal_mulai }} - {{ $item->tanggal_selesai }} </td>
-                                            <td><button type="button" class="btn btn-sm btn-primary" wire:click='ambilKelas({{ $item->id }})'>Pilih</button></td>
-                                        </tr>
-                                        @endforeach
-
-                                    </tbody>
-                                </table>
                           </div>
                           <!-- /.card-body -->
 
@@ -187,6 +188,7 @@
                                         <th>Tanggal Pendaftaran</th>
                                         <th>Status</th>
                                         <th>Tahapan</th>
+                                        <th>Tagihan</th>
                                         <th>Keterangan</th>
                                     </tr>
                                 </thead>
@@ -208,6 +210,11 @@
 
                                             </td>
                                             <td>{{ $item->tahapan->name ?? '-' }}</td>
+                                            <td>
+                                                @foreach ($item->pembayaran as $a )
+                                                <li>{{ $a->nama_tagihan }} | {{ $a->jumlah }} | {{ $a->status }}</li>
+                                                @endforeach
+                                            </td>
                                             <td>{{ $item->keterangan }}</td>
                                         </tr>
                                     @endforeach

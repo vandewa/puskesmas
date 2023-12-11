@@ -26,6 +26,83 @@ class BuktiBayarTagihan extends Component
 
 
     }
+// cuma di pakai oleh admin
+    public function confirmBayar()
+    {
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Anda yakin akan menyetujui pembayaran ini!',
+            type: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $wire.lunas()
+            }
+          })
+        JS);
+    }
+
+
+    public function lunas()
+    {
+        Tagihan::find($this->idnya)->update([
+            'status' => 'Lunas'
+        ]);
+
+        session()->flash('status', 'Pembayaran diterima');
+    }
+
+
+
+    public function confirmTolak()
+    {
+        $this->js(<<<'JS'
+        Swal.fire({
+            title: 'Anda yakin akan menolak pembayaran ini!',
+            type: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $wire.tolak()
+            }
+          })
+        JS);
+    }
+
+    public function tolak()
+    {
+
+       $data = Tagihan::find($this->idnya);
+        Tagihan::create([
+            'user_id' => $data->user_id,
+            'layanan_id' => $data->layanan_id,
+            'tanggal_tagihan' => $data->tanggal_tagihan,
+            'nama_tagihan' => $data->nama_tagihan,
+            'status' => $data->status,
+            'jumlah' => $data->jumlah,
+            'user_id' => $data->user_id,
+            'pembayaran_tp' => $data->pembayaran_tp,
+            'lamaran_id' => $data->lamaran_id,
+            'ref_id' =>$this->idnya,
+        ]);
+       $data->update([
+        'status' => 'Dibatalkan'
+        ]);
+        session()->flash('status', 'Pembayaran ditolak');
+
+        // kirim wa
+    }
+
+
+// selesai fungsi kusus
 
     public function storeUpdate()
     {

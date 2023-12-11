@@ -43,6 +43,10 @@ class Lamaran extends Model
         return $this->hasOne(Magang::class, 'lamaran_id');
     }
 
+    public function pembayaran()  {
+        return $this->hasMany(Tagihan::class, 'lamaran_id');
+    }
+
     public function scopeCari($filter, $value)  {
         if($value){
             return $this->whereHas('user', function($a) use($value){
