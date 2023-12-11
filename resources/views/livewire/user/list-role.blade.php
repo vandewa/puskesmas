@@ -22,6 +22,10 @@
                                 aria-labelledby="custom-tabs-one-rm-tab">
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <div class="mb-2">
+                                            <a type="button" href="{{ route('admin.role') }}" class="btn btn-info"> <i
+                                                    class="fa-solid fa-square-plus mr-2"></i>Tambah Role</a>
+                                        </div>
                                         <div class="card card-success card-outline card-tabs">
                                             <div class="tab-content" id="custom-tabs-six-tabContent">
                                                 <div class="tab-pane fade show active" id="custom-tabs-six-riwayat-rm"
