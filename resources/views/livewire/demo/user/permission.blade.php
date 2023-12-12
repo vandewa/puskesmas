@@ -44,7 +44,7 @@
                                                                                         class="form-control"
                                                                                         wire:model='form.name'
                                                                                         placeholder="Name"
-                                                                                        @if ($edit) disabled @endif>
+                                                                                        @if ($edit) disabled @endifb>
                                                                                     @error('form.name')
                                                                                         <span
                                                                                             class="form-text text-danger">{{ $message }}</span>
