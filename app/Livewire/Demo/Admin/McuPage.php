@@ -8,6 +8,7 @@ use App\Models\Demo\Lamaran;
 use App\Models\Mcu;
 use App\Models\Pendidikan;
 use App\Models\Wawancara1;
+use App\Models\PengurusanBerkas;
 
 class McuPage extends Component
 {
@@ -68,24 +69,32 @@ class McuPage extends Component
     {
 
         if($this->persetujuan) {
-            // naikan ke periode selanjutnya
-            $this->validate([
-                'lokasi' => 'required',
-                'tanggalmulai' => 'required',
-                'tanggalselesai' => 'required',
-            ]);
+            // // naikan ke periode selanjutnya
+            // $this->validate([
+            //     'lokasi' => 'required',
+            //     'tanggalmulai' => 'required',
+            //     'tanggalselesai' => 'required',
+            // ]);
 
             $data = Lamaran::find($this->pilih);
             $data->tahapan_id = $data->tahapan_id +1;
             $data->save();
-            // simpan waktu dan lokasi wawancara
+            // simpan waktu dan lokasi
 
-            Pendidikan::create([
+            PengurusanBerkas::create([
                 'lamaran_id' => $this->pilih,
-                'lokasi' => $this->lokasi,
-                'tanggal_mulai' => $this->tanggalmulai,
-                'tanggal_selesai' => $this->tanggalselesai,
+                'jenis_berkas' => 'COE',
             ]);
+            PengurusanBerkas::create([
+                'lamaran_id' => $this->pilih,
+                'jenis_berkas' => 'VISA',
+            ]);
+            PengurusanBerkas::create([
+                'lamaran_id' => $this->pilih,
+                'jenis_berkas' => 'Tiket Pesawat',
+            ]);
+
+
 
         } else {
             $this->validate([
@@ -106,7 +115,7 @@ class McuPage extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'mcu'])->where('tahapan_id',4)
+        $data = Lamaran::with(['tahapan', 'user', 'mcu'])->where('tahapan_id',6)
         ->where('status', 'Dalam Proses')
         ->paginate(10);
         return view('livewire.demo.admin.mcu-page', [

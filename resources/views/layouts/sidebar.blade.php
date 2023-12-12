@@ -111,7 +111,7 @@
                                 {{ Request::segment(2) == 'permission' ? 'menu-is-opening menu-open' : '' }}
                               ">
                                   <a href="#"
-                                      class="nav-link 
+                                      class="nav-link
                                   {{ Request::segment(2) == 'list-role' ? 'active' : '' }}
                                   {{ Request::segment(2) == 'role' ? 'active' : '' }}
                                   {{ Request::segment(2) == 'permission' ? 'active' : '' }}
@@ -270,39 +270,41 @@
                                   </a>
                               </li>
                           @endpermission
-                          @permission('keuangan-read')
-                              <li class="nav-item">
-                                  <a href="{{ route('admin.mcu') }}"
-                                      class="nav-link  {{ Request::segment(2) == 'mcu' ? 'active' : '' }}">
-                                      <i class="nav-icon fas fa-heartbeat"></i>
-                                      <p>
-                                          MCU
-                                      </p>
-                                  </a>
-                              </li>
-                          @endpermission
                           @permission('mcu-read')
-                              <li class="nav-item">
-                                  <a href="{{ route('admin.pendidikan') }}"
-                                      class="nav-link  {{ Request::segment(2) == 'pendidikan' ? 'active' : '' }}">
-                                      <i class="nav-icon fas fa-graduation-cap"></i>
-                                      <p>
-                                          Pendidikan
-                                      </p>
-                                  </a>
-                              </li>
-                          @endpermission
-                          @permission('wawancara-user-read')
-                              <li class="nav-item">
-                                  <a href="{{ route('admin.wawancara.user') }}"
-                                      class="nav-link  {{ Request::segment(2) == 'wawancara-user' ? 'active' : '' }}">
-                                      <i class="nav-icon fa-solid fa-person-circle-question"></i>
-                                      <p>
-                                          Wawancara User
-                                      </p>
-                                  </a>
-                              </li>
-                          @endpermission
+                          <li class="nav-item">
+                              <a href="{{ route('admin.pendidikan') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'pendidikan' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-graduation-cap"></i>
+                                  <p>
+                                      Pendidikan
+                                  </p>
+                              </a>
+                          </li>
+                      @endpermission
+                      @permission('wawancara-user-read')
+                        <li class="nav-item">
+                            <a href="{{ route('admin.wawancara.user') }}"
+                                class="nav-link  {{ Request::segment(2) == 'wawancara-user' ? 'active' : '' }}">
+                                <i class="nav-icon fa-solid fa-person-circle-question"></i>
+                                <p>
+                                    Wawancara User
+                                </p>
+                            </a>
+                        </li>
+                    @endpermission
+                        @permission('keuangan-read')
+                            <li class="nav-item">
+                                <a href="{{ route('admin.mcu') }}"
+                                    class="nav-link  {{ Request::segment(2) == 'mcu' ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-heartbeat"></i>
+                                    <p>
+                                        MCU
+                                    </p>
+                                </a>
+                            </li>
+                        @endpermission
+
+
                           @permission('pengurusan-berkas-create')
                               <li class="nav-item">
                                   <a href="{{ route('admin.pengurusan.berkas') }}"
@@ -315,7 +317,7 @@
                               </li>
                           @endpermission
                           @permission('keberangkatan-read')
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="{{ route('admin.keberangkatan') }}"
                                       class="nav-link  {{ Request::segment(2) == 'keberangkatan' ? 'active' : '' }}">
                                       <i class="nav-icon fas fa-fighter-jet"></i>
@@ -323,7 +325,7 @@
                                           Keberangkatan
                                       </p>
                                   </a>
-                              </li>
+                              </li> --}}
                           @endpermission
                           @permission('magang-read')
                               <li class="nav-item">

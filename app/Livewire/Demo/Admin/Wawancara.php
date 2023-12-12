@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Demo\Lamaran;
 use App\Models\Mcu;
 use App\Models\Wawancara1;
+use App\Models\Pendidikan;
 
 class Wawancara extends Component
 {
@@ -79,12 +80,14 @@ class Wawancara extends Component
             $data->save();
             // simpan waktu dan lokasi wawancara
 
-            Mcu::create([
+            Pendidikan::create([
                 'lamaran_id' => $this->pilih,
                 'lokasi' => $this->lokasi,
                 'tanggal_mulai' => $this->tanggalmulai,
                 'tanggal_selesai' => $this->tanggalselesai,
             ]);
+
+
 
         } else {
             $this->validate([

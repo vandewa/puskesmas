@@ -39,24 +39,34 @@
                                 </div>
                               </div>
                               @if($persetujuan)
-                              <h4>Pengurusan Berkas</h4>
-                              <p>Untuk kepengurusan dokumen maka peserta harus menyiapkan dokumen sebagai berikut:</p>
-                                   <ul>
-                                    <li>COE</li>
-                                    <li>VISA</li>
-                                    <li>Tiket</li>
-                                   </ul>
-                                    @endif
-                                    @if($persetujuan === '0')
-                                <div class="form-group row">
-                                    <label for="inputPassword3" class="col-sm-2 col-form-label">Alasan</label>
-                                    <div class="col-sm-10">
-                                        <textarea name="" id="" cols="30" rows="2" class="form-control @error('keterangan') is-invalid @enderror" wire:model='keterangan'></textarea>
-                                        @error('keterangan')
-                                        <span id="exampleInputEmail1-error" class="error invalid-feedback">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                </div>
+                              <h4>MCU</h4>
+                              <div class="form-group row">
+                                  <label for="inputEmail3" class="col-sm-2 col-form-label">Lokasi</label>
+                                  <div class="col-sm-10">
+                                      <input type="text" class="form-control @error('lokasi') is-invalid @enderror" id="inputEmail3" wire:model='lokasi'  placeholder="Lokasi">
+                                      @error('lokasi')
+                                      <span id="exampleInputEmail1-error" class="error invalid-feedback">{{ $message }}</span>
+                                      @enderror
+                                  </div>
+                                  </div>
+                              <div class="form-group row">
+                                  <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Mulai</label>
+                                  <div class="col-sm-10">
+                                      <input type="datetime-local" class="form-control @error('tanggalmulai') is-invalid @enderror" id="inputPassword3" wire:model='tanggalmulai' placeholder="Password">
+                                      @error('tanggalmulai')
+                                      <span id="exampleInputEmail1-error" class="error invalid-feedback">{{ $message }}</span>
+                                      @enderror
+                                  </div>
+                              </div>
+                              <div class="form-group row">
+                                  <label for="inputPassword3" class="col-sm-2 col-form-label">Tanggal Selesai</label>
+                                  <div class="col-sm-10">
+                                      <input type="datetime-local" class="form-control @error('tanggalselesai') is-invalid @enderror" id="inputPassword3" wire:model='tanggalselesai' placeholder="Password">
+                                      @error('tanggalselesai')
+                                      <span id="exampleInputEmail1-error" class="error invalid-feedback">{{ $message }}</span>
+                                      @enderror
+                                  </div>
+                              </div>
 
                                 @endif
 

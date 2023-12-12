@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::class);
         $this->call(LaratrustSeeder::class);
         $this->call(ComCodeSeeder::class);
+        $this->call(TahapanSeeder::class);
         // $this->call(NationSeeder::class);
         // $this->call(Icd10Seeder::class);
         // $this->call(ComAccountGroupSeeder::class);

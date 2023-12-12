@@ -75,20 +75,15 @@ class WawancaraPengguna extends Component
             $data = Lamaran::find($this->pilih);
             $data->tahapan_id = $data->tahapan_id +1;
             $data->save();
+            Mcu::create([
+                'lamaran_id' => $this->pilih,
+                'lokasi' => $this->lokasi,
+                'tanggal_mulai' => $this->tanggalmulai,
+                'tanggal_selesai' => $this->tanggalselesai,
+            ]);
             // simpan waktu dan lokasi wawancara
 
-            PengurusanBerkas::create([
-                'lamaran_id' => $this->pilih,
-                'jenis_berkas' => 'COE',
-            ]);
-            PengurusanBerkas::create([
-                'lamaran_id' => $this->pilih,
-                'jenis_berkas' => 'VISA',
-            ]);
-            PengurusanBerkas::create([
-                'lamaran_id' => $this->pilih,
-                'jenis_berkas' => 'Tiket Pesawat',
-            ]);
+
 
         } else {
             $this->validate([
@@ -109,7 +104,7 @@ class WawancaraPengguna extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'wawancara'])->where('tahapan_id',6)
+        $data = Lamaran::with(['tahapan', 'user', 'wawancara'])->where('tahapan_id',5)
         ->where('status', 'Dalam Proses')
         ->paginate(10);
         return view('livewire.demo.admin.wawancara-pengguna', [

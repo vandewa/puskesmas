@@ -106,7 +106,7 @@ class Pendidikan extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'pendidikan'])->where('tahapan_id',5)
+        $data = Lamaran::with(['tahapan', 'user', 'pendidikan'])->where('tahapan_id',4)
         ->where('status', 'Dalam Proses')
         ->paginate(10);
         return view('livewire.demo.admin.pendidikan', [

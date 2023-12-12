@@ -83,7 +83,7 @@
 
                           </div>
                           <!-- /.card-body -->
-                          @if($persetujuan)
+                          @if($pilih)
                           <div class="card-footer">
                             <button type="submit" class="btn btn-info">Simpan</button>
                             <button type="button" class="float-right btn btn-default" wire:click='clear'>Batalkan</button>

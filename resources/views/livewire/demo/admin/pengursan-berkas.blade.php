@@ -39,12 +39,15 @@
                                 </div>
                               </div>
                               @if($persetujuan)
-                              <h4>Berkas Pengguna</h4>
-                              <p>Pastikan Pserta harus mempunyai dokumen sebagai berikut:</p>
-                              <ul>
-                                @foreach ($berkas??[] as $item)
-                                <li>{{ $item->jenis_berkas }}</li>
-                                @endforeach
+                              <div class="callout callout-info">
+                                <h4>Berkas Pengguna</h4>
+                                <p>Pastikan Peserta harus mempunyai dokumen sebagai berikut:</p>
+                                <ul>
+                                  @foreach ($berkas??[] as $item)
+                                  <li>{{ $item->jenis_berkas }}</li>
+                                  @endforeach
+                              </div>
+
                               </ul>
                                     @endif
                                     @if($persetujuan === '0')
@@ -74,7 +77,7 @@
                       @endif
                       <div class="card card-info">
                     <div class="card-header">
-                    <h3 class="card-title"> Pendidikan</h3>
+
 
                     <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">

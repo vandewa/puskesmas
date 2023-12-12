@@ -25,18 +25,20 @@ class TahapanSeeder extends Seeder
             'no' => 3,
             'name' => 'Wawancara 1',
         ]);
+
         Tahapan::create([
             'no' => 4,
-            'name' => 'MCU',
-        ]);
-        Tahapan::create([
-            'no' => 5,
             'name' => 'Pendidikan',
         ]);
         Tahapan::create([
-            'no' => 6,
+            'no' => 5,
             'name' => 'Wawancara User',
         ]);
+        Tahapan::create([
+            'no' => 6,
+            'name' => 'MCU',
+        ]);
+
         Tahapan::create([
             'no' => 7,
             'name' => 'Pengurusan Berkas Keberangkatan',
