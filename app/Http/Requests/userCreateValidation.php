@@ -26,6 +26,7 @@ class userCreateValidation extends FormRequest
         return [
             'name' => 'required',
             'telepon' => 'required',
+            'telepon_confirmation' => 'required|same:telepon',
             'email' => 'required|unique:users,email',
         ];
     }

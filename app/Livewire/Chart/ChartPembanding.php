@@ -31,7 +31,7 @@ class ChartPembanding extends Component
         $this->listGroup = DB::select("select group_code, group_name  from executive_group_summary");
         $this->group = 'PNL';
         $this->tahun = date('Y');
-        $this->name = 'Cost of Sales';
+        $this->name = 'Cost of Referal';
 
         $this->listName = DB::select("SELECT
             DISTINCT name

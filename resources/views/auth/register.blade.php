@@ -15,6 +15,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <style>
+        .biru {
+            color: #1a7df7;
+        }
+
+        /* Untuk browser modern */
+        ::placeholder {
+            color: blue;
+        }
+
+        /* Untuk browser yang lebih lama */
+        input::-webkit-input-placeholder {
+            color: blue;
+        }
+
+        input::-moz-placeholder {
+            color: blue;
+        }
+
+        input:-ms-input-placeholder {
+            color: blue;
+        }
+    </style>
 </head>
 
 <body class="img js-fullheight" style="background-image:url({{ asset('bg.png') }});object-fit:cover">
@@ -26,8 +49,8 @@
                     <img src="{{ asset('logooo.png') }}" style="width: 150px;">
                     {{-- <div class="mt-3"> --}}
                     <h2 class="heading-section">
-                        <span
-                            style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Pendaftaran
+                        <span class="biru"
+                            style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; font-size: 40pt">Pendaftaran
                         </span>
                     </h2>
                     {{-- </div> --}}
@@ -36,7 +59,7 @@
             <div class="mt-4 row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="p-0 login-wrap">
-                        <h6 class="mb-4 text-center" style="color: #ffffff;">Lengkapi Form Dibawah Ini</h6>
+                        <h6 class="mb-4 text-center biru"><b>Lengkapi Form Dibawah Ini</b> </h6>
                         <form action="{{ route('register.store') }}" class="signin-form" id="flogin"
                             onsubmit="return lsogin();" method="post" accept-charset="utf-8">
                             @csrf
@@ -63,12 +86,17 @@
                                     id="telepon" autofocus required>
                             </div>
                             <div class="form-group">
+                                <input type="number" class="form-control" name="telepon_confirmation"
+                                    placeholder="Konfirmasi Nomor WhatsApp" id="telepon_confirmation" autofocus
+                                    required>
+                            </div>
+                            <div class="form-group">
                                 @if (request('ref') ?? '' != '')
-                                    <input type="ref" class="form-control" name="ref" placeholder="Kode Sales"
+                                    <input type="ref" class="form-control" name="ref" placeholder="Kode Referal"
                                         id="ref">
                                 @else
                                     <input type="ref" readonly class="form-control" name="ref"
-                                        placeholder="Kode Sales" id="ref" value="{{ request('ref') }}">
+                                        placeholder="Kode Referal" id="ref" value="{{ request('ref') }}">
                                 @endif
                             </div>
 
@@ -80,14 +108,28 @@
                                background-position: 100% 0;
                                transition: all .15s ease;
                                box-shadow: none;
-                               color: #fff;"><b>Daftar</b></button>
-                                <a href="/login" class="px-3 mt-3 form-control btn btn-warning" id="">
+                               color: #fff;"><b>Daftar</b>
+                                </button>
+                                <a href="/login" class="px-3 mt-3 form-control btn btn-warning" id="flogin_tb_ok"
+                                    style="background-color: rgb(176, 27, 27) !important;
+                                    background-image: linear-gradient(to left bottom, rgb(176, 27, 27), rgb(227, 102, 102), rgb(220, 103, 103)) !important;
+                                    background-size: 210% 210%;
+                                    background-position: 100% 0;
+                                    transition: all .15s ease;
+                                    box-shadow: none;
+                                    color: #fff;">
+                                    <div class="mt-1">
+                                        <span><b>Sudah
+                                                Punya Akun</b></span>
+                                    </div>
+                                </a>
+                                {{-- <a href="/login" class="px-3 mt-3 form-control btn btn-warning" id="">
                                     <div class="mt-1">
                                         <b>Sudah
                                             Punya Akun</b>
                                     </div>
 
-                                </a>
+                                </a> --}}
                             </div>
                         </form>
                     </div>

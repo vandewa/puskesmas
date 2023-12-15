@@ -15,6 +15,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Teko&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('style.css') }}">
+    <style>
+        .biru{
+            color: #1a7df7;
+        }
+
+        /* Untuk browser modern */
+        ::placeholder {
+        color: blue;
+        }
+
+        /* Untuk browser yang lebih lama */
+        input::-webkit-input-placeholder {
+        color: blue;
+        }
+
+        input::-moz-placeholder {
+        color: blue;
+        }
+
+        input:-ms-input-placeholder {
+        color: blue;
+        }
+
+    </style>
 </head>
 
 <body class="img js-fullheight" style="background-image:url({{ asset('bg.png') }});object-fit:cover">
@@ -26,8 +50,8 @@
                     <img src="{{ asset('logooo.png') }}" style="width: 200px;">
                     <div class="mt-3">
                         <h2 class="heading-section">
-                            <span
-                                style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; color: #ffffff; font-size: 40pt">Login
+                            <span class="biru"
+                                style="margin-left: 10px; font-weight: bold; font-family: 'Teko', sans-serif; font-size: 40pt">Login
                             </span>
                         </h2>
                     </div>
@@ -37,7 +61,7 @@
             <div class="mt-4 row justify-content-center">
                 <div class="col-md-6 col-lg-4">
                     <div class="p-0 login-wrap">
-                        <h6 class="mb-4 text-center" style="color: #ffffff;">Masukkan Email dan Password Anda</h6>
+                        <h6 class="mb-4 text-center biru"><b> Masukkan Email dan Password Anda</b></h6>
                         <form action="{{ route('login') }}" class="signin-form" id="flogin"
                             onsubmit="return lsogin();" method="post" accept-charset="utf-8">
                             @csrf
@@ -69,18 +93,31 @@
                             <div class="form-group">
                                 <button type="submit" class="px-3 form-control btn submit" id="flogin_tb_ok"
                                     style="background-color: rgb(51, 88, 244) !important;
-                               background-image: linear-gradient(to left bottom, rgb(29, 140, 248), rgb(51, 88, 244), rgb(29, 140, 248)) !important;
-                               background-size: 210% 210%;
-                               background-position: 100% 0;
-                               transition: all .15s ease;
-                               box-shadow: none;
-                               color: #fff;"><b>Login</b></button>
-                                <a href="{{ route('register.index') }}" class="px-3 mt-3 form-control btn btn-warning"
+                                    background-image: linear-gradient(to left bottom, rgb(29, 140, 248), rgb(51, 88, 244), rgb(29, 140, 248)) !important;
+                                    background-size: 210% 210%;
+                                    background-position: 100% 0;
+                                    transition: all .15s ease;
+                                    box-shadow: none;
+                                    color: #fff;"><b>Login</b>
+                               </button>
+                                <a href="{{ route('register.index') }}" class="px-3 mt-3 form-control btn btn-warning" id="flogin_tb_ok"
+                                    style="background-color: rgb(176, 27, 27) !important;
+                                    background-image: linear-gradient(to left bottom, rgb(176, 27, 27), rgb(227, 102, 102), rgb(220, 103, 103)) !important;
+                                    background-size: 210% 210%;
+                                    background-position: 100% 0;
+                                    transition: all .15s ease;
+                                    box-shadow: none;
+                                    color: #fff;">
+                                     <div class="mt-1">
+                                        <span><b>Daftar</b></span>
+                                    </div>
+                               </a>
+                                {{-- <a href="{{ route('register.index') }}" class="px-3 mt-3 form-control btn btn-warning"
                                     id="">
                                     <div class="mt-1">
-                                        <b>Daftar</b>
+                                        <span class="biru"><b>Daftar</b></span>
                                     </div>
-                                </a>
+                                </a> --}}
                             </div>
                         </form>
                     </div>

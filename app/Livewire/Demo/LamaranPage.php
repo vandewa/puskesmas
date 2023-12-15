@@ -32,7 +32,7 @@ class LamaranPage extends Component
     {
 
         if (auth()->user()->hasRole('user')) {
-            if(!auth()->user()->active_st){
+            if (!auth()->user()->active_st) {
                 redirect()->route('pendaftaran.aktivasi');
             }
         }
@@ -132,7 +132,7 @@ class LamaranPage extends Component
         $this->js(<<<'JS'
 
                 Swal.fire({
-                title: 'Anda yakin akan melamar sekarang?',
+                title: 'Apakah Anda yakin, dengan pilihan kelas?',
                 showDenyButton: true,
                 showCancelButton: false,
                 confirmButtonText: 'Iya',
