@@ -452,5 +452,20 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_04", "code_nm" => "ISK", "code_group" => "KEHAMILAN_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_05", "code_nm" => "Perdarahan", "code_group" => "KEHAMILAN_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_06", "code_nm" => "Tidak Ada", "code_group" => "KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KOGNITIF_TP_01", "code_nm" => "Normal", "code_group" => "KOGNITIF_TP"]);
+        $code = Code::create(["com_cd" => "KOGNITIF_TP_02", "code_nm" => "Bingung", "code_group" => "KOGNITIF_TP"]);
+        $code = Code::create(["com_cd" => "KOGNITIF_TP_03", "code_nm" => "Pelupa", "code_group" => "KOGNITIF_TP"]);
+        $code = Code::create(["com_cd" => "PENGLIHATAN_TP_01", "code_nm" => "Normal", "code_group" => "PENGLIHATAN_TP"]);
+        $code = Code::create(["com_cd" => "PENGLIHATAN_TP_02", "code_nm" => "Kabur", "code_group" => "PENGLIHATAN_TP"]);
+        $code = Code::create(["com_cd" => "PENGLIHATAN_TP_03", "code_nm" => "Kaca Mata", "code_group" => "PENGLIHATAN_TP"]);
+        $code = Code::create(["com_cd" => "PENDENGARAN_TP_01", "code_nm" => "Normal", "code_group" => "PENDENGARAN_TP"]);
+        $code = Code::create(["com_cd" => "PENDENGARAN_TP_02", "code_nm" => "Tuli", "code_group" => "PENDENGARAN_TP"]);
+        $code = Code::create(["com_cd" => "PENDENGARAN_TP_03", "code_nm" => "Alat Bantu Dengar", "code_group" => "PENDENGARAN_TP"]);
+        $code = Code::create(["com_cd" => "AKTIFITAS_TP_01", "code_nm" => "Mandiri", "code_group" => "AKTIFITAS_TP"]);
+        $code = Code::create(["com_cd" => "AKTIFITAS_TP_02", "code_nm" => "Bantuan Sebagian", "code_group" => "AKTIFITAS_TP"]);
+        $code = Code::create(["com_cd" => "AKTIFITAS_TP_03", "code_nm" => "Tergantung Total", "code_group" => "AKTIFITAS_TP"]);
+        $code = Code::create(["com_cd" => "BERJALAN_TP_01", "code_nm" => "Normal", "code_group" => "BERJALAN_TP"]);
+        $code = Code::create(["com_cd" => "BERJALAN_TP_02", "code_nm" => "Perlu Alat Bantu", "code_group" => "BERJALAN_TP"]);
+        $code = Code::create(["com_cd" => "BERJALAN_TP_03", "code_nm" => "Lumpuh", "code_group" => "BERJALAN_TP"]);
     }
 }
