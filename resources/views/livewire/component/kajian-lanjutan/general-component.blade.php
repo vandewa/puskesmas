@@ -16,7 +16,7 @@
                                             <option value="Asimetris">Asimetris</option>
                                         </select>
                                     </div>
-                                    @error('form.bicara_tp')
+                                    @error('form.kepala')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -35,7 +35,7 @@
                                             <option value="Miosis">Miosis</option>
                                         </select>
                                     </div>
-                                    @error('form.komunikasi_tp')
+                                    @error('form.mata')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -52,7 +52,7 @@
                                             <option value="Tuli">Tuli</option>
                                         </select>
                                     </div>
-                                    @error('form.emosional_st')
+                                    @error('form.teling')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -62,7 +62,7 @@
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
                                         <select name="" id="" class="form-control"
-                                            wire:model='form.teling'>
+                                            wire:model='form.leher'>
                                             <option value="DBN">DBN (Dalam Batas Normal)</option>
                                             <option value="Pembesaran Tyroid">Pembesaran Tyroid</option>
                                             <option value="Pembesaran KGB">Pembesaran KGB</option>
@@ -70,7 +70,7 @@
 
                                         </select>
                                     </div>
-                                    @error('form.emosional_st')
+                                    @error('form.leher')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -79,24 +79,40 @@
                         <div class="col-md-6">
 
                             <div class="mb-2 row">
-                                <label for="" class="col-sm-3 col-form-label">Dada</label>
-                                <div class="col-md-9">
-                                    <div class="mb-3 input-group">
-                                        <select name="" id="" class="form-control"
-                                            wire:model='form.dada'>
-                                            <option value="DBN">DBN (Dalam Batas Normal)</option>
-                                            <option value="Asimetris">Asimetris</option>
-                                            <option value="Retraksi">Retraksi</option>
-                                            <option value="Rongkhi">Rongkhi</option>
-                                            <option value="Wheezing">Wheezing</option>
-                                            <option value="Takihardi">Takihardi</option>
-                                            <option value="Mur-mur">Mur-mur</option>
-                                            <option value="Aritmia">Aritmia</option>
-                                            <option value="Papitasi">Papitasi</option>
-                                            <option value="Nyeri Dada">Nyeri Dada</option>
-                                        </select>
+                                <label for="" class="col-sm-2 col-form-label">Dada</label>
+                                <div class="col-md-10">
+                                    <div class="row mb-2">
+                                        <div class="col-md-6">
+                                            <input type="checkbox" value="DBN" wire:model="updateTypes">
+                                            <label>DBN (Dalam Batas Normal)</label><br>
+                                            <input type="checkbox" wire:model="updateTypes" value="Asimetris">
+                                            <label>Asimetris</label><br>
+                                            <input type="checkbox" wire:model="updateTypes" value="Retraksi">
+                                            <label>Retraksi</label><br>
+                                            <input type="checkbox" wire:model="updateTypes" value="NyeriDada">
+                                            <label>Nyeri Dada</label><br>
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="checkbox" wire:model="updateTypes" value="Ronkhi">
+                                            <label>Ronkhi</label><br>
+                                            <input type="checkbox" wire:model="updateTypes" value="Wheezing">
+                                            <label>Wheezing</label><br>
+                                            <input type="checkbox" value="Takhikardi" wire:model="updateTypes">
+                                            <label>Takhikardi</label><br>
+
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="checkbox" wire:model="updateTypes" value="Mur-mur">
+                                            <label>Mur-mur</label><br>
+                                            <input type="checkbox" wire:model="updateTypes" value="Aritmia">
+                                            <label>Aritmia</label><br>
+                                            <input type="checkbox" wire:model="updateTypes" value="Palpitasi">
+                                            <label>Palpitasi</label><br>
+
+                                        </div>
                                     </div>
-                                    @error('form.sosiologi_tp')
+                                    @error('form.dada')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -115,13 +131,13 @@
 
                                         </select>
                                     </div>
-                                    @error('form.sosiologi_tp')
+                                    @error('form.abdomen')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="mb-2 row">
-                                <label for="" class="col-sm-3 col-form-label">Extremistis</label>
+                                <label for="" class="col-sm-3 col-form-label">Extremitas</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
                                         <select name="" id="" class="form-control"
@@ -132,7 +148,7 @@
                                             <option value="Fraktur">Fraktur</option>
                                         </select>
                                     </div>
-                                    @error('form.sosiologi_tp')
+                                    @error('form.extremistis')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

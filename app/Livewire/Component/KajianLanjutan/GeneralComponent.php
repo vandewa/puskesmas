@@ -26,11 +26,17 @@ class GeneralComponent extends Component
 
     public $medicalcd;
     public $medik;
+    public $updateTypes = [];
 
-    public function mount()  {
+
+    public function mount()
+    {
         $this->medik = TrxMedical::find($this->medicalcd);
+
+
     }
-    public function clear() {
+    public function clear()
+    {
         $this->form = [
             'kepala' => null,
             'mata' => null,
@@ -45,7 +51,8 @@ class GeneralComponent extends Component
         $this->delete = null;
     }
 
-    public function confirmDelete($id) {
+    public function confirmDelete($id)
+    {
         $this->delete = $id;
         $this->js(<<<'JS'
         Swal.fire({
@@ -64,12 +71,14 @@ class GeneralComponent extends Component
         JS);
     }
 
-    public function hapus() {
+    public function hapus()
+    {
         // dd("as");
-        ModelTandaVital::where('id',$this->delete)->delete();
+        ModelTandaVital::where('id', $this->delete)->delete();
     }
 
-    public function rubah($id)  {
+    public function rubah($id)
+    {
         $this->edit = $id;
         $data = ModelTandaVital::find($id);
         $this->form = Arr::except($data->toArray(), ['created_at', 'updated_at', 'id']);
@@ -80,9 +89,10 @@ class GeneralComponent extends Component
         $this->tab = $id;
     }
 
-    public function save() {
+    public function save()
+    {
 
-        if($this->edit){
+        if ($this->edit) {
             ModelTandaVital::where('id', $this->edit)->update($this->form);
             $this->js(<<<'JS'
                 Swal.fire({
@@ -91,9 +101,11 @@ class GeneralComponent extends Component
                 icon: "success"
                 });
             JS);
-        }else {
+        } else {
+
+            $this->form['dada'] = $this->updateTypes;
             ModelTandaVital::create($this->form +
-            ['medical_cd' => $this->medik->medical_cd, 'pasien_cd' => $this->medik->pasien_cd]);
+                ['medical_cd' => $this->medik->medical_cd, 'pasien_cd' => $this->medik->pasien_cd]);
             $this->js(<<<'JS'
                 Swal.fire({
                 title: "Berhasil!",
@@ -102,15 +114,15 @@ class GeneralComponent extends Component
                 });
             JS);
         }
-            $this->clear();
+        $this->clear();
     }
     public function render()
     {
         $data = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', $this->medik->medical_cd)
-        ->orderBy('created_at', 'desc')->paginate(10);
-        $riwayat = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd','<>', $this->medik->medical_cd)
-        ->orderBy('created_at', 'desc')->paginate(10);
-        return view('livewire.component.kajian-lanjutan.general-component',[
+            ->orderBy('created_at', 'desc')->paginate(10);
+        $riwayat = ModelTandaVital::where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', '<>', $this->medik->medical_cd)
+            ->orderBy('created_at', 'desc')->paginate(10);
+        return view('livewire.component.kajian-lanjutan.general-component', [
             'posts' => $data,
             'riwayat' => $riwayat
         ]);
