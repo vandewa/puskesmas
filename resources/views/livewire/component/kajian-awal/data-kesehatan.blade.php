@@ -23,7 +23,7 @@
                         <div class="row mb-2">
                             <label for="" class="col-sm-3 col-form-label">Riwayat Alergi Obat</label>
                             <div class="col-md-9">
-                                <select class="form-control" wire:model.defer='form.r_alergi_obat'>
+                                <select class="form-control" wire:model.live='form.r_alergi_obat'>
                                     <option value="">-- Pilih --</option>
                                     <option value="0">Tidak</option>
                                     <option value="1">Ya</option>
@@ -33,20 +33,26 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan Alergi Obat</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" wire:model='form.r_alergi_obat_ket'
-                                    placeholder="Keterangan Alergi Obat">
-                                @error('form.r_alergi_obat_ket')
-                                    <span class="form-text text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                        </div>
+                        @if ($form['r_alergi_obat'] != null)
+                            @if ($form['r_alergi_obat'] == 1)
+                                <div class="row mb-2">
+                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
+                                            class="text-danger">* (Alergi
+                                            Obat)</small> </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" wire:model='form.r_alergi_obat_ket'
+                                            placeholder="Keterangan Alergi Obat">
+                                        @error('form.r_alergi_obat_ket')
+                                            <span class="form-text text-danger">{{ $message }}</span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            @endif
+                        @endif
                         <div class="row mb-2">
                             <label for="" class="col-sm-3 col-form-label">Riwayat Alergi Makanan</label>
                             <div class="col-md-9">
-                                <select class="form-control" wire:model.defer='form.r_alergi_makanan'>
+                                <select class="form-control" wire:model.live='form.r_alergi_makanan'>
                                     <option value="">-- Pilih --</option>
                                     <option value="0">Tidak</option>
                                     <option value="1">Ya</option>
@@ -56,20 +62,24 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan Alergi Makanan</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" wire:model='form.r_alergi_makanan_ket'
-                                    placeholder="Keterangan Alergi Makanan">
-                                @error('form.r_alergi_makanan_ket')
-                                    <span class="form-text text-danger">{{ $message }}</span>
-                                @enderror
+                        @if ($form['r_alergi_makanan'] == 1)
+                            <div class="row mb-2">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
+                                        class="text-danger">* (Alergi
+                                        Makanan)</small></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" wire:model='form.r_alergi_makanan_ket'
+                                        placeholder="Keterangan Alergi Makanan">
+                                    @error('form.r_alergi_makanan_ket')
+                                        <span class="form-text text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="row mb-2">
                             <label for="" class="col-sm-3 col-form-label">Riwayat Penyakit Dahulu</label>
                             <div class="col-md-9">
-                                <select class="form-control" wire:model.defer='form.r_penyakit_dahulu'>
+                                <select class="form-control" wire:model.live='form.r_penyakit_dahulu'>
                                     <option value="">-- Pilih --</option>
                                     <option value="0">Tidak</option>
                                     <option value="1">Ya</option>
@@ -79,20 +89,24 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan Penyakit Dahulu</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" wire:model='form.r_penyakit_dahulu_ket'
-                                    placeholder="Keterangan Penyakit Dahulu">
-                                @error('form.r_penyakit_dahulu_ket')
-                                    <span class="form-text text-danger">{{ $message }}</span>
-                                @enderror
+                        @if ($form['r_penyakit_dahulu'] == 1)
+                            <div class="row mb-2">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
+                                        class="text-danger">* (Penyakit
+                                        Dahulu)</small></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" wire:model='form.r_penyakit_dahulu_ket'
+                                        placeholder="Keterangan Penyakit Dahulu">
+                                    @error('form.r_penyakit_dahulu_ket')
+                                        <span class="form-text text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="row mb-2">
                             <label for="" class="col-sm-3 col-form-label">Riwayat Penyakit Keluarga</label>
                             <div class="col-md-9">
-                                <select class="form-control" wire:model.defer='form.r_penyakit_keluarga'>
+                                <select class="form-control" wire:model.live='form.r_penyakit_keluarga'>
                                     <option value="">-- Pilih --</option>
                                     <option value="0">Tidak</option>
                                     <option value="1">Ya</option>
@@ -102,17 +116,20 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="row mb-2">
-                            <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan Penyakit
-                                Keluarga</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" wire:model='form.r_penyakit_keluarga_ket'
-                                    placeholder="Keterangan Penyakit Keluarga">
-                                @error('form.r_penyakit_keluarga_ket')
-                                    <span class="form-text text-danger">{{ $message }}</span>
-                                @enderror
+                        @if ($form['r_penyakit_keluarga'] == 1)
+                            <div class="row mb-2">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
+                                        class="text-danger">* (Penyakit
+                                        Keluarga)</small></label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" wire:model='form.r_penyakit_keluarga_ket'
+                                        placeholder="Keterangan Penyakit Keluarga">
+                                    @error('form.r_penyakit_keluarga_ket')
+                                        <span class="form-text text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                        @endif
 
                         <div class="card-footer mt-4">
                             <div class="row">

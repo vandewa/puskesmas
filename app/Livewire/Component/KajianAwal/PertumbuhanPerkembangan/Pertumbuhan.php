@@ -2,10 +2,11 @@
 
 namespace App\Livewire\Component\KajianAwal\PertumbuhanPerkembangan;
 
+use App\Models\Pertumbuhan as ModelsPertumbuhan;
 use Livewire\Component;
-use App\Models\His\ComCode;
 use Livewire\WithPagination;
-use App\Models\His\TrxMedical;
+use Illuminate\Support\Arr;
+
 
 class Pertumbuhan extends Component
 {
@@ -13,35 +14,53 @@ class Pertumbuhan extends Component
     use WithPagination;
 
     public $medicalcd, $pasiencd;
+    public $updateTypes = [];
 
     public $form = [
-        'lahir_usia' => null,
+        'lahir' => null,
         'tempat' => null,
         'penolong' => null,
         'anak_ke' => null,
         'bb' => null,
         'pb' => null,
-        'kelainan_st' => null,
+        'kelainan' => null,
         'kelainan_keterangan' => null,
         'nutrisi' => null,
+        'balik_badan' => null,
+        'duduk' => null,
+        'berdiri' => null,
+        'berjalan' => null,
+        'mengocel' => null,
+        'berbicara' => null,
+        'r_tumbuh_kembang' => null,
+        'r_imunisasi' => [],
     ];
 
     public function mount()
     {
-        // $this->no_rm = TrxPasien::where('pasien_cd', $this->pasiencd)->first()->no_rm;
-        // $this->pasien_nm = TrxPasien::where('pasien_cd', $this->pasiencd)->first()->pasien_nm;
+        $pertumbuhan = ModelsPertumbuhan::firstOrCreate(
+            ['medical_cd' => $this->medicalcd],
+        )->toArray();
 
-        $this->ambilSubyektif();
-    }
+        $pertumbuhan2 = ModelsPertumbuhan::firstOrCreate(
+            ['medical_cd' => $this->medicalcd],
+        );
 
-    public function ambilSubyektif()
-    {
-        return ComCode::where('code_group', 'SUBYEKTIF_TP')->get()->toArray();
+        $this->form = $pertumbuhan;
+
+        if ($pertumbuhan2['r_imunisasi'] != null) {
+            $this->updateTypes = json_decode($pertumbuhan2['r_imunisasi'], true);
+        }
+
     }
 
     public function save()
     {
-        TrxMedical::find($this->medicalcd)->update($this->form);
+        $this->form['pasien_cd'] = $this->pasiencd;
+        $this->form['r_imunisasi'] = $this->updateTypes;
+
+        ModelsPertumbuhan::where('medical_cd', $this->medicalcd)->update(Arr::except($this->form, ['created_at', 'updated_at']));
+
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Berhasil!',
@@ -54,7 +73,7 @@ class Pertumbuhan extends Component
     public function render()
     {
         return view('livewire.component.kajian-awal.pertumbuhan-perkembangan.pertumbuhan', [
-            'listSubyektif' => $this->ambilSubyektif()
+
         ]);
     }
 }

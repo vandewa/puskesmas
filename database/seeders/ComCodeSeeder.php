@@ -445,11 +445,12 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_06", "code_nm" => "Implan", "code_group" => "RIWAYAT_KB_TP"]);
         $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_07", "code_nm" => "MOW", "code_group" => "RIWAYAT_KB_TP"]);
         $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_08", "code_nm" => "Menopause", "code_group" => "RIWAYAT_KB_TP"]);
+        $code = Code::create(["com_cd" => "RIWAYAT_KB_TP_09", "code_nm" => "Lainnya", "code_group" => "RIWAYAT_KB_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_01", "code_nm" => "DM", "code_group" => "KEHAMILAN_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_02", "code_nm" => "Hipertensi", "code_group" => "KEHAMILAN_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_03", "code_nm" => "Hiperemesis", "code_group" => "KEHAMILAN_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_04", "code_nm" => "ISK", "code_group" => "KEHAMILAN_TP"]);
         $code = Code::create(["com_cd" => "KEHAMILAN_TP_05", "code_nm" => "Perdarahan", "code_group" => "KEHAMILAN_TP"]);
-        $code = Code::create(["com_cd" => "KEHAMILAN_TP_06", "code_nm" => "Tidak Ada", "code_group" => "RIWAYAT_KEHAMILAN_TP"]);
+        $code = Code::create(["com_cd" => "KEHAMILAN_TP_06", "code_nm" => "Tidak Ada", "code_group" => "KEHAMILAN_TP"]);
     }
 }
