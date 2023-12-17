@@ -467,5 +467,34 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "BERJALAN_TP_01", "code_nm" => "Normal", "code_group" => "BERJALAN_TP"]);
         $code = Code::create(["com_cd" => "BERJALAN_TP_02", "code_nm" => "Perlu Alat Bantu", "code_group" => "BERJALAN_TP"]);
         $code = Code::create(["com_cd" => "BERJALAN_TP_03", "code_nm" => "Lumpuh", "code_group" => "BERJALAN_TP"]);
+        $code = Code::create(["com_cd" => "ALASAN_DATANG_TP_01", "code_nm" => "Kecelakaan Lalu Lintas", "code_group" => "ALASAN_DATANG_TP"]);
+        $code = Code::create(["com_cd" => "ALASAN_DATANG_TP_02", "code_nm" => "Trauma", "code_group" => "ALASAN_DATANG_TP"]);
+        $code = Code::create(["com_cd" => "ALASAN_DATANG_TP_03", "code_nm" => "Kecelakaan Kerja", "code_group" => "ALASAN_DATANG_TP"]);
+        $code = Code::create(["com_cd" => "ALASAN_DATANG_TP_04", "code_nm" => "Penyakit", "code_group" => "ALASAN_DATANG_TP"]);
+        $code = Code::create(["com_cd" => "ALASAN_DATANG_TP_05", "code_nm" => "Kekerasan", "code_group" => "ALASAN_DATANG_TP"]);
+        $code = Code::create(["com_cd" => "ALASAN_DATANG_TP_06", "code_nm" => "Lainnya", "code_group" => "ALASAN_DATANG_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_01", "code_nm" => "Bedah", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_02", "code_nm" => "Non Bedah", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_03", "code_nm" => "Trauma", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_04", "code_nm" => "Non Trauma", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_05", "code_nm" => "Interna", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_06", "code_nm" => "Mata", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_07", "code_nm" => "Anak", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_08", "code_nm" => "Obsgyn", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_09", "code_nm" => "Saraf", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_10", "code_nm" => "THT", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_11", "code_nm" => "Paru", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_12", "code_nm" => "Jiwa", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_13", "code_nm" => "Jantung", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "KASUS_TP_14", "code_nm" => "Lainnya", "code_group" => "KASUS_TP"]);
+        $code = Code::create(["com_cd" => "MOBILITAS_TP_01", "code_nm" => "Dapat Berjalan", "code_group" => "MOBILITAS_TP"]);
+        $code = Code::create(["com_cd" => "MOBILITAS_TP_02", "code_nm" => "Dapat Bantuan", "code_group" => "MOBILITAS_TP"]);
+        $code = Code::create(["com_cd" => "MOBILITAS_TP_03", "code_nm" => "Brancard/Immobilisasi", "code_group" => "MOBILITAS_TP"]);
+        $code = Code::create(["com_cd" => "KESADARAN_TP_01", "code_nm" => "CM", "code_group" => "KESADARAN_TP"]);
+        $code = Code::create(["com_cd" => "KESADARAN_TP_02", "code_nm" => "Apatis", "code_group" => "KESADARAN_TP"]);
+        $code = Code::create(["com_cd" => "KESADARAN_TP_03", "code_nm" => "Somnolen", "code_group" => "KESADARAN_TP"]);
+        $code = Code::create(["com_cd" => "KESADARAN_TP_04", "code_nm" => "Sopor", "code_group" => "KESADARAN_TP"]);
+        $code = Code::create(["com_cd" => "KESADARAN_TP_05", "code_nm" => "Koma", "code_group" => "KESADARAN_TP"]);
+
     }
 }
