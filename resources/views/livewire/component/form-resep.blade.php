@@ -192,6 +192,11 @@
       <div class="pull-right">
 
           <button type="submit" wire:click='simpan' class="btn btn-primary btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Simpan</button>
+          @if($edit)
+          <button type="button" wire:click='clear' class="btn btn-warning btn-sm btn-flat btn-simpan"><i class="fa fa-save"></i> Batal Edit</button>
+          @endif
+
+
       </div>
     </div>
 </div>

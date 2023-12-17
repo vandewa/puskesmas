@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Farmasi\ListFarmasi;
+use App\Livewire\Pages\Farmasi\ProsesFarmasi;
 use App\Livewire\Pages\Keuangan\ProsesPembayaran;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
@@ -158,6 +160,11 @@ Route::middleware([
         });
     });
 
+    Route::group(['prefix' => 'farmasi', 'as' => 'farmasi.'], function(){
+            Route::get('list', ListFarmasi::class)->name('list');
+            Route::get('proses/{id?}', ProsesFarmasi::class)->name('proses');
+    });
+
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
         Route::get('rawat-jalan/{id?}', RawatJalan::class)->name('rawat-jalan');
         Route::get('rawat-inap/{id?}', RawatInap::class)->name('rawat-inap');
@@ -168,6 +175,7 @@ Route::middleware([
     Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
         Route::get('print-kwitansi/{id?}', [HelperController::class, 'cetakInvoice'])->name('cetak-invoice');
+        Route::get('print-label-obat/{id?}', [HelperController::class, 'cetakLabelObat'])->name('cetak-label-obat');
     });
 
     Route::group(['prefix' => 'keuangan', 'as' => 'keuangan.'], function () {

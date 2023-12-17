@@ -273,5 +273,10 @@ class TrxMedical extends Model implements Auditable
         }
     }
 
+    public function resepObat()
+    {
+        return $this->hasMany(TrxMedicalResep::class, 'medical_cd');
+    }
+
 
 }

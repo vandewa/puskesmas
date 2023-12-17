@@ -7,10 +7,14 @@ use App\Models\His\InvItemMaster;
 use App\Models\His\TrxDokter;
 use App\Models\His\TrxMedical;
 use App\Models\His\TrxMedicalResep;
+use App\Models\His\TrxResepData;
+use App\Models\His\TrxResepRacik;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Illuminate\Support\Arr;
+
+
 
 class FormResep extends Component
 {
@@ -24,6 +28,8 @@ class FormResep extends Component
     public $racik;
     public $medicalcd;
     public $dataMedic ;
+    public $hapus;
+    public $edit;
 
     public $form= [
         'resep_no' => null,
@@ -144,6 +150,7 @@ class FormResep extends Component
         $this->sore = [];
         $this->malam =[];
         $this->habiskan = [];
+        $this->edit = null;
 
     }
 
@@ -167,6 +174,41 @@ class FormResep extends Component
             JS);
             return ;
         }
+
+
+        if($this->edit) {
+            $resep = TrxMedicalResep::find($this->edit);
+
+            // hapus resep data
+            // TrxResepRacik::whereIn('resep_seq')
+           TrxResepData::where('medical_resep_seqno', $this->edit)->delete();
+            // hapus resep racik
+
+            foreach($this->obatTable as $item) {
+                if($item['resep_tp'] == 'RESEP_TP_1') {
+                    $resep->resepData()->create(
+                        $item
+                    );
+                } else {
+
+                    // Buang Racikan
+                    $filtered = Arr::except($item, ['racikan']);
+                    $data =  $resep->resepData()->create(
+                        $filtered
+                    );
+
+                    foreach($item['racikan'] as $racik) {
+                        $data->resepRacik()->create(
+                            $racik
+                        );
+                    }
+
+
+                }
+
+            }
+        } else {
+
 
         $resep = TrxMedicalResep::create([
             'medical_cd' => $this->dataMedic->medical_cd,
@@ -198,6 +240,7 @@ class FormResep extends Component
             }
 
         }
+    }
 
         $this->js(<<<'JS'
             Swal.fire(
@@ -215,6 +258,58 @@ class FormResep extends Component
             }, 300);
             JS);
             $this->dispatch('refresh')->to(TableResep::class);
+    }
+
+    public function confirmDelete($id)
+    {
+
+    }
+    #[On('edit-resep')]
+    public function editResep($id) {
+        $this->edit = $id;
+
+        $header = TrxMedicalResep::with(['resepData.resepRacik'])->find($id);
+        $this->form['resep_no'] = $header->resep_no;
+        $this->form['resep_date'] = $header->resep_date;
+        $this->form['dr_cd'] = $header->dr_cd;
+
+        foreach ( $header->resepData as $item) {
+            $isian = [
+                'item_cd'   => $item->item_cd,
+                'data_nm'   => $item->data_nm,
+                'quantity'  => $item->quantity,
+                'info_01'   => $item->info_01,
+                'resep_tp'  => $item->resep_tp,
+                'info_02'   => $item->info_02,
+            ];
+
+            $meracik = [];
+            foreach($item->resepRacik as $racik) {
+                $racik =  [
+                    'item_cd'   => $racik->item_cd,
+                    'data_nm'   => $racik->data_nm,
+                    'quantity'  => $racik->quantity,
+                    'satuan'   => $racik->satuan,
+                    'trx_satuan' => $racik->trx_satuan
+                ];
+                array_push( $meracik, $racik);
+            }
+
+            // tambahkan racikan di sini
+            if($item->resep_tp == 'RESEP_TP_2') {
+                $isian  = $isian + ['racikan' =>  $racik];
+            }
+
+
+
+            array_push($this->obatTable, $isian);
+        }
+
+
+    }
+
+    public function delete() {
+
     }
 
     public function render()

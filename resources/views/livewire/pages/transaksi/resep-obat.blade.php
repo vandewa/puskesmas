@@ -30,7 +30,7 @@
                                                         <ul class="nav nav-tabs" id="custom-tabs-six-transaksi-tab"
                                                             role="tablist">
                                                             <li class="nav-item">
-                                                                <a class="nav-link active"
+                                                                <a class="nav-link"
                                                                     id="custom-tabs-six-data-resep-tab"
                                                                     data-toggle="pill"
                                                                     href="#custom-tabs-six-data-resep" role="tab"
@@ -48,7 +48,7 @@
 
                                                             <li class="nav-item"
                                                                 style="margin-left: auto; background:yellow;">
-                                                                <a class="nav-link" data-toggle="pill"
+                                                                <a class="nav-link" data-toggle="pill" id='tombol-tambah-resep'
                                                                     href="#tambah-resep" role="tab"
                                                                     aria-controls="tambah-resep"
                                                                     href="#custom-tabs-six-template-resep"><i

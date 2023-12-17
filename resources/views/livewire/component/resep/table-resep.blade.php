@@ -24,7 +24,7 @@
             <td>{!! $item->data_nm !!}</td>
             <td>{{ $item->quantity }}</td>
             <td>{{ $item->info_02 }}</td>
-            <td></td>
+            <td><button class="btn btn-sm btn-warning" wire:click='edit({{ $item->resepHeader->medical_resep_seqno }})'>Edit</button></td>
         </tr>
         @endforeach
 

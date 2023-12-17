@@ -1,0 +1,70 @@
+h4, h3, p{
+	margin-top: 0;
+	-webkit-margin-before: 0;
+	-moz-margin-before: 0;
+	-ms-margin-before: 0;
+	-o-margin-before: 0;
+	margin-bottom: 0;
+	-webkit-margin-after: 0;
+	-moz-margin-after: 0;
+	-ms-margin-after: 0;
+	-o-margin-after: 0;
+	text-align: center;
+}
+#normal{
+	font-weight: normal;
+}
+#apt{
+	text-decoration: underline;
+}
+.wrapper{
+	width: 595px !important;
+	max-width: 100%;
+	padding: 0px;
+	display: block;
+	margin: 0;
+}
+.left-box{
+	position: relative;
+	left: 10%;
+	width: 30%;
+	float: left;
+}
+.right-box{
+	margin: 5px;
+	width: 65%;
+	float: right;
+	height: 100px;
+}
+
+.content-left, .content-right{
+	width: 50%;
+	margin: 15px 0px;
+}
+.content-left{
+	float: left;
+}
+.content-right{
+	float: right;
+}
+tr{
+	line-height: 20px;
+}
+.place{
+	/*text-align: left;*/
+}
+
+img{
+	height: 100px;
+	width: auto;
+}
+
+#copi
+{
+	text-align: center;
+	width: 100%;
+	
+}
+@page {
+  size: A4;
+}

@@ -18,6 +18,15 @@ class TableResep extends Component
     {
 
     }
+
+    public function edit($id) {
+        $this->dispatch('edit-resep', $id);
+        $this->js(<<<'JS'
+        setTimeout(() => {
+           $('#tombol-tambah-resep').trigger('click');
+       }, 300);
+       JS);
+    }
     public function render()
     {
         $data = TrxResepData::with(['resepHeader.dokter'])->cari($this->cari)->whereHas('resepHeader',  function($a) {
