@@ -112,7 +112,6 @@
                                 <th>Nadi</th>
                                 <th>Respirasi</th>
                                 <th>Suhu</th>
-                                <th>Action</th>
                             </thead>
                             <tbody>
                                 @foreach ($posts as $item)
@@ -145,7 +144,6 @@
                                 <th>Nadi</th>
                                 <th>Respirasi</th>
                                 <th>Suhu</th>
-                                <th>Action</th>
                             </thead>
                             <tbody>
                                 @foreach ($riwayat as $item)
