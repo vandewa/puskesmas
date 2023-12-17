@@ -99,7 +99,7 @@
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-pertumbuhan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-pertumbuhan-tab">
-                                                                <livewire:component.kajian-lanjutan.fungsional
+                                                                <livewire:component.kajian-lanjutan.fungsional-component
                                                                     :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
                                                             <div class="tab-pane fade" id="custom-tabs-three-odontogram"
