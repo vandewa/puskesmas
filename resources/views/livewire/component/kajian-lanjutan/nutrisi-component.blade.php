@@ -6,7 +6,7 @@
                 <div class="row">
                     <form action="" wire.submit='save'>
                         <div class="col-md-6">
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Berat</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -15,12 +15,12 @@
                                             <span class="input-group-text">Kg</span>
                                         </div>
                                     </div>
-                                    @error('form.bicara_tp')
+                                    @error('form.berat')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Tinggi</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -29,12 +29,12 @@
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
-                                    @error('form.komunikasi_tp')
+                                    @error('form.tinggi')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">IMT</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -43,14 +43,14 @@
                                             <span class="input-group-text">Kg/M</span>
                                         </div>
                                     </div>
-                                    @error('form.komunikasi_tp')
+                                    @error('form.imt')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Lingkar Perut</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -59,12 +59,12 @@
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
-                                    @error('form.emosional_st')
+                                    @error('form.lingkar_perut')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">LILA</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -73,12 +73,12 @@
                                             <span class="input-group-text">Cm</span>
                                         </div>
                                     </div>
-                                    @error('form.sosiologi_tp')
+                                    @error('form.lila')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Status Gizi</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -90,7 +90,7 @@
                                             <option value="Lebih">Lebih</option>
                                         </select>
                                     </div>
-                                    @error('form.sosiologi_tp')
+                                    @error('form.status_gizi')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

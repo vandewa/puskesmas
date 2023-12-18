@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Component\KajianAwal;
 
+use App\Models\DataKesehatan as ModelsDataKesehatan;
 use Livewire\Component;
 use App\Models\His\ComCode;
 use Livewire\WithPagination;
-use App\Models\His\TrxMedical;
+use Illuminate\Support\Arr;
+
 
 class DataKesehatan extends Component
 {
@@ -15,6 +17,7 @@ class DataKesehatan extends Component
     public $medicalcd, $pasiencd;
 
     public $form = [
+        'pasien_cd' => null,
         'subyektif_tp' => null,
         'r_alergi_obat' => null,
         'r_alergi_obat_ket' => null,
@@ -28,9 +31,11 @@ class DataKesehatan extends Component
 
     public function mount()
     {
-        // $this->no_rm = TrxPasien::where('pasien_cd', $this->pasiencd)->first()->no_rm;
-        // $this->pasien_nm = TrxPasien::where('pasien_cd', $this->pasiencd)->first()->pasien_nm;
+        $data_kesehatan = ModelsDataKesehatan::firstOrCreate(
+            ['medical_cd' => $this->medicalcd],
+        )->toArray();
 
+        $this->form = $data_kesehatan;
         $this->ambilSubyektif();
     }
 
@@ -39,9 +44,40 @@ class DataKesehatan extends Component
         return ComCode::where('code_group', 'SUBYEKTIF_TP')->get()->toArray();
     }
 
+    public function updated($property)
+    {
+
+        if ($property === 'form.r_alergi_obat') {
+            if ($this->form['r_alergi_obat'] == 0) {
+                $this->form['r_alergi_obat_ket'] = null;
+            }
+        }
+
+        if ($property === 'form.r_alergi_makanan') {
+            if ($this->form['r_alergi_makanan'] == 0) {
+                $this->form['r_alergi_makanan_ket'] = null;
+            }
+        }
+
+        if ($property === 'form.r_penyakit_dahulu') {
+            if ($this->form['r_penyakit_dahulu'] == 0) {
+                $this->form['r_penyakit_dahulu_ket'] = null;
+            }
+        }
+
+        if ($property === 'form.r_penyakit_keluarga') {
+            if ($this->form['r_penyakit_keluarga'] == 0) {
+                $this->form['r_penyakit_keluarga_ket'] = null;
+            }
+        }
+    }
+
     public function save()
     {
-        TrxMedical::find($this->medicalcd)->update($this->form);
+        $this->form['pasien_cd'] = $this->pasiencd;
+
+        ModelsDataKesehatan::where('medical_cd', $this->medicalcd)->update(Arr::except($this->form, ['created_at', 'updated_at']));
+
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Berhasil!',

@@ -72,6 +72,12 @@
                                                                     aria-controls="custom-tabs-three-odontogram"
                                                                     aria-selected="false">Nyeri</a>
                                                             </li>
+                                                            <li class="nav-item">
+                                                                <a class="nav-link" id="custom-tabs-three-ugd-tab"
+                                                                    data-toggle="pill" href="#custom-tabs-three-ugd"
+                                                                    role="tab" aria-controls="custom-tabs-three-ugd"
+                                                                    aria-selected="false">UGD</a>
+                                                            </li>
 
                                                         </ul>
                                                     </div>
@@ -99,12 +105,19 @@
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-pertumbuhan" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-pertumbuhan-tab">
-                                                                On Development
+                                                                <livewire:component.kajian-lanjutan.fungsional-component
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
                                                             <div class="tab-pane fade" id="custom-tabs-three-odontogram"
                                                                 role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-odontogram-tab">
                                                                 <livewire:component.kajian-lanjutan.kajian-sakit-component
+                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
+                                                            </div>
+                                                            <div class="tab-pane fade" id="custom-tabs-three-ugd"
+                                                                role="tabpanel"
+                                                                aria-labelledby="custom-tabs-three-ugd-tab">
+                                                                <livewire:component.kajian-lanjutan.ugd-component
                                                                     :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
 

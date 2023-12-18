@@ -159,6 +159,7 @@ Route::middleware([
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
         });
     });
+    
 
     Route::group(['prefix' => 'farmasi', 'as' => 'farmasi.'], function(){
             Route::get('list', ListFarmasi::class)->name('list');

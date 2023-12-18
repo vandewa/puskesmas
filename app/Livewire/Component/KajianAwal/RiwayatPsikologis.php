@@ -4,27 +4,32 @@ namespace App\Livewire\Component\KajianAwal;
 
 use Livewire\Component;
 use App\Models\His\ComCode;
-use Livewire\WithPagination;
-use App\Models\His\TrxMedical;
+use App\Models\RiwayatPsikologis as ModelsRiwayatPsikologis;
+use Illuminate\Support\Arr;
+
 
 class RiwayatPsikologis extends Component
 {
 
-    use WithPagination;
-
     public $medicalcd, $pasiencd;
 
     public $form = [
+        'pasien_cd' => null,
         'bicara_tp' => null,
         'komunikasi_tp' => null,
         'emosional_st' => null,
-        '' => null,
+        'sosiologi_tp' => null,
         'riwayat_kb_tp' => null,
         'kehamilan_tp' => null,
     ];
 
     public function mount()
     {
+        $riwayat = ModelsRiwayatPsikologis::firstOrCreate(
+            ['medical_cd' => $this->medicalcd],
+        )->toArray();
+
+        $this->form = $riwayat;
         $this->ambilBicara();
     }
 
@@ -55,7 +60,8 @@ class RiwayatPsikologis extends Component
 
     public function save()
     {
-        TrxMedical::find($this->medicalcd)->update($this->form);
+        ModelsRiwayatPsikologis::where('medical_cd', $this->medicalcd)->update(Arr::except($this->form, ['created_at', 'updated_at']));
+
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Berhasil!',

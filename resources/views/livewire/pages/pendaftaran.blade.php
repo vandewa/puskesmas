@@ -270,7 +270,7 @@
                                             <div class="col-sm-9">
                                                 <select name="" id="" class="form-control"
                                                     wire:model="form.occupation_cd">
-                                                    <option value="">Pilih Pendidikan</option>
+                                                    <option value="">Pilih Pekerjaan</option>
                                                     @foreach ($pekerjaan ?? [] as $item)
                                                         <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
                                                         </option>
@@ -466,7 +466,7 @@
                                             <div class="col-sm-9">
                                                 <select name="" id="" class="form-control"
                                                     wire:model="form.pj_tp">
-                                                    <option value="">Jenis Hubunngan Keluarga</option>
+                                                    <option value="">Jenis Hubungan Keluarga</option>
                                                     @foreach ($family ?? [] as $item)
                                                         <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
                                                         </option>

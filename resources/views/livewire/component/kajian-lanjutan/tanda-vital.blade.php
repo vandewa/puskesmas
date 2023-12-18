@@ -6,21 +6,35 @@
                 <div class="row">
                     <form action="" wire.submit='save'>
                         <div class="col-md-6">
-                            <div class="mb-2 row">
-                                <label for="" class="col-sm-3 col-form-label">Tekanan Darah</label>
+                            <div class="row">
+                                <label for="" class="col-sm-3 col-form-label">Sistol</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
-                                        <input type="number" class="form-control" wire:model='form.td'>
+                                        <input type="number" class="form-control" wire:model='form.sistol'>
                                         <div class="input-group-append">
                                             <span class="input-group-text">mmHg</span>
                                         </div>
                                     </div>
-                                    @error('form.bicara_tp')
+                                    @error('form.sistol')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="mb-2 row">
+                            <div class="row">
+                                <label for="" class="col-sm-3 col-form-label">Diastol</label>
+                                <div class="col-md-9">
+                                    <div class="mb-3 input-group">
+                                        <input type="number" class="form-control" wire:model='form.diastol'>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">mmHg</span>
+                                        </div>
+                                    </div>
+                                    @error('form.diastol')
+                                        <span class="form-text text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Nadi</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -29,14 +43,14 @@
                                             <span class="input-group-text">x/mnt</span>
                                         </div>
                                     </div>
-                                    @error('form.komunikasi_tp')
+                                    @error('form.n')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Respirasi</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -45,12 +59,12 @@
                                             <span class="input-group-text">x/mnt</span>
                                         </div>
                                     </div>
-                                    @error('form.emosional_st')
+                                    @error('form.p')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
-                            <div class="mb-2 row">
+                            <div class="row">
                                 <label for="" class="col-sm-3 col-form-label">Suhu</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
@@ -59,7 +73,7 @@
                                             <span class="input-group-text">C</span>
                                         </div>
                                     </div>
-                                    @error('form.sosiologi_tp')
+                                    @error('form.suhu')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -93,11 +107,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <th>Waktu</th>
-                                <th>Td</th>
-                                <th>N</th>
-                                <th>P</th>
+                                <th>Sistol</th>
+                                <th>Diastol</th>
+                                <th>Nadi</th>
+                                <th>Respirasi</th>
                                 <th>Suhu</th>
-                                <th>action</th>
                             </thead>
                             <tbody>
                                 @foreach ($posts as $item)
@@ -105,10 +119,11 @@
                                         <td>
                                             {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                         </td>
-                                        <td>{{ $item->td }}</td>
-                                        <td>{{ $item->n }}</td>
-                                        <td>{{ $item->p }}</td>
-                                        <td>{{ $item->suhu }}</td>
+                                        <td>{{ $item->sistol ?? '' }}</td>
+                                        <td>{{ $item->diastol ?? '' }}</td>
+                                        <td>{{ $item->n ?? '' }}</td>
+                                        <td>{{ $item->p ?? '' }}</td>
+                                        <td>{{ $item->suhu ?? '' }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-danger"
                                                 wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
@@ -124,11 +139,11 @@
                         <table class="table table-striped">
                             <thead>
                                 <th>Waktu</th>
-                                <th>Td</th>
-                                <th>N</th>
-                                <th>P</th>
+                                <th>Sistol</th>
+                                <th>Diastol</th>
+                                <th>Nadi</th>
+                                <th>Respirasi</th>
                                 <th>Suhu</th>
-                                <th>action</th>
                             </thead>
                             <tbody>
                                 @foreach ($riwayat as $item)
@@ -136,10 +151,11 @@
                                         <td>
                                             {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                         </td>
-                                        <td>{{ $item->td }}</td>
-                                        <td>{{ $item->n }}</td>
-                                        <td>{{ $item->p }}</td>
-                                        <td>{{ $item->suhu }}</td>
+                                        <td>{{ $item->sistol ?? '' }}</td>
+                                        <td>{{ $item->diastol ?? '' }}</td>
+                                        <td>{{ $item->n ?? '' }}</td>
+                                        <td>{{ $item->p ?? '' }}</td>
+                                        <td>{{ $item->suhu ?? '' }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-danger"
                                                 wire:click='confirmDelete({{ $item->id }})'>Hapus</button>

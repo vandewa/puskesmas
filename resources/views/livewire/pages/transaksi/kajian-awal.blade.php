@@ -45,7 +45,8 @@
                                                                     href="#custom-tabs-three-tindakan-diproses"
                                                                     role="tab"
                                                                     aria-controls="custom-tabs-three-proses-lab"
-                                                                    aria-selected="false">Riwayat Psikologis, Sosilogis,
+                                                                    aria-selected="false">Riwayat Psikologis,
+                                                                    Sosiologis,
                                                                     Spiritual</a>
                                                             </li>
                                                             <li class="nav-item">
