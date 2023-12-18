@@ -77,11 +77,11 @@
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <div class="dropdown-menu" role="menu" style="">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('cetak.kir', $selected) }}">Surat
+                                                        Keterangan Dokter
+                                                        (KIR)</a>
+                                                    <a class="dropdown-item" href="#">Surat Keterangan Sakit</a>
                                                 </div>
                                             </div>
                                             <button class="btn btn-primary">Rekam Medis</button>
@@ -128,7 +128,7 @@
                                                     $date = new \DateTime($item->birth_date);
                                                     $now = new \DateTime();
                                                     $interval = $now->diff($date);
-                                                    
+
                                                 @endphp
                                                 ({{ $interval->y }})
                                                 Th</td>

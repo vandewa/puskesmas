@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Component\Cetak\Kir;
 use App\Livewire\Pages\Keuangan\ListPasienKeuangan;
 use App\Livewire\Pages\Transaksi\KajianAwal;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksiRawatInap;
@@ -93,6 +94,11 @@ Route::middleware([
         Route::get('list', ListPasien::class)->name('index');
         Route::get('pendaftaran/{id?}', Pendaftaran::class)->name('pendaftaran');
     });
+
+    Route::group(['prefix' => 'cetak', 'as' => 'cetak.'], function () {
+        Route::get('kir/{id?}', Kir::class)->name('kir');
+    });
+
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::get('spesialis', Spesialis::class)->name('spesialis');
         Route::get('dokter', Dokter::class)->name('dokter');
@@ -159,11 +165,11 @@ Route::middleware([
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
         });
     });
-    
 
-    Route::group(['prefix' => 'farmasi', 'as' => 'farmasi.'], function(){
-            Route::get('list', ListFarmasi::class)->name('list');
-            Route::get('proses/{id?}', ProsesFarmasi::class)->name('proses');
+
+    Route::group(['prefix' => 'farmasi', 'as' => 'farmasi.'], function () {
+        Route::get('list', ListFarmasi::class)->name('list');
+        Route::get('proses/{id?}', ProsesFarmasi::class)->name('proses');
     });
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
