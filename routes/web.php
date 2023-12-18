@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Component\Cetak\KeteranganSakit;
 use App\Livewire\Component\Cetak\Kir;
 use App\Livewire\Pages\Keuangan\ListPasienKeuangan;
 use App\Livewire\Pages\Transaksi\KajianAwal;
@@ -97,6 +98,7 @@ Route::middleware([
 
     Route::group(['prefix' => 'cetak', 'as' => 'cetak.'], function () {
         Route::get('kir/{id?}', Kir::class)->name('kir');
+        Route::get('keterangan-sakit/{id?}', KeteranganSakit::class)->name('keterangan-sakit');
     });
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {

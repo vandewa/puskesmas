@@ -67,8 +67,6 @@ class Kir extends Component
             $darah = 'O';
         }
 
-
-
         $path = public_path('/template/kir.docx');
         $pathSave = storage_path('app/public/' . 'KIR-' . $this->form['pasien_nm'] . '-' . $this->form['tanggal'] . '.docx');
         $templateProcessor = new TemplateProcessor($path);
@@ -84,7 +82,7 @@ class Kir extends Component
             'bb' => $this->form['weight'],
             'tb' => $this->form['height'],
             'gol_darah' => $darah,
-            'nama_dokter' => $this->form['height'],
+            'nama_dokter' => $this->form['dokter'],
         ]);
 
         \PhpOffice\PhpWord\Settings::setOutputEscapingEnabled(true);

@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Cetak Surat Keterangan Dokter</h1>
+                <h1 class="m-0">Cetak Surat Keterangan Sakit</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Cetak</a></li>
-                    <li class="breadcrumb-item active">Surat Keterangan Dokter</li>
+                    <li class="breadcrumb-item active">Surat Keterangan Sakit</li>
                 </ol>
             </div>
         </div>
@@ -27,7 +27,7 @@
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nomor</label>
                                             <div class="col-sm-9">
                                                 <input type="text" class="form-control" wire:model='form.nomor'
-                                                    placeholder="……./KIR.01/……/……">
+                                                    placeholder="……">
                                                 @error('form.nomor')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -57,6 +57,22 @@
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Pekerjaan</label>
+                                            <div class="col-sm-9">
+                                                <select class="form-control" wire:model.defer='form.occupation_cd'
+                                                    wire:key="select.occupation_cd">
+                                                    <option value="">Pilih Pekerjaan</option>
+                                                    @foreach ($listPekerjaan ?? [] as $item)
+                                                        <option value="{{ $item['code_nm'] }}">
+                                                            {{ $item['code_nm'] }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('form.occupation_cd')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-2 row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Alamat</label>
                                             <div class="col-sm-9">
                                                 <textarea wire:model='form.address' class="form-control" rows="3"></textarea>
@@ -65,107 +81,58 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="mb-2 row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Tgl
-                                                Pemeriksaan</label>
-                                            <div class="col-sm-9">
-                                                <input type="date" class="form-control" wire:model='form.tanggal'
-                                                    placeholder="Hasil Pemeriksaan">
-                                                @error('form.tanggal')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="mb-2 row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Hasil
-                                                Pemeriksaan</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model='form.hasil'
-                                                    placeholder="Hasil Pemeriksaan">
-                                                @error('form.hasil')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-
-
                                     </div>
                                     <div class="col-md-6">
 
-                                        <div class="mb-2 row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan</label>
-                                            <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model='form.keterangan'
-                                                    placeholder="Keterangan">
-                                                @error('form.keterangan')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
                                         <div class="row">
-                                            <label for="" class="col-sm-3 col-form-label">Tensi</label>
+                                            <label for="" class="col-sm-3 col-form-label">Istirahat
+                                                Selama</label>
                                             <div class="col-md-9">
                                                 <div class="mb-3 input-group">
-                                                    <input type="text" class="form-control" wire:model='form.tensi'>
+                                                    <input type="number" class="form-control" wire:model='form.hari'>
                                                     <div class="input-group-append">
-                                                        <span class="input-group-text">mmHg</span>
+                                                        <span class="input-group-text">Hari</span>
                                                     </div>
                                                 </div>
-                                                @error('form.tensi')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="" class="col-sm-3 col-form-label">Berat Badan</label>
-                                            <div class="col-md-9">
-                                                <div class="mb-3 input-group">
-                                                    <input type="number" class="form-control"
-                                                        wire:model='form.weight'>
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text">Kg</span>
-                                                    </div>
-                                                </div>
-                                                @error('form.weight')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <label for="" class="col-sm-3 col-form-label">Tinggi Badan</label>
-                                            <div class="col-md-9">
-                                                <div class="mb-3 input-group">
-                                                    <input type="number" class="form-control"
-                                                        wire:model='form.height'>
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text">Cm</span>
-                                                    </div>
-                                                </div>
-                                                @error('form.height')
+                                                @error('form.hari')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
-                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Golongan
-                                                Darah</label>
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Dari
+                                                Tanggal</label>
                                             <div class="col-sm-9">
-                                                <select class="form-control" wire:model.defer='form.blood_tp'
-                                                    wire:key="select.dokter">
-                                                    <option value="">Pilih Golongan Darah</option>
-                                                    @foreach ($listDarah ?? [] as $item)
-                                                        <option value="{{ $item['com_cd'] }}">
-                                                            {{ $item['code_nm'] }}</option>
-                                                    @endforeach
-                                                </select>
-                                                @error('form.blood_tp')
+                                                <input type="date" class="form-control" wire:model='form.tgl_mulai'>
+                                                @error('form.tgl_mulai')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-2 row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Sampai
+                                                Tanggal</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control"
+                                                    wire:model='form.tgl_selesai'>
+                                                @error('form.tgl_selesai')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-2 row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Tanggal
+                                                Terbit</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" wire:model='form.tgl_terbit'>
+                                                @error('form.tgl_terbit')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                         </div>
                                         <div class="mb-2 row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Dokter
-                                                Pemeriksa</label>
+                                            </label>
                                             <div class="col-sm-9">
                                                 <select class="form-control" wire:model.defer='form.dokter'
                                                     wire:key="select.dokter">

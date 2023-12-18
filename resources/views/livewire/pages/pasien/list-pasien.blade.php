@@ -70,20 +70,25 @@
                                 <div class="col-md-12">
                                     <div class="d-flex justify-content-end">
                                         <div>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-dark">Cetak</button>
-                                                <button type="button" class="btn btn-dark dropdown-toggle"
-                                                    data-toggle="dropdown" aria-expanded="false">
-                                                    <span class="sr-only">Toggle Dropdown</span>
-                                                </button>
-                                                <div class="dropdown-menu" role="menu" style="">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('cetak.kir', $selected) }}">Surat
-                                                        Keterangan Dokter
-                                                        (KIR)</a>
-                                                    <a class="dropdown-item" href="#">Surat Keterangan Sakit</a>
+                                            @if ($selected)
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-dark">Cetak</button>
+                                                    <button type="button" class="btn btn-dark dropdown-toggle"
+                                                        data-toggle="dropdown" aria-expanded="false">
+                                                        <span class="sr-only">Toggle Dropdown</span>
+                                                    </button>
+                                                    <div class="dropdown-menu" role="menu" style="">
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('cetak.kir', $selected) }}">Surat
+                                                            Keterangan Dokter
+                                                            (KIR)</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('cetak.keterangan-sakit', $selected) }}">Surat
+                                                            Keterangan
+                                                            Sakit</a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                             <button class="btn btn-primary">Rekam Medis</button>
                                             <a href="{{ route('pasien.pendaftaran', $selected) }}" wire:navigate
                                                 class="btn btn-warning">Ubah Data Pasien</a>
