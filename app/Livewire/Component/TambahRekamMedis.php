@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Component;
 
+use App\Models\General;
 use Livewire\Component;
 use App\Models\His\TrxIcd;
 use Livewire\Attributes\On;
@@ -14,6 +15,7 @@ class TambahRekamMedis extends Component
 {
 
     use WithPagination;
+    public $advance = [];
     public $form = [
         'pasien_cd' => '',
         'icd_cd' => '',
@@ -28,7 +30,17 @@ class TambahRekamMedis extends Component
         'pemeriksaan_penunjang' => '',
         'medical_note' => '',
     ];
-    public $cari, $edit = false, $dokter, $dr_cd, $diagnosa, $kasus, $icd, $medicalcd;
+
+    public $form2 = [
+        'kepala' => null,
+        'mata' => null,
+        'teling' => null,
+        'leher' => null,
+        'dada' => null,
+        'abdomen' => null,
+        'extremistis' => null,
+    ];
+    public $cari, $edit = false, $dokter, $dr_cd, $diagnosa, $kasus, $icd, $medicalcd , $pasiencd;
     public $idHapus, $idnya;
 
 
@@ -39,6 +51,7 @@ class TambahRekamMedis extends Component
         $this->diagnosa = get_code('RM_TP');
         $this->kasus = get_code('CASE_TP');
         $this->form['datetime_record'] = date('Y-m-d');
+        $this->pasiencd = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pasien_cd;
         $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
         $this->dokter = TrxDokter::all()->toArray();
 
@@ -66,6 +79,7 @@ class TambahRekamMedis extends Component
 
     public function store()
     {
+        // dd("ASdasd");
         $this->validate([
             'form.icd_cd' => 'required',
             // 'form.medical_cd' => 'required',
@@ -81,7 +95,14 @@ class TambahRekamMedis extends Component
 
         $this->form['pasien_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pasien_cd;
         $this->form['medical_cd'] = $this->medicalcd;
-        TrxMedicalRecord::create($this->form);
+        $this->form2['pasien_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pasien_cd;
+        $this->form2['medical_cd']  = $this->medicalcd;
+        $a = TrxMedicalRecord::create($this->form);
+
+        if($this->advance){
+          $a->rmGeneral()->create($this->form2);
+        }
+
         // $this->redirect(route('master.jadwal-praktek.index'));
     }
 

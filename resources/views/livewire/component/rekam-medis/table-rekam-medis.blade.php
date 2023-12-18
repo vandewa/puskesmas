@@ -18,17 +18,34 @@
         </thead>
         <tbody>
             @foreach ($posts as $item)
-                <tr>
-                    <td>{{ date('Y-m-d', strtotime($item->datetime_record)) }}</td>
+                <tr @if($item->rmGeneral) class="table-info"  @endif>
+                    <td    @if($item->rmGeneral) rowspan="2"  @endif>{{ date('Y-m-d', strtotime($item->datetime_record)) }}</td>
                     <td>{{ $item->dokter->dr_nm ?? '-' }}</td>
                     <td>{{ $item->icd->icd_nm ?? '-' }}</td>
                     <td>{{ $item->medical_data ?? '' }}</td>
                     <td>{{ $item->anamnesa ?? '' }}</td>
-                    <td>{{ $item->pemeriksaan_fisik ?? '' }}</td>
+                    <td>
+                        {{ $item->pemeriksaan_fisik ?? '' }}
+
+                    </td>
                     <td>{{ $item->pemeriksaan_penunjang ?? '' }}</td>
                     <td>{{ $item->jenisKasus->code_nm ?? '' }}</td>
-                    <td></td>
+                    <td><button class="btn btn-warning">Edit</button></td>
                 </tr>
+                @if($item->rmGeneral)
+                <tr style="text-align: center" class="table-info">
+
+                    <td>Kepala : <br> {{ $item->rmGeneral->kepala??"-" }}</td>
+                    <td>Mata: <br> {{ $item->rmGeneral->mata??"-" }}</td>
+                    <td>Telinga: <br> {{ $item->rmGeneral->teling??"-" }}</td>
+                    <td>Kepala: <br> {{ $item->rmGeneral->kepala??"-" }}</td>
+                    <td>Leher: <br> {{ $item->rmGeneral->kepala??"-" }}</td>
+                    <td>Abdomen: <br> {{ $item->rmGeneral->kepala??"-" }}</td>
+                    <td>Extremistis: <br> {{ $item->rmGeneral->Extremistis??"-" }}</td>
+                    <td></td>
+
+                </tr>
+                @endif
             @endforeach
 
         </tbody>

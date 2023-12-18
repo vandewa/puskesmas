@@ -5,8 +5,10 @@ namespace App\Livewire\Pages\Transaksi;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\His\TrxMedical;
+use App\Models\His\TrxParamedis;
+use App\Models\His\TrxDokter;
 
-class RekamMedis extends Component
+class CpptPage extends Component
 {
     use WithPagination;
 
@@ -23,6 +25,11 @@ class RekamMedis extends Component
 
     public function render()
     {
-        return view('livewire.pages.transaksi.rekam-medis');
+        $dokter = TrxDokter::all();
+        $paramedis = TrxParamedis::all();
+        return view('livewire.pages.transaksi.cppt-page', [
+            'dokter' => $dokter,
+            'paramedis' => $paramedis
+        ]);
     }
 }

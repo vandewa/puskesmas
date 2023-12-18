@@ -25,6 +25,11 @@
                 href="{{ route('transaksi.rawat-jalan.tindakan-medis', $medicalcd ?? '') }}" wire:navigate>Tindakan
                 Medis</a>
         </li>
+        <li class="nav-item {{ Request::segment(3) == 'cppt' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'cppt' ? 'active' : '' }}"
+                id="custom-tabs-one-tindakan-tab"
+                href="{{ route('transaksi.rawat-jalan.cppt', $medicalcd ?? '') }}" wire:navigate>CPPT</a>
+        </li>
         <li class="nav-item {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}">
             <a href="{{ route('transaksi.rawat-jalan.laboratorium', $medicalcd) }}" class="nav-link {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}" id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab">Laboratorium</a>
         </li>

@@ -21,7 +21,7 @@ class TableRekamMedis extends Component
     }
     public function render()
     {
-        $data = TrxMedicalRecord::with(['jenisKasus', 'jenisDiagnosa', 'dokter', 'icd', 'pasien', 'medical'])->where('medical_cd', $this->medicalcd)->cari($this->cari)->paginate(10);
+        $data = TrxMedicalRecord::with(['jenisKasus', 'jenisDiagnosa', 'dokter', 'icd', 'pasien', 'medical', 'rmGeneral'])->where('medical_cd', $this->medicalcd)->cari($this->cari)->paginate(10);
         return view('livewire.component.rekam-medis.table-rekam-medis', [
             'posts' => $data
         ]);
