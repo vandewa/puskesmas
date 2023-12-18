@@ -288,7 +288,6 @@ if (!function_exists('gen_no_rm')) {
     }
 }
 
-
 if (!function_exists('gen_no_group')) {
     function gen_no_group()
     {
