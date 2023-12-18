@@ -265,6 +265,11 @@ class TrxPasien extends Model implements Auditable
     return $this->belongsTo(TrxUnitMedis::class, 'medunit_cd');
   }
 
+  public function darah()
+  {
+    return $this->belongsTo(ComCode::class, 'blood_tp');
+  }
+
 
   public function scopeCarirm($filter, $value)
   {
