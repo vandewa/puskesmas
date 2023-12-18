@@ -1,5 +1,8 @@
 <div>
     <div class="col-md-12">
+        <div class="col-md-12 text-center">
+            <h4>Pemeriksaan Fisik Lengkap</h4>
+        </div>
         {{-- <div class="card card-success card-outline"> --}}
         <form class="mt-2 form-horizontal" wire:submit='save'>
             <div class="card-body">

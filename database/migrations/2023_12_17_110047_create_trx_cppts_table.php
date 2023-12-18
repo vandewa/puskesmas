@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('trx_cppts', function (Blueprint $table) {
             $table->id();
             $table->string('medical_cd');
+            $table->string('pasien_cd');
+            $table->datetime('transaction_date')->nullable();
             $table->string('dr_cd')->nullable();
             $table->string('paramedis_cd')->nullable();
             $table->longText('subject')->nullable();

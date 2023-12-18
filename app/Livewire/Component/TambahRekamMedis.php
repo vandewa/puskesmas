@@ -14,6 +14,7 @@ class TambahRekamMedis extends Component
 {
 
     use WithPagination;
+    public $advance = [];
     public $form = [
         'pasien_cd' => '',
         'icd_cd' => '',
@@ -28,7 +29,7 @@ class TambahRekamMedis extends Component
         'pemeriksaan_penunjang' => '',
         'medical_note' => '',
     ];
-    public $cari, $edit = false, $dokter, $dr_cd, $diagnosa, $kasus, $icd, $medicalcd;
+    public $cari, $edit = false, $dokter, $dr_cd, $diagnosa, $kasus, $icd, $medicalcd , $pasiencd;
     public $idHapus, $idnya;
 
 
@@ -39,6 +40,7 @@ class TambahRekamMedis extends Component
         $this->diagnosa = get_code('RM_TP');
         $this->kasus = get_code('CASE_TP');
         $this->form['datetime_record'] = date('Y-m-d');
+        $this->pasiencd = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pasien_cd;
         $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
         $this->dokter = TrxDokter::all()->toArray();
 

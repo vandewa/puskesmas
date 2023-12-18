@@ -108,6 +108,13 @@
                                         </div>
                                     </div>
                                     <div class="row mb-2">
+                                        <label for="" class="col-sm-3 col-form-label">Selengkapnya
+                                            </label>
+                                        <div class="col-md-9">
+                                            <input type="checkbox" class="form-control" wire:model.live='advance'>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Pemeriksaan
                                             Penunjang</label>
                                         <div class="col-md-9">
@@ -127,6 +134,12 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="">
+                                @if($advance)
+                                <livewire:component.kajian-lanjutan.general-component
+                                :medicalcd="$medicalcd" :pasiencd="$pasiencd">
+                                @endif
                             </div>
                         </div>
                         <div class="card-footer">
