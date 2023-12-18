@@ -75,7 +75,7 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Alamat</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control" rows="2" wire.model="form.address" id="alamat"></textarea>
+                                                <textarea class="form-control" rows="2" wire:model="form.address" id="alamat"></textarea>
                                                 @error('form.address')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
@@ -482,7 +482,7 @@
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Alamat</label>
                                             <div class="col-sm-9">
-                                                <textarea class="form-control" rows="2" wire.model="form.pj_address" id="alamat_keluarga"></textarea>
+                                                <textarea class="form-control" rows="2" wire:model="form.pj_address" id="alamat_keluarga"></textarea>
                                                 @error('form.pj_address')
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror

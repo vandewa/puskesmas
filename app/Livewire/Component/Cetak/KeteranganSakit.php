@@ -35,7 +35,7 @@ class KeteranganSakit extends Component
 
         $this->form['pasien_nm'] = $pasien->pasien_nm;
         $this->form['age'] = $pasien->age;
-        $this->form['address'] = $pasien->address ?? '-' . ', ' . $pasien->kelurahan->region_nm . ', ' . $pasien->kecamatan->region_nm . ', ' . $pasien->kabupaten->region_nm;
+        $this->form['address'] = $pasien->address . ', ' . $pasien->kelurahan->region_nm . ', ' . $pasien->kecamatan->region_nm . ', ' . $pasien->kabupaten->region_nm;
         $this->form['occupation_cd'] = $pasien->occupation_cd;
         $this->form['tgl_mulai'] = date('Y-m-d');
         $this->form['tgl_selesai'] = date('Y-m-d');

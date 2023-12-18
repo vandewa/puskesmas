@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Tindakan Medis</h1>
+                <h1 class="m-0">Kajian Awal</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Tindakan Medis</li>
+                    <li class="breadcrumb-item active">Kajian Awal</li>
                 </ol>
             </div>
         </div>
@@ -67,14 +67,6 @@
                                                                     aria-selected="false">Pertumbuhan dan
                                                                     Perkembangan</a>
                                                             </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
-                                                                    id="custom-tabs-three-odontogram-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-three-odontogram" role="tab"
-                                                                    aria-controls="custom-tabs-three-odontogram"
-                                                                    aria-selected="false">Odontogram</a>
-                                                            </li>
 
                                                         </ul>
                                                     </div>
@@ -104,11 +96,6 @@
                                                                 aria-labelledby="custom-tabs-three-pertumbuhan-tab">
                                                                 <livewire:component.kajian-awal.pertumbuhan-perkembangan.pertumbuhan
                                                                     :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
-                                                            </div>
-                                                            <div class="tab-pane fade" id="custom-tabs-three-odontogram"
-                                                                role="tabpanel"
-                                                                aria-labelledby="custom-tabs-three-odontogram-tab">
-                                                                Odontogram
                                                             </div>
                                                         </div>
                                                     </div>

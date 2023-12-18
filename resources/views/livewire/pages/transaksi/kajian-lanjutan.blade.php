@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Tindakan Medis</h1>
+                <h1 class="m-0">Kajian Lanjutan</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Tindakan Medis</li>
+                    <li class="breadcrumb-item active">Kajian Lanjutan</li>
                 </ol>
             </div>
         </div>

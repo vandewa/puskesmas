@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Rekam Medis</h1>
+                <h1 class="m-0">CPPT</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Rekam Medis</li>
+                    <li class="breadcrumb-item active">CPPT</li>
                 </ol>
             </div>
         </div>
@@ -102,16 +102,21 @@
                                                                             <div class="col-md-6">
                                                                                 <div class="row mb-3">
 
-                                                                                        <div class="col-md-3">Dokter</div>
-                                                                                        <div class="col-md-9">
-                                                                                            <select name="" class="form-control" id=""></select>
-                                                                                        </div>
+                                                                                    <div class="col-md-3">Dokter</div>
+                                                                                    <div class="col-md-9">
+                                                                                        <select name=""
+                                                                                            class="form-control"
+                                                                                            id=""></select>
+                                                                                    </div>
 
 
-                                                                                        <div class="col-md-3">Paramedis</div>
-                                                                                        <div class="col-md-9">
-                                                                                            <select name="" class="form-control" id=""></select>
-                                                                                        </div>
+                                                                                    <div class="col-md-3">Paramedis
+                                                                                    </div>
+                                                                                    <div class="col-md-9">
+                                                                                        <select name=""
+                                                                                            class="form-control"
+                                                                                            id=""></select>
+                                                                                    </div>
 
                                                                                 </div>
                                                                                 <div class="row mb-3">
@@ -121,7 +126,8 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row mb-3">
-                                                                                    <div class="col-md-3">Objective</div>
+                                                                                    <div class="col-md-3">Objective
+                                                                                    </div>
                                                                                     <div class="col-md-9">
                                                                                         <textarea name="" class="form-control" id="" rows="4"></textarea>
                                                                                     </div>
@@ -132,7 +138,8 @@
 
                                                                             <div class="col-md-6">
                                                                                 <div class="row mb-3">
-                                                                                    <div class="col-md-3">Assesment</div>
+                                                                                    <div class="col-md-3">Assesment
+                                                                                    </div>
                                                                                     <div class="col-md-9">
                                                                                         <textarea name="" class="form-control" id="" rows="4"></textarea>
                                                                                     </div>

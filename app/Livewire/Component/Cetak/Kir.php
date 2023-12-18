@@ -36,7 +36,7 @@ class Kir extends Component
 
         $this->form['pasien_nm'] = $pasien->pasien_nm;
         $this->form['age'] = $pasien->age;
-        $this->form['address'] = $pasien->address ?? '-' . ', ' . $pasien->kelurahan->region_nm . ', ' . $pasien->kecamatan->region_nm . ', ' . $pasien->kabupaten->region_nm;
+        $this->form['address'] = $pasien->address . ', ' . $pasien->kelurahan->region_nm . ', ' . $pasien->kecamatan->region_nm . ', ' . $pasien->kabupaten->region_nm;
         $this->form['weight'] = round($pasien->weight);
         $this->form['height'] = round($pasien->height);
         $this->form['blood_tp'] = $pasien->blood_tp;

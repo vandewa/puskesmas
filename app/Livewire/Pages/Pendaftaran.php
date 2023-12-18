@@ -216,6 +216,15 @@ class Pendaftaran extends Component
         if ($this->form['pasien_tp'] == 'PASIEN_TP_02') {
             $data->asuransi()->create($this->insurance);
         }
+
+        $this->js(<<<'JS'
+                Swal.fire({
+                title: "Berhasil!",
+                text: "Data berhasil disimpan!",
+                icon: "success"
+                });
+            JS);
+
         $this->redirect(route('pasien.index'));
     }
 
@@ -237,12 +246,20 @@ class Pendaftaran extends Component
                 'insurance_no' => $this->insurance['insurance_no'],
             ]);
         }
+
+        $this->js(<<<'JS'
+                Swal.fire({
+                title: "Berhasil!",
+                text: "Data berhasil disimpan!",
+                icon: "success"
+                });
+            JS);
+
         $this->redirect(route('pasien.index'));
     }
 
     public function render()
     {
-
         return view('livewire.pages.pendaftaran');
     }
 }

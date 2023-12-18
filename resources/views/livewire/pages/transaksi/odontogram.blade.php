@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Data Transaksi</h1>
+                <h1 class="m-0">Odontogram</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Transaksi</a></li>
-                    <li class="breadcrumb-item active">Data Transaksi</li>
+                    <li class="breadcrumb-item active">Odontogram</li>
                 </ol>
             </div>
         </div>
@@ -19,11 +19,7 @@
                     <div class="card card-dark card-tabs">
                         <livewire:component.link-transaksi :medicalcd="$medik->medical_cd" />
                         <div class="card-body">
-                            @if (Request::segment(3) == 'data-transaksi')
-                                <livewire:component.data-transaksi.data-transaksi :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd" />
-                            @else
-                                wawok
-                            @endif
+                            <livewire:component.odontogram-component :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd" />
                         </div>
                     </div>
                 </div>

@@ -58,6 +58,7 @@ use App\Livewire\Pages\Transaksi\CpptPage;
 use App\Livewire\Pages\Transaksi\DataTransaksi;
 use App\Livewire\Pages\Transaksi\KajianLanjutan;
 use App\Livewire\Pages\Transaksi\LaboratoriumTransaksi;
+use App\Livewire\Pages\Transaksi\Odontogram;
 use App\Livewire\Pages\Transaksi\RadiologiTransaksi;
 
 /*
@@ -155,6 +156,7 @@ Route::middleware([
             Route::get('radiologi/{id?}', RadiologiTransaksi::class)->name('radiologi');
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
             Route::get('cppt/{id?}', CpptPage::class)->name('cppt');
+            Route::get('odontogram/{id?}', Odontogram::class)->name('odontogram');
         });
 
         Route::group(['prefix' => 'rawat-inap', 'as' => 'rawat-inap.'], function () {
@@ -168,6 +170,8 @@ Route::middleware([
             Route::get('radiologi/{id?}', RadiologiTransaksi::class)->name('radiologi');
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
             Route::get('cppt/{id?}', CpptPage::class)->name('cppt');
+            Route::get('odontogram/{id?}', Odontogram::class)->name('odontogram');
+
         });
     });
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Component\KajianLanjutan;
+namespace App\Livewire\Component;
 
 use Livewire\Component;
 use App\Models\His\ComCode;
@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 use App\Models\His\TrxMedical;
 use App\Models\Fungsional as ModelsFungsional;
 
-class FungsionalComponent extends Component
+class OdontogramComponent extends Component
 {
     use WithPagination;
     public $tab = 1;
@@ -140,8 +140,7 @@ class FungsionalComponent extends Component
             ->orderBy('created_at', 'desc')->paginate(10);
         $riwayat = ModelsFungsional::with(['kognitif', 'penglihatan', 'pendengaran', 'aktifitas', 'berjalan'])->where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', '<>', $this->medik->medical_cd)
             ->orderBy('created_at', 'desc')->paginate(10);
-            
-        return view('livewire.component.kajian-lanjutan.fungsional-component', [
+        return view('livewire.component.odontogram-component', [
             'posts' => $data,
             'riwayat' => $riwayat,
             'listKognitif' => $this->ambilKognitif(),

@@ -119,7 +119,7 @@
                                     <th>Tgl Lahir</th>
                                     <th>Alamat</th>
                                     <th>No BPJS</th>
-                                    <th>No Identitas</th>
+                                    <th>KTP</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($posts as $item)
@@ -141,7 +141,7 @@
                                                 {{ $item->provinsi->region_nm }},
                                                 {{ $item->kabupaten->region_nm ?? '' }},
                                                 {{ $item->kecamatan->region_nm ?? '' }},
-                                                {{ $item->kelurahan->region_nm ?? '' }}
+                                                {{ $item->kelurahan->region_nm ?? '' }},
                                                 {{ $item->address }}
                                             </td>
                                             <td>{{ $item->asuransi->insurance_no ?? '-' }}</td>
