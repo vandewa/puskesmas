@@ -271,11 +271,12 @@ if (!function_exists('gen_no_resep')) {
         if ($terakhir) {
             $no = Date('y') . str_pad((int) substr($terakhir->resep_no, -8) + 1, 8, 0, STR_PAD_LEFT);
         }
-        return "RSP-".$no;
+        return "RSP-" . $no;
     }
 }
 
 if (!function_exists('gen_no_rm')) {
+
     function gen_no_rm()
     {
         $no = str_pad(1, 8, '0', STR_PAD_LEFT);
@@ -286,6 +287,8 @@ if (!function_exists('gen_no_rm')) {
         return $no;
     }
 }
+
+
 if (!function_exists('gen_no_group')) {
     function gen_no_group()
     {

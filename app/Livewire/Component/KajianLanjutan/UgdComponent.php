@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Component\KajianLanjutan;
 
+use Carbon\Carbon;
 use App\Models\Ugd;
 use Livewire\Component;
 use App\Models\His\ComCode;
@@ -38,6 +39,21 @@ class UgdComponent extends Component
     public function mount()
     {
         $this->medik = TrxMedical::find($this->medicalcd);
+
+        // /2023-12-18T09:37
+        //2023-12-18 09:38:15.931775 Asia/Jakarta
+
+        # Tanggal awal
+        $tanggal_awal = "2023-12-18 09:38:55.231693 Asia/Jakarta (+07:00)";
+
+        // Konversi string ke objek Carbon
+        $tanggal_objek = Carbon::createFromFormat('Y-m-d H:i:s.u eP', $tanggal_awal);
+
+        // Ubah format
+        $tanggal_hasil = $tanggal_objek->format('Y-m-d\TH:i');
+
+        $this->form['tiba'] = $tanggal_hasil;
+        $this->form['tgl_kejadian'] = $tanggal_hasil;
 
         $this->ambilAlasan();
         $this->ambilKasus();
@@ -116,6 +132,7 @@ class UgdComponent extends Component
     public function save()
     {
 
+        dd($this->form['tiba']);
         if ($this->edit) {
             Ugd::where('id', $this->edit)->update($this->form);
             $this->js(<<<'JS'
