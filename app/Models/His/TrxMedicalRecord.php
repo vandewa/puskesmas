@@ -2,6 +2,7 @@
 
 namespace App\Models\His;
 
+use App\Models\General;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
 
@@ -79,6 +80,11 @@ class TrxMedicalRecord extends Model implements Auditable
         if ($s) {
             return $query->where('paramedis_cd', 'ilike', "%$s%")->orWhere('paramedis_nm', 'ilike', "%$s%");
         }
+    }
+
+    public function rmGeneral()
+    {
+        return $this->hasOne(General::class, 'medical_record_seqno');
     }
 
 
