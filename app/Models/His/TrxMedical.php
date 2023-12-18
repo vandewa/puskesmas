@@ -278,5 +278,11 @@ class TrxMedical extends Model implements Auditable
         return $this->hasMany(TrxMedicalResep::class, 'medical_cd');
     }
 
+    public function scopeCariJenisRawat($query, $s) {
+        if ($s) {
+            return $query->where('medical_tp', $s);
+        }
+    }
+
 
 }
