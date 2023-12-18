@@ -9,7 +9,7 @@ use Livewire\WithPagination;
 use App\Models\His\TrxMedical;
 use App\Models\His\TrxMedicalResep;
 
-class ListFarmasi extends Component
+class ListFarmasiPengambilan extends Component
 {
     public $norm, $rawat, $tanggal, $dokter;
 
@@ -38,7 +38,7 @@ class ListFarmasi extends Component
             $a->where('proses_st', 0);
         })
         ->paginate(10);
-        return view('livewire.pages.farmasi.list-farmasi',[
+        return view('livewire.pages.farmasi.list-farmasi-pengambilan',[
             'posts' => $post,
             'jenisRawat' => $rawat,
             'listDokter' => $dokter
