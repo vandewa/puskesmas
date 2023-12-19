@@ -6,8 +6,9 @@
                 Data Diri
             </a>
         </li>
+        @if($ceklunas)
         <li
-            class="nav-item 
+            class="nav-item
             {{ Request::segment(2) == 'data-keluarga' ? 'active' : '' }}
             {{ Request::segment(2) == 'suami-istri' ? 'active' : '' }}
             {{ Request::segment(2) == 'anak' ? 'active' : '' }}
@@ -15,7 +16,7 @@
             {{ Request::segment(2) == 'saudara' ? 'active' : '' }}
             {{ Request::segment(2) == 'kenalan' ? 'active' : '' }}
             ">
-            <a class="nav-link 
+            <a class="nav-link
             {{ Request::segment(2) == 'data-keluarga' ? 'active' : '' }}
             {{ Request::segment(2) == 'suami-istri' ? 'active' : '' }}
             {{ Request::segment(2) == 'anak' ? 'active' : '' }}
@@ -33,7 +34,7 @@
                 Pribadi</a>
         </li>
         <li
-            class="nav-item 
+            class="nav-item
             {{ Request::segment(2) == 'riwayat-hidup' ? 'active' : '' }}
             {{ Request::segment(2) == 'sekolah' ? 'active' : '' }}
             {{ Request::segment(2) == 'kursus' ? 'active' : '' }}
@@ -42,7 +43,7 @@
             {{ Request::segment(2) == 'pengalaman-berorganisasi' ? 'active' : '' }}
             {{ Request::segment(2) == 'referensi' ? 'active' : '' }}
         ">
-            <a class="nav-link 
+            <a class="nav-link
             {{ Request::segment(2) == 'riwayat-hidup' ? 'active' : '' }}
             {{ Request::segment(2) == 'sekolah' ? 'active' : '' }}
             {{ Request::segment(2) == 'kursus' ? 'active' : '' }}
@@ -67,5 +68,6 @@
                 id="custom-tabs-one-tindakan-tab" href="{{ route('pendaftaran.keterangan-lain', $idnya) }}"
                 wire:navigate>Keterangan Lain</a>
         </li>
+        @endif
     </ul>
 </div>

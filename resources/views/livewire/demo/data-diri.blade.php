@@ -16,7 +16,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-dark card-tabs">
-                        <livewire:component.link-transaksi :idnya="$idnya">
+                        <livewire:component.link-transaksi :idnya="$idnya" :ceklunas="$ceklunas">
                             <div class="card-body">
                                 <div class="col-md-12">
                                     {{-- <div class="card card-success card-outline"> --}}

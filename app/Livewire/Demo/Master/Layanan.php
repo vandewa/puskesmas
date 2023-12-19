@@ -6,6 +6,7 @@ use App\Models\Demo\Layanan as DemoLayanan;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Models\Demo\Kategori;
 
 
 class Layanan extends Component
@@ -18,6 +19,7 @@ class Layanan extends Component
 
     public $form = [
         'name' => null,
+        'kategori_id' => null,
         'description' => null,
         'harga' => null,
         'path' => null,
@@ -30,7 +32,7 @@ class Layanan extends Component
 
     public function getEdit($a)
     {
-        $this->form = DemoLayanan::find($a)->only(['name', 'description', 'harga', 'path']);
+        $this->form = DemoLayanan::find($a)->only(['name', 'description', 'harga', 'path', 'kategori_id']);
         $this->idHapus = $a;
         $this->edit = true;
     }
@@ -118,10 +120,13 @@ class Layanan extends Component
 
     public function render()
     {
-        $data = DemoLayanan::paginate(10);
+        $data = DemoLayanan::with(['kategori'])->paginate(10);
+        $kategori = Kategori::all();
+
 
         return view('livewire.demo.master.layanan', [
             'post' => $data,
+            'kategori' => $kategori
         ]);
     }
 }

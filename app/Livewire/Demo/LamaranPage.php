@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Demo;
 
+use App\Models\Demo\Kategori;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Demo\Lamaran;
@@ -25,6 +26,8 @@ class LamaranPage extends Component
     public $pilihkelas;
     public $termin;
     public $cek;
+    public $kategori_id;
+    public $kategori;
 
 
 
@@ -44,14 +47,19 @@ class LamaranPage extends Component
             redirect()->route('admin.user');
         }
 
+        $this->kategori = Kategori::all();
 
-        $this->layanan = Layanan::all();
+
+
         $this->cek = Lamaran::where('user_id', auth()->user()->id)->where('status', 'Dalam Proses')->first();
     }
 
     public function updated($property)
     {
         // $property: The name of the current property that was updated
+        if ($property === 'kategori_id') {
+            $this->layanan = Layanan::where('kategori_id', $this->kategori_id)->get();
+        }
 
         if ($property === 'layanan_id') {
 
@@ -185,7 +193,7 @@ class LamaranPage extends Component
                 'tanggal_tagihan' => now(),
                 'user_id' => auth()->user()->id,
                 'layanan_id' => $this->layanan_id,
-                'nama_tagihan' => "Pembayaran $this->detailLayanan->name  termin 1",
+                'nama_tagihan' => "Pembayaran ".$this->detailLayanan->name."  termin 1",
                 'status' => 'Belum Lunas',
                 'jumlah' => $this->detailLayanan->harga / 2,
                 'pembayaran_tp' => $this->metode_bayar,
@@ -196,7 +204,7 @@ class LamaranPage extends Component
                 'tanggal_tagihan' => now(),
                 'user_id' => auth()->user()->id,
                 'layanan_id' => $this->layanan_id,
-                'nama_tagihan' => "Pembayaran $this->detailLayanan->name  termin 2",
+                'nama_tagihan' => "Pembayaran". $this->detailLayanan->name."  termin 2",
                 'status' => 'Belum Lunas',
                 'jumlah' => $this->detailLayanan->harga / 2,
                 'pembayaran_tp' => $this->metode_bayar,
@@ -218,11 +226,13 @@ class LamaranPage extends Component
     }
     public function render()
     {
+
         $data = Lamaran::cari($this->cari)->with(['tahapan', 'user', 'pembayaran'])
             ->where('user_id', auth()->user()->id)
             ->paginate(10);
         return view('livewire.demo.lamaran-page', [
-            'posts' => $data
+            'posts' => $data,
+
         ]);
     }
 }

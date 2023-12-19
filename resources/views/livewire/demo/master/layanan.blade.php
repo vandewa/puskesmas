@@ -48,6 +48,23 @@
                                                                             </div>
                                                                             <div class="row mb-2">
                                                                                 <label for=""
+                                                                                    class="col-sm-3 col-form-label">Kategori</label>
+                                                                                <div class="col-md-9">
+                                                                                  <select name="" class="form-control" id="" wire:model='form.kategori_id'>
+                                                                                    <option value="">Pilih Kategori</option>
+                                                                                    @foreach ($kategori as $item)
+                                                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+
+                                                                                    @endforeach
+                                                                                  </select>
+                                                                                    @error('form.kategori_id')
+                                                                                        <span
+                                                                                            class="form-text text-danger">{{ $message }}</span>
+                                                                                    @enderror
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mb-2">
+                                                                                <label for=""
                                                                                     class="col-sm-3 col-form-label">Deskripsi</label>
                                                                                 <div class="col-md-9">
                                                                                     <textarea rows="2" class="form-control" wire:model="form.description"></textarea>
@@ -125,6 +142,7 @@
                                                                     <table class="table">
                                                                         <thead>
                                                                             <th>Nama</th>
+                                                                            <th>Kategori</th>
                                                                             <th>Deskripsi</th>
                                                                             <th>Harga</th>
                                                                             <th>Action</th>
@@ -133,6 +151,8 @@
                                                                             @foreach ($post as $item)
                                                                                 <tr wire:key='{{ $item->id }}'>
                                                                                     <td> {{ $item->name ?? '-' }}
+                                                                                    </td>
+                                                                                    <td> {{ $item->kategori->nama ?? '-' }}
                                                                                     </td>
                                                                                     <td> {{ $item->description ?? '-' }}
                                                                                     </td>

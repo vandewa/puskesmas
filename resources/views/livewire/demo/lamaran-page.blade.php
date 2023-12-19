@@ -29,10 +29,21 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label for="exampleInputEmail1">Kategori</label>
+                                        <select name="" class="form-control" id="" wire:model.live='kategori_id'>
+                                            <option value="">Pilih Kategori</option>
+                                            @foreach ($kategori??[] as $item)
+                                            <option value="{{ $item->id }}">{{ $item->nama }}</option>
+
+                                            @endforeach
+                                          </select>
+
+                                    </div>
+                                    <div class="form-group">
                                         <label for="exampleInputEmail1">Nama Pelatihan</label>
                                           <select name="" class="form-control" id="" wire:model.live='layanan_id'>
                                               <option value="">Pilih Jenis Pelatihan</option>
-                                             @foreach ($layanan as $a)
+                                             @foreach ($layanan??[] as $a)
                                              <option value="{{ $a->id }}">{{ $a->name }}</option>
                                              @endforeach
                                           </select>
@@ -211,8 +222,8 @@
                                             </td>
                                             <td>{{ $item->tahapan->name ?? '-' }}</td>
                                             <td>
-                                                @foreach ($item->pembayaran as $a )
-                                                <li>{{ $a->nama_tagihan }} | {{ $a->jumlah }} | {{ $a->status }}</li>
+                                                @foreach ($item->pembayaran as $i )
+                                                <li>{{ $i->nama_tagihan }} | {{ $i->jumlah }} | {{ $i->status }}</li>
                                                 @endforeach
                                             </td>
                                             <td>{{ $item->keterangan }}</td>

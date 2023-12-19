@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('layanans', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('kategori_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('path')->nullable();

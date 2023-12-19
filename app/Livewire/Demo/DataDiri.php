@@ -3,6 +3,7 @@
 namespace App\Livewire\Demo;
 
 use App\Models\Demo\DataDiri as DemoDataDiri;
+use App\Models\Demo\Tagihan;
 use App\Models\His\ComCode;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -32,6 +33,7 @@ class DataDiri extends Component
     ];
 
     public $idnya;
+    public $ceklunas = false;
 
 
     public function mount($id = '')
@@ -50,6 +52,12 @@ class DataDiri extends Component
         $this->ambilJenisKelamin();
         $this->ambilStatus();
         $this->idnya = $id;
+
+        $cek = Tagihan::where('user_id', auth()->user()->id)->where('status', 'Lunas')->first();
+
+        if($cek) {
+            $this->ceklunas = true;
+        }
     }
 
     public function ambilJenisKelamin()
@@ -72,6 +80,26 @@ class DataDiri extends Component
     public function save()
     {
         // dd($this->form);
+
+        $this->validate([
+            'form.nama' => 'required',
+            'form.user_id' => 'required',
+            'form.tempat_lahir' => 'required',
+            'form.tgl_lahir' => 'required',
+            'form.marital_tp' => 'required',
+            'form.sex_tp' => 'required',
+            'form.ktp' => 'required',
+            'form.telepon' => 'required',
+            'form.telepon_wali' => 'required',
+            'form.blod_tp' => 'required',
+            'form.ukuran_sepatu' => 'required',
+            'form.ukuran_baju' => 'required',
+            'form.alamat_sekarang' => 'required',
+            'form.alamat_wali' => 'required',
+            'form.education_tp' => 'required',
+            'form.keterampilan' => 'required',
+            'form.agama' => 'required',
+        ]);
 
         DemoDataDiri::where('user_id', auth()->user()->id)->update(Arr::except($this->form, ['created_at', 'updated_at']));
 
