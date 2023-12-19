@@ -115,10 +115,10 @@
                                         <tr wire:key='{{ $item->dr_cd }}'>
 
                                             <td>{{ $loop->index + $post->firstItem() }}</td>
-                                            <td>{{ $item->dr_cd }}</td>
-                                            <td>{{ $item->dr_nm }}</td>
-                                            <td>{{ $item->nip }}</td>
-                                            <td>{{ $item->spesialis->spesialis_nm ?? '' }}</td>
+                                            <td>{{ $item->dr_cd ?? '-' }}</td>
+                                            <td>{{ $item->dr_nm ?? '-' }}</td>
+                                            <td>{{ $item->nip ?? '-' }}</td>
+                                            <td>{{ $item->spesialis->spesialis_nm ?? '-' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->dr_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

@@ -22,7 +22,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @if ($form['riwayat_kb_tp'] != null)
+                                @if ($form != null)
                                     @if ($form['riwayat_kb_tp'] == 'RIWAYAT_KB_TP_09')
                                         <div class="row mb-2">
                                             <label for="inputEmail3" class="col-sm-4 col-form-label">Keterangan Riwayat
