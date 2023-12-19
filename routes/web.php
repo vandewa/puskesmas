@@ -9,6 +9,7 @@ use App\Livewire\Demo\DataPribadi;
 use App\Livewire\Demo\LamaranPage;
 use App\Livewire\Demo\Admin\Magang;
 use App\Livewire\Demo\ListTagihan;
+use App\Livewire\Demo\Master\Kategori;
 use App\Livewire\Demo\TampilanPengguna;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Demo\Admin\McuPage;
@@ -130,13 +131,11 @@ Route::middleware([
     });
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
-
-      ;
         Route::get('layanan', Layanan::class)->name('layanan');
         Route::get('kelas', MasterKelas::class)->name('kelas');
-
-
+        Route::get('kategori', Kategori::class)->name('kategori');
     });
+
 
     Route::group(['prefix' => 'transaksi', 'as' => 'transaksi.'], function () {
         Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {

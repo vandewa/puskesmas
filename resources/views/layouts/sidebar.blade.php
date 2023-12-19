@@ -144,11 +144,13 @@
                                   class="nav-item
                                     {{ Request::segment(2) == 'layanan' ? 'menu-is-opening menu-open' : '' }}
                                     {{ Request::segment(2) == 'kelas' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'kategori' ? 'menu-is-opening menu-open' : '' }}
                                 ">
                                   <a href="#"
                                       class="nav-link
                                     {{ Request::segment(2) == 'layanan' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'kelas' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'kategori' ? 'active' : '' }}
                                     ">
                                       <i class="nav-icon fas fa-book"></i>
                                       <p>
@@ -157,6 +159,13 @@
                                       </p>
                                   </a>
                                   <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.kategori') }}"
+                                              class="nav-link {{ Request::segment(2) == 'kategori' ? 'active' : '' }}">
+                                              <i class="ml-2 far fa-circle nav-icon"></i>
+                                              <p>Kategori</p>
+                                          </a>
+                                      </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.layanan') }}"
                                               class="nav-link {{ Request::segment(2) == 'layanan' ? 'active' : '' }}">
