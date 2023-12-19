@@ -44,6 +44,7 @@ use App\Livewire\Demo\DataKeluarga\DataKeluarga;
 use App\Livewire\Demo\RiwayatHidup\RiwayatHidup;
 use App\Livewire\Demo\DataKeluarga\ListTransaksi;
 use App\Livewire\Demo\KeteranganLain;
+use App\Livewire\Demo\Keuangan\TransaksiKeuangan;
 use App\Livewire\Demo\Master\Kelas as MasterKelas;
 use App\Livewire\Demo\Master\Layanan;
 use App\Livewire\Demo\Master\LayananPage;
@@ -105,6 +106,7 @@ Route::middleware([
         Route::group(['prefix' => 'master'], function () {
             Route::get('layanan', LayananPage::class)->name('layanan');
         });
+        Route::get('keuangan', TransaksiKeuangan::class)->name('keuangan');
         Route::get('aktivasi-user', AktivasiUserPage::class)->name('aktivasi-user');
         Route::get('seleksi-berkas', SeleksiBerkas::class)->name('seleksi-berkas');
         Route::get('tes', Tes::class)->name('tes');

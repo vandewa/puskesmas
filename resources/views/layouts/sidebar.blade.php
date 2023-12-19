@@ -217,9 +217,9 @@
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="../examples/e-commerce.html" class="nav-link">
+                                          <a href="{{ route('admin.keuangan') }}" class="nav-link  {{ Request::segment(2) == 'keuangan' ? 'active' : '' }}">
                                               <i class="ml-2 far fa-circle nav-icon"></i>
-                                              <p>Terbayar</p>
+                                              <p>Keuangan</p>
                                           </a>
                                       </li>
 
