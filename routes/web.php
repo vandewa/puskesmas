@@ -193,6 +193,7 @@ Route::middleware([
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
         Route::get('print-kwitansi/{id?}', [HelperController::class, 'cetakInvoice'])->name('cetak-invoice');
         Route::get('print-label-obat/{id?}', [HelperController::class, 'cetakLabelObat'])->name('cetak-label-obat');
+        Route::get('print-copy-resep/{id?}', [HelperController::class, 'cetakCopyResep'])->name('cetak-copy-resep');
     });
 
     Route::group(['prefix' => 'keuangan', 'as' => 'keuangan.'], function () {
