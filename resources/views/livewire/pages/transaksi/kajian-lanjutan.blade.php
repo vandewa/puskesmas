@@ -29,17 +29,9 @@
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-three-transaksi-tab"
                                                             role="tablist">
+
                                                             <li class="nav-item">
                                                                 <a class="nav-link active"
-                                                                    id="custom-tabs-three-permintaan-lab-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-three-permintaan-tindakan"
-                                                                    role="tab"
-                                                                    aria-controls="custom-tabs-three-permintaan-tindakan"
-                                                                    aria-selected="true">Pemeriksaan General</a>
-                                                            </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
                                                                     id="custom-tabs-three-proses-lab-tab"
                                                                     data-toggle="pill"
                                                                     href="#custom-tabs-three-tindakan-diproses"
@@ -83,14 +75,8 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="tab-content" id="custom-tabs-three-tabContent">
+
                                                             <div class="tab-pane fade show active"
-                                                                id="custom-tabs-three-permintaan-tindakan"
-                                                                role="tabpanel"
-                                                                aria-labelledby="custom-tabs-three-permintaan-tindakan-tab">
-                                                                <livewire:component.kajian-lanjutan.general-component
-                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
-                                                            </div>
-                                                            <div class="tab-pane fade"
                                                                 id="custom-tabs-three-tindakan-diproses" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-tindakan-diproses-tab">
                                                                 <livewire:component.kajian-lanjutan.tanda-vital

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HelperController;
 use App\Livewire\Pages\Farmasi\ListFarmasi;
+use App\Livewire\Pages\Farmasi\ListPengambilanFarmasi;
 use App\Livewire\Pages\Farmasi\ProsesFarmasi;
 use App\Livewire\Pages\Keuangan\ProsesPembayaran;
 use App\Livewire\Pages\Pendaftaran;
@@ -180,6 +181,7 @@ Route::middleware([
     Route::group(['prefix' => 'farmasi', 'as' => 'farmasi.'], function () {
         Route::get('list', ListFarmasi::class)->name('list');
         Route::get('proses/{id?}', ProsesFarmasi::class)->name('proses');
+        Route::get('pengambilan', ListPengambilanFarmasi::class)->name('pengambilan');
     });
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {

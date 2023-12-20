@@ -19,9 +19,11 @@ class ListPasienKeuangan extends Component
     public $listDokter;
     public $dokter;
     public $url = 'keuangan.proses-pembayaran.rawat-jalan.proses';
+    public $segment;
 
     public function mount($url = "")
     {
+        $this->segment=  \Request::segment(3);
         $this->poli = TrxUnitMedis::where('medicalunit_tp', 'MEDICALUNIT_TP_1')->get()->toArray();
         $this->tanggal = date('Y-m-d');
         $this->listDokter = TrxDokter::all()->toArray();

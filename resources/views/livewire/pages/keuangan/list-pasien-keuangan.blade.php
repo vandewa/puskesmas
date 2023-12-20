@@ -60,7 +60,7 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            @if(Request::segment(3) == 'rawat-jalan')
+                            @if($segment == 'rawat-jalan')
                             <livewire:component.table-pasien :rm="$rm" :poliklinik="$poliklinik" :tanggal="$tanggal"
                                 :url="$url">
                                 @else
