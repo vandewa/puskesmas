@@ -83,7 +83,7 @@
                                                 </button>
                                                 <div class="dropdown-menu" role="menu" style="">
                                                   <a class="dropdown-item" target="_blank" href="{{ route('helper.cetak-label-obat', $item->medical_resep_seqno) }}">Cetak Label</a>
-                                                  <a class="dropdown-item" href="{{ route('helper.cetak-copy-resep', $item->medical_resep_seqno) }}" targer="_blank">Copy Resep</a>
+                                                  <a class="dropdown-item" href="{{ route('helper.cetak-copy-resep', $item->medical_resep_seqno) }}" target="_blank">Copy Resep</a>
                                                   @if(!$item->proses_st)
                                                     <button class="dropdown-item" wire:click='selesai({{ $item->medical_resep_seqno  }})'>Selesai</button>
                                                   @endif
