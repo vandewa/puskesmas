@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HelperController;
+use App\Livewire\Pages\Admin\Permission;
+use App\Livewire\Pages\Admin\Role;
 use App\Livewire\Pages\Farmasi\ListFarmasi;
 use App\Livewire\Pages\Farmasi\ListPengambilanFarmasi;
 use App\Livewire\Pages\Farmasi\ProsesFarmasi;
@@ -131,6 +133,8 @@ Route::middleware([
         Route::get('kelompok', Kelompok::class)->name('kelompok');
         Route::get('golongan', Golongan::class)->name('golongan');
         Route::get('list-tipe', ListTipe::class)->name('tipe-inventori.index');
+        Route::get('permission', Permission::class)->name('permission');
+        Route::get('role', Role::class)->name('role');
 
         Route::group(['prefix' => 'tarif', 'as' => 'tarif.'], function () {
             Route::get('general', General::class)->name('general');
