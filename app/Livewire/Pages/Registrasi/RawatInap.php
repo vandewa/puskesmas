@@ -21,7 +21,7 @@ class RawatInap extends Component
 
     use WithPagination;
 
-    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang;
+    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang, $pulang;
     public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
@@ -35,6 +35,7 @@ class RawatInap extends Component
         'jadwal_seqno' => null,
         'ruang_cd' => null,
         "visit_tp" => 'VISIT_TP_00',
+        "pulang_st" => null,
     ];
 
     public $ruangan = [
@@ -59,6 +60,7 @@ class RawatInap extends Component
         $this->jenisPasien = get_code('PASIEN_TP');
         $this->kelas = TrxKelas::all()->toArray();
         $this->ruang = TrxKamar::all()->toArray();
+        $this->pulang = get_code('OUT_TP');
         if ($id != "") {
             $this->pilihOrang($id);
         }
@@ -78,7 +80,6 @@ class RawatInap extends Component
     #[On('pilih-diagnosa')]
     public function pilihDiagnosa($id = "")
     {
-
         $this->diagnosa = TrxIcd::find($id);
     }
 

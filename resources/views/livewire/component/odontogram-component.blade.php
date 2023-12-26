@@ -14,7 +14,7 @@
                             <div class="row mb-2">
                                 <label for="" class="col-sm-3 col-form-label">Elemen Gigi</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" wire:model.defer='form.kognitif_tp'>
+                                    <select class="form-control" wire:model.defer='form.elemen_gigi'>
                                         <option value="">Pilih Elemen Gigi</option>
                                         <option value="11">11</option>
                                         <option value="12">12</option>
@@ -78,21 +78,27 @@
                             <div class="row mb-2">
                                 <label for="" class="col-sm-3 col-form-label">Diagnosa</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" wire:model.defer='form.penglihatan_tp'>
-                                        <option value="">Pilih Jenis Diagnosa</option>
-                                    </select>
-                                    @error('form.penglihatan_tp')
-                                        <span class="form-text text-danger">{{ $message }}</span>
-                                    @enderror
+                                    <div class="input-group ">
+                                        <p class="form-control">{{ $icd->icd_nm ?? '' }}
+                                        </p>
+                                        <span class="input-group-append">
+                                            <button type="button" class="btn btn-info btn-flat"
+                                                wire:click="$dispatch('show-modal-diagnosa')">Cari</button>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row mb-2">
                                 <label for="" class="col-sm-3 col-form-label">Prosedur</label>
                                 <div class="col-md-9">
-                                    <select class="form-control" wire:model.defer='form.pendengaran_tp'>
-                                        <option value="">Pilih Prosedur</option>
+                                    <select class="form-control" wire:model.live='form.prosedur_tp'>
+                                        <option value="">Pilih Pelayanan</option>
+                                        @foreach ($listProsedur ?? [] as $item)
+                                            <option value="{{ $item['com_cd'] }}">
+                                                {{ $item['code_nm'] }}</option>
+                                        @endforeach
                                     </select>
-                                    @error('form.pendengaran_tp')
+                                    @error('form.prosedur_tp')
                                         <span class="form-text text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -133,9 +139,9 @@
                                         <tbody>
                                             @foreach ($posts as $item)
                                                 <tr @if ($this->edit == $item->id) class="bg-secondary" @endif>
-                                                    <td>{{ $item->kognitif->code_nm ?? '' }}</td>
-                                                    <td>{{ $item->penglihatan->code_nm ?? '' }}</td>
-                                                    <td>{{ $item->pendengaran->code_nm ?? '' }}</td>
+                                                    <td>{{ $item->elemen_gigi ?? '' }}</td>
+                                                    <td>{{ $item->diagnosa->icd_nm ?? '' }}</td>
+                                                    <td>{{ $item->prosedur->code_nm ?? '' }}</td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-danger"
                                                             wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
@@ -158,9 +164,9 @@
                                         <tbody>
                                             @foreach ($riwayat as $item)
                                                 <tr @if ($this->edit == $item->id) class="bg-secondary" @endif>
-                                                    <td>{{ $item->kognitif->code_nm ?? '' }}</td>
-                                                    <td>{{ $item->penglihatan->code_nm ?? '' }}</td>
-                                                    <td>{{ $item->pendengaran->code_nm ?? '' }}</td>
+                                                    <td>{{ $item->elemen_gigi ?? '' }}</td>
+                                                    <td>{{ $item->diagnosa->icd_nm ?? '' }}</td>
+                                                    <td>{{ $item->prosedur->code_nm ?? '' }}</td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-danger"
                                                             wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
@@ -181,4 +187,5 @@
             </div>
         </form>
     </div>
+    <livewire:component.modal-diagnosa wire:key='modal-diagnosa'>
 </div>

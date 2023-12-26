@@ -7,7 +7,9 @@ use App\Models\His\ComCode;
 use Illuminate\Support\Arr;
 use Livewire\WithPagination;
 use App\Models\His\TrxMedical;
-use App\Models\Fungsional as ModelsFungsional;
+use App\Models\His\TrxIcd;
+use App\Models\Odontogram;
+use Livewire\Attributes\On;
 
 class OdontogramComponent extends Component
 {
@@ -16,56 +18,39 @@ class OdontogramComponent extends Component
     public $edit;
     public $delete;
     public $form = [
-        'kognitif_tp' => null,
-        'penglihatan_tp' => null,
-        'pendengaran_tp' => null,
-        'aktifitas_tp' => null,
-        'berjalan_tp' => null,
+        'elemen_gigi' => null,
+        'prosedur_tp' => null,
+        'icd_cd' => null,
     ];
 
     public $medicalcd;
     public $medik;
+    public $icd;
 
     public function mount()
     {
         $this->medik = TrxMedical::find($this->medicalcd);
 
-        $this->ambilKognitif();
-        $this->ambilPenglihatan();
-        $this->ambilPendengaran();
-        $this->ambilAktifitas();
-        $this->ambilBerjalan();
+        $this->ambilProsedur();
     }
 
-    public function ambilKognitif()
+    public function ambilProsedur()
     {
-        return ComCode::where('code_group', 'KOGNITIF_TP')->get()->toArray();
+        return ComCode::where('code_group', 'PROSEDUR_TP')->get()->toArray();
     }
-    public function ambilPenglihatan()
+
+    #[On('pilih-diagnosa')]
+    public function pilihDiagnosa($id = "")
     {
-        return ComCode::where('code_group', 'PENGLIHATAN_TP')->get()->toArray();
-    }
-    public function ambilPendengaran()
-    {
-        return ComCode::where('code_group', 'PENDENGARAN_TP')->get()->toArray();
-    }
-    public function ambilAktifitas()
-    {
-        return ComCode::where('code_group', 'AKTIFITAS_TP')->get()->toArray();
-    }
-    public function ambilBerjalan()
-    {
-        return ComCode::where('code_group', 'BERJALAN_TP')->get()->toArray();
+        $this->icd = TrxIcd::find($id);
+        $this->form['icd_cd'] = $this->icd->icd_cd;
     }
 
     public function clear()
     {
         $this->form = [
-            'kognitif_tp' => null,
-            'penglihatan_tp' => null,
-            'pendengaran_tp' => null,
-            'aktifitas_tp' => null,
-            'berjalan_tp' => null,
+            'elemen_gigi' => null,
+            'prosedur_tp' => null,
         ];
 
         $this->edit = null;
@@ -94,22 +79,23 @@ class OdontogramComponent extends Component
 
     public function hapus()
     {
-        // dd("as");
-        ModelsFungsional::where('id', $this->delete)->delete();
+        Odontogram::where('id', $this->delete)->delete();
     }
 
     public function rubah($id)
     {
         $this->edit = $id;
-        $data = ModelsFungsional::find($id);
+        $data = Odontogram::find($id);
         $this->form = Arr::except($data->toArray(), ['created_at', 'updated_at', 'id']);
+        $this->pilihDiagnosa($data->icd_cd);
+
     }
 
     public function save()
     {
 
         if ($this->edit) {
-            ModelsFungsional::where('id', $this->edit)->update($this->form);
+            Odontogram::where('id', $this->edit)->update($this->form);
             $this->js(<<<'JS'
                 Swal.fire({
                 title: "Berhasil!",
@@ -118,7 +104,7 @@ class OdontogramComponent extends Component
                 });
             JS);
         } else {
-            ModelsFungsional::create($this->form +
+            Odontogram::create($this->form +
                 ['medical_cd' => $this->medik->medical_cd, 'pasien_cd' => $this->medik->pasien_cd]);
             $this->js(<<<'JS'
                 Swal.fire({
@@ -136,18 +122,13 @@ class OdontogramComponent extends Component
     }
     public function render()
     {
-        $data = ModelsFungsional::with(['kognitif', 'penglihatan', 'pendengaran', 'aktifitas', 'berjalan'])->where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', $this->medik->medical_cd)
-            ->orderBy('created_at', 'desc')->paginate(10);
-        $riwayat = ModelsFungsional::with(['kognitif', 'penglihatan', 'pendengaran', 'aktifitas', 'berjalan'])->where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', '<>', $this->medik->medical_cd)
-            ->orderBy('created_at', 'desc')->paginate(10);
+        $data = Odontogram::with(['diagnosa'])->where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', $this->medik->medical_cd)->orderBy('created_at', 'desc')->paginate(10);
+        $riwayat = Odontogram::with(['diagnosa'])->where('pasien_cd', $this->medik->pasien_cd)->where('medical_cd', '<>', $this->medik->medical_cd)->orderBy('created_at', 'desc')->paginate(10);
+
         return view('livewire.component.odontogram-component', [
             'posts' => $data,
             'riwayat' => $riwayat,
-            'listKognitif' => $this->ambilKognitif(),
-            'listPenglihatan' => $this->ambilPenglihatan(),
-            'listPendengaran' => $this->ambilPendengaran(),
-            'listAktifitas' => $this->ambilAktifitas(),
-            'listBerjalan' => $this->ambilBerjalan(),
+            'listProsedur' => $this->ambilProsedur(),
         ]);
     }
 }

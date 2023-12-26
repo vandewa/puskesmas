@@ -42,11 +42,8 @@ class KesehatanReproduksi extends Component
         $this->ambilRiwayatKehamilan();
     }
 
-    // #[On('pilih-riwayat-kehamilan-persalinan')]
-    // public function pilihRiwayatKehamilanPersalinan($id = "")
-    // {
-    //     dd('asu');
-    // }
+    // #[On('pilih-riwayat')]
+
 
     public function updated($property)
     {

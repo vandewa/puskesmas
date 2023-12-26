@@ -28,7 +28,14 @@ class ModalRiwayatKehamilanPersalinan extends Component
     ];
 
 
+    // public function pilih($id)
+    // {
+    //     $this->dispatch('pilih-riwayat', $id);
+    //     $this->showModal();
+    // }
+
     #[On('show-modal-riwayat-kehamilan-persalinan')]
+
     public function showModal()
     {
         $this->modal = !$this->modal;
@@ -46,7 +53,8 @@ class ModalRiwayatKehamilanPersalinan extends Component
           })
         JS);
 
-        $this->modal = !$this->modal;
+        $this->dispatch('pilih-riwayat');
+        $this->showModal();
 
     }
 

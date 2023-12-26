@@ -495,6 +495,22 @@ class ComCodeSeeder extends Seeder
         $code = Code::create(["com_cd" => "KESADARAN_TP_03", "code_nm" => "Somnolen", "code_group" => "KESADARAN_TP"]);
         $code = Code::create(["com_cd" => "KESADARAN_TP_04", "code_nm" => "Sopor", "code_group" => "KESADARAN_TP"]);
         $code = Code::create(["com_cd" => "KESADARAN_TP_05", "code_nm" => "Koma", "code_group" => "KESADARAN_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_01", "code_nm" => "23.09 - Extraction of other tooth", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_02", "code_nm" => "23.11 - Removal of residual root", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_03", "code_nm" => "23.19 - Other surgical extraction of tooth", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_04", "code_nm" => "23.2 - Restoration of tooth by filling", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_05", "code_nm" => "23.3 - Restoration of tooth by inlay", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_06", "code_nm" => "23.41 - Application of crown", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_07", "code_nm" => "23.49 - Other dental restoration", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_08", "code_nm" => "23.70 - Root canal, not otherwise specified", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_09", "code_nm" => "24.0 - Incision of gum or alveolar bone", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_10", "code_nm" => "24.7 - Application of orthodontic appliance", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_11", "code_nm" => "24.99 - Other dental operations", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_12", "code_nm" => "87.11 - Full-mouth x-ray of teeth", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_13", "code_nm" => "87.12 - Other dental x-ray", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_14", "code_nm" => "89.31 - Dental examination", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_15", "code_nm" => "96.54 - Dental scaling, polishing, and debridement", "code_group" => "PROSEDUR_TP"]);
+        $code = Code::create(["com_cd" => "PROSEDUR_TP_16", "code_nm" => "99.97 - Fitting of denture", "code_group" => "PROSEDUR_TP"]);
 
     }
 }
