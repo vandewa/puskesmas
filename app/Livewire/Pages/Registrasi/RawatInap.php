@@ -21,7 +21,7 @@ class RawatInap extends Component
 
     use WithPagination;
 
-    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang, $medicalcd;
+    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang, $medicalcd, $pulang;
     public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
