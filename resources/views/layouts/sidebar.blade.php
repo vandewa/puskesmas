@@ -135,8 +135,13 @@
                                       </li>
                                       <li class="nav-item">
                                           <a href="{{ route('master.role.index') }}"
-                                              class="nav-link {{ Request::segment(2) == 'role-index' ? 'active' : '' }}">
+                                              class="nav-link 
+                                              {{ Request::segment(2) == 'role-index' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'role' ? 'active' : '' }}
+                                              ">
                                               @if (Request::segment(2) == 'role-index')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @elseif(Request::segment(2) == 'role')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
                                               @else
                                                   <i class="far fa-circle nav-icon ml-3"></i>
