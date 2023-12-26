@@ -103,8 +103,7 @@
 
                                                                 <table id="tarif-semua"
                                                                     class="table table-bordered dataTable no-footer"
-                                                                    width="100%" role="grid"
-                                                                    style="width: 100%;">
+                                                                    width="100%" role="grid" style="width: 100%;">
                                                                     <thead>
                                                                         <tr role="row">
                                                                             <th class="sorting" tabindex="0"
@@ -155,22 +154,23 @@
                                                                     <tbody>
 
                                                                         @foreach ($posts as $item)
-                                                                        <tr role="row" class="odd">
-                                                                            <td>{{ $item->datetime_trx }}</td>
-                                                                            <td>{{ $item->data_nm }}</td>
-                                                                            <td>{{ $item->quantity }}</td>
-                                                                            <td>{{ $item->item_price }}</td>
-                                                                            <td>{{ $item->amount }}</td>
-                                                                            <td>{{ $item->account->account_nm??"-" }}</td>
-                                                                            <td><button type="button"
-                                                                                    onclick="ubah(`629`)"
-                                                                                    class="btn btn-success btn-flat btn-sm"
-                                                                                    data-toggle="tooltip"
-                                                                                    data-placement="left"
-                                                                                    title="Diskon"><i
-                                                                                        class="fas fa-money-check-alt"></i></button>
-                                                                            </td>
-                                                                        </tr>
+                                                                            <tr role="row" class="odd">
+                                                                                <td>{{ $item->datetime_trx }}</td>
+                                                                                <td>{{ $item->data_nm }}</td>
+                                                                                <td>{{ $item->quantity }}</td>
+                                                                                <td>{{ $item->item_price }}</td>
+                                                                                <td>{{ $item->amount }}</td>
+                                                                                <td>{{ $item->account->account_nm ?? '-' }}
+                                                                                </td>
+                                                                                <td><button type="button"
+                                                                                        onclick="ubah(`629`)"
+                                                                                        class="btn btn-success btn-flat btn-sm"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="left"
+                                                                                        title="Diskon"><i
+                                                                                            class="fas fa-money-check-alt"></i></button>
+                                                                                </td>
+                                                                            </tr>
                                                                         @endforeach
 
                                                                     </tbody>
@@ -178,8 +178,12 @@
 
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <button class="btn btn-primary" wire:click='confirmHitung'>Hitung Biaya</button>
-                                                                        <button class="btn btn-warning" wire:click='tampilkanPembayaran' >Proses Pembayaran</button>
+                                                                        <button class="btn btn-primary"
+                                                                            wire:click='confirmHitung'>Hitung
+                                                                            Biaya</button>
+                                                                        <button class="btn btn-warning"
+                                                                            wire:click='tampilkanPembayaran'>Proses
+                                                                            Pembayaran</button>
                                                                         {{-- <button class="btn btn-info">Bayar Satuan</button> --}}
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -194,7 +198,9 @@
                                                                                     <td style="text-align: right;">
                                                                                         <h3 style="margin-top: 10px;">
                                                                                             <strong>
-                                                                                                <div id="total">{{ "Rp " . number_format($total,2,',','.'); }}</div>
+                                                                                                <div id="total">
+                                                                                                    {{ 'Rp ' . number_format($total, 2, ',', '.') }}
+                                                                                                </div>
                                                                                             </strong>
                                                                                         </h3>
                                                                                     </td>
@@ -277,16 +283,18 @@
         </div>
     </section>
 
-    <div class="modal fade @if($modal) show @endif" id="modal-xl" aria-hidden="true" @if(!$modal) style="display: none;" aria-hidden="true" @else style="display: block;" aria-modal="true" role="dialog" @endif>
+    <div class="modal fade @if ($modal) show @endif" id="modal-xl" aria-hidden="true"
+        @if (!$modal) style="display: none;" aria-hidden="true" @else style="display: block;" aria-modal="true" role="dialog" @endif>
         <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Penutupan Transaksi Pasien</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"  wire:click='tampilkanPembayaran'>
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Penutupan Transaksi Pasien</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        wire:click='tampilkanPembayaran'>
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
                     <form action="">
                         <div class="row">
@@ -298,7 +306,8 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" value="{{ $medik->pasien->pasien_nm??"" }}" readonly>
+                                        <input type="text" class="form-control"
+                                            value="{{ $medik->pasien->pasien_nm ?? '' }}" readonly>
                                     </div>
                                 </div>
                                 <div class="mb-1 row">
@@ -308,7 +317,8 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" value="{{ date('Y-m-d') }}" readonly>
+                                        <input type="text" class="form-control" value="{{ date('Y-m-d') }}"
+                                            readonly>
                                     </div>
                                 </div>
                                 <div class="mb-1 row">
@@ -318,7 +328,8 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                        <select name="" class="form-control" id="" wire:model.live='caraBayar'>
+                                        <select name="" class="form-control" id=""
+                                            wire:model.live='caraBayar'>
                                             @foreach ($jenisPayment as $item)
                                                 <option value="{{ $item->com_cd }}"> {{ $item->code_nm }} </option>
                                             @endforeach
@@ -333,7 +344,7 @@
                                         </label>
                                     </div>
                                     <div class="col-md-8">
-                                       <p class="form-control">{{ "Rp " . number_format($total,2,',','.'); }}</p>
+                                        <p class="form-control">{{ 'Rp ' . number_format($total, 2, ',', '.') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -351,7 +362,8 @@
                                                 <td style="text-align: right;">
                                                     <h3 style="margin-top: 10px;">
                                                         <strong>
-                                                            <div id="total">{{ "Rp " . number_format($total,2,',','.'); }}</div>
+                                                            <div id="total">
+                                                                {{ 'Rp ' . number_format($total, 2, ',', '.') }}</div>
                                                         </strong>
                                                     </h3>
                                                 </td>
@@ -365,7 +377,9 @@
                                                 <td style="text-align: right;">
                                                     <h3 style="margin-top: 10px;">
                                                         <strong>
-                                                            <div id="total">{{ "Rp " . number_format($potongan,2,',','.'); }}</div>
+                                                            <div id="total">
+                                                                {{ 'Rp ' . number_format($potongan, 2, ',', '.') }}
+                                                            </div>
                                                         </strong>
                                                     </h3>
                                                 </td>
@@ -379,7 +393,9 @@
                                                 <td style="text-align: right;">
                                                     <h3 style="margin-top: 10px;">
                                                         <strong>
-                                                            <div id="total">{{ "Rp " . number_format($nilaiTotal,2,',','.'); }}</div>
+                                                            <div id="total">
+                                                                {{ 'Rp ' . number_format($nilaiTotal, 2, ',', '.') }}
+                                                            </div>
                                                         </strong>
                                                     </h3>
                                                 </td>
@@ -392,14 +408,15 @@
                         </div>
                     </form>
 
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                        wire:click='tampilkanPembayaran'>Close</button>
+                    <button type="button" class="btn btn-primary" wire:click='bayar'>Bayar</button>
+                </div>
             </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal" wire:click='tampilkanPembayaran' >Close</button>
-              <button type="button" class="btn btn-primary" wire:click='bayar'>Bayar</button>
-            </div>
-          </div>
-          <!-- /.modal-content -->
+            <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
-      </div>
+    </div>
 </div>

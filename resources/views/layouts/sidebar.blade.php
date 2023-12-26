@@ -78,8 +78,16 @@
                               </p>
                           </a>
                           <ul class="nav nav-treeview">
-                              <li class="nav-item">
-                                  <a href="#" class="nav-link">
+                              <li
+                                  class="nav-item
+                              {{ Request::segment(2) == 'permission' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'role' ? 'menu-is-opening menu-open' : '' }}
+                              ">
+                                  <a href="#"
+                                      class="nav-link
+                                  {{ Request::segment(2) == 'permission' ? 'active' : '' }}
+                                  {{ Request::segment(2) == 'role' ? 'active' : '' }}
+                                  ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
                                           Admin
@@ -110,6 +118,28 @@
                                           <a href="pages/examples/login.html" class="nav-link">
                                               <i class="far fa-circle nav-icon ml-3"></i>
                                               <p>Setting</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.permission') }}"
+                                              class="nav-link {{ Request::segment(2) == 'permission' ? 'active' : '' }}">
+                                              @if (Request::segment(2) == 'permission')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Permission</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.role') }}"
+                                              class="nav-link {{ Request::segment(2) == 'role' ? 'active' : '' }}">
+                                              @if (Request::segment(2) == 'role')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Role</p>
                                           </a>
                                       </li>
 
@@ -699,8 +729,7 @@
                                   </a>
                               </li>
                               <li class="nav-item">
-                                  <a href="{{ route('transaksi.rawat-jalan.resep-obat') }}"
-                                      wire:navigate
+                                  <a href="{{ route('transaksi.rawat-jalan.resep-obat') }}" wire:navigate
                                       class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '' }}">
                                       @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '')
                                           <i class="far fa-dot-circle nav-icon ml-3"></i>
@@ -918,11 +947,11 @@
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
                                   <a href="{{ route('farmasi.list') }}" class="nav-link" wire:navigate>
-                                    @if (request()->is('farmasi/list') ? 'active' : '')
-                                    <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                @else
-                                    <i class="far fa-circle nav-icon ml-3"></i>
-                                @endif
+                                      @if (request()->is('farmasi/list') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Proses Resep</p>
                                   </a>
                               </li>
@@ -940,11 +969,11 @@
                               </li> --}}
                               <li class="nav-item">
                                   <a href="{{ route('farmasi.pengambilan') }}" class="nav-link">
-                                    @if (request()->is('farmasi/pengambilan') ? 'active' : '')
-                                    <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                @else
-                                    <i class="far fa-circle nav-icon ml-3"></i>
-                                @endif
+                                      @if (request()->is('farmasi/pengambilan') ? 'active' : '')
+                                          <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                      @else
+                                          <i class="far fa-circle nav-icon ml-3"></i>
+                                      @endif
                                       <p>Pengambilan Obat</p>
                                   </a>
                               </li>
