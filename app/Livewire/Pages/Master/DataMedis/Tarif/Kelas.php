@@ -109,7 +109,7 @@ class Kelas extends Component
 
     public function storeUpdate()
     {
-        TrxTarifKelas::find($this->idHapus)->update($this->form);
+        TrxTarifKelas::find($this->idHapus);
         $this->reset();
         $this->edit = false;
     }

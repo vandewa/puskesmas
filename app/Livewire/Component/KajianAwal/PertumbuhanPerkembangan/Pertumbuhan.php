@@ -50,6 +50,7 @@ class Pertumbuhan extends Component
 
         if ($pertumbuhan2['r_imunisasi'] != null) {
             $this->updateTypes = json_decode($pertumbuhan2['r_imunisasi'], true);
+            dd($this->updateTypes);
         }
 
     }

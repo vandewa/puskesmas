@@ -108,7 +108,7 @@ class Radiologi extends Component
             $this->form['active_st'] = '0';
         }
 
-        TrxUnitmedisItem::find($this->form['medicalunit_cd'])->update($this->form);
+        TrxUnitmedisItem::find($this->form['medicalunit_cd']);
         $this->reset();
         $this->edit = false;
     }

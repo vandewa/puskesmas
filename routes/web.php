@@ -2,6 +2,7 @@
 
 use App\Livewire\Component\Cetak\KeteranganSakit;
 use App\Livewire\Component\Cetak\Kir;
+use App\Livewire\Pages\Admin\RoleIndex;
 use App\Livewire\Pages\Keuangan\ListPasienKeuangan;
 use App\Livewire\Pages\Transaksi\KajianAwal;
 use App\Livewire\Pages\Transaksi\ListPasienTransaksiRawatInap;
@@ -134,7 +135,8 @@ Route::middleware([
         Route::get('golongan', Golongan::class)->name('golongan');
         Route::get('list-tipe', ListTipe::class)->name('tipe-inventori.index');
         Route::get('permission', Permission::class)->name('permission');
-        Route::get('role', Role::class)->name('role');
+        Route::get('role/{id?}', Role::class)->name('role');
+        Route::get('role-index', RoleIndex::class)->name('role.index');
 
         Route::group(['prefix' => 'tarif', 'as' => 'tarif.'], function () {
             Route::get('general', General::class)->name('general');
