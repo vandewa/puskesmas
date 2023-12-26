@@ -14,7 +14,7 @@ class DataTransaksi extends Component
 
     use WithPagination;
 
-    public $medicalcd, $pasiencd, $poli, $dokter, $no_rm, $pasien_nm, $birth_date;
+    public $medicalcd, $pasiencd, $poli, $dokter, $no_rm, $pasien_nm, $birth_date, $medik;
 
     public $form = [
         'datetime_in' => '',
@@ -37,6 +37,7 @@ class DataTransaksi extends Component
         $this->dokter = TrxDokter::all()->toArray();
         $this->form['medunit_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->medunit_cd;
         $this->poli = TrxUnitMedis::all()->toArray();
+        $this->medik =  TrxMedical::where('medical_cd', $this->medicalcd)->first();
     }
 
     public function save()
