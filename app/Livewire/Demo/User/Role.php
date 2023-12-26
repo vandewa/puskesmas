@@ -15,6 +15,8 @@ class Role extends Component
 
     public $idHapus, $edit = false, $idnya;
 
+    public $updateTypes = [];
+
     public $permission;
 
     public $form = [
@@ -25,15 +27,19 @@ class Role extends Component
 
     public function mount($id = '')
     {
+        if ($id != '') {
+            $role = ModelsRole::with(['permissions'])->find($id)->toArray();
+            $data = ModelsRole::with(['permissions'])->find($id);
+            $this->form = $role;
+            $this->updateTypes = $data->permissions->pluck('name')->toArray();
+            $this->edit = true;
+            $this->idHapus = $id;
+        }
+
         $this->permission = Permission::all();
+
     }
 
-    public function getEdit($a)
-    {
-        $this->form = ModelsRole::find($a)->only(['name', 'description', 'display_name']);
-        $this->idHapus = $a;
-        $this->edit = true;
-    }
 
     public function save()
     {
@@ -54,54 +60,27 @@ class Role extends Component
 
     public function store()
     {
-        ModelsRole::create($this->form);
-    }
+        $this->validate([
+            'form.name' => 'required|alpha_dash|unique:roles,name',
+            'form.display_name' => 'required',
+        ]);
 
-    public function delete($id)
-    {
-        $this->idHapus = $id;
-        $this->js(<<<'JS'
-        Swal.fire({
-            title: 'Apakah Anda yakin?',
-                text: "Apakah kamu ingin menghapus data ini? proses ini tidak dapat dikembalikan.",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus!',
-                cancelButtonText: 'Batal'
-          }).then((result) => {
-            if (result.isConfirmed) {
-                $wire.hapus()
-            }
-          })
-        JS);
-    }
-
-    public function hapus()
-    {
-        ModelsRole::destroy($this->idHapus);
-        $this->js(<<<'JS'
-        Swal.fire({
-            title: 'Good job!',
-            text: 'You clicked the button!',
-            icon: 'success',
-          })
-        JS);
+        $data = ModelsRole::create($this->form);
+        $data->givePermissions($this->updateTypes);
     }
 
     public function storeUpdate()
     {
-        ModelsRole::find($this->idHapus)->update($this->form);
-        $this->reset();
-        $this->edit = false;
-    }
+        ModelsRole::find($this->idHapus)->update([
+            'name' => $this->form['name'],
+            'description' => $this->form['description'],
+            'display_name' => $this->form['display_name'],
+        ]);
 
+        $data = ModelsRole::find($this->idHapus);
+        $data->syncPermissions($this->updateTypes);
 
-    public function batal()
-    {
-        $this->edit = false;
-        $this->reset();
+        $this->redirect(route('admin.list-role'));
 
     }
 

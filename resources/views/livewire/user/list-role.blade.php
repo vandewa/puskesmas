@@ -56,14 +56,14 @@
                                                                                     <div
                                                                                         class="gap-3 table-actions d-flex align-items-center fs-6">
                                                                                         <div class="mr-2">
-                                                                                            <button type="button"
-                                                                                                wire:click="getEdit('{{ $item->id }}')"
+                                                                                            <a type="button"
+                                                                                                href="{{ route('admin.role', $item->id) }}"
                                                                                                 class="btn btn-warning btn-flat btn-sm"
                                                                                                 data-toggle="tooltip"
                                                                                                 data-placement="left"
                                                                                                 title="Edit"><i
                                                                                                     class="fas fa-pencil-alt"></i>
-                                                                                            </button>
+                                                                                            </a>
                                                                                         </div>
 
                                                                                         <div>
