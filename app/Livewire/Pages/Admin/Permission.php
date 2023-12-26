@@ -50,6 +50,11 @@ class Permission extends Component
 
     public function store()
     {
+        $this->validate([
+            'form.name' => 'required|alpha_dash|unique:permissions,name',
+            'form.display_name' => 'required',
+        ]);
+
         ModelsPermission::create($this->form);
     }
 
