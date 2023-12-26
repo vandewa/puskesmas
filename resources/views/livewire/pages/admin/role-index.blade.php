@@ -22,18 +22,21 @@
                                 aria-labelledby="custom-tabs-one-rm-tab">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="text-right mb-3">
-                                            <a href="{{ route('master.role') }}" class="btn btn-info"><i
-                                                    class="fas fa-plus-square mr-2"></i>Tambah Data</a>
-                                        </div>
+
                                         <div class="card card-success card-outline   card-tabs">
                                             <div class="tab-content" id="custom-tabs-six-tabContent">
                                                 <div class="tab-pane fade show active" id="custom-tabs-six-riwayat-rm"
                                                     role="tabpanel" aria-labelledby="custom-tabs-six-riwayat-rm-tab">
                                                     <div class="card-body">
                                                         <div class="card-header">
-                                                            <div class="card-title">
+                                                            {{-- <div class="card-title">
                                                                 Role
+                                                            </div> --}}
+                                                            <div class="text-left mb-3">
+                                                                <a href="{{ route('master.role') }}"
+                                                                    class="btn btn-info"><i
+                                                                        class="fas fa-plus-square mr-2"></i>Tambah
+                                                                    Data</a>
                                                             </div>
                                                         </div>
                                                         <div class="card-body">
