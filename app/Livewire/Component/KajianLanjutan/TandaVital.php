@@ -80,7 +80,7 @@ class TandaVital extends Component
     {
 
         if ($this->edit) {
-            ModelTandaVital::where('id', $this->edit)->update($this->form);
+            ModelTandaVital::where('id', $this->edit);
             $this->js(<<<'JS'
                 Swal.fire({
                 title: "Berhasil!",

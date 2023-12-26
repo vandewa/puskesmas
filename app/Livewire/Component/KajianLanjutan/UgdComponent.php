@@ -134,7 +134,7 @@ class UgdComponent extends Component
 
         dd($this->form['tiba']);
         if ($this->edit) {
-            Ugd::where('id', $this->edit)->update($this->form);
+            Ugd::where('id', $this->edit);
             $this->js(<<<'JS'
                 Swal.fire({
                 title: "Berhasil!",

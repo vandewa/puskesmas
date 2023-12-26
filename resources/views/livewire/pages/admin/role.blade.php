@@ -42,7 +42,8 @@
                                                                                     <input type="text"
                                                                                         class="form-control"
                                                                                         wire:model='form.name'
-                                                                                        placeholder="Name">
+                                                                                        placeholder="Name"
+                                                                                        @if ($edit) disabled @endif>
                                                                                     @error('form.name')
                                                                                         <span
                                                                                             class="form-text text-danger">{{ $message }}</span>
@@ -94,8 +95,13 @@
                                                                                         class="form-group m-form__group">
                                                                                         <label class="m-checkbox"
                                                                                             style="text-align: left">
-                                                                                            {!! Form::checkbox('permission[]', $item->name, null) !!}
-                                                                                            {{ $item->display_name }}
+                                                                                            <input type="checkbox"
+                                                                                                wire:model="updateTypes"
+                                                                                                value="{{ $item->name ?? '' }}">
+                                                                                            <label>{{ $item->display_name ?? '' }}</label>
+
+                                                                                            {{-- {!! Form::checkbox('permission[]', $item->name, null) !!}
+                                                                                            {{ $item->display_name }} --}}
                                                                                             <span></span>
                                                                                         </label>
                                                                                     </div>

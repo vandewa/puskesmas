@@ -82,11 +82,13 @@
                                   class="nav-item
                               {{ Request::segment(2) == 'permission' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'role' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'role-index' ? 'menu-is-opening menu-open' : '' }}
                               ">
                                   <a href="#"
                                       class="nav-link
                                   {{ Request::segment(2) == 'permission' ? 'active' : '' }}
                                   {{ Request::segment(2) == 'role' ? 'active' : '' }}
+                                  {{ Request::segment(2) == 'role-index' ? 'active' : '' }}
                                   ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
@@ -132,9 +134,14 @@
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('master.role') }}"
-                                              class="nav-link {{ Request::segment(2) == 'role' ? 'active' : '' }}">
-                                              @if (Request::segment(2) == 'role')
+                                          <a href="{{ route('master.role.index') }}"
+                                              class="nav-link 
+                                              {{ Request::segment(2) == 'role-index' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'role' ? 'active' : '' }}
+                                              ">
+                                              @if (Request::segment(2) == 'role-index')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @elseif(Request::segment(2) == 'role')
                                                   <i class="far fa-dot-circle nav-icon ml-3"></i>
                                               @else
                                                   <i class="far fa-circle nav-icon ml-3"></i>
