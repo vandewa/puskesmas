@@ -16,7 +16,7 @@ class RawatJalan extends Component
 {
     use WithPagination;
 
-    public $pasien, $diagnosa, $alasan, $jenisPasien;
+    public $pasien, $diagnosa, $alasan, $jenisPasien, $medicalcd;
     public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
@@ -41,13 +41,16 @@ class RawatJalan extends Component
     ];
     public $searchRm, $searchPasien, $searchAlamat, $searchTanggal;
 
-    public function mount($id = '')
+    public function mount($id = '', $medicalcd='')
     {
         $this->alasan = get_code('VISIT_TP');
         $this->jenisPasien = get_code('PASIEN_TP');
         if ($id != "") {
             $this->pilihOrang($id);
         }
+
+        $this->medicalcd =$medicalcd;
+
     }
 
 
@@ -127,7 +130,7 @@ class RawatJalan extends Component
           }).then((result) => {
             if (result.isConfirmed) {
               $wire.save()
-            } 
+            }
         })
         JS);
     }
@@ -162,12 +165,20 @@ class RawatJalan extends Component
     {
 
 
+        if($this->medicalcd) {
+            $this->form['medical_root_cd'] = $this->medicalcd;
+            TrxMedical::find($this->medicalcd)->update([
+                'medical_trx_st' => 'MEDICAL_TRX_ST_2'
+            ]);
+        }
         $this->form['medical_cd'] = gen_medical_cd();
         $this->form['queue_no'] = $this->generateAntrian();
         $this->form['datetime_in'] = now();
         $rm = TrxMedical::create(
             $this->form
         );
+
+
 
         if ($this->medicalRecord['icd_cd'] != "") {
             $rm->medicalRecord()->create($this->medicalRecord);

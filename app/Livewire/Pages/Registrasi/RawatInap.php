@@ -21,7 +21,7 @@ class RawatInap extends Component
 
     use WithPagination;
 
-    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang;
+    public $pasien, $diagnosa, $alasan, $jenisPasien, $kelas, $ruang, $medicalcd;
     public $form = [
         "pasien_cd" => null,
         "medical_cd" => null,
@@ -53,8 +53,9 @@ class RawatInap extends Component
     ];
     public $searchRm, $searchPasien, $searchAlamat, $searchTanggal;
 
-    public function mount($id = '')
+    public function mount($id = '', $medicalcd= '')
     {
+        $this->medicalcd = $medicalcd;
         $this->alasan = get_code('VISIT_TP');
         $this->jenisPasien = get_code('PASIEN_TP');
         $this->kelas = TrxKelas::all()->toArray();
@@ -62,6 +63,7 @@ class RawatInap extends Component
         if ($id != "") {
             $this->pilihOrang($id);
         }
+
     }
 
 
@@ -130,7 +132,7 @@ class RawatInap extends Component
           }).then((result) => {
             if (result.isConfirmed) {
               $wire.save()
-            } 
+            }
         })
         JS);
     }
@@ -163,6 +165,12 @@ class RawatInap extends Component
 
     public function save()
     {
+        if($this->medicalcd) {
+            $this->form['medical_root_cd'] = $this->medicalcd;
+            TrxMedical::find($this->medicalcd)->update([
+                'medical_trx_st' => 'MEDICAL_TRX_ST_2'
+            ]);
+        }
         $this->form['medical_cd'] = gen_medical_cd();
         $this->form['datetime_in'] = now();
         $rm = TrxMedical::create(
@@ -203,7 +211,11 @@ class RawatInap extends Component
 
     public function render()
     {
-        $data = TrxRuang::with(['bangsal', 'kamar', 'kelas'])->orderBy('kelas_cd', 'asc')->get();
+        $data = TrxRuang::with(['bangsal', 'kamar', 'kelas'])->whereNotIn('ruang_cd',
+        TrxMedical::where('medical_tp', 'MEDICAL_TP_02')
+        ->where('medical_trx_st', 'MEDICAL_TRX_ST_0')
+        ->get())
+        ->orderBy('kelas_cd', 'asc')->get();
 
         return view('livewire.pages.registrasi.rawat-inap', [
             'posts' => $data

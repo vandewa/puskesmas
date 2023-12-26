@@ -50,7 +50,7 @@
         </li>
         <li class="nav-item {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}"
-                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
+                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.document', $medicalcd ?? '') }}"
                 wire:navigate>Dokumen Pasien</a>
         </li>
     </ul>

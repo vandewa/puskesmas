@@ -59,6 +59,7 @@ use App\Livewire\Pages\Master\DataMedis\Tarif\TindakanMedis as TarifTindakanMedi
 use App\Livewire\Pages\Master\DataMedis\Tarif\Inventori as TarifInventori;
 use App\Livewire\Pages\Transaksi\CpptPage;
 use App\Livewire\Pages\Transaksi\DataTransaksi;
+use App\Livewire\Pages\Transaksi\DocumentPage;
 use App\Livewire\Pages\Transaksi\KajianLanjutan;
 use App\Livewire\Pages\Transaksi\LaboratoriumTransaksi;
 use App\Livewire\Pages\Transaksi\Odontogram;
@@ -162,6 +163,7 @@ Route::middleware([
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
             Route::get('cppt/{id?}', CpptPage::class)->name('cppt');
             Route::get('odontogram/{id?}', Odontogram::class)->name('odontogram');
+            Route::get('document/{id?}', DocumentPage::class)->name('document');
         });
 
         Route::group(['prefix' => 'rawat-inap', 'as' => 'rawat-inap.'], function () {
@@ -176,7 +178,7 @@ Route::middleware([
             Route::get('tindakan-medis/{id?}', TransaksiTindakanMedis::class)->name('tindakan-medis');
             Route::get('cppt/{id?}', CpptPage::class)->name('cppt');
             Route::get('odontogram/{id?}', Odontogram::class)->name('odontogram');
-
+            Route::get('document/{id?}', DocumentPage::class)->name('document');
         });
     });
 
@@ -189,8 +191,8 @@ Route::middleware([
     });
 
     Route::group(['prefix' => 'registrasi', 'as' => 'registrasi.'], function () {
-        Route::get('rawat-jalan/{id?}', RawatJalan::class)->name('rawat-jalan');
-        Route::get('rawat-inap/{id?}', RawatInap::class)->name('rawat-inap');
+        Route::get('rawat-jalan/{id?}/{medicalcd?}', RawatJalan::class)->name('rawat-jalan');
+        Route::get('rawat-inap/{id?}/{medicalcd?}', RawatInap::class)->name('rawat-inap');
     });
 
     Route::get('detail', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
