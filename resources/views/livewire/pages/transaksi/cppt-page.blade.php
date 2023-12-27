@@ -1,6 +1,6 @@
 <div>
     <x-slot name="header">
-        <div class="row mb-2">
+        <div class="mb-2 row">
             <div class="col-sm-6">
                 <h1 class="m-0">CPPT</h1>
             </div>
@@ -26,7 +26,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="card card-success card-tabs">
-                                                    <div class="card-header p-0 pt-1">
+                                                    <div class="p-0 pt-1 card-header">
                                                         <ul class="nav nav-tabs" id="custom-tabs-two-transaksi-tab"
                                                             role="tablist">
                                                             <li class="nav-item">
@@ -66,7 +66,7 @@
                                                                     role="tab"
                                                                     aria-controls="custom-tabs-two-tambah-rekam-medis"
                                                                     aria-selected="false"><i
-                                                                        class="fas fa-plus-square mr-2"
+                                                                        class="mr-2 fas fa-plus-square"
                                                                         style="color:black"></i><span
                                                                         style="color:black">Tambah CPPT</span></a>
                                                             </li>
@@ -97,39 +97,55 @@
                                                                 id="custom-tabs-two-tambah-rekam-medis" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-two-tambah-rekam-medis-tab">
                                                                 <div>
-                                                                    <form action="">
+                                                                    <form action="" wire:submit='save'>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
-                                                                                <div class="row mb-3">
-
+                                                                                <div class="mb-3 row">
                                                                                     <div class="col-md-3">Dokter</div>
                                                                                     <div class="col-md-9">
                                                                                         <select name=""
                                                                                             class="form-control"
-                                                                                            id=""></select>
+                                                                                            wire:model='form.dr_cd'
+                                                                                            id="">
+                                                                                            <option value="">Pilih Dokter</option>
+                                                                                            @foreach ($dokter as $item)
+                                                                                            <option value="{{ $item->dr_cd }}">{{ $item->dr_nm }}</option>
+                                                                                            @endforeach
+                                                                                        </select>
                                                                                     </div>
-
-
-                                                                                    <div class="col-md-3">Paramedis
+                                                                                </div>
+                                                                                <div class="mb-3 row">
+                                                                                    <div class=" col-md-3">Paramedis
                                                                                     </div>
                                                                                     <div class="col-md-9">
                                                                                         <select name=""
-                                                                                            class="form-control"
-                                                                                            id=""></select>
+                                                                                        class="form-control"
+                                                                                        wire:model='form.paramedis_cd'
+                                                                                        id="">
+                                                                                        <option value="">Pilih Paramedis</option>
+                                                                                        @foreach ($paramedis as $item)
+                                                                                        <option value="{{ $item->paramedis_cd }}">{{ $item->paramedis_nm }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
                                                                                     </div>
-
                                                                                 </div>
-                                                                                <div class="row mb-3">
+                                                                                <div class="mb-3 row">
+                                                                                    <div class=" col-md-3">Tanggal</div>
+                                                                                    <div class="col-md-9">
+                                                                                        <input type="date" class="form-control" wire:model='form.transaction_date'>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="mb-3 row">
                                                                                     <div class="col-md-3">Subject</div>
                                                                                     <div class="col-md-9">
-                                                                                        <textarea name="" class="form-control" id="" rows="4"></textarea>
+                                                                                        <textarea name=""  wire:model='form.subject' class="form-control" id="" rows="4"></textarea>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="row mb-3">
+                                                                                <div class="mb-3 row">
                                                                                     <div class="col-md-3">Objective
                                                                                     </div>
                                                                                     <div class="col-md-9">
-                                                                                        <textarea name="" class="form-control" id="" rows="4"></textarea>
+                                                                                        <textarea name=""  wire:model='form.objective' class="form-control" id="" rows="4"></textarea>
                                                                                     </div>
                                                                                 </div>
 
@@ -137,18 +153,22 @@
 
 
                                                                             <div class="col-md-6">
-                                                                                <div class="row mb-3">
+                                                                                <div class="mb-3 row">
                                                                                     <div class="col-md-3">Assesment
                                                                                     </div>
                                                                                     <div class="col-md-9">
-                                                                                        <textarea name="" class="form-control" id="" rows="4"></textarea>
+                                                                                        <textarea name="" wire:model='form.assesment' class="form-control" id="" rows="4"></textarea>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="row mb-3">
+                                                                                <div class="mb-3 row">
                                                                                     <div class="col-md-3">Plan</div>
                                                                                     <div class="col-md-9">
-                                                                                        <textarea name="" class="form-control" id="" rows="4"></textarea>
+                                                                                        <textarea name=""  wire:model='form.plan' class="form-control" id="" rows="4"></textarea>
                                                                                     </div>
+                                                                                </div>
+                                                                                <div class="text-right col-md-12">
+                                                                                    <button type="button" class="btn btn-warning">Batal</button>
+                                                                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                                                                 </div>
 
                                                                             </div>
