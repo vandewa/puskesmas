@@ -11,8 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('tanda_vitals', function (Blueprint $table) {
-            $table->string('sistol')->after('pasien_cd')->nullable();
-            $table->string('diastol')->after('sistol')->nullable();
+            $table->integer('sistol')->after('pasien_cd')->nullable();
+            $table->integer('diastol')->after('sistol')->nullable();
         });
     }
 

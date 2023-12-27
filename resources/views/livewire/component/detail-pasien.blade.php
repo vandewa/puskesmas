@@ -1,5 +1,5 @@
  {{-- DETAIL PASIEN --}}
- <div class="detail-pasien mb-4">
+ <div class="mb-4 detail-pasien">
      <div class="row">
          <div class="col-md-4">
              <div class="form-group row margin-bawah">
@@ -14,6 +14,25 @@
                  <label class="col-sm-1 control-label pasien">:</label>
                  <div class="col-sm-6">
                      <label for="pasien_nm" class="control-label pasien">{{ $item->jenisRawat->code_nm ?? '' }}</label>
+                 </div>
+             </div>
+             <div class="form-group row margin-bawah">
+                 <label class="col-sm-5 control-label pasien">Penanda</label>
+                 <label class="col-sm-1 control-label pasien">:</label>
+                 <div class="col-sm-6">
+                    @if($hipertensi)
+                        <span class="badge bg-danger">Hipertensi</span>
+                    @endif
+                    @if($alergi)
+                    <span class="badge bg-orange">Alergi</span>
+                    @endif
+                    @if($hiv)
+                    <span class="badge bg-warning">HIV</span>
+                    @endif
+                    @if($tb)
+                    <span class="badge bg-blue">Tuberculosis</span>
+                    @endif
+
                  </div>
              </div>
          </div>
