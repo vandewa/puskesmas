@@ -11,7 +11,7 @@ use Livewire\Attributes\On;
 
 use Livewire\Component;
 
-class TableCppt extends Component
+class TableRiwayatCppt extends Component
 {
     public $medicalcd, $pasiencd, $cari, $idHapus;
     use WithPagination;
@@ -47,7 +47,8 @@ class TableCppt extends Component
     }
     public function render()
     {
-        $data = TrxCppt::where('medical_cd', $this->medicalcd)
+        $data = TrxCppt::where('medical_cd', '<>' ,$this->medicalcd)
+        ->where('pasien_cd', $this->pasiencd)
         ->paginate(10);
         return view('livewire..component.cppt.table-cppt', [
             'posts' => $data

@@ -54,6 +54,7 @@ class CpptPage extends Component
 
     public function save() {
         TrxCppt::create($this->form);
+        $this->dispatch('refresh')->to(CpptPage::class);
     }
 
     public function render()

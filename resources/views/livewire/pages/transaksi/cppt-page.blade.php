@@ -35,17 +35,9 @@
                                                                     data-toggle="pill"
                                                                     href="#custom-tabs-six-riwayat-rm" role="tab"
                                                                     aria-controls="custom-tabs-six-riwayat-rm"
-                                                                    aria-selected="true">Riwayat Kunjungan</a>
+                                                                    aria-selected="true">Data CPPT</a>
                                                             </li>
-                                                            <li class="nav-item">
-                                                                <a class="nav-link"
-                                                                    id="custom-tabs-two-data-rekam-medis-tab"
-                                                                    data-toggle="pill"
-                                                                    href="#custom-tabs-two-data-rekam-medis"
-                                                                    role="tab"
-                                                                    aria-controls="custom-tabs-two-data-rekam-medis"
-                                                                    aria-selected="false">Data Rekam Medis</a>
-                                                            </li>
+
                                                             <li class="nav-item">
                                                                 <a class="nav-link"
                                                                     id="custom-tabs-two-riwayat-rekam-medis-tab"
@@ -53,8 +45,7 @@
                                                                     href="#custom-tabs-two-riwayat-rekam-medis"
                                                                     role="tab"
                                                                     aria-controls="custom-tabs-two-riwayat-rekam-medis"
-                                                                    aria-selected="false">Riwayat Rekam
-                                                                    Medis</a>
+                                                                    aria-selected="false">Riwayat CPPT</a>
                                                             </li>
 
                                                             <li class="nav-item"
@@ -77,19 +68,14 @@
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-riwayat-rm" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-riwayat-rm-tab">
-                                                                <livewire:component.rekam-medis.riwayat-kunjungan
-                                                                    :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
+                                                                <livewire:component.cppt.table-cppt
+                                                                :medicalcd="$medik->medical_cd">
                                                             </div>
-                                                            <div class="tab-pane fade"
-                                                                id="custom-tabs-two-data-rekam-medis" role="tabpanel"
-                                                                aria-labelledby="custom-tabs-two-data-rekam-medis-tab">
-                                                                <livewire:component.rekam-medis.table-rekam-medis
-                                                                    :medicalcd="$medik->medical_cd">
-                                                            </div>
+
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-two-riwayat-rekam-medis" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-two-riwayat-rekam-medis-tab">
-                                                                <livewire:component.rekam-medis.riwayat-rekam-medis
+                                                                <livewire:component.cppt.table-riwayat-cppt
                                                                     :medicalcd="$medik->medical_cd" :pasiencd="$medik->pasien_cd">
                                                             </div>
 
