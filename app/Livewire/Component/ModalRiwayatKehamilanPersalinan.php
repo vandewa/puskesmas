@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Component;
 
+use App\Livewire\Component\KajianAwal\KesehatanReproduksi;
 use App\Models\RiwayatKehamilan;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -53,7 +54,7 @@ class ModalRiwayatKehamilanPersalinan extends Component
           })
         JS);
 
-        $this->dispatch('pilih-riwayat');
+        $this->dispatch('refresh')->to(KesehatanReproduksi::class);
         $this->showModal();
 
     }

@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Component;
 
+use App\Livewire\Component\Laboratorium\ListProsesTIndakanLab;
+use App\Models\His\TrxMedical;
 use App\Models\RiwayatKehamilan;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -13,6 +15,7 @@ class ModalHasilTindakanLab extends Component
     use WithPagination;
     public $search;
     public $modal = false;
+    public $seqno;
 
     public $medicalcd;
 
@@ -22,16 +25,21 @@ class ModalHasilTindakanLab extends Component
 
 
     #[On('show-modal-hasil-tindakan-lab')]
-
-
-    public function showModal()
+    public function ambilProperty($id)
     {
+       $this->showModal();
+       $this->seqno = $id;
+       $this->form['file_report'] = TrxMedicalUnit::find($id)->file_report??"";
+        // dd($id);
+    }
+
+    public function showModal() {
         $this->modal = !$this->modal;
     }
 
     public function save()
     {
-        TrxMedicalUnit::where('medical_cd', $this->medicalcd)->first()->update([
+        TrxMedicalUnit::find($this->seqno)->update([
             'file_report' => $this->form['file_report']
         ]);
 
@@ -43,8 +51,8 @@ class ModalHasilTindakanLab extends Component
           })
         JS);
 
-        $this->dispatch('pilih-riwayat');
-        $this->showModal();
+        $this->dispatch('refresh')->to(ListProsesTIndakanLab::class);
+        $this->modal = !$this->modal;
 
     }
 

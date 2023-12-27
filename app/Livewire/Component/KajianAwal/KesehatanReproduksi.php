@@ -31,6 +31,12 @@ class KesehatanReproduksi extends Component
         'kehamilan_tp' => null,
     ];
 
+    #[On('refresh')]
+    public function refresh()
+    {
+        $this->resetPage();
+    }
+
     public function mount()
     {
         $reproduksi = ModelsKesehatanReproduksi::firstOrCreate(

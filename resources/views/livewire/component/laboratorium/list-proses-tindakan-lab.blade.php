@@ -6,6 +6,7 @@
             <th>Dokter</th>
             <th>Tindakan</th>
             <th>Catatan</th>
+            <th>Hasil</th>
             <th></th>
         </thead>
         <tbody>
@@ -16,10 +17,11 @@
                     <td>{{ $item->drLab->dr_nm ?? '-' }}</td>
                     <td>{{ $item->tindakan->medicalunit_nm ?? '' }}</td>
                     <td>{{ $item->medical_note ?? '' }}</td>
+                    <td>{{ $item->file_report ?? '' }}</td>
                     <td>
                         <button type="button" class="btn btn-primary btn-sm"
-                            wire:click="$dispatch('show-modal-hasil-tindakan-lab')">
-                            <i class="fas fa-file-alt mr-2"></i>Hasil Tindakan
+                            wire:click="$dispatch('show-modal-hasil-tindakan-lab', { id:{{ $item->medical_unit_seqno  }}})">
+                            <i class="mr-2 fas fa-file-alt"></i>Hasil Tindakan
                         </button>
                         <button type="button" class="btn btn-sm btn-danger"
                             wire:click='delete({{ $item->medical_unit_seqno }})'>Hapus</button>
