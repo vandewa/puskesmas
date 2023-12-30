@@ -48,6 +48,19 @@ class ModalKeuangan extends Component
         }
     }
 
+    public function closeModal() {
+        $this->form = [
+            'tanggal_transaksi' => null,
+            'name' => null,
+            'pengeluaran_tp' => null,
+            'nominal' => null,
+        ];
+
+        $this->edit = false;
+        $this->idnya = null;
+        $this->modal = !$this->modal;
+    }
+
     public function save()
     {
         if ($this->edit) {

@@ -5,7 +5,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Pilih Pemasukan / Pengeluaran</h4>
-                    <button type="button" wire:click='showModal' class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" wire:click='closeModal' class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal"
-                        wire:click='showModal'>Close</button>
+                        wire:click='closeModal'>Close</button>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
         </form>
