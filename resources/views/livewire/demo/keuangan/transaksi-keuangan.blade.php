@@ -32,74 +32,43 @@
                                                             <form class="form-horizontal mt-2" wire:submit='save'>
                                                                 <div class="card-body">
                                                                     <div class="row">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-7">
                                                                             <div class="row mb-2">
                                                                                 <label for=""
-                                                                                    class="col-sm-3 col-form-label">Jenis</label>
-                                                                                <div class="col-md-9">
-                                                                                    <select class="form-control"
-                                                                                        wire:model='form.pengeluaran_tp'>
-                                                                                        <option value="">-- Pilih
-                                                                                             --</option>
-
-                                                                                        @foreach ($jenis ?? [] as $item)
-                                                                                            <option
-                                                                                                value="{{ $item->com_cd}}">
-                                                                                               {{ $item->code_nm }}
-                                                                                            </option>
-                                                                                        @endforeach
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row mb-2">
-                                                                                <label for=""
-                                                                                    class="col-sm-3 col-form-label">Tanggal
-                                                                                    </label>
-                                                                                <div class="col-md-9">
-                                                                                    <input type="date"
-                                                                                        class="form-control"
-                                                                                        wire:model="form.tanggal_transaksi">
-                                                                                    @error('form.tanggal_transaksi')
+                                                                                    class="col-sm-5 col-form-label">
+                                                                                    Pemasukan / Pengeluaran
+                                                                                </label>
+                                                                                <div class="col-md-7">
+                                                                                    <div class="input-group ">
+                                                                                        <p class="form-control">
+                                                                                            {{ $icd->icd_cd ?? '' }}</p>
                                                                                         <span
-                                                                                            class="form-text text-danger">{{ $message }}</span>
-                                                                                    @enderror
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row mb-2">
-                                                                                <label for=""
-                                                                                    class="col-sm-3 col-form-label">Keterangan</label>
-                                                                                <div class="col-md-9">
-                                                                                    <input type="text"
-                                                                                        class="form-control"
-                                                                                        wire:model="form.name">
-                                                                                    @error('form.name')
-                                                                                        <span
-                                                                                            class="form-text text-danger">{{ $message }}</span>
-                                                                                    @enderror
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row mb-2">
-                                                                                <label for=""
-                                                                                    class="col-sm-3 col-form-label">Nominal</label>
-                                                                                <div class="col-md-9">
-                                                                                    <input type="number"
-                                                                                        class="form-control"
-                                                                                        wire:model="form.nominal">
-                                                                                    @error('form.nominal')
-                                                                                        <span
-                                                                                            class="form-text text-danger">{{ $message }}</span>
-                                                                                    @enderror
+                                                                                            class="input-group-append">
+                                                                                            <button type="button"
+                                                                                                class="btn btn-info btn-flat"
+                                                                                                wire:click="$dispatch('show-modal-keuangan')">Pilih</button>
+                                                                                        </span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-5">
                                                                             <div class="row">
                                                                                 <div class="col-md-3">Pendapatan</div>
-                                                                                <div class="col-md-9"><p class="form-control text-right">{{ $pemasukkan }}</p></div>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control text-right">
+                                                                                        {{ $pemasukkan }}</p>
+                                                                                </div>
                                                                                 <div class="col-md-3">Pengeluaran</div>
-                                                                                <div class="col-md-9"><p class="form-control text-right">{{ $pengeluaran }}</p></div>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control text-right">
+                                                                                        {{ $pengeluaran }}</p>
+                                                                                </div>
                                                                                 <div class="col-md-3">Total</div>
-                                                                                <div class="col-md-9"><p class="form-control text-right">{{ $total }}</p></div>
+                                                                                <div class="col-md-9">
+                                                                                    <p class="form-control text-right">
+                                                                                        {{ $total }}</p>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
 
@@ -121,7 +90,7 @@
                                                         <div class="card card-success card-outline">
                                                             <div class="card-header">
                                                                 <div class="card-title">
-                                                                    Data Kelas
+                                                                    Data Keuangan
                                                                 </div>
                                                             </div>
                                                             <div class="card-body">
@@ -137,17 +106,27 @@
                                                                         <thead>
                                                                             <th>Jenis</th>
                                                                             <th>Keterangan</th>
-                                                                            <th>Tgl Mulai</th>
+                                                                            <th>Tanggal</th>
                                                                             <th>Nominal</th>
                                                                             <th>Action</th>
                                                                         </thead>
                                                                         <tbody>
                                                                             @foreach ($post as $item)
                                                                                 <tr wire:key='{{ $item->id }}'>
-                                                                                   <td>{{ $item->jenisKeuangan->code_nm??"-" }}</td>
-                                                                                   <td>{{ $item->name }}</td>
-                                                                                   <td>{{ $item->tanggal_transaksi }}</td>
-                                                                                   <td>{{ $item->nominal }}</td>
+                                                                                    @if ($item->jenisKeuangan->code_nm == 'Pengeluaran')
+                                                                                        <td><span
+                                                                                                class="badge badge-danger">{{ $item->jenisKeuangan->code_nm ?? '-' }}</span>
+                                                                                        </td>
+                                                                                    @elseif($item->jenisKeuangan->code_nm == 'Pemasukkan')
+                                                                                        <td><span
+                                                                                                class="badge badge-success">{{ $item->jenisKeuangan->code_nm ?? '-' }}</span>
+                                                                                        </td>
+                                                                                    @endif
+                                                                                    <td>{{ $item->name }}</td>
+                                                                                    <td>{{ $item->tanggal_transaksi }}
+                                                                                    </td>
+                                                                                    <td>{{ 'Rp. ' . number_format($item->nominal, 0, ',', '.') }}
+                                                                                    </td>
                                                                                     <td>
                                                                                         <div
                                                                                             class="gap-3 table-actions d-flex align-items-center fs-6">
@@ -162,7 +141,6 @@
                                                                                                 </button>
                                                                                             </div>
 
-                                                                                            {{-- @if (!auth()->user()->hasRole('superadministrator')) --}}
                                                                                             <div>
                                                                                                 <button type="button"
                                                                                                     class="btn btn-danger btn-flat btn-sm"
@@ -170,7 +148,6 @@
                                                                                                         class="fas fa-trash"></i>
                                                                                                 </button>
                                                                                             </div>
-                                                                                            {{-- @endif --}}
 
                                                                                         </div>
 
@@ -198,4 +175,6 @@
             </div>
         </div>
     </section>
+    <livewire:demo.keuangan.modal-keuangan wire:key='modal-keuangan'>
+
 </div>

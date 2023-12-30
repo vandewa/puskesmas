@@ -2,13 +2,15 @@
 
 namespace App\Livewire\Demo\Keuangan;
 
-use App\Models\Demo\Kelas as DemoKelas;
-use App\Models\Demo\Layanan as DemoLayanan;
-use App\Models\His\ComCode;
 use Livewire\Component;
+use App\Models\His\ComCode;
+use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use App\Models\Demo\Kelas as DemoKelas;
+use App\Models\Demo\Layanan as DemoLayanan;
 use App\Models\Demo\TransaksiKeuangan as Uang;
+use Laraindo\RupiahFormat;
 
 
 class TransaksiKeuangan extends Component
@@ -26,16 +28,22 @@ class TransaksiKeuangan extends Component
         'nominal' => null,
     ];
 
+    #[On('refresh')]
+
     public function mount()
     {
         $this->listLayanan = DemoLayanan::all()->toArray();
+        $this->form['tanggal_transaksi'] = date('Y-m-d');
+
     }
 
     public function getEdit($a)
     {
-        $this->form = Uang::find($a)->only(['tanggal_transaksi', 'name', 'pengeluaran_tp', 'nominal']);
-        $this->idHapus = $a;
-        $this->edit = true;
+        // $this->form = Uang::find($a)->only(['tanggal_transaksi', 'name', 'pengeluaran_tp', 'nominal']);
+        // $this->idHapus = $a;
+        // $this->edit = true;
+        $this->dispatch('show-modal-keuangan', title: $a);
+
     }
 
     public function save()
@@ -121,14 +129,18 @@ class TransaksiKeuangan extends Component
         $data = Uang::with(['jenisKeuangan'])->paginate(10);
 
         $pemasukkan = Uang::where('pengeluaran_tp', 'PENGELUARAN_TP_01')->sum('nominal');
+        $masuk = RupiahFormat::currency($pemasukkan);
+
         $pengeluaran = Uang::where('pengeluaran_tp', 'PENGELUARAN_TP_02')->sum('nominal');
-        $total = $pemasukkan -  $pengeluaran ;
+        $keluar = RupiahFormat::currency($pengeluaran);
+
+        $total = RupiahFormat::currency($pemasukkan - $pengeluaran);
 
         return view('livewire.demo.keuangan.transaksi-keuangan', [
             'post' => $data,
             'jenis' => $jenis,
-            'pemasukkan' => $pemasukkan,
-            'pengeluaran' => $pengeluaran,
+            'pemasukkan' => $masuk,
+            'pengeluaran' => $keluar,
             'total' => $total,
         ]);
     }
