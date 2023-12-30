@@ -22,7 +22,7 @@ class DataDiri extends Component
         'ktp' => '',
         'telepon' => '',
         'telepon_wali' => '',
-        'blod_tp' => '',
+        'blood_tp' => '',
         'ukuran_sepatu' => '',
         'ukuran_baju' => '',
         'alamat_sekarang' => '',
@@ -55,7 +55,7 @@ class DataDiri extends Component
 
         $cek = Tagihan::where('user_id', auth()->user()->id)->where('status', 'Lunas')->first();
 
-        if($cek) {
+        if ($cek) {
             $this->ceklunas = true;
         }
     }
@@ -83,23 +83,24 @@ class DataDiri extends Component
 
         $this->validate([
             'form.nama' => 'required',
-            'form.user_id' => 'required',
             'form.tempat_lahir' => 'required',
             'form.tgl_lahir' => 'required',
             'form.marital_tp' => 'required',
             'form.sex_tp' => 'required',
+            'form.agama' => 'required',
             'form.ktp' => 'required',
             'form.telepon' => 'required',
             'form.telepon_wali' => 'required',
-            'form.blod_tp' => 'required',
+            'form.blood_tp' => 'required',
             'form.ukuran_sepatu' => 'required',
             'form.ukuran_baju' => 'required',
             'form.alamat_sekarang' => 'required',
             'form.alamat_wali' => 'required',
             'form.education_tp' => 'required',
             'form.keterampilan' => 'required',
-            'form.agama' => 'required',
         ]);
+
+        // dd('faking');
 
         DemoDataDiri::where('user_id', auth()->user()->id)->update(Arr::except($this->form, ['created_at', 'updated_at']));
 

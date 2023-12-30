@@ -2,11 +2,13 @@
 
 namespace App\Livewire\Demo\Admin;
 
-use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Demo\Lamaran;
+use Carbon\Carbon;
 use App\Models\Mcu;
+use Livewire\Component;
 use App\Models\Wawancara1;
+use App\Jobs\kirimWhatsapp;
+use App\Models\Demo\Lamaran;
+use Livewire\WithPagination;
 use App\Models\Wawancarauser;
 
 class Pendidikan extends Component
@@ -23,7 +25,8 @@ class Pendidikan extends Component
     public $tanggalmulai;
     public $tanggalselesai;
 
-    public function proses($id) {
+    public function proses($id)
+    {
         $this->pilih = $id;
         $this->info = Lamaran::find($id);
 
@@ -32,13 +35,15 @@ class Pendidikan extends Component
         JS);
     }
 
-    public function clear() {
+    public function clear()
+    {
         $this->pilih = null;
         $this->persetujuan = null;
 
     }
 
-    public function simpan() {
+    public function simpan()
+    {
 
 
 
@@ -67,7 +72,7 @@ class Pendidikan extends Component
     public function save()
     {
 
-        if($this->persetujuan) {
+        if ($this->persetujuan) {
             // naikan ke periode selanjutnya
             $this->validate([
                 'lokasi' => 'required',
@@ -76,7 +81,7 @@ class Pendidikan extends Component
             ]);
 
             $data = Lamaran::find($this->pilih);
-            $data->tahapan_id = $data->tahapan_id +1;
+            $data->tahapan_id = $data->tahapan_id + 1;
             $data->save();
             // simpan waktu dan lokasi wawancara
 
@@ -87,7 +92,17 @@ class Pendidikan extends Component
                 'tanggal_selesai' => $this->tanggalselesai,
             ]);
 
+            $pesan = $data->user->name . ' *lolos* ke tahap Wawancara User, harap hadir :' . "\n\n" .
+                'Lokasi: ' . $this->lokasi . "\n" .
+                'Tgl Mulai : ' . Carbon::parse($this->tanggalmulai)->isoFormat('LLLL') . "\n" .
+                'Tgl Selesai : ' . Carbon::parse($this->tanggalselesai)->isoFormat('LLLL') . "\n\n" .
+                'Terima Kasih.';
+
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+
         } else {
+            $data = Lamaran::find($this->pilih);
+
             $this->validate([
                 'keterangan' => 'required',
             ]);
@@ -95,6 +110,11 @@ class Pendidikan extends Component
                 'status' => 'Dibatalkan',
                 'keterangan' => $this->keterangan
             ]);
+
+            $pesan = $data->user->name . ' *tidak lolos* ke tahap Wawancara User' . "\n\n" .
+                '(' . $this->keterangan . ')';
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+
         }
 
         $this->clear();
@@ -106,9 +126,9 @@ class Pendidikan extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'pendidikan'])->where('tahapan_id',4)
-        ->where('status', 'Dalam Proses')
-        ->paginate(10);
+        $data = Lamaran::with(['tahapan', 'user', 'pendidikan'])->where('tahapan_id', 4)
+            ->where('status', 'Dalam Proses')
+            ->paginate(10);
         return view('livewire.demo.admin.pendidikan', [
             'posts' => $data
         ]);
