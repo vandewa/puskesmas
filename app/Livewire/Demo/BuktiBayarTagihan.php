@@ -5,6 +5,7 @@ namespace App\Livewire\Demo;
 use App\Models\Demo\Kelas as DemoKelas;
 use App\Models\Demo\Layanan as DemoLayanan;
 use App\Models\Demo\Tagihan;
+use App\Models\Demo\TransaksiKeuangan;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -51,6 +52,16 @@ class BuktiBayarTagihan extends Component
     {
         Tagihan::find($this->idnya)->update([
             'status' => 'Lunas'
+        ]);
+
+        $transaksiKeuangan= Tagihan::find($this->idnya);
+        TransaksiKeuangan::create([
+            'tanggal_transaksi' => date('Y-m-d'),
+            'name' => $transaksiKeuangan->nama_tagihan,
+            'pengeluaran_tp' => 'PENGELUARAN_TP_01',
+            'nominal' => $transaksiKeuangan->jumlah,
+            'id_ref' => $transaksiKeuangan->id,
+            'model' => 'App\Models\Demo\Tagihan'
         ]);
 
         session()->flash('status', 'Pembayaran diterima');
@@ -111,7 +122,6 @@ class BuktiBayarTagihan extends Component
             'bukti_bayar' => 'required|image'
         ]);
        $data = $this->bukti_bayar->store('bukti-bayar', 'public');
-
        Tagihan::find($this->idnya)->update([
             'bukti_bayar' => $data,
             'tanggal_pelunasan' => now(),

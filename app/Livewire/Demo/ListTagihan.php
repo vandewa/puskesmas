@@ -115,6 +115,7 @@ class ListTagihan extends Component
         }
 
         $data =   $data->paginate(10);
+        // dd($data);
 
         return view('livewire.demo.list-tagihan', [
             'post' => $data,
