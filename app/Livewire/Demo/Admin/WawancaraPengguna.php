@@ -2,13 +2,15 @@
 
 namespace App\Livewire\Demo\Admin;
 
-use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Demo\Lamaran;
+use Carbon\Carbon;
 use App\Models\Mcu;
-use App\Models\PengurusanBerkas;
+use Livewire\Component;
 use App\Models\Wawancara1;
+use App\Jobs\kirimWhatsapp;
+use App\Models\Demo\Lamaran;
+use Livewire\WithPagination;
 use App\Models\Wawancarauser;
+use App\Models\PengurusanBerkas;
 
 class WawancaraPengguna extends Component
 {
@@ -24,7 +26,8 @@ class WawancaraPengguna extends Component
     public $tanggalmulai;
     public $tanggalselesai;
 
-    public function proses($id) {
+    public function proses($id)
+    {
         $this->pilih = $id;
         $this->info = Lamaran::find($id);
 
@@ -33,13 +36,15 @@ class WawancaraPengguna extends Component
         JS);
     }
 
-    public function clear() {
+    public function clear()
+    {
         $this->pilih = null;
         $this->persetujuan = null;
 
     }
 
-    public function simpan() {
+    public function simpan()
+    {
 
 
 
@@ -68,12 +73,12 @@ class WawancaraPengguna extends Component
     public function save()
     {
 
-        if($this->persetujuan) {
+        if ($this->persetujuan) {
             // naikan ke periode selanjutnya
 
 
             $data = Lamaran::find($this->pilih);
-            $data->tahapan_id = $data->tahapan_id +1;
+            $data->tahapan_id = $data->tahapan_id + 1;
             $data->save();
             Mcu::create([
                 'lamaran_id' => $this->pilih,
@@ -83,9 +88,18 @@ class WawancaraPengguna extends Component
             ]);
             // simpan waktu dan lokasi wawancara
 
+            $pesan = $data->user->name . ' *lolos* ke tahap MCU, harap hadir :' . "\n\n" .
+                'Lokasi: ' . $this->lokasi . "\n" .
+                'Tgl Mulai : ' . Carbon::parse($this->tanggalmulai)->isoFormat('LLLL') . "\n" .
+                'Tgl Selesai : ' . Carbon::parse($this->tanggalselesai)->isoFormat('LLLL') . "\n\n" .
+                'Terima Kasih.';
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+
 
 
         } else {
+            $data = Lamaran::find($this->pilih);
+
             $this->validate([
                 'keterangan' => 'required',
             ]);
@@ -93,6 +107,10 @@ class WawancaraPengguna extends Component
                 'status' => 'Dibatalkan',
                 'keterangan' => $this->keterangan
             ]);
+
+            $pesan = $data->user->name . ' *tidak lolos* ke tahap MCU' . "\n\n" .
+                '(' . $this->keterangan . ')';
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
         }
 
         $this->clear();
@@ -104,9 +122,9 @@ class WawancaraPengguna extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'wawancara'])->where('tahapan_id',5)
-        ->where('status', 'Dalam Proses')
-        ->paginate(10);
+        $data = Lamaran::with(['tahapan', 'user', 'wawancara'])->where('tahapan_id', 5)
+            ->where('status', 'Dalam Proses')
+            ->paginate(10);
         return view('livewire.demo.admin.wawancara-pengguna', [
             'posts' => $data
         ]);

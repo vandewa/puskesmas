@@ -65,7 +65,7 @@
                                                             class="col-sm-3 col-form-label">Status</label>
                                                         <div class="col-md-9">
                                                             <select class="form-control"
-                                                                wire:model.defer="form.marital_tp">
+                                                                wire:model.live="form.marital_tp">
                                                                 <option value="">-- Pilih Status --</option>
                                                                 @foreach ($listStatus ?? [] as $item)
                                                                     <option value="{{ $item['com_cd'] }}">
@@ -83,7 +83,7 @@
                                                         <label for="" class="col-sm-3 col-form-label">Jenis
                                                             Kelamin</label>
                                                         <div class="col-md-9">
-                                                            <select class="form-control" wire:model.defer="form.sex_tp">
+                                                            <select class="form-control" wire:model.live="form.sex_tp">
                                                                 <option value="">-- Pilih Jenis Kelamin --
                                                                 </option>
                                                                 @foreach ($listJenisKelamin ?? [] as $item)

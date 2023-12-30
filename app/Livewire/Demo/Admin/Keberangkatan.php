@@ -24,7 +24,8 @@ class Keberangkatan extends Component
     public $tanggal;
     public $notiket;
 
-    public function proses($id) {
+    public function proses($id)
+    {
         $this->pilih = $id;
         $this->info = Lamaran::find($id);
 
@@ -33,13 +34,15 @@ class Keberangkatan extends Component
         JS);
     }
 
-    public function clear() {
+    public function clear()
+    {
         $this->pilih = null;
         $this->persetujuan = null;
 
     }
 
-    public function simpan() {
+    public function simpan()
+    {
 
 
 
@@ -68,7 +71,7 @@ class Keberangkatan extends Component
     public function save()
     {
 
-        if($this->persetujuan) {
+        if ($this->persetujuan) {
             // naikan ke periode selanjutnya
             $this->validate([
                 'lokasi' => 'required',
@@ -77,7 +80,7 @@ class Keberangkatan extends Component
             ]);
 
             $data = Lamaran::find($this->pilih);
-            $data->tahapan_id = $data->tahapan_id +1;
+            $data->tahapan_id = $data->tahapan_id + 1;
             $data->save();
             // simpan waktu dan lokasi wawancara
 
@@ -89,7 +92,7 @@ class Keberangkatan extends Component
             ]);
             Lamaran::find($this->pilih)->update([
                 'status' => 'Selesai',
-                'keterangan' => 'Pesera telah berangkat ke Jepang'
+                'keterangan' => ''
             ]);
 
         } else {
@@ -111,9 +114,9 @@ class Keberangkatan extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'pendidikan'])->where('tahapan_id',8)
-        ->where('status', 'Dalam Proses')
-        ->paginate(10);
+        $data = Lamaran::with(['tahapan', 'user', 'pendidikan'])->where('tahapan_id', 8)
+            ->where('status', 'Dalam Proses')
+            ->paginate(10);
         return view('livewire.demo.admin.keberangkatan', [
             'posts' => $data
         ]);

@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Demo\Admin;
 
-use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Demo\Lamaran;
+use Carbon\Carbon;
 use App\Models\Mcu;
-use App\Models\Wawancara1;
+use Livewire\Component;
 use App\Models\Pendidikan;
+use App\Models\Wawancara1;
+use App\Jobs\kirimWhatsapp;
+use App\Models\Demo\Lamaran;
+use Livewire\WithPagination;
 
 class Wawancara extends Component
 {
@@ -22,8 +24,10 @@ class Wawancara extends Component
     public $lokasi;
     public $tanggalmulai;
     public $tanggalselesai;
+    public $pesan;
 
-    public function proses($id) {
+    public function proses($id)
+    {
         $this->pilih = $id;
         $this->info = Lamaran::find($id);
 
@@ -32,13 +36,15 @@ class Wawancara extends Component
         JS);
     }
 
-    public function clear() {
+    public function clear()
+    {
         $this->pilih = null;
         $this->persetujuan = null;
 
     }
 
-    public function simpan() {
+    public function simpan()
+    {
 
 
 
@@ -67,7 +73,7 @@ class Wawancara extends Component
     public function save()
     {
 
-        if($this->persetujuan) {
+        if ($this->persetujuan) {
             // naikan ke periode selanjutnya
             $this->validate([
                 'lokasi' => 'required',
@@ -76,7 +82,7 @@ class Wawancara extends Component
             ]);
 
             $data = Lamaran::find($this->pilih);
-            $data->tahapan_id = $data->tahapan_id +1;
+            $data->tahapan_id = $data->tahapan_id + 1;
             $data->save();
             // simpan waktu dan lokasi wawancara
 
@@ -87,9 +93,13 @@ class Wawancara extends Component
                 'tanggal_selesai' => $this->tanggalselesai,
             ]);
 
+            $pesan = $this->pesan;
+
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
 
 
         } else {
+            $data = Lamaran::find($this->pilih);
             $this->validate([
                 'keterangan' => 'required',
             ]);
@@ -97,6 +107,9 @@ class Wawancara extends Component
                 'status' => 'Dibatalkan',
                 'keterangan' => $this->keterangan
             ]);
+
+            $pesan = $this->pesan;
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
         }
 
         $this->clear();
@@ -108,9 +121,9 @@ class Wawancara extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'wawancara'])->where('tahapan_id',3)
-        ->where('status', 'Dalam Proses')
-        ->paginate(10);
+        $data = Lamaran::with(['tahapan', 'user', 'wawancara'])->where('tahapan_id', 3)
+            ->where('status', 'Dalam Proses')
+            ->paginate(10);
         return view('livewire.demo.admin.wawancara', [
             'posts' => $data
         ]);

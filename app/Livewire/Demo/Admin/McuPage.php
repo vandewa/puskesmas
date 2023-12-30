@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Demo\Admin;
 
-use Livewire\Component;
-use Livewire\WithPagination;
-use App\Models\Demo\Lamaran;
+use Carbon\Carbon;
 use App\Models\Mcu;
+use Livewire\Component;
 use App\Models\Pendidikan;
 use App\Models\Wawancara1;
+use App\Jobs\kirimWhatsapp;
+use App\Models\Demo\Lamaran;
+use Livewire\WithPagination;
 use App\Models\PengurusanBerkas;
 
 class McuPage extends Component
@@ -24,7 +26,8 @@ class McuPage extends Component
     public $tanggalmulai;
     public $tanggalselesai;
 
-    public function proses($id) {
+    public function proses($id)
+    {
         $this->pilih = $id;
         $this->info = Lamaran::find($id);
 
@@ -33,13 +36,15 @@ class McuPage extends Component
         JS);
     }
 
-    public function clear() {
+    public function clear()
+    {
         $this->pilih = null;
         $this->persetujuan = null;
 
     }
 
-    public function simpan() {
+    public function simpan()
+    {
 
 
 
@@ -68,7 +73,7 @@ class McuPage extends Component
     public function save()
     {
 
-        if($this->persetujuan) {
+        if ($this->persetujuan) {
             // // naikan ke periode selanjutnya
             // $this->validate([
             //     'lokasi' => 'required',
@@ -77,7 +82,7 @@ class McuPage extends Component
             // ]);
 
             $data = Lamaran::find($this->pilih);
-            $data->tahapan_id = $data->tahapan_id +1;
+            $data->tahapan_id = $data->tahapan_id + 1;
             $data->save();
             // simpan waktu dan lokasi
 
@@ -94,9 +99,19 @@ class McuPage extends Component
                 'jenis_berkas' => 'Tiket Pesawat',
             ]);
 
+            $pesan = $data->user->name . ' *lolos* ke tahap Pengurusan Berkas' . "\n" .
+                'Untuk kepengurusan dokumen maka peserta harus menyiapkan dokumen sebagai berikut:' . "\n\n" .
+                '• COE' . "\n" .
+                '• VISA' . "\n" .
+                '• Tiket' . "\n\n" .
+                'Terima Kasih.';
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+
 
 
         } else {
+            $data = Lamaran::find($this->pilih);
+
             $this->validate([
                 'keterangan' => 'required',
             ]);
@@ -104,6 +119,10 @@ class McuPage extends Component
                 'status' => 'Dibatalkan',
                 'keterangan' => $this->keterangan
             ]);
+
+            $pesan = $data->user->name . ' *tidak lolos* ke tahap Pengurusan Berkas' . "\n\n" .
+                '(' . $this->keterangan . ')';
+            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
         }
 
         $this->clear();
@@ -115,9 +134,9 @@ class McuPage extends Component
     }
     public function render()
     {
-        $data = Lamaran::with(['tahapan', 'user', 'mcu'])->where('tahapan_id',6)
-        ->where('status', 'Dalam Proses')
-        ->paginate(10);
+        $data = Lamaran::with(['tahapan', 'user', 'mcu'])->where('tahapan_id', 6)
+            ->where('status', 'Dalam Proses')
+            ->paginate(10);
         return view('livewire.demo.admin.mcu-page', [
             'posts' => $data
         ]);
