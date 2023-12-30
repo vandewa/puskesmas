@@ -68,21 +68,20 @@
                                                                                 <div class="col-md-9">
                                                                                     <p class="form-control text-right">
                                                                                         {{ $total }}</p>
+                                                                                    <div class="text-right">
+                                                                                        <span>( {{ $terbilang }}
+                                                                                            )</span>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
 
                                                                     </div>
                                                                 </div>
-                                                                {{-- @if (!auth()->user()->hasRole('superadministrator')) --}}
                                                                 <div class="card-footer">
                                                                     <button type="submit"
                                                                         class="btn btn-info">Simpan</button>
-                                                                    {{-- <button type="button"
-                                                                                    class="btn btn-default float-right"
-                                                                                    wire:click='batal'>Batal</button> --}}
                                                                 </div>
-                                                                {{-- @endif --}}
                                                             </form>
                                                         </div>
                                                         <br>

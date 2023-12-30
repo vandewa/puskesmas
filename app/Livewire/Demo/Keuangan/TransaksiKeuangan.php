@@ -134,14 +134,17 @@ class TransaksiKeuangan extends Component
         $pengeluaran = Uang::where('pengeluaran_tp', 'PENGELUARAN_TP_02')->sum('nominal');
         $keluar = RupiahFormat::currency($pengeluaran);
 
-        $total = RupiahFormat::currency($pemasukkan - $pengeluaran);
+        $total = $pemasukkan - $pengeluaran;
+        $akhir = RupiahFormat::currency($total);
+        $terbilang = RupiahFormat::terbilang($total);
 
         return view('livewire.demo.keuangan.transaksi-keuangan', [
             'post' => $data,
             'jenis' => $jenis,
             'pemasukkan' => $masuk,
             'pengeluaran' => $keluar,
-            'total' => $total,
+            'total' => $akhir,
+            'terbilang' => $terbilang,
         ]);
     }
 }
