@@ -57,6 +57,18 @@
               <nav class="mt-2">
                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                       data-accordion="false">
+
+                      @permission('dashboard-read')
+                      <li class="nav-item">
+                          <a href="{{ route('admin.magang') }}"
+                              class="nav-link  {{ Request::segment(2) == 'magang' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-yen-sign"></i>
+                              <p>
+                                  Status Pekerja
+                              </p>
+                          </a>
+                      </li>
+                  @endpermission
                       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                       @role('sales')

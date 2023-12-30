@@ -49,7 +49,7 @@ class TahapanSeeder extends Seeder
         ]);
         Tahapan::create([
             'no' => 9,
-            'name' => 'Magang DI Jepang',
+            'name' => 'Monitoring',
         ]);
     }
 }

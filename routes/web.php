@@ -38,6 +38,7 @@ use App\Livewire\Pages\Registrasi\RawatJalan;
 use App\Livewire\Demo\Admin\WawancaraPengguna;
 use App\Livewire\Demo\AktivasiPage;
 use App\Livewire\Demo\AktivasiUserPage;
+use App\Livewire\Demo\Dashboard;
 use App\Livewire\Demo\DataKeluarga\Anak;
 use App\Livewire\Demo\DataKeluarga\SuamiIstri;
 use App\Livewire\Pages\Master\DataMedis\Dokter;
@@ -100,7 +101,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/', LamaranPage::class);
-    Route::get('/dashboard', LamaranPage::class)->name('dashboard');
+    Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 
     Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {

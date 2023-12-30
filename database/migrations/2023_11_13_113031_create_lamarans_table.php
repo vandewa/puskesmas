@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('no_reg')->nullable();
-            $table->string('tahapan_id')->nullable();
+            $table->bigInteger('tahapan_id')->nullable();
             $table->string('status');
             $table->longtext('keterangan')->nullable();
             $table->timestamps();

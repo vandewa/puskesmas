@@ -10,4 +10,9 @@ class Tahapan extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function lamaran()
+    {
+        return $this->hasMany(Lamaran::class, 'tahapan_id');
+    }
 }
