@@ -78,10 +78,10 @@
 
                                                                     </div>
                                                                 </div>
-                                                                <div class="card-footer">
+                                                                {{-- <div class="card-footer">
                                                                     <button type="submit"
                                                                         class="btn btn-info">Simpan</button>
-                                                                </div>
+                                                                </div> --}}
                                                             </form>
                                                         </div>
                                                         <br>
