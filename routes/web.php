@@ -100,7 +100,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/', LamaranPage::class);
+    Route::get('/', LamaranPage::class)->name('lamaran');
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
 

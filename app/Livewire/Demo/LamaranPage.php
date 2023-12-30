@@ -36,7 +36,7 @@ class LamaranPage extends Component
 
         if (auth()->user()->hasRole('user')) {
             if (!auth()->user()->active_st) {
-                redirect()->route('pendaftaran.aktivasi');
+                redirect()->route('dashboard');
             }
         }
         if (auth()->user()->hasRole('admin')) {

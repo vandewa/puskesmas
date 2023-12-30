@@ -58,13 +58,13 @@
                   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                       data-accordion="false">
 
-                      @permission('dashboard-read')
+                      @permission('master-data-read')
                       <li class="nav-item">
-                          <a href="{{ route('admin.magang') }}"
-                              class="nav-link  {{ Request::segment(2) == 'magang' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-yen-sign"></i>
+                          <a href="{{ route('dashboard')}}"
+                              class="nav-link  {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-tachometer-alt"></i>
                               <p>
-                                  Status Pekerja
+                                  Dashboard
                               </p>
                           </a>
                       </li>
@@ -83,28 +83,32 @@
                           </li>
                       @endrole
 
-                      @if (auth()->user()->active_st == true)
-                          <li class="nav-item">
-                              <a href="{{ route('pendaftaran.data-diri') }}"
-                                  class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
-                                  <i class="nav-icon fa-solid fa-user-pen"></i>
-                                  <p>
-                                      Data Diri
-                                  </p>
-                              </a>
-                          </li>
-                      @endif
 
+                      @role('user')
                       <li class="nav-item">
-                          <a href="{{ route('dashboard') }}"
-                              class="nav-link  {{ Request::segment(1) == 'dashboard' ? 'active' : '' }}">
-                              <i class="nav-icon fa-solid fa-file-pen"></i>
-                              <p>
-                                  Lamaran
-                              </p>
-                          </a>
-                      </li>
-                      <li class="nav-item">
+                        <a href="{{ route('lamaran') }}"
+                            class="nav-link  {{ Request::segment(1) == '' ? 'active' : '' }}">
+                            <i class="nav-icon fa-solid fa-file-pen"></i>
+                            <p>
+                                Lamaran
+                            </p>
+                        </a>
+                    </li>
+                    @endrole
+                    @if (auth()->user()->active_st == true)
+                        <li class="nav-item">
+                            <a href="{{ route('pendaftaran.data-diri') }}"
+                                class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
+                                <i class="nav-icon fa-solid fa-user-pen"></i>
+                                <p>
+                                    Data Diri
+                                </p>
+                            </a>
+                        </li>
+                    @endif
+
+
+                      {{-- <li class="nav-item">
                           <a href="{{ route('pendaftaran.aktivasi') }}"
                               class="nav-link  {{ Request::segment(2) == 'aktivasi' ? 'active' : '' }}">
                               <i class="nav-icon fa-solid fa-file-circle-check"></i>
@@ -112,7 +116,7 @@
                                   Aktivasi
                               </p>
                           </a>
-                      </li>
+                      </li> --}}
                       <livewire:component.sidebar.tagihan-sidebar>
 
                           @permission('master-data-read')

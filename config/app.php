@@ -59,9 +59,9 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
-    'token_wa' => env('TOKEN_WA', 'alTJBKROOzqIGsN5jTGRwkWVNkUp0Wfyzbx3h3zdpMOMO0wfafHam4gUTVjWFNr6'),
+    'token_wa' => env('TOKEN_WA', 'y59Vw77031Tpb0Cv8dbO5QyJVKVKi6EXoWqHCVZaVDntDUIViSMQuWvz2jkNwePM'),
 
-    'wa_url' => env('WA_URL', 'https://jogja.wablas.com/api'),
+    'wa_url' => env('WA_URL', 'https://pati.wablas.com/api'),
 
     /*
     |--------------------------------------------------------------------------
