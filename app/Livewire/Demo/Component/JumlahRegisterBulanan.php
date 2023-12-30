@@ -44,7 +44,7 @@ class JumlahRegisterBulanan extends Component
         FROM
             all_months
         LEFT JOIN
-                (select * from users   left join role_user on users.id = role_user.user_id  where role_user.user_id = 7)
+                (select * from users   left join role_user on users.id = role_user.user_id  where role_user.role_id = 7)
             users ON TO_CHAR(users.created_at , 'YYYY-MM') = TO_CHAR(all_months.month, 'YYYY-MM')
 
 
