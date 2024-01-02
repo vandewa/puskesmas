@@ -61,12 +61,13 @@ class AktivasiUserPage extends Component
             'tanggal_upload' => null,
             'path_dokumen' => null
         ]);
-        $this->cancel();
+
 
         $pesan ="Pemberitahuan, Aktivasi user anda ditolak \n Silahkan ulangi aktivasi anda"."\n" ;
 
         kirimWhatsapp::dispatch($pesan, $this->info->telepon);
         session()->flash('status', 'Pemohon berhasil ditolak.');
+        $this->cancel();
 
     }
     public function render()
