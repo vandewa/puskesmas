@@ -28,9 +28,9 @@ class AktivasiUserPage extends Component
         $this->info = null;
     }
 
-    public function save() {
+    public function save($id) {
         // dd($this->pilih);
-        User::find($this->pilih)->update([
+        User::find($id)->update([
             'active_st' => true
         ]);
 

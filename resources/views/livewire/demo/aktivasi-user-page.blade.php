@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="mt-3 text-right col-md-12">
-                                        <button class="btn btn-primary" wire:click='save'>Terima</button>
+                                        <button class="btn btn-primary" wire:click='save({{ $pilih }})'>Terima</button>
                                         <button class="btn btn-danger"  wire:click='tolak'>Tolak</button>
                                         <button class="btn btn-warning"  wire:click='cancel'>Cancel</button>
                                     </div>
