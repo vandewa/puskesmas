@@ -15,6 +15,7 @@ use App\Livewire\Pages\Admin\Role;
 use App\Livewire\Pages\Farmasi\ListFarmasi;
 use App\Livewire\Pages\Farmasi\ListPengambilanFarmasi;
 use App\Livewire\Pages\Farmasi\ProsesFarmasi;
+use App\Livewire\Pages\Inventori\PosInventoryPage;
 use App\Livewire\Pages\Keuangan\ProsesPembayaran;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
@@ -124,17 +125,7 @@ Route::middleware([
         Route::get('jadwal-praktek/{id?}', JadwalPraktek::class)->name('jadwal-praktek');
         Route::get('list-jadwal-praktek', ListJadwalPraktek::class)->name('jadwal-praktek.index');
         Route::get('data-puskesmas', DataPuskesmas::class)->name('data-puskesmas');
-        Route::get('inventori/{id?}', Inventori::class)->name('inventori');
-        Route::get('list-inventori', ListInventori::class)->name('inventori.index');
-        Route::get('unit-satuan', UnitSatuan::class)->name('unit-satuan');
-        Route::get('principal/{id?}', Principal::class)->name('principal');
-        Route::get('list-principal', ListPrincipal::class)->name('principal.index');
-        Route::get('supplier/{id?}', Supplier::class)->name('supplier');
-        Route::get('list-supplier', ListSupplier::class)->name('supplier.index');
-        Route::get('tipe', Tipe::class)->name('tipe');
-        Route::get('kelompok', Kelompok::class)->name('kelompok');
-        Route::get('golongan', Golongan::class)->name('golongan');
-        Route::get('list-tipe', ListTipe::class)->name('tipe-inventori.index');
+
         Route::get('permission', Permission::class)->name('permission');
         Route::get('role/{id?}', Role::class)->name('role');
         Route::get('role-index', RoleIndex::class)->name('role.index');
@@ -218,6 +209,21 @@ Route::middleware([
                 Route::get('proses/{id?}', ProsesPembayaran::class)->name('proses');
             });
         });
+    });
+
+    Route::group(['prefix' => 'inventori', 'as' => 'inventori.'], function(){
+        Route::get('pos-inventori', PosInventoryPage::class)->name('pos-inventori');
+        Route::get('inventori/{id?}', Inventori::class)->name('inventori');
+        Route::get('list-inventori', ListInventori::class)->name('inventori.index');
+        Route::get('unit-satuan', UnitSatuan::class)->name('unit-satuan');
+        Route::get('principal/{id?}', Principal::class)->name('principal');
+        Route::get('list-principal', ListPrincipal::class)->name('principal.index');
+        Route::get('supplier/{id?}', Supplier::class)->name('supplier');
+        Route::get('list-supplier', ListSupplier::class)->name('supplier.index');
+        Route::get('tipe', Tipe::class)->name('tipe');
+        Route::get('kelompok', Kelompok::class)->name('kelompok');
+        Route::get('golongan', Golongan::class)->name('golongan');
+        Route::get('list-tipe', ListTipe::class)->name('tipe-inventori.index');
     });
 
 

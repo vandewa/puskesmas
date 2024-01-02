@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <a href="{{ route('master.inventori') }}" wire:navigate class="btn btn-success mb-4"><i
+                            <a href="{{ route('inventori.inventori') }}" wire:navigate class="btn btn-success mb-4"><i
                                     class="fas fa-plus-square mr-2"></i> Tambah </a>
 
                             <div class="row">
@@ -44,7 +44,7 @@
                                             <td>{{ $item->satuan->unit_nm ?? '-' }}</td>
                                             <td>{{ $item->satuan->unit_nm ?? '-' }}</td>
                                             <td>
-                                                <a href="{{ route('master.inventori', $item->item_cd) }}" wire:navigate
+                                                <a href="{{ route('inventori.inventori', $item->item_cd) }}" wire:navigate
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
                                                     data-placement="left" title="Edit"><i
                                                         class="fas fa-pencil-alt"></i></a>

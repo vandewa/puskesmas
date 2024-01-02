@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                            <a href="{{ route('master.supplier') }}" wire:navigate class="btn btn-success mb-4"><i
+                            <a href="{{ route('inventori.supplier') }}" wire:navigate class="btn btn-success mb-4"><i
                                     class="fas fa-plus-square mr-2"></i> Tambah </a>
 
                             <div class="row">
