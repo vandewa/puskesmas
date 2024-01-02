@@ -30,9 +30,14 @@ class AktivasiUserPage extends Component
 
     public function save($id) {
         // dd($this->pilih);
+
+
+
         User::find($id)->update([
             'active_st' => true
         ]);
+
+        $this->info = User::find($id);
 
         TransaksiKeuangan::create([
             'tanggal_transaksi' => date('Y-m-d'),
