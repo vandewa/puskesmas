@@ -169,7 +169,7 @@ class ComCodeSeeder extends Seeder
                 $code = Code::create(["com_cd" => "PARAMEDISROLE_TP_200", "code_nm" => "Perawat", "code_group" => "PARAMEDISROLE_TP", "code_value" => null]);
                 $code = Code::create(["com_cd" => "PARAMEDISROLE_TP_201", "code_nm" => "Asisten Perawat", "code_group" => "PARAMEDISROLE_TP", "code_value" => null]);
                 $code = Code::create(["com_cd" => "PASIEN_TP_01", "code_nm" => "Umum", "code_group" => "PASIEN_TP", "code_value" => null]);
-                $code = Code::create(["com_cd" => "PASIEN_TP_02", "code_nm" => "Jaminan", "code_group" => "PASIEN_TP", "code_value" => null]);
+                $code = Code::create(["com_cd" => "PASIEN_TP_02", "code_nm" => "BPJS", "code_group" => "PASIEN_TP", "code_value" => null]);
                 $code = Code::create(["com_cd" => "PAYMENT_ST_0", "code_nm" => "Belum Bayar", "code_group" => "PAYMENT_ST", "code_value" => null]);
                 $code = Code::create(["com_cd" => "PAYMENT_ST_1", "code_nm" => "Lunas", "code_group" => "PAYMENT_ST", "code_value" => null]);
                 $code = Code::create(["com_cd" => "PAYMENT_ST_2", "code_nm" => "Tagihan (Belum Lunas)", "code_group" => "PAYMENT_ST", "code_value" => null]);
