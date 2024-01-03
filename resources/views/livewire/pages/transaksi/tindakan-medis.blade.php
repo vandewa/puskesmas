@@ -29,7 +29,7 @@
                                                     <div class="card-header p-0 pt-1">
                                                         <ul class="nav nav-tabs" id="custom-tabs-three-transaksi-tab"
                                                             role="tablist">
-                                                            <li class="nav-item">
+                                                            {{-- <li class="nav-item">
                                                                 <a class="nav-link active"
                                                                     id="custom-tabs-three-permintaan-lab-tab"
                                                                     data-toggle="pill"
@@ -37,7 +37,7 @@
                                                                     role="tab"
                                                                     aria-controls="custom-tabs-three-permintaan-tindakan"
                                                                     aria-selected="true">Permintaan Tindakan</a>
-                                                            </li>
+                                                            </li> --}}
                                                             <li class="nav-item">
                                                                 <a class="nav-link"
                                                                     id="custom-tabs-three-proses-lab-tab"
@@ -74,12 +74,12 @@
                                                     </div>
                                                     <div class="card-body">
                                                         <div class="tab-content" id="custom-tabs-three-tabContent">
-                                                            <div class="tab-pane fade show active"
+                                                            {{-- <div class="tab-pane fade show active"
                                                                 id="custom-tabs-three-permintaan-tindakan"
                                                                 role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-permintaan-tindakan-tab">
                                                                 PERMINTAAN TINDAKAN
-                                                            </div>
+                                                            </div> --}}
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-three-tindakan-diproses" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-tindakan-diproses-tab">
