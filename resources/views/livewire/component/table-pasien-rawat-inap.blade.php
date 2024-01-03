@@ -12,12 +12,12 @@
         <tbody>
             @foreach ($posts as $item)
                 <tr>
-                    <td>{{ $item->ruang->ruang_nm??"-" }}</td>
-                    <td>{{ $item->dokter->dr_nm }}</td>
-                    <td>{{ $item->pasien->no_rm }}</td>
-                    <td>{{ $item->pasien->pasien_nm }}</td>
-                    <td>{{ $item->pasien->birth_date }}</td>
-                    <td>{{ $item->jenisPasien->code_nm }}</td>
+                    <td>{{ $item->ruang->ruang_nm ?? '-' }}</td>
+                    <td>{{ $item->dokter->dr_nm ?? '' }}</td>
+                    <td>{{ $item->pasien->no_rm ?? '' }}</td>
+                    <td>{{ $item->pasien->pasien_nm ?? '' }}</td>
+                    <td>{{ $item->pasien->birth_date ?? '' }}</td>
+                    <td>{{ $item->jenisPasien->code_nm ?? '' }}</td>
                     {{-- <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-info btn-sm btn-flat"><i
