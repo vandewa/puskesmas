@@ -20,8 +20,8 @@
                     <tbody>
                         @foreach ($posts as $item)
                             <tr>
-                                <td>{{ $item->treatment_cd }}</td>
-                                <td>{{ $item->treatment_nm }}</td>
+                                <td>{{ $item->treatment_cd ?? '' }}</td>
+                                <td>{{ $item->treatment_nm ?? '' }}</td>
                                 <td>
                                     <button type="button" wire:click="pilih('{{ $item->treatment_cd }}')"
                                         class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

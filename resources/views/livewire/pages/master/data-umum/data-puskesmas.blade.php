@@ -128,10 +128,10 @@
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->rs_cd }}'>
 
-                                            <td>{{ $loop->index + $post->firstItem() }}</td>
-                                            <td>{{ $item->rs_cd }}</td>
-                                            <td> {{ $item->rs_nm }}</td>
-                                            <td> {{ $item->address }}</td>
+                                            <td> {{ $loop->index + $post->firstItem() }}</td>
+                                            <td> {{ $item->rs_cd ?? '' }}</td>
+                                            <td> {{ $item->rs_nm ?? '' }}</td>
+                                            <td> {{ $item->address ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->rs_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

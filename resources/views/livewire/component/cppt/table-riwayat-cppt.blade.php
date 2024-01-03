@@ -18,19 +18,19 @@
         </thead>
         <tbody>
             @foreach ($posts as $item)
-               <tr>
-                <td>{{ $item->transaction_date }}</td>
-                <td>{{ $item->dr_cd }}</td>
-                <td>{{ $item->paramedis_cd }}</td>
-                <td>{{ $item->subject??"-" }}</td>
-                <td>{{ $item->objective??"-" }}</td>
-                <td>{{ $item->assesment??"-" }}</td>
-                <td>{{ $item->plan??"-" }}</td>
-                <td>
-                    {{-- <button class="btn btn-primary">Lihat</button> --}}
-                    <button class="btn btn-danger" wire:click='confirmHapus({{ $item->id }})'>Hapus</button>
-                </td>
-               </tr>
+                <tr>
+                    <td>{{ $item->transaction_date ?? '' }}</td>
+                    <td>{{ $item->dr_cd ?? '' }}</td>
+                    <td>{{ $item->paramedis_cd ?? '' }}</td>
+                    <td>{{ $item->subject ?? '-' }}</td>
+                    <td>{{ $item->objective ?? '-' }}</td>
+                    <td>{{ $item->assesment ?? '-' }}</td>
+                    <td>{{ $item->plan ?? '-' }}</td>
+                    <td>
+                        {{-- <button class="btn btn-primary">Lihat</button> --}}
+                        <button class="btn btn-danger" wire:click='confirmHapus({{ $item->id }})'>Hapus</button>
+                    </td>
+                </tr>
             @endforeach
 
         </tbody>

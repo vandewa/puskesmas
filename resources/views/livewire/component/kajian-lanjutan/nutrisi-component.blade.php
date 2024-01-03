@@ -137,12 +137,12 @@
                                         <td>
                                             {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                         </td>
-                                        <td>{{ $item->berat }}</td>
-                                        <td>{{ $item->tinggi }}</td>
-                                        <td>{{ $item->imt }}</td>
-                                        <td>{{ $item->lingkar_perut }}</td>
-                                        <td>{{ $item->lila }}</td>
-                                        <td>{{ $item->status_gizi }}</td>
+                                        <td>{{ $item->berat ?? '' }}</td>
+                                        <td>{{ $item->tinggi ?? '' }}</td>
+                                        <td>{{ $item->imt ?? '' }}</td>
+                                        <td>{{ $item->lingkar_perut ?? '' }}</td>
+                                        <td>{{ $item->lila ?? '' }}</td>
+                                        <td>{{ $item->status_gizi ?? '' }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-danger"
                                                 wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
@@ -171,12 +171,12 @@
                                         <td>
                                             {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                         </td>
-                                        <td>{{ $item->berat }}</td>
-                                        <td>{{ $item->tinggi }}</td>
-                                        <td>{{ $item->imt }}</td>
-                                        <td>{{ $item->lingkar_perut }}</td>
-                                        <td>{{ $item->lila }}</td>
-                                        <td>{{ $item->status_gizi }}</td>
+                                        <td>{{ $item->berat ?? '' }}</td>
+                                        <td>{{ $item->tinggi ?? '' }}</td>
+                                        <td>{{ $item->imt ?? '' }}</td>
+                                        <td>{{ $item->lingkar_perut ?? '' }}</td>
+                                        <td>{{ $item->lila ?? '' }}</td>
+                                        <td>{{ $item->status_gizi ?? '' }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-danger"
                                                 wire:click='confirmDelete({{ $item->id }})'>Hapus</button>

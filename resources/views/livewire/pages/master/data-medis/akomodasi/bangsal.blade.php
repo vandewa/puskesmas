@@ -84,8 +84,8 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->bangsal_cd }}'>
-                                            <td>{{ $item->bangsal_cd }}</td>
-                                            <td>{{ $item->bangsal_nm }}</td>
+                                            <td>{{ $item->bangsal_cd ?? '' }}</td>
+                                            <td>{{ $item->bangsal_nm ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->bangsal_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

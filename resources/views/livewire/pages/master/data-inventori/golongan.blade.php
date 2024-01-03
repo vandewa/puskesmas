@@ -91,8 +91,8 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->golongan_cd }}'>
-                                            <td>{{ $item->golongan_cd }}</td>
-                                            <td> {{ $item->golongan_nm }}</td>
+                                            <td>{{ $item->golongan_cd ?? '' }}</td>
+                                            <td> {{ $item->golongan_nm ?? '' }}</td>
                                             <td> {{ $item->root->golongan_cd ?? '-' }}</td>
                                             <td> {{ $item->root->golongan_nm ?? '-' }}</td>
                                             <td>

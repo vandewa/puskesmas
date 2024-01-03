@@ -127,8 +127,8 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->kamar_cd }}'>
-                                            <td>{{ $item->kamar_cd }}</td>
-                                            <td>{{ $item->kamar_nm }}</td>
+                                            <td>{{ $item->kamar_cd ?? '' }}</td>
+                                            <td>{{ $item->kamar_nm ?? '' }}</td>
                                             <td>{{ $item->jumlah_tt ?? '-' }}</td>
                                             <td>{{ $item->bangsal->bangsal_nm ?? '' }}</td>
                                             <td>
