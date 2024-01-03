@@ -74,6 +74,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="row mb-2">
+                            <label for="" class="col-sm-3 col-form-label">Status Pulang</label>
+                            <div class="col-md-9">
+                                <select name="" id="" class="form-control"
+                                    wire:model.live='form.pulang_st'>
+                                    <option value="">Pilih Status Pulang</option>
+                                    @foreach ($pulang ?? [] as $item)
+                                        <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         {{-- <div class="row mb-2">
                         <label for=""
                             class="col-sm-3 col-form-label">Rujukan</label>
@@ -95,7 +108,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <input class="form-check-input" type="radio" name="kronis" id="genderMale"
                                     value="1" wire:model="form.kronis"
-                                    @if ($form['kronis'] == '1') checked @endif>
+                                    @if ($form['kronis'] == 1) checked @endif>
                                 <label class="form-check-label" for="genderMale">
                                     Ya
                                 </label>
@@ -105,7 +118,7 @@
 
                                 <input class="form-check-input" type="radio" name="kronis" id="genderFemale"
                                     value="0" wire:model="form.kronis"
-                                    @if ($form['kronis'] == '0') checked @endif>
+                                    @if ($form['kronis'] == 0) checked @endif>
                                 <label class="form-check-label" for="genderFemale">
                                     Tidak
                                 </label>
@@ -115,20 +128,20 @@
                             <label class="col-sm-3 control-label">Risiko Jatuh</label>
                             <div class="col-sm-9">
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                <input class="form-check-input" type="radio" name="risiko_jatuh" id="genderMale"
-                                    value="1" wire:model="form.risiko_jatuh"
-                                    @if ($form['risiko_jatuh'] == '0') checked @endif>
-                                <label class="form-check-label" for="genderMale">
+                                <input class="form-check-input" type="radio" name="risiko_jatuh" id="Male"
+                                    value="1" wire:model.live="form.risiko_jatuh"
+                                    @if ($form['risiko_jatuh'] == 0) checked @endif>
+                                <label class="form-check-label" for="Male">
                                     Ya
                                 </label>
 
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
 
-                                <input class="form-check-input" type="radio" name="risiko_jatuh" id="genderFemale"
-                                    value="0" wire:model="form.risiko_jatuh"
-                                    @if ($form['risiko_jatuh'] == '0') checked @endif>
-                                <label class="form-check-label" for="genderFemale">
+                                <input class="form-check-input" type="radio" name="risiko_jatuh" id="Female"
+                                    value="0" wire:model.live="form.risiko_jatuh"
+                                    @if ($form['risiko_jatuh'] == 0) checked @endif>
+                                <label class="form-check-label" for="Female">
                                     Tidak
                                 </label>
                             </div>
@@ -148,8 +161,10 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-info">Simpan</button>
-                            <a href="{{ route('registrasi.rawat-inap', [$medik->pasien_cd, $medik->medical_cd]) }}" class="btn btn-warning">Mutasi To Inap</a>
-                            <a href="{{ route('registrasi.rawat-jalan', [$medik->pasien_cd, $medik->medical_cd]) }}" class="btn btn-success">Mutasi Poli</a>
+                            <a href="{{ route('registrasi.rawat-inap', [$medik->pasien_cd, $medik->medical_cd]) }}"
+                                class="btn btn-warning">Mutasi To Inap</a>
+                            <a href="{{ route('registrasi.rawat-jalan', [$medik->pasien_cd, $medik->medical_cd]) }}"
+                                class="btn btn-success">Mutasi Poli</a>
                             <a href="{{ route('transaksi.rawat-jalan.list') }}"
                                 class="btn btn-default float-right">Kembali</a>
                         </div>

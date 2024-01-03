@@ -14,7 +14,7 @@ class DataTransaksi extends Component
 
     use WithPagination;
 
-    public $medicalcd, $pasiencd, $poli, $dokter, $no_rm, $pasien_nm, $birth_date, $medik;
+    public $medicalcd, $pasiencd, $poli, $dokter, $no_rm, $pasien_nm, $birth_date, $medik, $pulang;
 
     public $form = [
         'datetime_in' => '',
@@ -24,6 +24,7 @@ class DataTransaksi extends Component
         'risiko_jatuh' => null,
         'catatan' => null,
         'alergi' => null,
+        'pulang_st' => null,
     ];
 
     public function mount()
@@ -32,12 +33,15 @@ class DataTransaksi extends Component
         $this->pasien_nm = TrxPasien::where('pasien_cd', $this->pasiencd)->first()->pasien_nm;
         $this->birth_date = TrxPasien::where('pasien_cd', $this->pasiencd)->first()->birth_date;
         $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
+        $this->form['pulang_st'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pulang_st;
         $this->form['kronis'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->kronis;
+        $this->form['risiko_jatuh'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->risiko_jatuh;
         $this->form['datetime_in'] = date('Y-m-d', strtotime(TrxMedical::where('medical_cd', $this->medicalcd)->first()->datetime_in));
         $this->dokter = TrxDokter::all()->toArray();
         $this->form['medunit_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->medunit_cd;
         $this->poli = TrxUnitMedis::all()->toArray();
-        $this->medik =  TrxMedical::where('medical_cd', $this->medicalcd)->first();
+        $this->medik = TrxMedical::where('medical_cd', $this->medicalcd)->first();
+        $this->pulang = get_code('OUT_TP');
     }
 
     public function save()

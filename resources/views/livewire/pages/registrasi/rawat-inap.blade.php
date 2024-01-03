@@ -74,19 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
-                                        <label for="" class="col-sm-3 col-form-label">Status Pulang</label>
-                                        <div class="col-md-9">
-                                            <select name="" id="" class="form-control"
-                                                wire:model.live='form.pulang_st'>
-                                                <option value="">Pilih Status Pulang</option>
-                                                @foreach ($pulang ?? [] as $item)
-                                                    <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row mb-2">
