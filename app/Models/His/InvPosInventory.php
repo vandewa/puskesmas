@@ -88,4 +88,11 @@ class InvPosInventory extends Model implements Auditable
         return $this->hasOne(TrxUnitMedis::class,'medunit_cd');
     }
 
+    public function scopeCari($query, $s)
+    {
+        if ($s) {
+            return $query->where('pos_cd', 'ilike', "%$s%")->orWhere('pos_nm', 'ilike', "%$s%");
+        }
+    }
+
 }

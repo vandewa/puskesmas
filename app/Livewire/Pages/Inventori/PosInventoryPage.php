@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Pages\Inventori;
 
-use App\Models\His\InvUnit;
+use App\Models\His\InvPosInventory;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -11,14 +11,14 @@ class PosInventoryPage extends Component
     use WithPagination;
 
     public $form = [
-        'unit_cd' => '',
-        'unit_nm' => '',
+        'pos_cd' => '',
+        'pos_nm' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
     public function getEdit($a)
     {
-        $this->form = InvUnit::find($a)->only(['unit_cd', 'unit_nm']);
+        $this->form = InvPosInventory::find($a)->only(['unit_cd', 'unit_nm']);
         $this->edit = true;
     }
 
@@ -43,11 +43,11 @@ class PosInventoryPage extends Component
     public function store()
     {
         $this->validate([
-            'form.unit_cd' => 'required',
-            'form.unit_nm' => 'required',
+            'form.pos_cd' => 'required',
+            'form.pos_nm' => 'required',
         ]);
 
-        InvUnit::create($this->form);
+        InvPosInventory::create($this->form);
 
     }
 
@@ -74,20 +74,20 @@ class PosInventoryPage extends Component
 
     public function hapus()
     {
-        InvUnit::destroy($this->idHapus);
+        InvPosInventory::destroy($this->idHapus);
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil dihapus");
     }
 
     public function storeUpdate()
     {
-        InvUnit::find($this->form['unit_cd'])->update($this->form);
+        InvPosInventory::find($this->form['unit_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
     }
 
     public function render()
     {
-        $data = InvUnit::cari($this->cari)->paginate(10);
+        $data = InvPosInventory::cari($this->cari)->paginate(10);
         return view('livewire.pages.inventori.pos-inventory-page', [
             'post' => $data
         ]);
