@@ -199,6 +199,11 @@ class Pendaftaran extends Component
             'form.gender_tp' => 'required',
             'insurance.insurance_tp' => 'required_if:form.pasien_tp,PASIEN_TP_02',
             'insurance.insurance_no' => 'required_if:form.pasien_tp,PASIEN_TP_02',
+            'form.region_kel' => 'required',
+            'form.region_kec' => 'required',
+            'form.region_kab' => 'required',
+            'form.region_prop' => 'required',
+
         ]);
 
         if ($this->isEdit) {
