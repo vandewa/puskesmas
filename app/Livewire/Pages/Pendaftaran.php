@@ -65,7 +65,7 @@ class Pendaftaran extends Component
         $this->jk = get_code('GENDER_TP');
         $this->prop = ComRegion::where('region_level', 1)->get()->toArray();
         $this->tppasien = get_code('PASIEN_TP');
-        $this->tpjaminan = TrxInsurance::all()->toArray();
+        // $this->tpjaminan = TrxInsurance::all()->toArray();
         $this->status = get_code('MARITAL_TP');
         $this->pendidikan = get_code('EDUCATION_CD');
         $this->pekerjaan = get_code('OCCUPATION_CD');
@@ -172,6 +172,9 @@ class Pendaftaran extends Component
             if ($this->form['pasien_tp'] != 'PASIEN_TP_02') {
                 $this->insurance['insurance_cd'] = "";
                 $this->insurance['insurance_no'] = "";
+            } else {
+                $this->insurance['insurance_cd'] = "JKN";
+                $this->insurance['insurance_no'] = "";
             }
         }
 
@@ -198,7 +201,7 @@ class Pendaftaran extends Component
             'form.pasien_nm' => 'required',
             'form.pasien_tp' => 'required',
             'form.gender_tp' => 'required',
-            'insurance.insurance_tp' => 'required_if:form.pasien_tp,PASIEN_TP_02',
+            // 'insurance.insurance_tp' => 'required_if:form.pasien_tp,PASIEN_TP_02',
             'insurance.insurance_no' => 'required_if:form.pasien_tp,PASIEN_TP_02',
             'form.region_kel' => 'required',
             'form.region_kec' => 'required',
