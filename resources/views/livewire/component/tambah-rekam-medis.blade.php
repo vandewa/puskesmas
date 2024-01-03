@@ -5,11 +5,11 @@
                 <!-- left column -->
                 <div class="col-md-12">
                     {{-- <div class="card card-success card-outline"> --}}
-                    <form class="form-horizontal mt-2" >
+                    <form class="mt-2 form-horizontal" >
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Anamnesa</label>
                                         <div class="col-md-9">
                                             <textarea wire:model.live="form.anamnesa" class="form-control" rows="2"></textarea>
@@ -18,7 +18,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Pencarian ICD</label>
                                         <div class="col-md-9">
                                             <div class="input-group ">
@@ -30,7 +30,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Diagnosa</label>
                                         <div class="col-md-9">
                                             <textarea wire:model.live="form.medical_data" class="form-control" rows="2"></textarea>
@@ -39,7 +39,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label class="col-sm-3 col-form-label">Jenis Diagnosa</label>
                                         <div class="col-md-9">
                                             <select class="form-control" wire:model.live="form.rm_tp">
@@ -53,7 +53,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                         <div class="col-md-9">
                                             <input type="date" class="form-control"
@@ -66,7 +66,7 @@
 
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label class="col-sm-3 col-form-label">Dokter</label>
                                         <div class="col-md-9">
                                             <select name="" id="" class="form-control"
@@ -81,7 +81,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Jenis Kasus</label>
                                         <div class="col-md-9">
                                             <select class="form-control" wire:model.live="form.case_tp">
@@ -97,7 +97,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Pemeriksaan
                                             Fisik</label>
                                         <div class="col-md-9">
@@ -107,14 +107,14 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Selengkapnya
                                             </label>
                                         <div class="col-md-9">
                                             <input type="checkbox" class="form-control" wire:model.live.live='advance'>
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Pemeriksaan
                                             Penunjang</label>
                                         <div class="col-md-9">
@@ -124,7 +124,7 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="row mb-2">
+                                    <div class="mb-2 row">
                                         <label for="" class="col-sm-3 col-form-label">Catatan</label>
                                         <div class="col-md-9">
                                             <textarea rows="2" class="form-control" wire:model.live='form.medical_note'></textarea>
@@ -138,7 +138,7 @@
                             <div class="">
                                 @if($advance)
                                 <div class="col-md-12">
-                                    <div class="col-md-12 text-center">
+                                    <div class="text-center col-md-12">
                                         <h4>Pemeriksaan Fisik Lengkap</h4>
                                     </div>
                                     {{-- <div class="card card-success card-outline"> --}}
@@ -226,7 +226,7 @@
                                                         <div class="mb-2 row">
                                                             <label for="" class="col-sm-2 col-form-label">Dada</label>
                                                             <div class="col-md-10">
-                                                                <div class="row mb-2">
+                                                                <div class="mb-2 row">
                                                                     <div class="col-md-6">
                                                                         <input type="checkbox" value="DBN" wire:model.live="updateTypes">
                                                                         <label>DBN (Dalam Batas Normal)</label><br>
@@ -261,6 +261,9 @@
                                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                                 @enderror
                                                             </div>
+                                                         @foreach ($updateTypes as $a)
+<li>{{ $a }}</li>
+                                                         @endforeach
                                                         </div>
                                                         <div class="mb-2 row">
                                                             <label for="" class="col-sm-3 col-form-label">Abdomen</label>
@@ -317,7 +320,7 @@
                         <div class="card-footer">
                             <button type="button" wire:click='save' class="btn btn-info">Simpan</button>
                             <a href="{{ route('master.jadwal-praktek.index') }}"
-                                class="btn btn-default float-right">Kembali</a>
+                                class="float-right btn btn-default">Kembali</a>
                         </div>
                     </form>
                     {{-- </div> --}}
