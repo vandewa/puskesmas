@@ -31,13 +31,14 @@ class DatabaseSeeder extends Seeder
         $this->call(ComPaymentMethodTableSeeder::class);
         $this->call(ComShiftTableSeeder::class);
         $this->call(TrxSpesialisTableSeeder::class);
-        $this->call(TrxTindakanTableSeeder::class);
+        // $this->call(TrxTindakanTableSeeder::class);
         $this->call(TrxUnitMedisTableSeeder::class);
         $this->call(TrxUnitmedisItemTableSeeder::class);
         $this->call(TrxDokterTableSeeder::class);
         $this->call(TrxJadwalTableSeeder::class);
         $this->call(TrxTarifGeneralTableSeeder::class);
-        $this->call(TrxTarifTindakanTableSeeder::class);
+        // $this->call(TrxTarifTindakanTableSeeder::class);
+        $this->call(TindakanSapuranSeeder::class);
         $this->call(TrxKelasTableSeeder::class);
         $this->call(TrxTarifKelasTableSeeder::class);
     }

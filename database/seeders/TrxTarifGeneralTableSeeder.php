@@ -16,12 +16,12 @@ class TrxTarifGeneralTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         DB::table('trx_tarif_general')->delete();
-        
+
         DB::table('trx_tarif_general')->insert(array (
-            0 => 
+            0 =>
             array (
                 'seq_no' => 57,
                 'tarif_nm' => 'JASA SARANA',
@@ -34,7 +34,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            1 => 
+            1 =>
             array (
                 'seq_no' => 58,
                 'tarif_nm' => 'JASA PELAYANAN',
@@ -47,7 +47,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            2 => 
+            2 =>
             array (
                 'seq_no' => 59,
                 'tarif_nm' => 'JASA MEDIS',
@@ -60,7 +60,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            3 => 
+            3 =>
             array (
                 'seq_no' => 60,
                 'tarif_nm' => 'JASA PELAKSANA',
@@ -73,7 +73,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            4 => 
+            4 =>
             array (
                 'seq_no' => 61,
                 'tarif_nm' => 'BHP',
@@ -86,7 +86,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            5 => 
+            5 =>
             array (
                 'seq_no' => 62,
                 'tarif_nm' => 'PAJAK',
@@ -99,7 +99,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            6 => 
+            6 =>
             array (
                 'seq_no' => 63,
                 'tarif_nm' => 'JASA APOTEKER',
@@ -112,7 +112,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-            7 => 
+            7 =>
             array (
                 'seq_no' => 64,
                 'tarif_nm' => 'JASA PELAKSANA FARMASI',
@@ -125,8 +125,21 @@ class TrxTarifGeneralTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
+            8 =>
+            array (
+                'seq_no' => 64,
+                'tarif_nm' => 'Pendaftaran',
+                'insurance_cd' => '',
+                'kelas_cd' => '',
+                'tarif' => '10000',
+                'auto_add' => '1',
+                'medical_tp' => '',
+                'account_cd' => 'AC999',
+                'rstp_cd' => NULL,
+                'modi_id' => 'admin',
+            ),
         ));
 
-        
+
     }
 }

@@ -215,7 +215,7 @@ class Pendaftaran extends Component
 
     public function store()
     {
-        $this->form['no_rm'] = gen_no_rm();
+        $this->form['no_rm'] = gen_no_rm($this->form['region_kel']);
         $this->form['pasien_cd'] = gen_pasien_cd();
         $data = TrxPasien::create($this->form);
         if ($this->form['pasien_tp'] == 'PASIEN_TP_02') {

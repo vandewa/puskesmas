@@ -20,7 +20,9 @@ use App\Models\His\InvPosInventory;
 use App\Models\His\TrxKelas;
 use App\Models\His\TrxInsurance;
 use App\Models\His\ComAccount;
+use App\Models\His\ComRegion;
 use App\Models\His\TrxMedicalResep;
+// use DB;
 
 if (!function_exists('file_name')) {
     function file_name($path, $extension)
@@ -277,14 +279,27 @@ if (!function_exists('gen_no_resep')) {
 
 if (!function_exists('gen_no_rm')) {
 
-    function gen_no_rm()
+    function gen_no_rm($id ='')
     {
-        $no = str_pad(1, 8, '0', STR_PAD_LEFT);
-        $terakhir = \App\Models\His\TrxPasien::orderBy('created_at', 'desc')->first();
-        if ($terakhir) {
-            $no = str_pad((int) substr($terakhir->no_rm, -8) + 1, 8, 0, STR_PAD_LEFT);
+        $a = '';
+        $tambahan = '99';
+        if($id) {
+            $a = ComRegion::find($id);
         }
-        return $no;
+
+        $no = str_pad(1, 6, '0', STR_PAD_LEFT);
+        $terakhir = \App\Models\His\TrxPasien::orderBy('created_at', 'desc');
+        if($a->modi_id??"" != ""){
+            $tambahan = str_pad($a->modi_id,2,'0');
+            $terakhir->where(DB::raw("left(no_rm,2)"),  $tambahan );
+        } else {
+            $terakhir->where(DB::raw("left(no_rm,2)"), '99');
+        }
+        $terakhir = $terakhir->first();
+        if ($terakhir) {
+            $no = str_pad((int) substr($terakhir->no_rm, -6) + 1, 6, 0, STR_PAD_LEFT);
+        }
+        return $tambahan.'.'.$no;
     }
 }
 
