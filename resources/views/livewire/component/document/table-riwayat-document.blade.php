@@ -14,15 +14,15 @@
         </thead>
         <tbody>
             @foreach ($posts as $item)
-               <tr>
-                <td>{{ $item->created_at }}</td>
-                <td>{{ $item->document->code_nm??"-" }}</td>
-                <td>{{ $item->keterangan??"-" }}</td>
-                <td>
-                    <button class="btn btn-primary">Lihat</button>
-                    <button class="btn btn-danger">Hapus</button>
-                </td>
-               </tr>
+                <tr>
+                    <td>{{ $item->created_at ?? '' }}</td>
+                    <td>{{ $item->document->code_nm ?? '-' }}</td>
+                    <td>{{ $item->keterangan ?? '-' }}</td>
+                    <td>
+                        <button class="btn btn-primary">Lihat</button>
+                        <button class="btn btn-danger">Hapus</button>
+                    </td>
+                </tr>
             @endforeach
 
         </tbody>

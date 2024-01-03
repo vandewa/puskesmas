@@ -100,8 +100,8 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->medicalunit_cd }}'>
-                                            <td>{{ $item->medicalunit_cd }}</td>
-                                            <td> {{ $item->medicalunit_nm }}</td>
+                                            <td>{{ $item->medicalunit_cd ?? '' }}</td>
+                                            <td> {{ $item->medicalunit_nm ?? '' }}</td>
                                             <td>
                                                 <button type="button"
                                                     wire:click="getEdit('{{ $item->medicalunit_cd }}')"

@@ -89,8 +89,8 @@
                                         <tr wire:key='{{ $item->spesialis_cd }}'>
 
                                             <td>{{ $loop->index + $post->firstItem() }}</td>
-                                            <td>{{ $item->spesialis_cd }}</td>
-                                            <td> {{ $item->spesialis_nm }}</td>
+                                            <td>{{ $item->spesialis_cd ?? '' }}</td>
+                                            <td> {{ $item->spesialis_nm ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->spesialis_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

@@ -199,13 +199,13 @@
                                             {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                         </td>
 
-                                        <td>{{ $item->kepala }}</td>
-                                        <td>{{ $item->mata }}</td>
-                                        <td>{{ $item->teling }}</td>
-                                        <td>{{ $item->leher }}</td>
-                                        <td>{{ $item->dada }}</td>
-                                        <td>{{ $item->abdomen }}</td>
-                                        <td>{{ $item->extremistis }}</td>
+                                        <td>{{ $item->kepala ?? '' }}</td>
+                                        <td>{{ $item->mata ?? '' }}</td>
+                                        <td>{{ $item->teling ?? '' }}</td>
+                                        <td>{{ $item->leher ?? '' }}</td>
+                                        <td>{{ $item->dada ?? '' }}</td>
+                                        <td>{{ $item->abdomen ?? '' }}</td>
+                                        <td>{{ $item->extremistis ?? '' }}</td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-danger"
                                                 wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
@@ -237,13 +237,13 @@
                                             {{ date('d/m/Y H:i:s', strtotime($item->created_at)) }}
                                         </td>
 
-                                        <td>{{ $item->kepala }}</td>
-                                        <td>{{ $item->mata }}</td>
-                                        <td>{{ $item->teling }}</td>
-                                        <td>{{ $item->leher }}</td>
-                                        <td>{{ $item->dada }}</td>
-                                        <td>{{ $item->abdomen }}</td>
-                                        <td>{{ $item->extremistis }}</td>
+                                        <td>{{ $item->kepala ?? '' }}</td>
+                                        <td>{{ $item->mata ?? '' }}</td>
+                                        <td>{{ $item->teling ?? '' }}</td>
+                                        <td>{{ $item->leher ?? '' }}</td>
+                                        <td>{{ $item->dada ?? '' }}</td>
+                                        <td>{{ $item->abdomen ?? '' }}</td>
+                                        <td>{{ $item->extremistis ?? '' }}</td>
                                         {{-- <td>
                                     <button type="button" class="btn btn-sm btn-danger" wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
                                     <button  type="button" class="btn btn-sm btn-warning" wire:click='rubah({{ $item->id }})'>Edit</button>

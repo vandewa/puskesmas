@@ -130,10 +130,10 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->ruang_cd }}'>
-                                            <td>{{ $item->ruang_cd }}</td>
-                                            <td>{{ $item->ruang_nm }}</td>
-                                            <td>{{ $item->kelas->kelas_nm }}</td>
-                                            <td>{{ $item->bangsal->bangsal_nm }}</td>
+                                            <td>{{ $item->ruang_cd ?? '' }}</td>
+                                            <td>{{ $item->ruang_nm ?? '' }}</td>
+                                            <td>{{ $item->kelas->kelas_nm ?? '' }}</td>
+                                            <td>{{ $item->bangsal->bangsal_nm ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->ruang_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

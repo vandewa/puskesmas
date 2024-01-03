@@ -37,8 +37,8 @@
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->supplier_cd }}'>
-                                            <td>{{ $item->supplier_cd }}</td>
-                                            <td>{{ $item->supplier_nm }}</td>
+                                            <td>{{ $item->supplier_cd ?? '' }}</td>
+                                            <td>{{ $item->supplier_nm ?? '' }}</td>
                                             <td>
                                                 <a href="{{ route('master.supplier', $item->supplier_cd) }}"
                                                     wire:navigate class="btn btn-warning btn-flat btn-sm"

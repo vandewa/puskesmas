@@ -22,8 +22,8 @@
                             <tr wire:key='{{ $item->account_cd }}'>
 
                                 <td>{{ $loop->index + $posts->firstItem() }}</td>
-                                <td>{{ $item->medicalunit_cd }}</td>
-                                <td>{{ $item->medicalunit_nm }}</td>
+                                <td>{{ $item->medicalunit_cd ?? '' }}</td>
+                                <td>{{ $item->medicalunit_nm ?? '' }}</td>
                                 <td>
                                     <button type="button" wire:click='pilih("{{ $item->medicalunit_cd }}")'
                                         class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

@@ -155,11 +155,11 @@
 
                                                                         @foreach ($posts as $item)
                                                                             <tr role="row" class="odd">
-                                                                                <td>{{ $item->datetime_trx }}</td>
-                                                                                <td>{{ $item->data_nm }}</td>
-                                                                                <td>{{ $item->quantity }}</td>
-                                                                                <td>{{ $item->item_price }}</td>
-                                                                                <td>{{ $item->amount }}</td>
+                                                                                <td>{{ $item->datetime_trx ?? '' }}</td>
+                                                                                <td>{{ $item->data_nm ?? '' }}</td>
+                                                                                <td>{{ $item->quantity ?? '' }}</td>
+                                                                                <td>{{ $item->item_price ?? '' }}</td>
+                                                                                <td>{{ $item->amount ?? '' }}</td>
                                                                                 <td>{{ $item->account->account_nm ?? '-' }}
                                                                                 </td>
                                                                                 <td><button type="button"

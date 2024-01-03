@@ -126,9 +126,9 @@
                                         <tr wire:click='pilih({{ $item->pasien_cd }})'
                                             @if ($selected == $item->pasien_cd) class="bg-secondary" @endif
                                             wire:key='{{ $item->pasien_cd }}'>
-                                            <td>{{ $item->no_rm }}</td>
-                                            <td>{{ $item->pasien_nm }}</td>
-                                            <td>{{ $item->birth_date }}
+                                            <td>{{ $item->no_rm ?? '' }}</td>
+                                            <td>{{ $item->pasien_nm ?? '' }}</td>
+                                            <td>{{ $item->birth_date ?? '' }}
                                                 @php
                                                     $date = new \DateTime($item->birth_date);
                                                     $now = new \DateTime();

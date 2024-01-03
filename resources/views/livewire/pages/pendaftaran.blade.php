@@ -199,7 +199,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-group row margin-bawah">
+                                        {{-- <div class="form-group row margin-bawah">
                                             <label for="inputPassword3"
                                                 class="col-sm-3 col-form-label empatbelas">Jenis Jaminan</label>
                                             <div class="col-sm-9">
@@ -216,7 +216,7 @@
                                                     <span class="form-text text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
                                         <div class="form-group row margin-bawah">
                                             <label for="inputPassword3" class="col-sm-3 col-form-label empatbelas">No
                                                 Peserta</label>
@@ -362,8 +362,6 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
                                         <div class="form-group row margin-bawah">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label empatbelas">Gol.
                                                 Darah</label>
@@ -382,6 +380,9 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-md-4">
+
                                         <div class="form-group row margin-bawah">
                                             <label for="inputEmail3"
                                                 class="col-sm-3 col-form-label empatbelas">Berat</label>
@@ -448,7 +449,8 @@
                                         </div>
                                         <div class="form-group row margin-bawah">
                                             <label for="inputEmail3"
-                                                class="col-sm-3 col-form-label empatbelas">Penanggung Jawab</label>
+                                                class="col-sm-12 col-form-label empatbelas text-center">Penanggung
+                                                Jawab</label>
                                         </div>
                                         <div class="form-group row margin-bawah">
                                             <label for="inputEmail3"
