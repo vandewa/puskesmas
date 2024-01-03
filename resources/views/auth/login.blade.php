@@ -85,7 +85,12 @@
                             echo '- ' . date('Y');
                         }
                         ?>
-                        . Puskesmas</b></span>
+                        @if (\App\Models\His\ComCode::where('com_cd', 'LOGO_TP_01')->first()->code_value == 'g2.png')
+                            . G2Academy
+                        @else
+                            . Puskesmas
+                        @endif
+                    </b></span>
             </div>
         </div>
     </section>
