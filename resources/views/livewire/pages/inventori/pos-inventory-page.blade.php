@@ -2,12 +2,12 @@
     <x-slot name="header">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Master Data</h1>
+                <h1 class="m-0">Pos Inventori</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Master</a></li>
-                    <li class="breadcrumb-item active">Unit/Satuan</li>
+                    <li class="breadcrumb-item"><a href="#">Inventori</a></li>
+                    <li class="breadcrumb-item active">Pos Inventori</li>
                 </ol>
             </div>
         </div>
@@ -25,9 +25,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
-                                                Satuan</label>
+                                                Pos</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model='form.unit_cd'
+                                                <input type="text" class="form-control" wire:model='form.pos_cd'
                                                     placeholder="Kode Satuan"
                                                     @if ($edit) disabled @endif>
                                                 @error('form.unit_cd')
@@ -38,7 +38,7 @@
                                         <div class="form-group row">
                                             <label for="inputEmail3" class="col-sm-3 col-form-label">Nama</label>
                                             <div class="col-sm-9">
-                                                <input type="text" class="form-control" wire:model='form.unit_nm'
+                                                <input type="text" class="form-control" wire:model='form.pos_nm'
                                                     placeholder="Nama Satuan">
                                                 @error('form.unit_nm')
                                                     <span class="form-text text-danger">{{ $message }}</span>
@@ -65,7 +65,7 @@
                     <div class="card card-success card-outline">
                         <div class="card-header">
                             <div class="card-title">
-                                Data Unit/Satuan
+                                Data Pos Inventori
                             </div>
                         </div>
                         <div class="card-body">
@@ -79,14 +79,14 @@
                             <table class="table">
                                 <thead>
                                     <th>Kode</th>
-                                    <th>Nama Satuan</th>
+                                    <th>Nama Pos</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($post as $item)
                                         <tr wire:key='{{ $item->unit_cd }}'>
-                                            <td>{{ $item->unit_cd }}</td>
-                                            <td> {{ $item->unit_nm }}</td>
+                                            <td>{{ $item->pos_cd }}</td>
+                                            <td> {{ $item->pos_nm }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->unit_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"
