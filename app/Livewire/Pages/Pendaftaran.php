@@ -124,7 +124,8 @@ class Pendaftaran extends Component
                     'pj_address',
                     'pj_tp',
                     'pj_telp',
-                    'pj_date_birth',]
+                    'pj_date_birth',
+                ]
             );
 
             $insurance = TrxPasienInsurance::where('pasien_cd', $id)->first();
