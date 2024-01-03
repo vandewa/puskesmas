@@ -22,20 +22,18 @@
                                         @enderror
                                     </div>
                                 </div>
-                                @if ($form != null)
-                                    @if ($form['riwayat_kb_tp'] == 'RIWAYAT_KB_TP_09')
-                                        <div class="row mb-2">
-                                            <label for="inputEmail3" class="col-sm-4 col-form-label">Keterangan Riwayat
-                                                KB</label>
-                                            <div class="col-sm-8">
-                                                <input type="text" class="form-control" wire:model='form.ket_kb'
-                                                    placeholder="....">
-                                                @error('form.ket_kb')
-                                                    <span class="form-text text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
+                                @if ($form['riwayat_kb_tp'] ?? '' == 'RIWAYAT_KB_TP_09')
+                                    <div class="row mb-2">
+                                        <label for="inputEmail3" class="col-sm-4 col-form-label">Keterangan Riwayat
+                                            KB</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" wire:model='form.ket_kb'
+                                                placeholder="....">
+                                            @error('form.ket_kb')
+                                                <span class="form-text text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
-                                    @endif
+                                    </div>
                                 @endif
                                 <div class="row mb-2">
                                     <label for="inputEmail3" class="col-sm-4 col-form-label">Riwayat Menstruasi</label>

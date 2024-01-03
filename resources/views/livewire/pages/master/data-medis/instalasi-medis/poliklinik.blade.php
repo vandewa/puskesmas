@@ -45,6 +45,17 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Kode
+                                                Antrian</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" wire:model='form.queue'
+                                                    placeholder="Kode Antrian">
+                                                @error('form.queue')
+                                                    <span class="form-text text-danger">{{ $message }}</span>
+                                                @enderror
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -81,6 +92,7 @@
                                     <th>No</th>
                                     <th>Kode</th>
                                     <th>Nama</th>
+                                    <th>Kode Antrian</th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
@@ -90,6 +102,7 @@
                                             <td>{{ $loop->index + $post->firstItem() }}</td>
                                             <td>{{ $item->medunit_cd ?? '' }}</td>
                                             <td> {{ $item->medunit_nm ?? '' }}</td>
+                                            <td> {{ $item->queue ?? '' }}</td>
                                             <td>
                                                 <button type="button" wire:click="getEdit('{{ $item->medunit_cd }}')"
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

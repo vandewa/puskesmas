@@ -41,7 +41,7 @@ class RawatJalan extends Component
     ];
     public $searchRm, $searchPasien, $searchAlamat, $searchTanggal;
 
-    public function mount($id = '', $medicalcd='')
+    public function mount($id = '', $medicalcd = '')
     {
         $this->alasan = get_code('VISIT_TP');
         $this->jenisPasien = get_code('PASIEN_TP');
@@ -49,7 +49,7 @@ class RawatJalan extends Component
             $this->pilihOrang($id);
         }
 
-        $this->medicalcd =$medicalcd;
+        $this->medicalcd = $medicalcd;
 
     }
 
@@ -165,7 +165,7 @@ class RawatJalan extends Component
     {
 
 
-        if($this->medicalcd) {
+        if ($this->medicalcd) {
             $this->form['medical_root_cd'] = $this->medicalcd;
             TrxMedical::find($this->medicalcd)->update([
                 'medical_trx_st' => 'MEDICAL_TRX_ST_2'
@@ -184,7 +184,7 @@ class RawatJalan extends Component
             $rm->medicalRecord()->create($this->medicalRecord);
         }
 
-        $this->js('window.open("' . route('helper.print-antrian-poli', 1) . '", "Print Antrian Poli", "width=200,height=100");');
+        $this->js('window.open("' . route('helper.print-antrian-poli', $this->form['medical_cd']) . '", "Print Antrian Poli", "width=200,height=100");');
         session()->flash('status', 'Post successfully updated.');
 
         $this->js(<<<'JS'

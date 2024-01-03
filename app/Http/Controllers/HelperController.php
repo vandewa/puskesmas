@@ -11,9 +11,11 @@ use App\Models\His\TrxSettlement;
 
 class HelperController extends Controller
 {
-    function printAntrianPoli($id ="")
+    function printAntrianPoli($id = "")
     {
-        return view('helper.print-antrian-poli');
+        $data = TrxMedical::with(['poli'])->find($id);
+
+        return view('helper.print-antrian-poli', compact('data'));
     }
 
     public function cetakInvoice($id = "")
@@ -36,6 +38,6 @@ class HelperController extends Controller
         $rs = TrxRs::first();
         // dd($rs);
         $data = TrxMedicalResep::with(['resepData', 'medical.pasien', 'dokter'])->find($id);
-        return view('helper.print-copy-resep', compact('data','rs'));
+        return view('helper.print-copy-resep', compact('data', 'rs'));
     }
 }

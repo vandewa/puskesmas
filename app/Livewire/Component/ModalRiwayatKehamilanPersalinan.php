@@ -56,6 +56,7 @@ class ModalRiwayatKehamilanPersalinan extends Component
 
         $this->dispatch('refresh')->to(KesehatanReproduksi::class);
         $this->showModal();
+        $this->reset();
 
     }
 

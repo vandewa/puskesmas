@@ -13,6 +13,7 @@ class Poliklinik extends Component
     public $form = [
         'medunit_cd' => '',
         'medunit_nm' => '',
+        'queue' => '',
         'medicalunit_tp' => 'MEDICALUNIT_TP_1',
     ];
     public $cari, $edit = false;
@@ -20,7 +21,7 @@ class Poliklinik extends Component
 
     public function getEdit($a)
     {
-        $this->form = TrxUnitMedis::find($a)->only(['medunit_cd', 'medunit_nm']);
+        $this->form = TrxUnitMedis::find($a)->only(['medunit_cd', 'medunit_nm', 'queue']);
         $this->edit = true;
     }
 
