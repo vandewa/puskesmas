@@ -212,10 +212,11 @@ class RawatInap extends Component
 
     public function render()
     {
-        $data = TrxRuang::with(['bangsal', 'kamar', 'kelas'])->whereNotIn('ruang_cd',
-            TrxMedical::where('medical_tp', 'MEDICAL_TP_02')
-                ->where('medical_trx_st', 'MEDICAL_TRX_ST_0')
-                ->get())
+        $data = TrxRuang::with(['bangsal', 'kamar', 'kelas'])
+        // ->whereNotIn('ruang_cd',
+        //     TrxMedical::where('medical_tp', 'MEDICAL_TP_02')
+        //         ->where('medical_trx_st', 'MEDICAL_TRX_ST_0')
+        //         ->get()??[])
             ->orderBy('kelas_cd', 'asc')->get();
 
         return view('livewire.pages.registrasi.rawat-inap', [
