@@ -1,5 +1,5 @@
 <div>
-    <div class="row mb-3">
+    <div class="mb-3 row">
         <div class="col-md-2">
             <input type="text" class="form-control" placeholder="cari" wire:model.live='cari'>
         </div>
@@ -38,7 +38,11 @@
                     <td>Kepala : <br> {{ $item->rmGeneral->kepala??"-" }}</td>
                     <td>Mata: <br> {{ $item->rmGeneral->mata??"-" }}</td>
                     <td>Telinga: <br> {{ $item->rmGeneral->teling??"-" }}</td>
-                    <td>Kepala: <br> {{ $item->rmGeneral->kepala??"-" }}</td>
+                    <td>Dada: <br> @foreach (json_decode($item->rmGeneral->dada)??[] as $item)
+                        <li>{{ $item }}</li>
+                        @endforeach
+
+                    </td>
                     <td>Leher: <br> {{ $item->rmGeneral->kepala??"-" }}</td>
                     <td>Abdomen: <br> {{ $item->rmGeneral->kepala??"-" }}</td>
                     <td>Extremistis: <br> {{ $item->rmGeneral->Extremistis??"-" }}</td>

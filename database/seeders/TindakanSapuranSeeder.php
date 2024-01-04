@@ -100,7 +100,7 @@ class TindakanSapuranSeeder extends Seeder
             ['treatment_cd' => '93', 'treatment_nm' =>  'Oksigen penambahan tiap tiap jam ','harga' => '10000' ],
             ['treatment_cd' => '94', 'treatment_nm' =>  'Pemeriksaan IVA','harga' => '25000' ],
             ['treatment_cd' => '95', 'treatment_nm' =>  'Terapi krio','harga' => '150000' ],
-            ['treatment_cd' => '96', 'treatment_nm' =>  'Pap smear  ','harga' => '125000,' ],
+            ['treatment_cd' => '96', 'treatment_nm' =>  'Pap smear  ','harga' => '125000' ],
             ['treatment_cd' => '97', 'treatment_nm' =>  'Pemeiksaan ibu hamil ( ANC )','harga' => '20000' ],
             ['treatment_cd' => '98', 'treatment_nm' =>  'Pemeriksaan paska persalinan ( PNC )','harga' => '10000' ],
             ['treatment_cd' => '99', 'treatment_nm' =>  'Pemeriksaan spirometri ','harga' => '20000' ],

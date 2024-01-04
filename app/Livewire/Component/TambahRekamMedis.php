@@ -42,6 +42,7 @@ class TambahRekamMedis extends Component
     ];
     public $cari, $edit = false, $dokter, $dr_cd, $diagnosa, $kasus, $icd, $medicalcd , $pasiencd;
     public $idHapus, $idnya;
+    public $updateTypes = [];
 
 
     public function mount()
@@ -97,6 +98,7 @@ class TambahRekamMedis extends Component
         $this->form['medical_cd'] = $this->medicalcd;
         $this->form2['pasien_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->pasien_cd;
         $this->form2['medical_cd']  = $this->medicalcd;
+        $this->form2['dada'] = json_encode($this->updateTypes);
         $a = TrxMedicalRecord::create($this->form);
 
         if($this->advance){
