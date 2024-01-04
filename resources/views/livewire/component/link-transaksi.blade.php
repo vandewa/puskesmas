@@ -8,11 +8,12 @@
         </li>
         <li class="nav-item {{ Request::segment(2) == 'kajian-awal' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(2) == 'kajian-awal' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
-                href="{{ route('transaksi.kajian-awal', $medicalcd ?? '') }}">Kajian Awal</a>
+                href="{{ route('transaksi.kajian-awal', $medicalcd ?? '') }}" wire:navigate>Kajian Awal</a>
         </li>
         <li class="nav-item {{ Request::segment(2) == 'kajian-awal' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(2) == 'kajian-lanjutan' ? 'active' : '' }}"
-                id="custom-tabs-one-rm-tab" href="{{ route('transaksi.kajian-lanjutan', $medicalcd ?? '') }}">Kajian
+                id="custom-tabs-one-rm-tab" href="{{ route('transaksi.kajian-lanjutan', $medicalcd ?? '') }}"
+                wire:navigate>Kajian
                 Lanjutan</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}">
@@ -44,7 +45,7 @@
                 @else 
                 href="{{ route('transaksi.rawat-inap.laboratorium', $medicalcd ?? '') }}" @endif
                 class="nav-link {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}"
-                id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab">Laboratorium</a>
+                id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab" wire:navigate>Laboratorium</a>
         </li>
         {{-- <li class="nav-item">
             <a class="nav-link" id="custom-tabs-one-radiologi-tab" href="#custom-tabs-one-radiologi">Radiologi</a>
@@ -65,9 +66,8 @@
                 href="{{ route('transaksi.rawat-inap.odontogram', $medicalcd ?? '') }}" @endif
                 wire:navigate>Odontogram</a>
         </li>
-        <li class="nav-item {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}">
-            <a class="nav-link {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}"
-                id="custom-tabs-one-resep-tab"
+        <li class="nav-item {{ Request::segment(3) == 'document' ? 'active' : '' }}">
+            <a class="nav-link {{ Request::segment(3) == 'document' ? 'active' : '' }}" id="custom-tabs-one-resep-tab"
                 @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.document', $medicalcd ?? '') }}"
                 @else 
                 href="{{ route('transaksi.rawat-inap.document', $medicalcd ?? '') }}" @endif
