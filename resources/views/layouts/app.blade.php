@@ -65,11 +65,24 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+            <strong>Copyright &copy; 2023
+                <?php if (date('Y') == 2023) {
+                    echo '';
+                } else {
+                    echo ' - ' . date('Y');
+                }
+                ?>
+                @if (\App\Models\His\ComCode::where('com_cd', 'LOGO_TP_01')->first()->code_value == 'g2.png')
+                    <a href="#">G2Academy</a>.
+            </strong>
+        @else
+            <a href="#">AdminLTE.io</a>.</strong>
+            @endif
             All rights reserved.
-            <div class="float-right d-none d-sm-inline-block">
+            
+            {{-- <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.2.0
-            </div>
+            </div> --}}
         </footer>
 
         <!-- Control Sidebar -->
