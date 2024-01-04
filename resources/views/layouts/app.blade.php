@@ -72,15 +72,10 @@
                     echo ' - ' . date('Y');
                 }
                 ?>
-                @if (\App\Models\His\ComCode::where('com_cd', 'LOGO_TP_01')->first()->code_value == 'g2.png')
-                    <a href="#">G2Academy</a>.
-            </strong>
-        @else
-            <a href="#">AdminLTE.io</a>.</strong>
-            @endif
-            All rights reserved.
-            
-            {{-- <div class="float-right d-none d-sm-inline-block">
+                .{{ tampil_footer()->rs_nm ?? '' }}
+                All rights reserved.
+
+                {{-- <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 3.2.0
             </div> --}}
         </footer>

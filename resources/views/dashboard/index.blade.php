@@ -12,11 +12,11 @@
             </p>
         </div>
         <div id="sticky_bar_btn">
-            @if (\App\Models\His\ComCode::where('com_cd', 'LOGO_TP_01')->first()->code_value == 'g2.png')
-                <a href="#"><button class="btn-hover color-2 ml-1">E-Rekam Medis</button></a>
-            @else
+            {{-- @if (\App\Models\His\ComCode::where('com_cd', 'LOGO_TP_01')->first()->code_value == 'g2.png') --}}
+            <a href="#"><button class="btn-hover color-2 ml-1">E-Rekam Medis</button></a>
+            {{-- @else
                 <a href="#"><button class="btn-hover color-2 ml-1">E-Rekam Medis Puskesmas</button></a>
-            @endif
+            @endif --}}
         </div>
     </div>
 

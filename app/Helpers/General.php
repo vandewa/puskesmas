@@ -22,6 +22,7 @@ use App\Models\His\TrxInsurance;
 use App\Models\His\ComAccount;
 use App\Models\His\ComRegion;
 use App\Models\His\TrxMedicalResep;
+
 // use DB;
 
 if (!function_exists('file_name')) {
@@ -279,19 +280,19 @@ if (!function_exists('gen_no_resep')) {
 
 if (!function_exists('gen_no_rm')) {
 
-    function gen_no_rm($id ='')
+    function gen_no_rm($id = '')
     {
         $a = '';
         $tambahan = '99';
-        if($id) {
+        if ($id) {
             $a = ComRegion::find($id);
         }
 
         $no = str_pad(1, 6, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\His\TrxPasien::orderBy('created_at', 'desc');
-        if($a->modi_id??"" != ""){
-            $tambahan = str_pad($a->modi_id,2,'0');
-            $terakhir->where(DB::raw("left(no_rm,2)"),  $tambahan );
+        if ($a->modi_id ?? "" != "") {
+            $tambahan = str_pad($a->modi_id, 2, '0');
+            $terakhir->where(DB::raw("left(no_rm,2)"), $tambahan);
         } else {
             $terakhir->where(DB::raw("left(no_rm,2)"), '99');
         }
@@ -299,7 +300,7 @@ if (!function_exists('gen_no_rm')) {
         if ($terakhir) {
             $no = str_pad((int) substr($terakhir->no_rm, -6) + 1, 6, 0, STR_PAD_LEFT);
         }
-        return $tambahan.'.'.$no;
+        return $tambahan . '.' . $no;
     }
 }
 
@@ -329,6 +330,24 @@ if (!function_exists('get_dokter')) {
     function get_dokter()
     {
         $data = \App\Models\His\TrxDokter::pluck('dr_nm', 'dr_cd');
+        return $data;
+    }
+}
+
+if (!function_exists('tampil_logo')) {
+    function tampil_logo()
+    {
+        $data = TrxRs::first();
+        if ($data->path) {
+            return 'storage/' . $data->path;
+        }
+        return 'puskesmas.png';
+    }
+}
+if (!function_exists('tampil_footer')) {
+    function tampil_footer()
+    {
+        $data = TrxRs::first();
         return $data;
     }
 }
