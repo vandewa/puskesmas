@@ -1,22 +1,24 @@
 <div>
     <table class="table table-stripe">
         <thead>
+            <th>Kelas</th>
             <th>Kamar</th>
-            <th>Dokter</th>
             <th>No. RM</th>
             <th>Nama Pasien</th>
             <th>Tanggal Masuk</th>
-            <th>Kelas</th>
+            <th>Dokter</th>
+            <th>Jenis</th>
             <th>Tindakan</th>
         </thead>
         <tbody>
             @foreach ($posts as $item)
                 <tr>
+                    <td>{{ $item->ruang->kelas->kelas_nm ?? '-' }}</td>
                     <td>{{ $item->ruang->ruang_nm ?? '-' }}</td>
-                    <td>{{ $item->dokter->dr_nm ?? '' }}</td>
                     <td>{{ $item->pasien->no_rm ?? '' }}</td>
                     <td>{{ $item->pasien->pasien_nm ?? '' }}</td>
                     <td>{{ substr($item->datetime_in ?? '', 0, 10) }}</td>
+                    <td>{{ $item->dokter->dr_nm ?? '' }}</td>
                     <td>{{ $item->jenisPasien->code_nm ?? '' }}</td>
                     <td>
                         <div class="btn-group">
