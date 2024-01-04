@@ -92,7 +92,10 @@ class DataPuskesmas extends Component
 
     public function storeUpdate()
     {
-        $this->form['path'] = $this->photo->store('photos', 'public');
+        if ($this->photo) {
+            $this->form['path'] = $this->photo->store('photos', 'public');
+        }
+
         TrxRs::find($this->form['rs_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;

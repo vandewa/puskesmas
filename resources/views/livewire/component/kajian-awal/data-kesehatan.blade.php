@@ -33,21 +33,19 @@
                                 @enderror
                             </div>
                         </div>
-                        @if ($form['r_alergi_obat'] != null)
-                            @if ($form['r_alergi_obat'] == 1)
-                                <div class="row mb-2">
-                                    <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
-                                            class="text-danger">* (Alergi
-                                            Obat)</small> </label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" wire:model='form.r_alergi_obat_ket'
-                                            placeholder="Keterangan Alergi Obat">
-                                        @error('form.r_alergi_obat_ket')
-                                            <span class="form-text text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+                        @if ($form['r_alergi_obat'] ?? '' == 1)
+                            <div class="row mb-2">
+                                <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
+                                        class="text-danger">* (Alergi
+                                        Obat)</small> </label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" wire:model='form.r_alergi_obat_ket'
+                                        placeholder="Keterangan Alergi Obat">
+                                    @error('form.r_alergi_obat_ket')
+                                        <span class="form-text text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                            @endif
+                            </div>
                         @endif
                         <div class="row mb-2">
                             <label for="" class="col-sm-3 col-form-label">Riwayat Alergi Makanan</label>
@@ -62,7 +60,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @if ($form['r_alergi_makanan'] == 1)
+                        @if ($form['r_alergi_makanan'] ?? '' == 1)
                             <div class="row mb-2">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
                                         class="text-danger">* (Alergi
@@ -89,7 +87,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @if ($form['r_penyakit_dahulu'] == 1)
+                        @if ($form['r_penyakit_dahulu'] ?? '' == 1)
                             <div class="row mb-2">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
                                         class="text-danger">* (Penyakit
@@ -116,7 +114,7 @@
                                 @enderror
                             </div>
                         </div>
-                        @if ($form['r_penyakit_keluarga'] == 1)
+                        @if ($form['r_penyakit_keluarga'] ?? '' == 1)
                             <div class="row mb-2">
                                 <label for="inputEmail3" class="col-sm-3 col-form-label">Keterangan <small
                                         class="text-danger">* (Penyakit

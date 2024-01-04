@@ -59,7 +59,8 @@
             <b>DINAS KESEHATAN</b><br> --}}
             <b>{{ ucwords($puskesmas->rs_nm ?? '') }}</b><br><br>
             <span>{{ $puskesmas->address ?? '' }}</span><br>
-            <span>{{ $puskesmas->email ?? '' }} </span>
+            <span>{{ $puskesmas->email ?? '' }} </span><br>
+            <span>{{ $puskesmas->phone ?? '' }} </span><br>
             <hr>
             {{-- <h4>Selamat Datang di MPP Kabupaten Wonosobo <br>Nomor Antrian:</h4> --}}
             <h4>NOMOR ANTRIAN</h4>
@@ -67,10 +68,13 @@
             <p class="centered">
                 {{-- Tanggal Cetak: <br> --}}
                 {{-- {{ date('Y-m-d H:i:s') }} --}}
+                <span>{{ $data->poli->medunit_nm ?? '' }}</span><br><br>
+                {{ $qr }}<br><br>
                 <span>{{ \Carbon\Carbon::now()->isoFormat('LLLL') }}</span>
                 <br>
                 <hr>
-                <span>Semoga lekas sembuh</span><br><br>
+                <span><b>Semoga lekas sembuh :)</b></span><br><br>
+
                 {{-- <br>© Puskesmas Sapuran --}}
                 <hr>
             </p>

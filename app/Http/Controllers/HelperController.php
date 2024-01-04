@@ -8,15 +8,18 @@ use App\Models\His\TrxMedicalResep;
 use App\Models\His\TrxResepData;
 use App\Models\His\TrxRs;
 use App\Models\His\TrxSettlement;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class HelperController extends Controller
 {
     function printAntrianPoli($id = "")
     {
-        $data = TrxMedical::with(['poli'])->find($id);
+        $data = TrxMedical::with(['poli', 'pasien'])->find($id);
         $puskesmas = TrxRs::first();
+        $qr = QrCode::generate($data->pasien->no_rm);
 
-        return view('helper.print-antrian-poli', compact('data', 'puskesmas'));
+        return view('helper.print-antrian-poli', compact('data', 'puskesmas', 'qr'));
     }
 
     public function cetakInvoice($id = "")

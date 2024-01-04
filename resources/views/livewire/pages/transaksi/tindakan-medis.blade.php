@@ -39,7 +39,7 @@
                                                                     aria-selected="true">Permintaan Tindakan</a>
                                                             </li> --}}
                                                             <li class="nav-item">
-                                                                <a class="nav-link"
+                                                                <a class="nav-link active"
                                                                     id="custom-tabs-three-proses-lab-tab"
                                                                     data-toggle="pill"
                                                                     href="#custom-tabs-three-tindakan-diproses"
@@ -80,7 +80,7 @@
                                                                 aria-labelledby="custom-tabs-three-permintaan-tindakan-tab">
                                                                 PERMINTAAN TINDAKAN
                                                             </div> --}}
-                                                            <div class="tab-pane fade"
+                                                            <div class="tab-pane fade show active"
                                                                 id="custom-tabs-three-tindakan-diproses" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-three-tindakan-diproses-tab">
                                                                 <livewire:component.tindakan-medis.table-tindakan-medis

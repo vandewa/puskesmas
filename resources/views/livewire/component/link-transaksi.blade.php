@@ -17,21 +17,32 @@
         </li>
         <li class="nav-item {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
-                href="{{ route('transaksi.rawat-jalan.rekam-medis', $medicalcd ?? '') }}" wire:navigate>Rekam
+                @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.rekam-medis', $medicalcd ?? '') }}"
+                @else 
+                href="{{ route('transaksi.rawat-inap.rekam-medis', $medicalcd ?? '') }}" @endif
+                wire:navigate>Rekam
                 Medis</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'tindakan-medis' ? 'active' : '' }}"
                 id="custom-tabs-one-tindakan-tab"
-                href="{{ route('transaksi.rawat-jalan.tindakan-medis', $medicalcd ?? '') }}" wire:navigate>Tindakan
+                @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.tindakan-medis', $medicalcd ?? '') }}"
+                @else 
+                href="{{ route('transaksi.rawat-inap.tindakan-medis', $medicalcd ?? '') }}" @endif
+                wire:navigate>Tindakan
                 Medis</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'cppt' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'cppt' ? 'active' : '' }}" id="custom-tabs-one-tindakan-tab"
-                href="{{ route('transaksi.rawat-jalan.cppt', $medicalcd ?? '') }}" wire:navigate>CPPT</a>
+                @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.cppt', $medicalcd ?? '') }}"
+            @else 
+            href="{{ route('transaksi.rawat-inap.cppt', $medicalcd ?? '') }}" @endif
+                wire:navigate>CPPT</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}">
-            <a href="{{ route('transaksi.rawat-jalan.laboratorium', $medicalcd) }}"
+            <a @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.laboratorium', $medicalcd ?? '') }}"
+                @else 
+                href="{{ route('transaksi.rawat-inap.laboratorium', $medicalcd ?? '') }}" @endif
                 class="nav-link {{ Request::segment(3) == 'laboratorium' ? 'active' : '' }}"
                 id="custom-tabs-one-lab-tab" href="#custom-tabs-one-lab">Laboratorium</a>
         </li>
@@ -40,17 +51,26 @@
         </li> --}}
         <li class="nav-item {{ Request::segment(3) == 'resep-obat' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'resep-obat' ? 'active' : '' }}"
-                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
+                id="custom-tabs-one-resep-tab"
+                @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.resep-obat', $medicalcd ?? '') }}"
+                @else 
+                href="{{ route('transaksi.rawat-inap.resep-obat', $medicalcd ?? '') }}" @endif
                 wire:navigate>Resep/Obat</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'odontogram' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'odontogram' ? 'active' : '' }}"
-                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.odontogram', $medicalcd ?? '') }}"
+                id="custom-tabs-one-resep-tab"
+                @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.odontogram', $medicalcd ?? '') }}"
+                @else 
+                href="{{ route('transaksi.rawat-inap.odontogram', $medicalcd ?? '') }}" @endif
                 wire:navigate>Odontogram</a>
         </li>
         <li class="nav-item {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'dokumen-pasien' ? 'active' : '' }}"
-                id="custom-tabs-one-resep-tab" href="{{ route('transaksi.rawat-jalan.document', $medicalcd ?? '') }}"
+                id="custom-tabs-one-resep-tab"
+                @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.document', $medicalcd ?? '') }}"
+                @else 
+                href="{{ route('transaksi.rawat-inap.document', $medicalcd ?? '') }}" @endif
                 wire:navigate>Dokumen Pasien</a>
         </li>
     </ul>
