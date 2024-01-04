@@ -85,6 +85,26 @@
                                                 <span class="form-text text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
+                                        <div class="row mb-2">
+                                            @if ($photo)
+                                                <img src="{{ $photo->temporaryUrl() }}" style="max-width: 500px;">
+                                            @endif
+
+                                            @if ($form['path'] && !$photo)
+                                                <img src="{{ asset('storage/' . $form['path']) }}"
+                                                    style="max-width: 500px;">
+                                            @endif
+
+                                            <label for="inputEmail3" class="col-sm-3 col-form-label">Logo</label>
+                                            <div class="col-sm-9">
+                                                <input type="file" wire:model="photo"
+                                                    accept="image/png, image/gif, image/jpeg">
+                                            </div>
+
+                                            @error('photo')
+                                                <span class="error">{{ $message }}</span>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -3,12 +3,15 @@
 namespace App\Livewire\Pages\Master\DataUmum;
 
 use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\His\TrxRs;
+use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class DataPuskesmas extends Component
 {
     use WithPagination;
+    use WithFileUploads;
+    public $photo;
 
     public $form = [
         'rs_cd' => '',
@@ -17,12 +20,13 @@ class DataPuskesmas extends Component
         'phone' => '',
         'email' => '',
         'fax' => '',
+        'path' => '',
     ];
     public $cari, $edit = false;
     public $idHapus;
     public function getEdit($a)
     {
-        $this->form = TrxRs::find($a)->only(['rs_cd', 'rs_nm', 'address', 'phone', 'email', 'fax']);
+        $this->form = TrxRs::find($a)->only(['rs_cd', 'rs_nm', 'address', 'phone', 'email', 'fax', 'path']);
         $this->edit = true;
     }
 
@@ -88,7 +92,8 @@ class DataPuskesmas extends Component
 
     public function storeUpdate()
     {
-        TrxRs::find($this->form['paramedis_cd'])->update($this->form);
+        $this->form['path'] = $this->photo->store('photos', 'public');
+        TrxRs::find($this->form['rs_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
     }
