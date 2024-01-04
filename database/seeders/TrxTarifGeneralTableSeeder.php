@@ -127,7 +127,7 @@ class TrxTarifGeneralTableSeeder extends Seeder
             ),
             8 =>
             array (
-                'seq_no' => 64,
+                'seq_no' => 65,
                 'tarif_nm' => 'Pendaftaran',
                 'insurance_cd' => '',
                 'kelas_cd' => '',
