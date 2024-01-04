@@ -168,8 +168,8 @@
                                                     <td>{{ $item->diagnosa->icd_nm ?? '' }}</td>
                                                     <td>{{ $item->prosedur->code_nm ?? '' }}</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-sm btn-danger"
-                                                            wire:click='confirmDelete({{ $item->id }})'>Hapus</button>
+                                                        {{-- <button type="button" class="btn btn-sm btn-danger"
+                                                            wire:click='confirmDelete({{ $item->id }})'>Hapus</button> --}}
                                                         <button type="button" class="btn btn-sm btn-warning"
                                                             wire:click='rubah({{ $item->id }})'>Edit</button>
                                                     </td>

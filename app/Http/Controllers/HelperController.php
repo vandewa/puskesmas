@@ -14,8 +14,9 @@ class HelperController extends Controller
     function printAntrianPoli($id = "")
     {
         $data = TrxMedical::with(['poli'])->find($id);
+        $puskesmas = TrxRs::first();
 
-        return view('helper.print-antrian-poli', compact('data'));
+        return view('helper.print-antrian-poli', compact('data', 'puskesmas'));
     }
 
     public function cetakInvoice($id = "")

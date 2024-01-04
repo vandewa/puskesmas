@@ -57,9 +57,9 @@
             </div>
             {{-- <b>PEMERINTAH KABUPATEN WONOSOBO</b><br><br>
             <b>DINAS KESEHATAN</b><br> --}}
-            <b>UPTD PUSKESMAS SAPURAN</b><br><br>
-            <span>Jl Kalibawang Km. 18 Kp. Sidodadi, Telp. (0286) 611028</span><br>
-            <span>puskesmassapuran@gmail.com </span>
+            <b>{{ ucwords($puskesmas->rs_nm ?? '') }}</b><br><br>
+            <span>{{ $puskesmas->address ?? '' }}</span><br>
+            <span>{{ $puskesmas->email ?? '' }} </span>
             <hr>
             {{-- <h4>Selamat Datang di MPP Kabupaten Wonosobo <br>Nomor Antrian:</h4> --}}
             <h4>NOMOR ANTRIAN</h4>
@@ -83,6 +83,17 @@
 
         </div>
     </div>
+
+    <script>
+        // Cetak halaman
+        window.print();
+
+        // Menutup jendela cetak setelah pencetakan selesai atau dibatalkan
+        window.addEventListener('afterprint', function(event) {
+            // Menutup jendela cetak
+            window.close();
+        });
+    </script>
 </body>
 
 </html>

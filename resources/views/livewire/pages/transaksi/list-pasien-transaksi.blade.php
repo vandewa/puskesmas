@@ -46,16 +46,24 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">PoliKlinik</label>
-                                        <div class="col-md-9">
-                                            <select name="" class="form-control select2bs4" id="select2"
+                                        <div class="col-md-5">
+                                            <select class="form-control select2bs4" id="select2"
                                                 wire:model.live='poliklinik'>
+                                                <option value="">Pilih Poli</option>
                                                 @foreach ($poli ?? [] as $item)
                                                     <option value="{{ $item['medunit_cd'] }}">{{ $item['medunit_nm'] }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                         </div>
+                                        @if ($poliklinik)
+                                            <div class="col-md-4">
+                                                <a href="{{ url('layar-antrian/' . $poliklinik) }}" target="_blank"
+                                                    class="btn btn-md btn-info">Layar Antrian</a>
+                                            </div>
+                                        @endif
                                     </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HelperController;
+use App\Http\Controllers\LayarAntrianController;
 use App\Livewire\Pages\Admin\Permission;
 use App\Livewire\Pages\Admin\Role;
 use App\Livewire\Pages\Farmasi\ListFarmasi;
@@ -98,6 +99,7 @@ Route::middleware([
     Route::get('/', [DashboardController::class, 'index']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
+    Route::get('/layar-antrian/{id?}', [LayarAntrianController::class, 'index'])->name('layar-antrian');
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
         Route::get('list', ListPasien::class)->name('index');
@@ -211,7 +213,7 @@ Route::middleware([
         });
     });
 
-    Route::group(['prefix' => 'inventori', 'as' => 'inventori.'], function(){
+    Route::group(['prefix' => 'inventori', 'as' => 'inventori.'], function () {
         Route::get('pos-inventori', PosInventoryPage::class)->name('pos-inventori');
         Route::get('inventori/{id?}', Inventori::class)->name('inventori');
         Route::get('list-inventori', ListInventori::class)->name('inventori.index');

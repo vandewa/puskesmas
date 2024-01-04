@@ -647,15 +647,15 @@
                       </li>
                       <li
                           class="nav-item
-                      {{ request()->is('rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
-                      {{ request()->is('transaksi/rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
-                      {{ request()->is('registrasi/rawat-jalan') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('rawat-inap*') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('transaksi/rawat-inap*') ? 'menu-is-opening menu-open' : '' }}
+                      {{ request()->is('registrasi/rawat-inap') ? 'menu-is-opening menu-open' : '' }}
                       ">
                           <a href="#"
                               class="nav-link
-                          {{ request()->is('rawat-jalan*') ? 'active' : '' }}
-                          {{ request()->is('transaksi/rawat-jalan*') ? 'active' : '' }}
-                          {{ request()->is('registrasi/rawat-jalan') ? 'active' : '' }}
+                          {{ request()->is('rawat-inap*') ? 'active' : '' }}
+                          {{ request()->is('transaksi/rawat-inap*') ? 'active' : '' }}
+                          {{ request()->is('registrasi/rawat-inap') ? 'active' : '' }}
 
                             ">
                               <i class="nav-icon fas fa-bed"></i>
@@ -936,18 +936,18 @@
                           </ul>
                       </li>
                       <li
-                      class="nav-item
+                          class="nav-item
                   {{ request()->is('inventori*') ? 'menu-is-opening menu-open' : '' }}">
-                      <a href="#" class="nav-link  {{ request()->is('inventori*') ? 'active' : '' }}">
-                          <i class="nav-icon fas fa-money-check-alt"></i>
-                          <p>
-                              Inventori
-                              <i class="right fas fa-angle-left"></i>
-                          </p>
-                      </a>
-                      <ul class="nav nav-treeview">
-                        <li
-                        class="nav-item
+                          <a href="#" class="nav-link  {{ request()->is('inventori*') ? 'active' : '' }}">
+                              <i class="nav-icon fas fa-money-check-alt"></i>
+                              <p>
+                                  Inventori
+                                  <i class="right fas fa-angle-left"></i>
+                              </p>
+                          </a>
+                          <ul class="nav nav-treeview">
+                              <li
+                                  class="nav-item
                        {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
                        {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
                        {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
@@ -957,8 +957,8 @@
                        {{ Request::segment(2) == 'list-supplier' ? 'menu-is-opening menu-open' : '' }}
                        {{ Request::segment(2) == 'list-tipe' ? 'menu-is-opening menu-open' : '' }}
                        ">
-                        <a href="#"
-                            class="nav-link
+                                  <a href="#"
+                                      class="nav-link
                       {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
                       {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
                       {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
@@ -968,109 +968,109 @@
                       {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
                       {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
                       ">
-                            <i class="fa fa-folder nav-icon ml-2"></i>
-                            <p>
-                                Data Inventori
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
+                                      <i class="fa fa-folder nav-icon ml-2"></i>
+                                      <p>
+                                          Data Inventori
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.pos-inventori') }}"
-                                    class="nav-link
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.pos-inventori') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Pos Inventori</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.unit-satuan') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Pos Inventori</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.unit-satuan') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'unit-satuan' || Request::segment(2) == 'unit-satuan')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Unit/Satuan</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.tipe-inventori.index') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'unit-satuan' || Request::segment(2) == 'unit-satuan')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Unit/Satuan</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.tipe-inventori.index') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'list-tipe' || Request::segment(2) == 'list-tipe')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Tipe</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.inventori.index') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'list-tipe' || Request::segment(2) == 'list-tipe')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Tipe</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.inventori.index') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'inventori' || Request::segment(2) == 'list-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Inventori</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.supplier.index') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'inventori' || Request::segment(2) == 'list-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Inventori</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.supplier.index') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'supplier' || Request::segment(2) == 'list-supplier')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Supplier</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.principal.index') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'supplier' || Request::segment(2) == 'list-supplier')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Supplier</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.principal.index') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'principal' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'principal' || Request::segment(2) == 'list-principal')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Principal</p>
-                                </a>
-                            </li>
-                        </ul>
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'principal' || Request::segment(2) == 'list-principal')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Principal</p>
+                                          </a>
+                                      </li>
+                                  </ul>
 
-                    </li>
+                              </li>
 
-                      </ul>
-                      <ul class="nav nav-treeview">
-                        <li
-                        class="nav-item
+                          </ul>
+                          <ul class="nav nav-treeview">
+                              <li
+                                  class="nav-item
                        {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
                        {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
                        {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
@@ -1080,8 +1080,8 @@
                        {{ Request::segment(2) == 'list-supplier' ? 'menu-is-opening menu-open' : '' }}
                        {{ Request::segment(2) == 'list-tipe' ? 'menu-is-opening menu-open' : '' }}
                        ">
-                        <a href="#"
-                            class="nav-link
+                                  <a href="#"
+                                      class="nav-link
                       {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
                       {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
                       {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
@@ -1091,89 +1091,89 @@
                       {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
                       {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
                       ">
-                            <i class="fa fa-folder nav-icon ml-2"></i>
-                            <p>
-                                Transaksi Inventori
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
+                                      <i class="fa fa-folder nav-icon ml-2"></i>
+                                      <p>
+                                          Transaksi Inventori
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
 
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.pos-inventori') }}"
-                                    class="nav-link
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.pos-inventori') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Stok Inventori</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.pos-inventori') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Stok Inventori</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.pos-inventori') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Barang Masuk</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.pos-inventori') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Barang Masuk</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.pos-inventori') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Barang Keluar</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.pos-inventori') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Barang Keluar</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.pos-inventori') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Transfer Barang</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('inventori.pos-inventori') }}"
-                                    class="nav-link
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Transfer Barang</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('inventori.pos-inventori') }}"
+                                              class="nav-link
                                     {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     "
-                                    wire:navigate>
-                                    @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
-                                        <i class="far fa-dot-circle nav-icon ml-3"></i>
-                                    @else
-                                        <i class="far fa-circle nav-icon ml-3"></i>
-                                    @endif
-                                    <p>Penyesuaian</p>
-                                </a>
-                            </li>
-                        </ul>
+                                              wire:navigate>
+                                              @if (Request::segment(2) == 'pos-inventori' || Request::segment(2) == 'pos-inventori')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>Penyesuaian</p>
+                                          </a>
+                                      </li>
+                                  </ul>
 
-                    </li>
-                      </ul>
-                  </li>
+                              </li>
+                          </ul>
+                      </li>
                   </ul>
               </nav>
               <!-- /.sidebar-menu -->
