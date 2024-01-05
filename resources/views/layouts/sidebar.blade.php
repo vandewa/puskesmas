@@ -845,12 +845,12 @@
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                   <a href="./index.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Tracking RM</p>
                                   </a>
-                              </li>
+                              </li> --}}
                           </ul>
                       </li>
                       <li class="nav-item  {{ request()->is('farmasi*') ? 'menu-is-opening menu-open' : '' }}">

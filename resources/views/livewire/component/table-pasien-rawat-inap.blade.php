@@ -29,12 +29,16 @@
                                 <span class="caret"></span>
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a id="print-label" onclick="cetakLabel(`230000002`)">Label RM</a></li>
-                            </ul>
-                        </div><a href="{{ route($url, $item->medical_cd) }}" class="btn btn-success btn-flat btn-sm"
-                            data-toggle="tooltip" data-placement="left" title="Detail"><i
-                                class="fa fa-stethoscope"></i></button>
+                            <div class="dropdown-menu" role="menu" style="">
+                                <a class="dropdown-item" href="{{ route('helper.print-label-rm', $item->medical_cd) }}"
+                                    target="_blank">Label RM
+                                </a>
+                            </div>
+                        </div>
+                        <a href="{{ route($url, $item->medical_cd) }}" class="btn btn-success btn-flat btn-sm"
+                            data-toggle="tooltip" data-placement="left" title="Detail">
+                            <i class="fa fa-stethoscope"></i>
+                        </a>
                     </td>
                 </tr>
             @endforeach

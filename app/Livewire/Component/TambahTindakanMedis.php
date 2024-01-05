@@ -12,7 +12,7 @@ use App\Models\His\TrxMedicalTindakan;
 
 class TambahTindakanMedis extends Component
 {
-    public $medicalcd, $tindakan, $tanggal, $jam, $dokter, $dr_cd, $poli;
+    public $medicalcd, $tindakan, $tanggal, $jam, $dr_cd;
 
     public $form = [
         'medical_cd' => null,
@@ -38,9 +38,7 @@ class TambahTindakanMedis extends Component
         $this->tanggal = date('Y-m-d');
         $this->jam = date('h:i');
         $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
-        $this->dokter = TrxDokter::all()->toArray();
         $this->form['medunit_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->medunit_cd;
-        $this->poli = TrxUnitMedis::all()->toArray();
     }
 
     public function save()
@@ -69,9 +67,14 @@ class TambahTindakanMedis extends Component
     public function render()
     {
         $data = TrxMedical::with(['pasien', 'jenisRawat', 'dokter', 'poli'])->find($this->medicalcd);
+        $poli = TrxUnitMedis::all()->toArray();
+        $dokter = TrxDokter::all()->toArray();
+
 
         return view('livewire.component.tambah-tindakan-medis', [
             'post' => $data,
+            'poli' => $poli,
+            'dokter' => $dokter,
         ]);
     }
 }
