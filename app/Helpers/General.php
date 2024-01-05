@@ -409,6 +409,21 @@ if (!function_exists('hitung_umur')) {
         return $y . " tahun " . $m . " bulan " . $d . " hari";
     }
 }
+if (!function_exists('hitung_umur2')) {
+    function hitung_umur2($tanggal_lahir)
+    {
+        $birthDt = new DateTime($tanggal_lahir);
+        //tanggal hari ini
+        $today = new DateTime('today');
+        //tahun
+        $y = $today->diff($birthDt)->y;
+        //bulan
+        $m = $today->diff($birthDt)->m;
+        //hari
+        $d = $today->diff($birthDt)->d;
+        return $y . " thn " . $m . " bln";
+    }
+}
 
 if (!function_exists('code_item_master')) {
     function code_item_master()

@@ -47,8 +47,8 @@ class HelperController extends Controller
 
     function printLabelRm($id = "")
     {
-        $data = TrxMedical::with(['poli', 'pasien'])->find($id);
+        $data = TrxMedical::with(['poli', 'pasien', 'ruang', 'dokter'])->find($id);
 
-        return view('helper.print-label-rm', compact('data', 'puskesmas', 'qr'));
+        return view('helper.print-label-rm', compact('data'));
     }
 }
