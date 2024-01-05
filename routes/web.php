@@ -196,6 +196,7 @@ Route::middleware([
     Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
         Route::get('print-label-rm/{id?}', [HelperController::class, 'printLabelRm'])->name('print-label-rm');
+        Route::get('print-kartu-pasien/{id?}', [HelperController::class, 'printKartuPasien'])->name('print-kartu-pasien');
         Route::get('print-kwitansi/{id?}', [HelperController::class, 'cetakInvoice'])->name('cetak-invoice');
         Route::get('print-label-obat/{id?}', [HelperController::class, 'cetakLabelObat'])->name('cetak-label-obat');
         Route::get('print-copy-resep/{id?}', [HelperController::class, 'cetakCopyResep'])->name('cetak-copy-resep');

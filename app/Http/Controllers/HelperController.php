@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\His\TrxMedical;
 use App\Models\His\TrxMedicalResep;
+use App\Models\His\TrxPasien;
 use App\Models\His\TrxResepData;
 use App\Models\His\TrxRs;
 use App\Models\His\TrxSettlement;
@@ -50,5 +51,12 @@ class HelperController extends Controller
         $data = TrxMedical::with(['poli', 'pasien', 'ruang', 'dokter'])->find($id);
 
         return view('helper.print-label-rm', compact('data'));
+    }
+
+    function printKartuPasien($id = "")
+    {
+        $data = TrxPasien::with(['jenisKelamin'])->find($id);
+
+        return view('helper.print-kartu-pasien', compact('data'));
     }
 }
