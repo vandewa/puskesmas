@@ -17,6 +17,7 @@ use App\Livewire\Pages\Farmasi\ListFarmasi;
 use App\Livewire\Pages\Farmasi\ListPengambilanFarmasi;
 use App\Livewire\Pages\Farmasi\ProsesFarmasi;
 use App\Livewire\Pages\Inventori\PosInventoryPage;
+use App\Livewire\Pages\Keuangan\CetakUlangPage;
 use App\Livewire\Pages\Keuangan\ProsesPembayaran;
 use App\Livewire\Pages\Pendaftaran;
 use App\Livewire\Pages\Master\DataMedis\Akomodasi\Bangsal;
@@ -211,6 +212,9 @@ Route::middleware([
                 Route::get('list/{url?}', ListPasienKeuangan::class)->name('list');
                 Route::get('proses/{id?}', ProsesPembayaran::class)->name('proses');
             });
+
+            Route::get('cetak-ulang', CetakUlangPage::class)->name('cetak-ulang');
+
         });
     });
 

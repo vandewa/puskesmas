@@ -338,7 +338,7 @@ if (!function_exists('tampil_logo')) {
     function tampil_logo()
     {
         $data = TrxRs::first();
-        if ($data->path) {
+        if ($data->path??"" != "") {
             return 'storage/' . $data->path;
         }
         return 'puskesmas.png';
