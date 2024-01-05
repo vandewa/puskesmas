@@ -98,7 +98,7 @@
                                   </a>
 
                                   <ul class="nav nav-treeview">
-                                      <li class="nav-item">
+                                      {{-- <li class="nav-item">
                                           <a href="pages/examples/login.html" class="nav-link">
                                               <i class="far fa-circle nav-icon ml-3"></i>
                                               <p>Group</p>
@@ -121,7 +121,7 @@
                                               <i class="far fa-circle nav-icon ml-3"></i>
                                               <p>Setting</p>
                                           </a>
-                                      </li>
+                                      </li> --}}
                                       <li class="nav-item">
                                           <a href="{{ route('master.permission') }}"
                                               class="nav-link {{ Request::segment(2) == 'permission' ? 'active' : '' }}">
