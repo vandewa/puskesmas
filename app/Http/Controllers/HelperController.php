@@ -44,4 +44,11 @@ class HelperController extends Controller
         $data = TrxMedicalResep::with(['resepData', 'medical.pasien', 'dokter'])->find($id);
         return view('helper.print-copy-resep', compact('data', 'rs'));
     }
+
+    function printLabelRm($id = "")
+    {
+        $data = TrxMedical::with(['poli', 'pasien', 'ruang', 'dokter'])->find($id);
+
+        return view('helper.print-label-rm', compact('data'));
+    }
 }
