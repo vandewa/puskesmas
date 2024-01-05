@@ -83,7 +83,7 @@
 
         @media print {
             @page {
-                size: 4.5cm 3cm landscape;
+                size: 4cm 3cm landscape;
             }
 
             /*.break-pages{
@@ -93,46 +93,42 @@
     </style>
 
     <body class="cols-2">
-        <!-- @section('content') -->
-            <page>
-                <div class="main-container-labels">
-                    <div class="panel panel-boxlabel">
-                        <div class="main-left uppercase-font">
-                            <p><strong>RM. {{ $data->pasien->no_rm ?? '' }}</strong> [<span class="datetimein">
-                                    {{ $data->pasien->jenisKelamin->code_nm ?? '' }} </span>] </p>
-                            <p><strong>{{ $data->pasien->pasien_nm ?? '' }}</strong></p>
-                            <div class="uppercase-font font-smalstyle">
-                                <span class="tgllahir">
-                                    {{ $data->pasien->birth_date ?? '' }}
-                                    ({{ hitung_umur2($data->pasien->birth_date ?? '') }})
-                                </span>
-                                <p>{{ $data->ruang->ruang_nm ?? '' }}/{{ $data->dokter->dr_nm ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            {!! DNS1D::getBarcodeHTML($data->pasien->no_rm, 'C128', 1, 23) !!}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+        <div class="main-container-labels">
+            <div class="panel panel-boxlabel">
+                <div class="main-left uppercase-font">
+                    <p><strong>RM. {{ $data->pasien->no_rm ?? '' }}</strong> [<span class="datetimein">
+                            {{ $data->pasien->jenisKelamin->code_nm ?? '' }} </span>] </p>
+                    <p><strong>{{ substr($data->pasien->pasien_nm ?? '', 0, 18) }}</strong></p>
+                    <div class="uppercase-font font-smalstyle">
+                        <span class="tgllahir">
+                            {{ $data->pasien->birth_date ?? '' }}
+                            ({{ hitung_umur2($data->pasien->birth_date ?? '') }})
+                        </span>
+                        <p>{{ $data->ruang->ruang_nm ?? '' }}/{{ $data->dokter->dr_nm ?? '' }}</p>
                     </div>
                 </div>
-                <!-- <div class="break-pages"> </div> -->
-            </page>
-        </body>
-        <script src="http://103.155.105.43:80/assets/plugins/jquery/jquery.min.js"></script>
+                <div class="mt-3">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {!! DNS1D::getBarcodeHTML($data->pasien->no_rm, 'C128', 1, 15) !!}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="http://103.155.105.43:80/assets/plugins/jquery/jquery.min.js"></script>
 
-        </html>
-        <script type="text/javascript">
-            window.onload = function() {
-                window.print();
-                setTimeout(function() {
-                    close();
-                }, 100);
-            }
-        </script>
+    </html>
+    <script type="text/javascript">
+        window.onload = function() {
+            window.print();
+            setTimeout(function() {
+                close();
+            }, 100);
+        }
+    </script>
