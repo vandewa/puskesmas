@@ -187,6 +187,12 @@ class RawatInap extends Component
             $rm->medicalRecord()->create($this->medicalRecord);
         }
 
+        // ubah jadi terisi
+
+        TrxRuang::where('ruang_cd',  $this->form['ruang_cd'])->update([
+            'kondisi_st' => 'KONDISI_ST_01'
+        ]);
+
         $this->js(<<<'JS'
         Swal.fire({
             title: 'Pendaftaran berhasil!',
@@ -213,6 +219,7 @@ class RawatInap extends Component
     public function render()
     {
         $data = TrxRuang::with(['bangsal', 'kamar', 'kelas'])
+        ->where('kondisi_st', 'KONDISI_ST_02')
         // ->whereNotIn('ruang_cd',
         //     TrxMedical::where('medical_tp', 'MEDICAL_TP_02')
         //         ->where('medical_trx_st', 'MEDICAL_TRX_ST_0')

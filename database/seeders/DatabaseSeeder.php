@@ -43,5 +43,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TrxTarifKelasTableSeeder::class);
         $this->call(LabSapuranSeeder::class);
         $this->call(ItemInvSapuranSeeder::class);
+        $this->call(RuanganSeeder::class);
     }
 }
