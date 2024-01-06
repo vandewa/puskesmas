@@ -15,7 +15,10 @@ class PosInventorySeeder extends Seeder
     public function run()
     {
         $data = [
-            ['pos_cd' => 'GDG_01', 'pos_nm' => 'Gudang Utama']
+            ['pos_cd' => 'GDG_01', 'pos_nm' => 'Gudang Utama'],
+            ['pos_cd' => 'GDG_02', 'pos_nm' => 'Farmasi'],
+            ['pos_cd' => 'GDG_03', 'pos_nm' => 'IGD'],
+            ['pos_cd' => 'GDG_04', 'pos_nm' => 'Laboratorium'],
         ];
 
         foreach ($data as $datum){

@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TrxSpesialisTableSeeder::class);
         // $this->call(TrxTindakanTableSeeder::class);
         $this->call(TrxUnitMedisTableSeeder::class);
-        $this->call(TrxUnitmedisItemTableSeeder::class);
+        // $this->call(TrxUnitmedisItemTableSeeder::class);
         $this->call(TrxDokterTableSeeder::class);
         $this->call(TrxJadwalTableSeeder::class);
         $this->call(TrxTarifGeneralTableSeeder::class);

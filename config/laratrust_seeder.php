@@ -17,14 +17,29 @@ return [
             'payments' => 'c,r,u,d',
             'profile' => 'r,u',
         ],
-        'administrator' => [
+        'dokter' => [
             'users' => 'c,r,u,d',
             'profile' => 'r,u',
         ],
-        'user' => [
+        'fo' => [
             'profile' => 'r,u',
         ],
-        'role_name' => [
+        'farmasi' => [
+            'module_1_name' => 'c,r,u,d',
+        ],
+        'bidan' => [
+            'module_1_name' => 'c,r,u,d',
+        ],
+        'perawat' => [
+            'module_1_name' => 'c,r,u,d',
+        ],
+        'laborat' => [
+            'module_1_name' => 'c,r,u,d',
+        ],
+        'rm' => [
+            'module_1_name' => 'c,r,u,d',
+        ],
+        'kasir' => [
             'module_1_name' => 'c,r,u,d',
         ],
     ],

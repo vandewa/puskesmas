@@ -45,17 +45,6 @@ class TrxUnitMedisTableSeeder extends Seeder
                 'data_exst' => NULL,
             ),
 
-            3 =>
-            array (
-                'medunit_cd' => 'POLISPB',
-                'medunit_nm' => 'POLI BEDAH',
-                'medicalunit_tp' => 'MEDICALUNIT_TP_1',
-                'modi_id' => 'admin',
-                'queue' => NULL,
-                'medunit_cd_bpjs' => 'BED',
-                'data_mapcd' => 'BED',
-                'data_exst' => NULL,
-            ),
 
 
 
@@ -65,7 +54,7 @@ class TrxUnitMedisTableSeeder extends Seeder
 
 
 
-            25 =>
+            2 =>
             array (
                 'medunit_cd' => 'POLIUMUM',
                 'medunit_nm' => 'POLI UMUM',
@@ -76,7 +65,7 @@ class TrxUnitMedisTableSeeder extends Seeder
                 'data_mapcd' => NULL,
                 'data_exst' => NULL,
             ),
-            26 =>
+            3 =>
             array (
                 'medunit_cd' => 'POLIGIGI',
                 'medunit_nm' => 'POLI GIGI',

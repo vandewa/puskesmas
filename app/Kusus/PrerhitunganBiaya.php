@@ -318,9 +318,10 @@ class PrerhitunganBiaya
         ->where(function($a) use($medicalTp){
             $a->where('medical_tp' , '')->orWhere('medical_tp',null)->orwhere('medical_tp', $medicalTp);
         })->orderBy('seq_no', 'asc')->get();
+        // dd($data);
 
         foreach($data as $item) {
-            if($data->medical_tp == 'MEDICAL_TP_01') {
+            if($item->medical_tp??"" == 'MEDICAL_TP_01') {
                 $datetimein = $this->dataMedical->datetime_in;
             }
 
