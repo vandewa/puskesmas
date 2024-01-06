@@ -63,7 +63,7 @@
                                                             <div class="tab-pane fade show active"
                                                                 id="custom-tabs-six-data-resep" role="tabpanel"
                                                                 aria-labelledby="custom-tabs-six-data-resep-tab">
-                                                                <livewire:component.laboratorium.list-proses-tindakan-lab :medicalcd="$medik->medical_cd">
+                                                                <livewire:component.laboratorium.list-proses-lab :medicalcd="$medik->medical_cd">
                                                             </div>
                                                             <div class="tab-pane fade"
                                                                 id="custom-tabs-six-riwayat-resep" role="tabpanel"
