@@ -119,7 +119,7 @@ class RawatInap extends Component
             return;
         }
 
-        $this->form['jadwal_seqno'] = $id;
+        // $this->form['jadwal_seqno'] = $id;
 
         $this->js(<<<'JS'
         Swal.fire({
