@@ -42,7 +42,7 @@ class TrxTarifKelasTableSeeder extends Seeder
                 'rstp_cd' => NULL,
                 'modi_id' => 'admin',
             ),
-                   ));
+            ));
 
 
     }
