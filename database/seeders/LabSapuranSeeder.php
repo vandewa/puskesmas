@@ -3,8 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\His\TrxUnitMedis;
+use App\Models\His\TrxUnitmedisItem;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use DB;
 
 class LabSapuranSeeder extends Seeder
 {
@@ -13,18 +15,19 @@ class LabSapuranSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('trx_unitmedis_item')->truncate();
         $data = [
-            ['medicalunit_cd' => 'A1', 'medunit_cd' => 'LAB00', 'medicalunit_root' => '',  'medicalunit_nm' => 'Hematologi', 'root_st' => '0','data_01' => ''],
+            ['medicalunit_cd' => 'A1', 'medunit_cd' => 'LAB00', 'medicalunit_root' => '',  'medicalunit_nm' => 'Hematologi', 'root_st' => '0','data_01' => 'Normal'],
             ['medicalunit_cd' => 'A2', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Hemoglobin', 'root_st' => '0','data_01' => 'L (14-18) P(12-16)'],
             ['medicalunit_cd' => 'A3', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Leukosit', 'root_st' => '0','data_01' => '5000-10000'],
             ['medicalunit_cd' => 'A4', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Eritrosit', 'root_st' => '0','data_01' => 'L (4,5-6,5) P(3,8-5,6) Juta'],
             ['medicalunit_cd' => 'A5', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Trombosit', 'root_st' => '0','data_01' => '150-400 ribu'],
             ['medicalunit_cd' => 'A6', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'HJL Eosinofil', 'root_st' => '0','data_01' => '1-3%'],
-            ['medicalunit_cd' => 'A7', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '0-1%'],
-            ['medicalunit_cd' => 'A8', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '2-6%'],
-            ['medicalunit_cd' => 'A9', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '40 -80 %'],
-            ['medicalunit_cd' => 'A10', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '20-40%'],
-            ['medicalunit_cd' => 'A11', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '2-9 %'],
+            ['medicalunit_cd' => 'A7', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Basofil', 'root_st' => '0','data_01' => '0-1%'],
+            ['medicalunit_cd' => 'A8', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'NetrofilBarang', 'root_st' => '0','data_01' => '2-6%'],
+            ['medicalunit_cd' => 'A9', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Netrofil Segmen', 'root_st' => '0','data_01' => '40 -80 %'],
+            ['medicalunit_cd' => 'A10', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Limfosit', 'root_st' => '0','data_01' => '20-40%'],
+            ['medicalunit_cd' => 'A11', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Monosit', 'root_st' => '0','data_01' => '2-9 %'],
             ['medicalunit_cd' => 'A12', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'Hematokrit', 'root_st' => '0','data_01' => 'L (40-50) P(37-47)'],
             ['medicalunit_cd' => 'A13', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A1',  'medicalunit_nm' => 'LED', 'root_st' => '0','data_01' => '< 10mm/jam, 1 jam'],
             ['medicalunit_cd' => 'A14', 'medunit_cd' => 'LAB00', 'medicalunit_root' => '',  'medicalunit_nm' => 'Urinalisa', 'root_st' => '0','data_01' => ''],
@@ -39,14 +42,14 @@ class LabSapuranSeeder extends Seeder
             ['medicalunit_cd' => 'A23', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Glukosa', 'root_st' => '0','data_01' => 'Negatif'],
             ['medicalunit_cd' => 'A24', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Bilirubin', 'root_st' => '0','data_01' => 'Negatif'],
             ['medicalunit_cd' => 'A25', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Blood', 'root_st' => '0','data_01' => 'Negatif'],
-            ['medicalunit_cd' => 'A26', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen', 'root_st' => '0','data_01' => ''],
-            ['medicalunit_cd' => 'A27', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
-            ['medicalunit_cd' => 'A28', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
-            ['medicalunit_cd' => 'A29', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
-            ['medicalunit_cd' => 'A30', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
-            ['medicalunit_cd' => 'A31', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => '', 'root_st' => '0','data_01' => 'Negatif'],
-            ['medicalunit_cd' => 'A33', 'medunit_cd' => 'LAB00', 'medicalunit_root' => '',  'medicalunit_nm' => 'Kimia Darah', 'root_st' => '0','data_01' => ''],
-            ['medicalunit_cd' => 'A34', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A33',  'medicalunit_nm' => 'Glukosa Sewaktu', 'root_st' => '0','data_01' => '80-150mg/dl'],
+            // ['medicalunit_cd' => 'A26', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen', 'root_st' => '0','data_01' => ''],
+            ['medicalunit_cd' => 'A27', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen - Leukosit', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
+            ['medicalunit_cd' => 'A28', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen- Eritrosit', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
+            ['medicalunit_cd' => 'A29', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen - Epitel', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
+            ['medicalunit_cd' => 'A30', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen - Silinder', 'root_st' => '0','data_01' => '0-5 Sel/lp'],
+            ['medicalunit_cd' => 'A31', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A14',  'medicalunit_nm' => 'Sedimen - Kristal', 'root_st' => '0','data_01' => 'Negatif'],
+            ['medicalunit_cd' => 'A33', 'medunit_cd' => 'LAB00', 'medicalunit_root' => '',  'medicalunit_nm' => 'Sedimen - Kimia Darah', 'root_st' => '0','data_01' => ''],
+            ['medicalunit_cd' => 'A34', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A33',  'medicalunit_nm' => 'Sedimen - Glukosa Sewaktu', 'root_st' => '0','data_01' => '80-150mg/dl'],
             ['medicalunit_cd' => 'A35', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A33',  'medicalunit_nm' => 'GDP', 'root_st' => '0','data_01' => '< 110Mg/dl'],
             ['medicalunit_cd' => 'A36', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A33',  'medicalunit_nm' => 'GDPP', 'root_st' => '0','data_01' => '< 140Mg/dl'],
             ['medicalunit_cd' => 'A37', 'medunit_cd' => 'LAB00', 'medicalunit_root' => 'A33',  'medicalunit_nm' => 'Cholesterol', 'root_st' => '0','data_01' => '< 150 Mg/ dl'],
@@ -71,7 +74,7 @@ class LabSapuranSeeder extends Seeder
         ];
 
         foreach ($data as $item) {
-            $a = TrxUnitMedis::create($item);
+            $a = TrxUnitmedisItem::create($item);
 
             if($item['medicalunit_root'] == ''){
                 $a->update([

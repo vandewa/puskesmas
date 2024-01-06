@@ -33,6 +33,7 @@ class ListTindakanLab extends Component
     public function mount() {
         $this->form['datetime_trx'] = date('Y-m-d H:i');
         $this->form['dr_cd'] = $this->dr;
+        $this->form['dr_cd2'] = $this->dr;
         $this->form['medical_cd'] = $this->medicalcd;
         $this->form['pasien_cd'] = $this->pasiencd;
 
@@ -79,14 +80,14 @@ class ListTindakanLab extends Component
            $('#custom-tabs-six-data-resep-tab').trigger('click');
        }, 300);
        JS);
-       $this->dispatch('refresh')->to(ListProsesTIndakanLab::class);
+       $this->dispatch('refresh')->to(ListProsesLab::class);
 
 
     }
     public function render()
     {
         $dokter = TrxDokter::all();
-        $tindakan = TrxUnitmedisItem::where('root_st', '0');
+        $tindakan = TrxUnitmedisItem::select('*');
         if($this->search){
             $tindakan->where('medicalunit_nm', 'ilike', "%$this->search%");
         }

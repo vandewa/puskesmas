@@ -16,8 +16,13 @@
                         @foreach ($list as $item)
                             <tr>
                                 <td>{{ $item->medicalunit_nm }}</td>
-                                <td><input type="checkbox" value="{{ $item->medicalunit_cd }}"
-                                        wire:model.live="pilihan"></td>
+                                <td>
+
+                                    @if($item->root_st != 1)
+                                    <input type="checkbox" value="{{ $item->medicalunit_cd }}"
+                                        wire:model.live="pilihan">
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
 

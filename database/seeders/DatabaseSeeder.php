@@ -41,5 +41,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TindakanSapuranSeeder::class);
         $this->call(TrxKelasTableSeeder::class);
         $this->call(TrxTarifKelasTableSeeder::class);
+        $this->call(LabSapuranSeeder::class);
     }
 }
