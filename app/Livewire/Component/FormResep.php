@@ -151,8 +151,8 @@ class FormResep extends Component
         $this->malam =[];
         $this->habiskan = [];
         $this->edit = null;
-        $this->obatTable = [];
-        $this->obatTableRacik = [];
+        // $this->obatTable = [];
+        // $this->obatTableRacik = [];
 
     }
 
