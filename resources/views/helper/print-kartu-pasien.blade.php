@@ -96,15 +96,13 @@
         <div class="main-container-labels">
             <div class="panel panel-boxlabel">
                 <div class="main-left uppercase-font">
-                    <p><strong>RM. {{ $data->pasien->no_rm ?? '' }}</strong> [<span class="datetimein">
-                            {{ $data->pasien->jenisKelamin->code_nm ?? '' }} </span>] </p>
-                    <p><strong>{{ substr($data->pasien->pasien_nm ?? '', 0, 18) }}</strong></p>
+                    <p><strong>RM. {{ $data->no_rm ?? '' }}</strong> [<span class="datetimein">
+                            {{ $data->jenisKelamin->code_nm ?? '' }} </span>] </p>
+                    <p><strong>{{ substr($data->pasien_nm ?? '', 0, 18) }}</strong></p>
                     <div class="uppercase-font font-smalstyle">
                         <span class="tgllahir">
-                            {{ $data->pasien->birth_date ?? '' }}
-                            ({{ hitung_umur2($data->pasien->birth_date ?? '') }})
+                            {{ $data->birth_date ?? '' }}
                         </span>
-                        <p>{{ $data->ruang->ruang_nm ?? '' }}/{{ $data->dokter->dr_nm ?? '' }}</p>
                     </div>
                 </div>
                 <div class="mt-3">
@@ -112,7 +110,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    {!! DNS1D::getBarcodeHTML($data->pasien->no_rm, 'C128', 1, 15) !!}
+                                    {!! DNS1D::getBarcodeHTML($data->no_rm, 'C128', 1, 15) !!}
                                 </td>
                             </tr>
                         </tbody>

@@ -86,6 +86,9 @@
                                                             href="{{ route('cetak.keterangan-sakit', $selected) }}">Surat
                                                             Keterangan
                                                             Sakit</a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('helper.print-kartu-pasien', $selected) }}">Kartu
+                                                            Pasien</a>
                                                     </div>
                                                 </div>
                                             @endif
