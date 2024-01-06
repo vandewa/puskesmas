@@ -8,7 +8,7 @@ use Livewire\Attributes\On;
 
 use Livewire\Component;
 
-class ListProsesTIndakanLab extends Component
+class ListProsesTindakanLab extends Component
 {
     use WithPagination;
     public $medicalcd;
