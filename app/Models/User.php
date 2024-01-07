@@ -19,7 +19,7 @@ class User extends Authenticatable implements LaratrustUser
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use HasRolesAndPermissions;
+    use HasRolesAndPermissions; //
 
     /**
      * The attributes that are mass assignable.

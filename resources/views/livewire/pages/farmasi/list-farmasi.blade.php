@@ -48,6 +48,9 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                       <a href="{{ route('layar-farmasi') }}" class="btn btn-info" target="_blank">Layar Antrian</a>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">

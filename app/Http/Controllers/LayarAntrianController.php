@@ -15,4 +15,12 @@ class LayarAntrianController extends Controller
 
         return view('layar', compact('data'));
     }
+
+    public function farmasi() {
+        return view('farmasi');
+    }
+
+    public function kasir() {
+        return view('kasir');
+    }
 }

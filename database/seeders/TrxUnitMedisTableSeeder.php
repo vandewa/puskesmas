@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\His\TrxMedicalUnit;
+use App\Models\His\TrxUnitMedis;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -20,65 +22,21 @@ class TrxUnitMedisTableSeeder extends Seeder
 
         DB::table('trx_unit_medis')->delete();
 
-        DB::table('trx_unit_medis')->insert(array (
-            0 =>
-            array (
-                'medunit_cd' => 'POLIUGD',
-                'medunit_nm' => 'POLI UGD',
-                'medicalunit_tp' => 'MEDICALUNIT_TP_1',
-                'modi_id' => 'poliugd01',
-                'queue' => '1001',
-                'medunit_cd_bpjs' => NULL,
-                'data_mapcd' => NULL,
-                'data_exst' => NULL,
-            ),
+        $data = [
+            ['medunit_cd' => 'POLIUGD', 'medunit_nm' => 'POLI UGD',  'medicalunit_tp' => 'MEDICALUNIT_TP_1', 'queue' => 'A',],
+            ['medunit_cd' => 'POLIUMUM', 'medunit_nm' => 'POLI UMUM',  'medicalunit_tp' => 'MEDICALUNIT_TP_1', 'queue' => 'B',],
+            ['medunit_cd' => 'POLIGIGI', 'medunit_nm' => 'POLI GIGI',  'medicalunit_tp' => 'MEDICALUNIT_TP_1', 'queue' => 'C',],
+            ['medunit_cd' => 'POLIANAK', 'medunit_nm' => 'POLI ANAK DAN IMUNISASI',  'medicalunit_tp' => 'MEDICALUNIT_TP_1', 'queue' => 'D',],
+            ['medunit_cd' => 'POLIIBU', 'medunit_nm' => 'POLI IBU',  'medicalunit_tp' => 'MEDICALUNIT_TP_1', 'queue' => 'E',],
+            ['medunit_cd' => 'POLIKB', 'medunit_nm' => 'POLI KB',  'medicalunit_tp' => 'MEDICALUNIT_TP_1', 'queue' => 'F',],
+            ['medunit_cd' => 'LAB00', 'medunit_nm' => 'LABORATORIUM',  'medicalunit_tp' => 'MEDICALUNIT_TP_2', 'queue' => 'G',],
+            ['medunit_cd' => 'RAD00', 'medunit_nm' => 'RADIOLOGI',  'medicalunit_tp' => 'MEDICALUNIT_TP_2', 'queue' => 'H',],
+            ['medunit_cd' => 'FARMASI', 'medunit_nm' => 'FARMASI',  'medicalunit_tp' => 'MEDICALUNIT_TP_2', 'queue' => 'I',]
+        ];
 
-            1 =>
-            array (
-                'medunit_cd' => 'LAB00',
-                'medunit_nm' => 'LABORATORIUM',
-                'medicalunit_tp' => 'MEDICALUNIT_TP_2',
-                'modi_id' => 'admin',
-                'queue' => NULL,
-                'medunit_cd_bpjs' => '',
-                'data_mapcd' => NULL,
-                'data_exst' => NULL,
-            ),
-
-
-
-
-
-
-
-
-
-
-            2 =>
-            array (
-                'medunit_cd' => 'POLIUMUM',
-                'medunit_nm' => 'POLI UMUM',
-                'medicalunit_tp' => 'MEDICALUNIT_TP_1',
-                'modi_id' => 'admin',
-                'queue' => '1002',
-                'medunit_cd_bpjs' => '',
-                'data_mapcd' => NULL,
-                'data_exst' => NULL,
-            ),
-            3 =>
-            array (
-                'medunit_cd' => 'POLIGIGI',
-                'medunit_nm' => 'POLI GIGI',
-                'medicalunit_tp' => 'MEDICALUNIT_TP_1',
-                'modi_id' => 'admin',
-                'queue' => '1002',
-                'medunit_cd_bpjs' => '',
-                'data_mapcd' => NULL,
-                'data_exst' => NULL,
-            ),
-
-        ));
-
+        foreach($data as $datum) {
+            TrxUnitMedis::create($datum);
+        }
 
     }
 }
