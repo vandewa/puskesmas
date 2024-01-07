@@ -69,7 +69,7 @@ class Supplier extends Component
         ]);
 
         PoSupplier::create($this->form);
-        $this->redirect(route('master.supplier.index'));
+        $this->redirect(route('inventori.supplier.index'));
     }
 
 
@@ -78,7 +78,7 @@ class Supplier extends Component
         PoSupplier::find($this->form['supplier_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
-        $this->redirect(route('master.supplier.index'));
+        $this->redirect(route('inventori.supplier.index'));
     }
 
     public function render()

@@ -132,7 +132,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <a href="{{ route('master.supplier.index') }}"
+                                <a href="{{ route('inventori.supplier.index') }}"
                                     class="btn btn-default float-right">Kembali</a>
                             </div>
                         </form>

@@ -65,7 +65,7 @@ class Principal extends Component
         ]);
 
         PoPrincipal::create($this->form);
-        $this->redirect(route('master.principal.index'));
+        $this->redirect(route('inventori.principal.index'));
     }
 
 
@@ -74,7 +74,7 @@ class Principal extends Component
         PoPrincipal::find($this->form['principal_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
-        $this->redirect(route('master.principal.index'));
+        $this->redirect(route('inventori.principal.index'));
     }
 
     public function render()
