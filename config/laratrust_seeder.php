@@ -52,6 +52,8 @@ return [
         'fo' => [
             'pendaftaran' => 'c,r,u,d',
             'rekam_medis' => 'c,r,u,d',
+            'dokumen_pasien' => 'c,r,u,d',
+            'data_transaksi' => 'c,r,u,d',
         ],
         'farmasi' => [
             'farmasi' => 'c,r,u,d',
@@ -93,7 +95,10 @@ return [
             'laboratorium' => 'c,r,u,d',
         ],
         'rm' => [
+            'data_transaksi' => 'c,r,u,d',
             'rekam_medis' => 'c,r,u,d',
+            'dokumen_pasien' => 'c,r,u,d',
+            'cppt' => 'c,r,u,d',
         ],
         'kasir' => [
             'kasir' => 'c,r,u,d',

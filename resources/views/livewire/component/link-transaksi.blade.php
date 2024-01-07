@@ -23,7 +23,7 @@
                 Lanjutan</a>
         </li>
         @endpermission
-        @permission('kajian_lanjutan-create')
+        @permission('rekam_medis-create')
         <li class="nav-item {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}">
             <a class="nav-link {{ Request::segment(3) == 'rekam-medis' ? 'active' : '' }}" id="custom-tabs-one-rm-tab"
                 @if ($item->medical_tp == 'MEDICAL_TP_01') href="{{ route('transaksi.rawat-jalan.rekam-medis', $medicalcd ?? '') }}"

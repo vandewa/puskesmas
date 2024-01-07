@@ -68,6 +68,7 @@ use App\Livewire\Pages\Transaksi\KajianLanjutan;
 use App\Livewire\Pages\Transaksi\LaboratoriumTransaksi;
 use App\Livewire\Pages\Transaksi\Odontogram;
 use App\Livewire\Pages\Transaksi\RadiologiTransaksi;
+use App\Livewire\Pages\TransaksiListRekamMedis;
 
 /*
 |--------------------------------------------------------------------------
@@ -180,6 +181,8 @@ Route::middleware([
             Route::get('document/{id?}', DocumentPage::class)->name('document');
         });
     });
+
+    Route::get('rekam-medis',TransaksiListRekamMedis::class)->name('list-rekam-medis');
 
 
 

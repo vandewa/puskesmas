@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Livewire\Pages\Transaksi;
+namespace App\Livewire\Pages;
 
+use App\Models\His\ComCode;
 use App\Models\His\TrxBangsal;
 use App\Models\His\TrxDokter;
 use App\Models\His\TrxKelas;
@@ -11,7 +12,7 @@ use App\Models\His\TrxMedical;
 use App\Models\His\TrxMedicalUnit;
 use App\Models\His\TrxUnitMedis;
 
-class ListPasienTransaksiRawatInap extends Component
+class TransaksiListRekamMedis extends Component
 {
     use WithPagination;
     public $rm;
@@ -21,12 +22,18 @@ class ListPasienTransaksiRawatInap extends Component
     public $listKelas;
     public $listBangsal;
     public $url = 'transaksi.rawat-inap.data-transaksi';
+    public $listJenisRawat;
+    public $jenisRawat;
+    public $poli;
+    public $listPoli;
 
     public function mount($url = "")
     {
         // $this->tanggal = date('Y-m-d');
         $this->listKelas = TrxKelas::all()->toArray();
         $this->listBangsal = TrxBangsal::all()->toArray();
+        $this->listJenisRawat = ComCode::where('code_group', 'MEDICAL_TP')->get();
+        $this->listPoli = TrxUnitMedis::where('medicalunit_tp', 'MEDICALUNIT_TP_1')->get();
 
 
         if ($url != "") {
@@ -35,6 +42,6 @@ class ListPasienTransaksiRawatInap extends Component
     }
     public function render()
     {
-        return view('livewire.pages.transaksi.list-pasien-transaksi-rawat-inap');
+        return view('livewire.pages.transaksi-list-rekam-medis');
     }
 }

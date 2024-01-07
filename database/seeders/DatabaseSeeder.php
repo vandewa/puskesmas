@@ -44,5 +44,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LabSapuranSeeder::class);
         $this->call(ItemInvSapuranSeeder::class);
         $this->call(RuanganSeeder::class);
+        $this->call(PuskesmasSapuranUserSeeder::class);
     }
 }
