@@ -61,4 +61,12 @@ class User extends Authenticatable implements LaratrustUser
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function scopeCari($filter, $value)
+    {
+        if ($value) {
+            return $this->where('name', 'like', "%$value%")
+                ->orWhere('email', 'like', "%$value%");
+        }
+    }
 }

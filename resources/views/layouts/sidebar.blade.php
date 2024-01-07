@@ -149,6 +149,22 @@
                                               <p>Role</p>
                                           </a>
                                       </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.user.index') }}"
+                                              class="nav-link
+                                              {{ Request::segment(2) == 'user-index' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'user' ? 'active' : '' }}
+                                              ">
+                                              @if (Request::segment(2) == 'user-index')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @elseif(Request::segment(2) == 'user')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>User</p>
+                                          </a>
+                                      </li>
 
                                   </ul>
                               </li>
