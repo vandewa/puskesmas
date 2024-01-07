@@ -97,7 +97,7 @@
             <div class="panel panel-boxlabel">
                 <div class="main-left uppercase-font">
                     <p><strong>RM. {{ $data->pasien->no_rm ?? '' }}</strong> [<span class="datetimein">
-                            {{ $data->pasien->jenisKelamin->code_nm ?? '' }} </span>] </p>
+                            {{ $jk ?? '' }} </span>] </p>
                     <p><strong>{{ substr($data->pasien->pasien_nm ?? '', 0, 18) }}</strong></p>
                     <div class="uppercase-font font-smalstyle">
                         <span class="tgllahir">

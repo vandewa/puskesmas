@@ -57,6 +57,12 @@ class HelperController extends Controller
     {
         $data = TrxPasien::with(['jenisKelamin'])->find($id);
 
-        return view('helper.print-kartu-pasien', compact('data'));
+        if ($data->jenisKelamin->com_cd == 'GENDER_TP_01') {
+            $jk = 'L';
+        } else {
+            $jk = 'P';
+        }
+
+        return view('helper.print-kartu-pasien', compact('data', 'jk'));
     }
 }
