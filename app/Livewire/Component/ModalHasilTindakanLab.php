@@ -9,6 +9,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\Attributes\On;
 use App\Models\His\TrxMedicalUnit;
+use App\Models\His\TrxUnitmedisItem;
 
 class ModalHasilTindakanLab extends Component
 {
@@ -18,6 +19,7 @@ class ModalHasilTindakanLab extends Component
     public $seqno;
 
     public $medicalcd;
+    public $info;
 
     public $form = [
         'file_report' => null,
@@ -27,9 +29,12 @@ class ModalHasilTindakanLab extends Component
     #[On('show-modal-hasil-tindakan-lab')]
     public function ambilProperty($id)
     {
+        $cek = TrxMedicalUnit::find($id);
        $this->showModal();
        $this->seqno = $id;
        $this->form['file_report'] = TrxMedicalUnit::find($id)->file_report??"";
+       $this->info = TrxUnitmedisItem::find($cek->medicalunit_cd);
+
         // dd($id);
     }
 

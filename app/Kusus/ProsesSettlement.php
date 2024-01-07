@@ -2,6 +2,7 @@
 namespace App\Kusus;
 
 use App\Models\His\TrxMedical;
+use App\Models\His\TrxRuang;
 use App\Models\His\TrxSettlement;
 
 class ProsesSettlement {
@@ -20,8 +21,14 @@ class ProsesSettlement {
     }
 
     protected function rubahTrxMedical($data) {
+        $cek = TrxMedical::where('medical_cd', $data->medical_cd);
+        TrxRuang::where('ruang_cd', $cek->ruang_cd)->update([
+            'kondisi_st' => 'KONDISI_ST_02'
+        ]);
         TrxMedical::where('medical_cd', $data->medical_cd)->update([
             'medical_trx_st' => 'MEDICAL_TRX_ST_1'
         ]);
+
+
     }
 }

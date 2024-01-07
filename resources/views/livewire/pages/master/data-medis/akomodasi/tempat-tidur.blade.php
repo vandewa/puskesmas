@@ -123,6 +123,7 @@
                                 <thead>
                                     <th>Kode</th>
                                     <th>Nama</th>
+                                    <th>Kamar</th>
                                     <th>Kelas</th>
                                     <th>Bangsal</th>
                                     <th>Action</th>
@@ -132,6 +133,7 @@
                                         <tr wire:key='{{ $item->ruang_cd }}'>
                                             <td>{{ $item->ruang_cd ?? '' }}</td>
                                             <td>{{ $item->ruang_nm ?? '' }}</td>
+                                            <td>{{ $item->kamar->kamar_nm ?? '' }}</td>
                                             <td>{{ $item->kelas->kelas_nm ?? '' }}</td>
                                             <td>{{ $item->bangsal->bangsal_nm ?? '' }}</td>
                                             <td>

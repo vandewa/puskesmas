@@ -8,7 +8,8 @@ use Livewire\Attributes\On;
 
 use Livewire\Component;
 
-class ListProsesTindakanLab extends Component
+
+class ListProsesLab extends Component
 {
     use WithPagination;
     public $medicalcd;
@@ -60,7 +61,7 @@ class ListProsesTindakanLab extends Component
                 $a->where('medunit_cd', 'LAB00');
             })->where('medical_cd', $this->medicalcd)
             ->paginate(10);
-        return view('livewire.component.laboratorium.list-proses-tindakan-lab', [
+        return view('livewire.component.laboratorium.list-proses-lab', [
             'posts' => $item
         ]);
     }

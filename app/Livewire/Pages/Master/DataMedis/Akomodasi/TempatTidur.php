@@ -120,7 +120,7 @@ class TempatTidur extends Component
 
     public function render()
     {
-        $data = TrxRuang::cari($this->cari)->paginate(10);
+        $data = TrxRuang::with(['kamar', 'bangsal', 'kelas'])->cari($this->cari)->paginate(10);
         return view('livewire.pages.master.data-medis.akomodasi.tempat-tidur', [
             'post' => $data,
             'listKelas' => $this->ambilKelas(),

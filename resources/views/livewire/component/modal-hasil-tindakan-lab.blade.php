@@ -22,6 +22,9 @@
                             </div>
 
                         </div>
+                        <div class="col-md-12">
+                            <h4>Batas Normal:  {{ $info->data_01??"" }}</h4>
+                        </div>
 
                     </div>
                 </div>

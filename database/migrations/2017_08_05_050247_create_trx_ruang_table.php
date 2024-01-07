@@ -24,7 +24,7 @@ class CreateTrxRuangTable extends Migration {
 			$table->string('modi_id', 20)->nullable();
 			$table->timestamps();
 			$table->string('kamar_cd', 20)->nullable();
-			$table->string('kondisi_st', 20)->nullable();
+			$table->string('kondisi_st', 20)->nullable()->default('KONDISI_ST_02');
 		});
 	}
 

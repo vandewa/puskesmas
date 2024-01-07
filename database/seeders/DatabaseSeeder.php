@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TrxSpesialisTableSeeder::class);
         // $this->call(TrxTindakanTableSeeder::class);
         $this->call(TrxUnitMedisTableSeeder::class);
-        $this->call(TrxUnitmedisItemTableSeeder::class);
+        // $this->call(TrxUnitmedisItemTableSeeder::class);
         $this->call(TrxDokterTableSeeder::class);
         $this->call(TrxJadwalTableSeeder::class);
         $this->call(TrxTarifGeneralTableSeeder::class);
@@ -41,5 +41,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TindakanSapuranSeeder::class);
         $this->call(TrxKelasTableSeeder::class);
         $this->call(TrxTarifKelasTableSeeder::class);
+        $this->call(LabSapuranSeeder::class);
+        $this->call(ItemInvSapuranSeeder::class);
+        $this->call(RuanganSeeder::class);
     }
 }
