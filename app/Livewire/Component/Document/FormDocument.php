@@ -57,7 +57,7 @@ class FormDocument extends Component
 
         $this->validate([
             'form.document_tp' => 'required',
-            'path' => 'required|image',
+            'path' => 'required|image|max:5120',
         ]);
        $a = $this->path->store('path');
         $this->form['path'] = $a;
