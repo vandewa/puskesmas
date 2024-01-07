@@ -204,6 +204,7 @@ Route::middleware([
     Route::get('detail', NavbarDetailRawatJalan::class)->name('detail.rawat-jalan');
 
     Route::group(['prefix' => 'helper', 'as' => 'helper.'], function () {
+        Route::get('preview-dokumen', [HelperController::class, 'previewDokumen'])->name('preview-dokumen');
         Route::get('print-antrian-poli/{id?}', [HelperController::class, 'printAntrianPoli'])->name('print-antrian-poli');
         Route::get('print-label-rm/{id?}', [HelperController::class, 'printLabelRm'])->name('print-label-rm');
         Route::get('print-kartu-pasien/{id?}', [HelperController::class, 'printKartuPasien'])->name('print-kartu-pasien');

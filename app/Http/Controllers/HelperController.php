@@ -10,10 +10,18 @@ use App\Models\His\TrxResepData;
 use App\Models\His\TrxRs;
 use App\Models\His\TrxSettlement;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Storage;
 
 
 class HelperController extends Controller
 {
+    public function previewDokumen(Request $request) {
+        if (Storage::exists($request->path)) {
+            return Storage::response($request->path);
+        }
+        return "opps sepertinya ada yagng salah";
+
+    }
     function printAntrianPoli($id = "")
     {
         $data = TrxMedical::with(['poli', 'pasien'])->find($id);
