@@ -69,7 +69,7 @@ class LaratrustSeeder extends Seeder
                     'password' => bcrypt('password'),
                     'email_verified_at' => date('Y-m-d H:i:s')
                 ]);
-                $user->attachRole($role);
+                $user->addRole($role);
             }
 
         }

@@ -93,6 +93,9 @@ Route::get('docs', function () {
 Route::get('a', function () {
     return File::get(public_path() . '/a.html');
 });
+Route::get('/layar-antrian/{id?}', [LayarAntrianController::class, 'index'])->name('layar-antrian');
+Route::get('/layar-antrian-farmasi', [LayarAntrianController::class, 'farmasi'])->name('layar-farmasi');
+Route::get('/layar-antrian-kasir', [LayarAntrianController::class, 'kasir'])->name('layar-kasir');
 
 Route::middleware([
     'auth:sanctum',
@@ -102,7 +105,7 @@ Route::middleware([
     Route::get('/', [DashboardController::class, 'index']);
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
-    Route::get('/layar-antrian/{id?}', [LayarAntrianController::class, 'index'])->name('layar-antrian');
+
 
     Route::group(['prefix' => 'pasien', 'as' => 'pasien.'], function () {
         Route::get('list', ListPasien::class)->name('index');

@@ -47,7 +47,7 @@
                           alt="User Image">
                   </div>
                   <div class="info">
-                      <a href="#" class="d-block">Administrator</a>
+                      <a href="#" class="d-block">{{ Auth()->user()->name }}</a>
                   </div>
               </div>
 
@@ -66,7 +66,7 @@
                               </p>
                           </a>
                       </li>
-
+@permission('master-read')
                       <li
                           class="nav-item
                           {{ request()->is('master/*') ? 'menu-is-opening menu-open' : '' }}">
@@ -496,7 +496,8 @@
 
                           </ul>
                       </li>
-
+@endpermission
+@permission('pendaftaran-create')
                       <li class="nav-item {{ request()->is('pasien/*') ? 'menu-is-opening menu-open' : '' }}">
                           <a href="#" class="nav-link {{ request()->is('pasien/*') ? 'active' : '' }}">
                               <i class="nav-icon fas fa-user-circle"></i>
@@ -543,8 +544,10 @@
                               </li> --}}
                           </ul>
                       </li>
-                      <li
-                          class="nav-item
+@endpermission
+@permission('rawat_jalan-create')
+
+                      <li class="nav-item
                       {{ request()->is('rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
                       {{ request()->is('transaksi/rawat-jalan*') ? 'menu-is-opening menu-open' : '' }}
                       {{ request()->is('registrasi/rawat-jalan') ? 'menu-is-opening menu-open' : '' }}
@@ -562,6 +565,7 @@
                               </p>
                           </a>
                           <ul class="nav nav-treeview">
+                            @permission('pendaftaran-create')
                               <li class="nav-item">
                                   <a href="{{ route('registrasi.rawat-jalan') }}"
                                       class="nav-link @if (Request::is('registrasi/rawat-jalan*')) active @endif">
@@ -573,6 +577,8 @@
                                       <p>Pendaftaran</p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('data_transaksi-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list') }}"
                                       class="nav-link @if (Request::is('transaksi/rawat-jalan/list')) active @endif">
@@ -584,6 +590,8 @@
                                       <p>Transaksi Rawat Jalan</p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('rekam_medis-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.rekam-medis') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.rekam-medis') ? 'active' : '' }}
@@ -597,12 +605,14 @@
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
+                              @endpermission
                               {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
                               </li> --}}
+                              @permission('tindakan_medis-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.tindakan-medis') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.tindakan-medis') ? 'active' : '' }}
@@ -616,6 +626,8 @@
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('laboratorium-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.laboratorium') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.laboratorium') ? 'active' : '' }}
@@ -630,12 +642,14 @@
                                   </a>
 
                               </li>
+                              @endpermission
                               {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Radiologi</p>
                                   </a>
                               </li> --}}
+                              @permission('resep-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.resep-obat') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.resep-obat') ? 'active' : '' }}
@@ -650,8 +664,11 @@
                                   </a>
 
                               </li>
+                              @endpermission
                           </ul>
                       </li>
+@endpermission
+@permission('rawat_inap-create')
                       <li
                           class="nav-item
                       {{ request()->is('rawat-inap*') ? 'menu-is-opening menu-open' : '' }}
@@ -678,6 +695,7 @@
                                       <p>Booking</p>
                                   </a>
                               </li> --}}
+                              @permission('pendaftaran-create')
                               <li class="nav-item">
                                   <a href="{{ route('registrasi.rawat-inap') }}"
                                       class="nav-link {{ request()->is('registrasi/rawat-inap') ? 'active' : '' }}">
@@ -689,6 +707,8 @@
                                       <p>Pendaftaran</p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('data_transaksi-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-inap.list') }}"
                                       class="nav-link @if (Request::is('transaksi/rawat-inap/list')) active @endif">
@@ -700,6 +720,8 @@
                                       <p>Transaksi Rawat Inap</p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('rekam_medis-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.rekam-medis') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.rekam-medis') ? 'active' : '' }}
@@ -713,12 +735,14 @@
                                       <p>Rekam Medis</p>
                                   </a>
                               </li>
+                              @endpermission
                               {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>CPPT</p>
                                   </a>
                               </li> --}}
+                              @permission('tindakan_medis-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.tindakan-medis') }}"
                                       class="nav-link  {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.tindakan-medis') ? 'active' : '' }}">
@@ -730,6 +754,8 @@
                                       <p>Tindakan Medis</p>
                                   </a>
                               </li>
+                              @endpermission
+                              @permission('laboratorium-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.laboratorium') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.laboratorium') ? 'active' : '' }}">
@@ -740,14 +766,15 @@
                                       @endif
                                       <p>Laboratorium</p>
                                   </a>
-
                               </li>
+                              @endpermission
                               {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Radiologi</p>
                                   </a>
                               </li> --}}
+                              @permission('resep-create')
                               <li class="nav-item">
                                   <a href="{{ route('transaksi.rawat-inap.list', 'transaksi.rawat-inap.resep-obat') }}"
                                       class="nav-link {{ request()->is('transaksi/rawat-inap/list/transaksi.rawat-inap.resep-obat') ? 'active' : '' }}">
@@ -760,6 +787,7 @@
                                   </a>
 
                               </li>
+                              @endpermission
                               {{-- <li class="nav-item">
                                   <a href="./index3.html" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
@@ -768,6 +796,7 @@
                               </li> --}}
                           </ul>
                       </li>
+@endpermission
                       {{-- <li class="nav-item">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-folder-open"></i>
@@ -826,6 +855,7 @@
                               </li>
                           </ul>
                       </li> --}}
+                      @permission('rekam_medis-create')
                       <li class="nav-item">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-copy"></i>
@@ -849,6 +879,8 @@
                               </li> --}}
                           </ul>
                       </li>
+                      @endpermission
+                      @permission('farmasi-create')
                       <li class="nav-item  {{ request()->is('farmasi*') ? 'menu-is-opening menu-open' : '' }}">
                           <a href="#" class="nav-link">
                               <i class="nav-icon fas fa-flask"></i>
@@ -892,6 +924,8 @@
                               </li>
                           </ul>
                       </li>
+                      @endpermission
+                      @permission('kueangan-create')
                       <li
                           class="nav-item
                       {{ request()->is('keuangan*') ? 'menu-is-opening menu-open' : '' }}">
@@ -945,6 +979,8 @@
                               </li>
                           </ul>
                       </li>
+                      @endpermission
+                      @permission('inventori-create')
                       <li
                           class="nav-item
                         {{ request()->is('inventori*') ? 'menu-is-opening menu-open' : '' }}">
@@ -1184,6 +1220,7 @@
                               </li>
                           </ul>
                       </li>
+                      @endpermission
                   </ul>
               </nav>
               <!-- /.sidebar-menu -->
