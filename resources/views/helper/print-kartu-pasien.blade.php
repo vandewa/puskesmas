@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>RS SIMULASI</title>
+        <title>KARTU PASIEN</title>
         <link rel="shortcut icon" href="http://103.155.105.43:80/assets/images/HEXSYS.png">
     </head>
     <style type="text/css">
@@ -18,18 +18,18 @@
         }
 
         .datetimein {
-            font-size: 12px;
+            font-size: 8px;
             font-style: bold;
         }
 
         .tgllahir {
-            font-size: 12px;
+            font-size: 8px;
             font-style: bold;
         }
 
         .panel {
             display: block;
-            font-size: 12px;
+            font-size: 8px;
             font-family: calibri;
         }
 
@@ -52,7 +52,7 @@
         }
 
         .panel-boxlabel {
-            font-size: 14px;
+            font-size: 10px;
             border-radius: 6px;
             float: left;
             /* padding: 5px; */
@@ -97,7 +97,7 @@
             <div class="panel panel-boxlabel">
                 <div class="main-left uppercase-font">
                     <p><strong>RM. {{ $data->no_rm ?? '' }}</strong> [<span class="datetimein">
-                            {{ $data->jenisKelamin->code_nm ?? '' }} </span>] </p>
+                            {{ $jk ?? '' }} </span>] </p>
                     <p><strong>{{ substr($data->pasien_nm ?? '', 0, 18) }}</strong></p>
                     <div class="uppercase-font font-smalstyle">
                         <span class="tgllahir">
@@ -110,7 +110,7 @@
                         <tbody>
                             <tr>
                                 <td>
-                                    {!! DNS1D::getBarcodeHTML($data->no_rm, 'C128', 1, 15) !!}
+                                    {!! DNS2D::getBarcodeHTML($data->no_rm ?? '', 'QRCODE', 2, 2) !!}
                                 </td>
                             </tr>
                         </tbody>
