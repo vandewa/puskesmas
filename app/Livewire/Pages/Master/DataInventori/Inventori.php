@@ -122,7 +122,7 @@ class Inventori extends Component
         ]);
 
         InvItemMaster::create($this->form);
-        $this->redirect(route('master.inventori.index'));
+        $this->redirect(route('inventori.inventori.index'));
     }
 
 
@@ -131,7 +131,7 @@ class Inventori extends Component
         InvItemMaster::find($this->form['item_cd'])->update($this->form);
         $this->reset();
         $this->edit = false;
-        $this->redirect(route('master.inventori.index'));
+        $this->redirect(route('inventori.inventori.index'));
     }
 
     public function render()
