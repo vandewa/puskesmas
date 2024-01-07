@@ -83,12 +83,16 @@
                               {{ Request::segment(2) == 'permission' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'role' ? 'menu-is-opening menu-open' : '' }}
                               {{ Request::segment(2) == 'role-index' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'user-index' ? 'menu-is-opening menu-open' : '' }}
+                              {{ Request::segment(2) == 'user' ? 'menu-is-opening menu-open' : '' }}
                               ">
                                   <a href="#"
                                       class="nav-link
                                   {{ Request::segment(2) == 'permission' ? 'active' : '' }}
                                   {{ Request::segment(2) == 'role' ? 'active' : '' }}
                                   {{ Request::segment(2) == 'role-index' ? 'active' : '' }}
+                                  {{ Request::segment(2) == 'user-index' ? 'active' : '' }}
+                                  {{ Request::segment(2) == 'user' ? 'active' : '' }}
                                   ">
                                       <i class="fa fa-folder nav-icon ml-2"></i>
                                       <p>
@@ -98,30 +102,6 @@
                                   </a>
 
                                   <ul class="nav nav-treeview">
-                                      {{-- <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Group</p>
-                                          </a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>User</p>
-                                          </a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Autorisasi</p>
-                                          </a>
-                                      </li>
-                                      <li class="nav-item">
-                                          <a href="pages/examples/login.html" class="nav-link">
-                                              <i class="far fa-circle nav-icon ml-3"></i>
-                                              <p>Setting</p>
-                                          </a>
-                                      </li> --}}
                                       <li class="nav-item">
                                           <a href="{{ route('master.permission') }}"
                                               class="nav-link {{ Request::segment(2) == 'permission' ? 'active' : '' }}">
@@ -147,6 +127,22 @@
                                                   <i class="far fa-circle nav-icon ml-3"></i>
                                               @endif
                                               <p>Role</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('master.user.index') }}"
+                                              class="nav-link
+                                              {{ Request::segment(2) == 'user-index' ? 'active' : '' }}
+                                              {{ Request::segment(2) == 'user' ? 'active' : '' }}
+                                              ">
+                                              @if (Request::segment(2) == 'user-index')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @elseif(Request::segment(2) == 'user')
+                                                  <i class="far fa-dot-circle nav-icon ml-3"></i>
+                                              @else
+                                                  <i class="far fa-circle nav-icon ml-3"></i>
+                                              @endif
+                                              <p>User</p>
                                           </a>
                                       </li>
 

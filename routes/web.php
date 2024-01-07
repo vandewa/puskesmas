@@ -13,6 +13,8 @@ use App\Http\Controllers\HelperController;
 use App\Http\Controllers\LayarAntrianController;
 use App\Livewire\Pages\Admin\Permission;
 use App\Livewire\Pages\Admin\Role;
+use App\Livewire\Pages\Admin\User;
+use App\Livewire\Pages\Admin\UserIndex;
 use App\Livewire\Pages\Farmasi\ListFarmasi;
 use App\Livewire\Pages\Farmasi\ListPengambilanFarmasi;
 use App\Livewire\Pages\Farmasi\ProsesFarmasi;
@@ -136,6 +138,8 @@ Route::middleware([
         Route::get('permission', Permission::class)->name('permission');
         Route::get('role/{id?}', Role::class)->name('role');
         Route::get('role-index', RoleIndex::class)->name('role.index');
+        Route::get('user-index', UserIndex::class)->name('user.index');
+        Route::get('user/{id?}', User::class)->name('user');
 
         Route::group(['prefix' => 'tarif', 'as' => 'tarif.'], function () {
             Route::get('general', General::class)->name('general');
