@@ -31,6 +31,7 @@ class TablePasienRm extends Component
     public $bangsal;
 
     public $url;
+    #[Reactive]
     public $tipePasien ;
 
     public function panggilAntrian($id)
@@ -41,7 +42,7 @@ class TablePasienRm extends Component
 
     public function cetak($id)
     {
-        dd('su');
+
         $this->js('window.open("' . route('helper.print-antrian-poli', $id) . '", "Print Antrian Poli", "width=200,height=100");');
         session()->flash('status', 'Post successfully updated.');
 
@@ -65,15 +66,20 @@ class TablePasienRm extends Component
 
     public function render()
     {
-        $data = TrxMedical::with(['poli', 'dokter', 'pasien', 'jenisPasien', 'medicalRuang'])->carirm($this->rm)
+
+        $data = TrxMedical::with(['poli', 'dokter', 'pasien', 'jenisPasien', 'ruang' => function($a){
+            $a->with([ 'kelas']);
+        }])->carirm($this->rm)
             ->caripoliklinik($this->poliklinik)
             ->caritanggal($this->tanggal)
             ->caridokter($this->dokter)
             ->carikelas($this->kelas)
             ->caribangsal($this->bangsal)
-            ->CariJenisRawat($this->tipePasien)
-            ->orderBy('medunit_cd', 'asc')
+            ->cariJenisRawat($this->tipePasien)
+            ->orderBy('medical_cd', 'asc')
             ->paginate(10);
+
+            // dd($data);
 
         // dd($data);
         return view('livewire.component.table-pasien-rm', [

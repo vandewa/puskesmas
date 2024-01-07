@@ -52,7 +52,7 @@
                                         <label for="" class="col-sm-3 col-form-label">Jenis Rawat</label>
                                         <div class="col-md-9">
                                             <select name="" class="form-control select2bs4" id="select2"
-                                                wire:model.live='jenisRawats'>
+                                                wire:model.live='jenisRawat'>
                                                 <option value="">Piilih Jenis Rawat</option>
                                                 @foreach ($listJenisRawat ?? [] as $item)
                                                     <option value="{{ $item['com_cd'] }}">{{ $item['code_nm'] }}
@@ -100,6 +100,7 @@
                         </div>
                     </div>
                     <!-- general form elements -->
+
                     <div class="card card-success card-outline">
                         <div class="card-body">
                             <livewire:component.table-pasien-rm :rm="$rm" :kelas="$kelas" :tanggal="$tanggal"

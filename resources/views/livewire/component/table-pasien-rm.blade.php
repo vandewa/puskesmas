@@ -1,13 +1,11 @@
 <div>
     <table class="table table-stripe">
         <thead>
-            @if ($tipePasien == 'MEDICAL_TP_02')
-                <th>Kelas</th>
-                <th>Kamar</th>
-            @else
-                <th>Poliklinik</th>
+
+
+                <th>Poliklinik / Ruang</th>
                 <th>Dokter</th>
-            @endif
+
             <th>No. RM</th>
             <th>Nama Pasien</th>
             <th>Tanggal Lahir</th>
@@ -18,17 +16,17 @@
         <tbody>
             @foreach ($posts as $item)
                 <tr>
-                    @if ($tipePasien == 'MEDICAL_TP_02')
-                        <th>Kelas</th>
-                        <th>Kamar</th>
-                    @else
-                        <td>{{ $item->poli->medunit_nm ?? '' }}</td>
+
+
+
+                        <td>{{ $item->poli->medunit_nm ?? '' }}
+                            {{ $item->ruang->kamar->kamar_nm??"" }} -  {{ $item->ruang->ruang_nm??"" }}</td>
                         <td>{{ $item->dokter->dr_nm ?? '' }}</td>
-                    @endif
+
                     <td>{{ $item->pasien->no_rm ?? '' }}</td>
                     <td>{{ $item->pasien->pasien_nm ?? '' }}</td>
                     <td>{{ $item->pasien->birth_date ?? '' }}</td>
-                    <td>{{ $item->queue_no ?? '' }}</td>
+                    <td>{{ $item->poli->queue??"" }} {{ $item->queue_no ?? '' }}</td>
                     <td>{{ $item->jenisPasien->code_nm ?? '' }}</td>
                     <td>
                         <div class="btn-group">

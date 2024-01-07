@@ -28,7 +28,7 @@
                     <td>{{ $item->pasien->no_rm ?? '' }}</td>
                     <td>{{ $item->pasien->pasien_nm ?? '' }}</td>
                     <td>{{ $item->pasien->birth_date ?? '' }}</td>
-                    <td>{{ $item->queue_no ?? '' }}</td>
+                    <td>{{ $item->poli->queue??"" }} {{ $item->queue_no ?? '' }}</td>
                     <td>{{ $item->jenisPasien->code_nm ?? '' }}</td>
                     <td>
                         <div class="btn-group">
