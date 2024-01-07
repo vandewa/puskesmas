@@ -74,7 +74,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row mb-2">
@@ -116,14 +116,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 <div class="mr-2">
                                     <button type="button" class="btn btn-flat btn-success btn-lg    "
                                         onclick="panggil()"><i class="fa fa-volume-up"></i> Panggil</button>
                                 </div>
                                 <button type="button" class="btn btn-flat btn-info btn-lg   "
                                     onclick="panggilUlang()"><i class="fa fa-volume-down"></i> Panggil Ulang</button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <!-- general form elements -->
