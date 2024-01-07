@@ -176,6 +176,8 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
+
+var policd = '{{ $data->medunit_cd ?? '' }}';
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
@@ -190,6 +192,8 @@
         }
         var channel = pusher.subscribe('my-channel');
         channel.bind('my-event', function(data) {
+
+        if(policd == data.poli.medunit_cd) {
             // alert(data.poli.queue + data.queue_no);
             $('#asu').text(data.poli.queue + ' ' + data.queue_no);
             // console.log(data);
@@ -204,6 +208,7 @@
             msg.pitch = 0;
             msg.lang = 'id-ID';
             window.speechSynthesis.speak(msg);
+        }
         });
     </script>
 </body>
