@@ -866,7 +866,7 @@
                           </a>
                           <ul class="nav nav-treeview">
                               <li class="nav-item">
-                                  <a href="./index2.html" class="nav-link">
+                                  <a href="{{ route('list-rekam-medis') }}" class="nav-link">
                                       <i class="far fa-circle nav-icon ml-3"></i>
                                       <p>Rekam Medis</p>
                                   </a>
