@@ -12,10 +12,14 @@ class PenggunaPage extends Component
     public $cari;
     public function render()
     {
-        $data = User::cari($this->cari)->whereHas('roles', function($a){
-            $a->where('name', 'user');
-        })->paginate(10);
-        return view('livewire.demo.pengguna-page',  [
+        $data = User::cari($this->cari)
+            ->whereHas('roles', function ($a) {
+                $a->where('name', 'user');
+            })
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        return view('livewire.demo.pengguna-page', [
             'posts' => $data
         ]);
 

@@ -135,6 +135,18 @@
                                                         </div>
                                                     </div>
                                                     <div class="mb-2 row">
+                                                        <label for="" class="col-sm-3 col-form-label">Nama
+                                                            Wali</label>
+                                                        <div class="col-md-9">
+                                                            <input type="text" class="form-control"
+                                                                wire:model="form.nama_wali">
+                                                            @error('form.nama_wali')
+                                                                <span
+                                                                    class="form-text text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-2 row">
                                                         <label for="" class="col-sm-3 col-form-label">Telepon
                                                             Wali</label>
                                                         <div class="col-md-9">

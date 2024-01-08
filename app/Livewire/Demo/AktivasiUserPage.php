@@ -14,7 +14,8 @@ class AktivasiUserPage extends Component
     public $pilih;
     public $info;
 
-    public function proses($id) {
+    public function proses($id)
+    {
         $this->pilih = $id;
         $this->info = User::find($id);
 
@@ -23,12 +24,14 @@ class AktivasiUserPage extends Component
         JS);
     }
 
-    public function cancel() {
+    public function cancel()
+    {
         $this->pilih = null;
         $this->info = null;
     }
 
-    public function save($id) {
+    public function save($id)
+    {
         // dd($this->pilih);
 
 
@@ -41,13 +44,13 @@ class AktivasiUserPage extends Component
 
         TransaksiKeuangan::create([
             'tanggal_transaksi' => date('Y-m-d'),
-            'name' => 'Pembayaran aktivasi user'. $this->info->name,
+            'name' => 'Pembayaran aktivasi user' . $this->info->name,
             'pengeluaran_tp' => 'PENGELUARAN_TP_01',
             'nominal' => 300000,
             'id_ref' => $this->info->id,
             'model' => 'App\Models\User'
         ]);
-        $pesan ="Pemberitahuan, Aktivasi user anda berhasil dilakukan"."\n" ;
+        $pesan = "Pemberitahuan, Aktivasi user anda berhasil dilakukan, silahkan login kembali dan masuk menu Lamaran";
 
 
         kirimWhatsapp::dispatch($pesan, $this->info->telepon);
@@ -56,14 +59,15 @@ class AktivasiUserPage extends Component
         $this->cancel();
     }
 
-    public function tolak() {
+    public function tolak()
+    {
         User::find($this->pilih)->update([
             'tanggal_upload' => null,
             'path_dokumen' => null
         ]);
 
 
-        $pesan ="Pemberitahuan, Aktivasi user anda ditolak \n Silahkan ulangi aktivasi anda"."\n" ;
+        $pesan = "Pemberitahuan, Aktivasi user anda ditolak \n Silahkan ulangi aktivasi anda" . "\n";
 
         kirimWhatsapp::dispatch($pesan, $this->info->telepon);
         session()->flash('status', 'Pemohon berhasil ditolak.');
@@ -72,8 +76,8 @@ class AktivasiUserPage extends Component
     }
     public function render()
     {
-        $data = User::where('tanggal_upload','<>', null)->where('active_st', false)->orwhere('active_st', null)
-        ->paginate(10);
+        $data = User::where('tanggal_upload', '<>', null)->where('active_st', false)->orwhere('active_st', null)
+            ->paginate(10);
         return view('livewire.demo.aktivasi-user-page', [
             'posts' => $data
         ]);

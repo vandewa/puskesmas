@@ -30,6 +30,7 @@ class DataDiri extends Component
         'education_tp' => '',
         'keterampilan' => '',
         'agama' => '',
+        'nama_wali' => '',
     ];
 
     public $idnya;

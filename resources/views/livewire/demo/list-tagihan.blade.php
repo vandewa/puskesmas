@@ -33,47 +33,24 @@
                                                         </div>
                                                     </div>
                                                     <div class="card-body">
-                                                        <div class="row">
-                                                            <div class="col-md-2">
-                                                                <input type="text" class="form-control"
-                                                                    placeholder="cari" wire:model.live='cari'>
-                                                            </div>
-                                                        </div>
-
                                                         <div class="table-responsive">
                                                             <table class="table">
                                                                 <thead>
+                                                                    <th>#</th>
                                                                     <th>Layanan</th>
                                                                     <th>Tgl Tagihan</th>
                                                                     <th>Nama Tagihan</th>
                                                                     <th>Jumlah</th>
                                                                     <th>Status</th>
-                                                                    <th>Action</th>
                                                                 </thead>
                                                                 <tbody>
                                                                     @foreach ($post as $index => $item)
                                                                         <tr wire:key='{{ $item->id }}'>
-                                                                            <td>{{ $$index = $index + 1}}</td>
-                                                                            <td>{{ $item->tanggal_tagihan }}</td>
-                                                                            <td>{{ $item->nama_tagihan }}</td>
-                                                                            <td>{{  "Rp " . number_format( $item->jumlah??"0",2,',','.'); }}</td>
-                                                                            <td>
-                                                                                @if( $item->status == 'Belum Lunas')
-
-                                                                                <span class="right badge badge-info"> {{  $item->status  }}</span>
-
-                                                                                @elseif ($item->status == 'Lunas')
-                                                                                <span class="right badge badge-success"> {{  $item->status  }}</span>
-                                                                                @else
-
-                                                                                <span class="right badge badge-danger"> {{  $item->status  }}</span>
-                                                                                @endif
-                                                                            </td>
                                                                             <td>
                                                                                 <div
                                                                                     class="gap-3 table-actions d-flex align-items-center fs-6">
                                                                                     <div class="mr-2">
-                                                                                        @if(auth()->user()->isAbleTo(['keuangan-read'], true))
+                                                                                        @if (auth()->user()->isAbleTo(['keuangan-read'], true))
                                                                                             <a href="{{ route('pendaftaran.bukti-bayar', $item->id) }}"
                                                                                                 class="btn btn-success btn-flat btn-sm"></i>
                                                                                                 Konfirmasi Pembayaran
@@ -85,11 +62,29 @@
                                                                                             </a>
                                                                                         @endif
                                                                                     </div>
-
-
                                                                                 </div>
-
                                                                             </td>
+                                                                            <td>{{ $index = $index + 1 }}</td>
+                                                                            <td>{{ $item->tanggal_tagihan }}</td>
+                                                                            <td>{{ $item->nama_tagihan }}</td>
+                                                                            <td>{{ 'Rp ' . number_format($item->jumlah ?? '0', 2, ',', '.') }}
+                                                                            </td>
+                                                                            <td>
+                                                                                @if ($item->status == 'Belum Lunas')
+                                                                                    <span
+                                                                                        class="right badge badge-info">
+                                                                                        {{ $item->status }}</span>
+                                                                                @elseif($item->status == 'Lunas')
+                                                                                    <span
+                                                                                        class="right badge badge-success">
+                                                                                        {{ $item->status }}</span>
+                                                                                @else
+                                                                                    <span
+                                                                                        class="right badge badge-danger">
+                                                                                        {{ $item->status }}</span>
+                                                                                @endif
+                                                                            </td>
+
                                                                         </tr>
                                                                     @endforeach
                                                                 </tbody>

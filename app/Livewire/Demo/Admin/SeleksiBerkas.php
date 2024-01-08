@@ -90,7 +90,7 @@ class SeleksiBerkas extends Component
                 'tanggal_selesai' => $this->tanggalselesai,
             ]);
 
-            $pesan = $data->user->name . ' *lolos* ke tahap Test Fisik & Psikotest, harap hadir :' . "\n\n" .
+            $pesan = $data->user->name . ' *lolos* ke tahap Test Fisik & Psikotest, dengan membawa seluruh dokumen asli dan fotokopinya, harap hadir :' . "\n\n" .
                 'Lokasi: ' . $this->lokasi . "\n" .
                 'Tgl Mulai : ' . Carbon::parse($this->tanggalmulai)->isoFormat('LLLL') . "\n" .
                 'Tgl Selesai : ' . Carbon::parse($this->tanggalselesai)->isoFormat('LLLL') . "\n\n" .

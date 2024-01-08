@@ -3,6 +3,7 @@
 namespace App\Livewire\Demo\DataKeluarga;
 
 use Livewire\Component;
+use App\Models\His\ComCode;
 use Illuminate\Support\Arr;
 use Livewire\WithPagination;
 use App\Models\Demo\DataKeluarga;
@@ -13,12 +14,13 @@ class SuamiIstri extends Component
     use WithPagination;
 
     public $form = [
-        'nama' => '',
-        'tempat_lahir' => '',
-        'tgl_lahir' => '',
-        'pendidikan' => '',
-        'pekerjaan' => '',
-        'gender_tp' => '',
+        'nama' => null,
+        'telepon' => null,
+        'gender_tp' => null,
+        'tempat_lahir' => null,
+        'tgl_lahir' => null,
+        'pendidikan' => null,
+        'education_tp' => null,
         'data_keluarga_tp' => 'DATA_KELUARGA_TP_01',
     ];
 
@@ -41,6 +43,19 @@ class SuamiIstri extends Component
         $this->idnya = $id;
         $this->form = $demo_data_keluarga;
         $this->idnya = $demo_data_keluarga['user_id'];
+        $this->ambilJenisKelamin();
+        $this->ambilPendidikan();
+
+    }
+
+    public function ambilJenisKelamin()
+    {
+        return ComCode::where('code_group', 'GENDER_TP')->get()->toArray();
+    }
+
+    public function ambilPendidikan()
+    {
+        return ComCode::where('code_group', 'EDUCATION_CD')->get()->toArray();
     }
 
     public function save()
@@ -70,7 +85,9 @@ class SuamiIstri extends Component
 
 
         return view('livewire.demo.data-keluarga.suami-istri', [
-            'post' => $data
+            'post' => $data,
+            'listJenisKelamin' => $this->ambilJenisKelamin(),
+            'listPendidikan' => $this->ambilPendidikan()
         ]);
     }
 }

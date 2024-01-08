@@ -39,7 +39,7 @@
                                                                             <div class="card-body">
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">Nama</label>
                                                                                             <div class="col-md-9">
@@ -52,7 +52,64 @@
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">Nomor
+                                                                                                Telepon</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    wire:model="form.telepon">
+                                                                                                @error('form.telepon')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="mb-2 row">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">Jenis
+                                                                                                Kelamin</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <select
+                                                                                                    class="form-control"
+                                                                                                    wire:model.live="form.gender_tp">
+                                                                                                    <option
+                                                                                                        value="">
+                                                                                                        -- Pilih Jenis
+                                                                                                        Kelamin --
+                                                                                                    </option>
+                                                                                                    @foreach ($listJenisKelamin ?? [] as $item)
+                                                                                                        <option
+                                                                                                            value="{{ $item['com_cd'] }}">
+                                                                                                            {{ $item['code_nm'] }}
+                                                                                                        </option>
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                                @error('form.gender_tp')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="mb-2 row">
+                                                                                            <label for=""
+                                                                                                class="col-sm-3 col-form-label">Tempat
+                                                                                                Lahir</label>
+                                                                                            <div class="col-md-9">
+                                                                                                <input type="text"
+                                                                                                    class="form-control"
+                                                                                                    wire:model="form.tempat_lahir">
+                                                                                                @error('form.tempat_lahir')
+                                                                                                    <span
+                                                                                                        class="form-text text-danger">{{ $message }}</span>
+                                                                                                @enderror
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">Tanggal
                                                                                                 Lahir</label>
@@ -66,39 +123,37 @@
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
-                                                                                                class="col-sm-3 col-form-label">Pendidikan</label>
+                                                                                                class="col-sm-3 col-form-label">Pendidikan
+                                                                                                Terakhir</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text"
+                                                                                                <select
                                                                                                     class="form-control"
-                                                                                                    wire:model="form.pendidikan">
-                                                                                                @error('form.pendidikan')
+                                                                                                    wire:model="form.education_tp">
+                                                                                                    <option
+                                                                                                        value="">
+                                                                                                        -- Pilih
+                                                                                                        Pendidikan --
+                                                                                                    </option>
+                                                                                                    @foreach ($listPendidikan ?? [] as $item)
+                                                                                                        <option
+                                                                                                            value="{{ $item['com_cd'] }}">
+                                                                                                            {{ $item['code_nm'] }}
+                                                                                                        </option>
+                                                                                                    @endforeach
+                                                                                                </select>
+                                                                                                @error('form.education_tp')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>
                                                                                                 @enderror
                                                                                             </div>
                                                                                         </div>
-                                                                                        <div class="row mb-2">
-                                                                                            <label for=""
-                                                                                                class="col-sm-3 col-form-label">Pekerjaan</label>
-                                                                                            <div class="col-md-9">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.pekerjaan">
-                                                                                                @error('form.pekerjaan')
-                                                                                                    <span
-                                                                                                        class="form-text text-danger">{{ $message }}</span>
-                                                                                                @enderror
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row mb-2">
+                                                                                        <div class="mb-2 row">
                                                                                             <label for=""
                                                                                                 class="col-sm-3 col-form-label">Alamat</label>
                                                                                             <div class="col-md-9">
-                                                                                                <input type="text"
-                                                                                                    class="form-control"
-                                                                                                    wire:model="form.alamat">
+                                                                                                <textarea rows="2" wire:model="form.alamat" class="form-control"></textarea>
                                                                                                 @error('form.alamat')
                                                                                                     <span
                                                                                                         class="form-text text-danger">{{ $message }}</span>

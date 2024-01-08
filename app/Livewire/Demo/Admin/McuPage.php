@@ -45,9 +45,6 @@ class McuPage extends Component
 
     public function simpan()
     {
-
-
-
         $this->js(<<<'JS'
 
                 Swal.fire({
@@ -99,14 +96,26 @@ class McuPage extends Component
                 'jenis_berkas' => 'Tiket Pesawat',
             ]);
 
-            $pesan = $data->user->name . ' *lolos* ke tahap Pengurusan Berkas' . "\n" .
-                'Untuk kepengurusan dokumen maka peserta harus menyiapkan dokumen sebagai berikut:' . "\n\n" .
-                '• COE' . "\n" .
-                '• VISA' . "\n" .
-                '• Tiket' . "\n\n" .
-                'Terima Kasih.';
-            kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+            // $pesan = $data->user->name . ' *lolos* ke tahap Pengurusan Berkas' . "\n" .
+            //     'Untuk kepengurusan dokumen maka peserta harus menyiapkan dokumen sebagai berikut:' . "\n\n" .
+            //     '• COE' . "\n" .
+            //     '• VISA' . "\n" .
+            //     '• Tiket' . "\n\n" .
+            //     'Terima Kasih.';
 
+            // $pesan = $data->user->name . ' *lolos* ke tahap Pengurusan Berkas' . "\n" .
+            //     'Mohon mempersiapkan berkas keberangkatan ::' . "\n\n" .
+            //     '• COE' . "\n" .
+            //     '• VISA' . "\n" .
+            //     '• Tiket' . "\n\n" .
+            //     'Dibawa ke :' .
+            //     'Lokasi: ' . $this->lokasi . "\n" .
+            //     'Tgl Mulai : ' . Carbon::parse($this->tanggalmulai)->isoFormat('LLLL') . "\n" .
+            //     'Tgl Selesai : ' . Carbon::parse($this->tanggalselesai)->isoFormat('LLLL') . "\n\n" .
+            //     'Terima Kasih.';
+
+
+            // kirimWhatsapp::dispatch($pesan, $data->user->telepon);
 
 
         } else {

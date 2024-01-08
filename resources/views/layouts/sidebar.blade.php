@@ -59,16 +59,16 @@
                       data-accordion="false">
 
                       @permission('master-data-read')
-                      <li class="nav-item">
-                          <a href="{{ route('dashboard')}}"
-                              class="nav-link  {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
-                              <i class="nav-icon fas fa-tachometer-alt"></i>
-                              <p>
-                                  Dashboard
-                              </p>
-                          </a>
-                      </li>
-                  @endpermission
+                          <li class="nav-item">
+                              <a href="{{ route('dashboard') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
+                                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                                  <p>
+                                      Dashboard
+                                  </p>
+                              </a>
+                          </li>
+                      @endpermission
                       <!-- Add icons to the links using the .nav-icon class
            with font-awesome or any other icon font library -->
                       @role('sales')
@@ -85,27 +85,27 @@
 
 
                       @role('user')
-                      <li class="nav-item">
-                        <a href="{{ route('lamaran') }}"
-                            class="nav-link  {{ Request::segment(1) == '' ? 'active' : '' }}">
-                            <i class="nav-icon fa-solid fa-file-pen"></i>
-                            <p>
-                                Lamaran
-                            </p>
-                        </a>
-                    </li>
-                    @endrole
-                    @if (auth()->user()->active_st == true)
-                        <li class="nav-item">
-                            <a href="{{ route('pendaftaran.data-diri') }}"
-                                class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
-                                <i class="nav-icon fa-solid fa-user-pen"></i>
-                                <p>
-                                    Data Diri
-                                </p>
-                            </a>
-                        </li>
-                    @endif
+                          <li class="nav-item">
+                              <a href="{{ route('lamaran') }}"
+                                  class="nav-link  {{ Request::segment(1) == '' ? 'active' : '' }}">
+                                  <i class="nav-icon fa-solid fa-file-pen"></i>
+                                  <p>
+                                      Lamaran
+                                  </p>
+                              </a>
+                          </li>
+                      @endrole
+                      @if (auth()->user()->active_st == true)
+                          <li class="nav-item">
+                              <a href="{{ route('pendaftaran.data-diri') }}"
+                                  class="nav-link  {{ Request::segment(2) == 'data-diri' ? 'active' : '' }}">
+                                  <i class="nav-icon fa-solid fa-user-pen"></i>
+                                  <p>
+                                      Data Diri
+                                  </p>
+                              </a>
+                          </li>
+                      @endif
 
 
                       {{-- <li class="nav-item">
@@ -242,7 +242,8 @@
                                           </a>
                                       </li>
                                       <li class="nav-item">
-                                          <a href="{{ route('admin.keuangan') }}" class="nav-link  {{ Request::segment(2) == 'keuangan' ? 'active' : '' }}">
+                                          <a href="{{ route('admin.keuangan') }}"
+                                              class="nav-link  {{ Request::segment(2) == 'keuangan' ? 'active' : '' }}">
                                               <i class="ml-2 far fa-circle nav-icon"></i>
                                               <p>Keuangan</p>
                                           </a>
@@ -290,7 +291,7 @@
                                       class="nav-link  {{ Request::segment(2) == 'wawancara' ? 'active' : '' }}">
                                       <i class="nav-icon fa-solid fa-comment-dots"></i>
                                       <p>
-                                          Wawancara 1
+                                          Wawancara Pra Pelatihan
                                       </p>
                                   </a>
                               </li>

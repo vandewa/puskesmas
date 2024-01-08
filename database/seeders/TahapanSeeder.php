@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Demo\Tahapan;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TahapanSeeder extends Seeder
 {
@@ -13,6 +14,9 @@ class TahapanSeeder extends Seeder
      */
     public function run(): void
     {
+
+        DB::table('tahapans')->truncate();
+
         Tahapan::create([
             'no' => 1,
             'name' => 'Seleksi Berkas',
@@ -23,7 +27,7 @@ class TahapanSeeder extends Seeder
         ]);
         Tahapan::create([
             'no' => 3,
-            'name' => 'Wawancara 1',
+            'name' => 'Wawancara Pra Pelatihan',
         ]);
 
         Tahapan::create([
