@@ -37,7 +37,7 @@ class Dokumen extends Component
     {
         if ($this->kk) {
             $this->validate([
-                'kk' => 'image|max:1024', // 1MB Max
+                'kk' => 'image', // 1MB Max
             ]);
             $kk = $this->kk->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
@@ -48,7 +48,7 @@ class Dokumen extends Component
 
         if ($this->ktp) {
             $this->validate([
-                'ktp' => 'image|max:1024', // 1MB Max
+                'ktp' => 'image', // 1MB Max
             ]);
             $ktp = $this->ktp->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
@@ -58,7 +58,7 @@ class Dokumen extends Component
 
         if ($this->akta) {
             $this->validate([
-                'akta' => 'image|max:1024', // 1MB Max
+                'akta' => 'image', // 1MB Max
             ]);
             $akta = $this->akta->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([
@@ -68,7 +68,7 @@ class Dokumen extends Component
 
         if ($this->mcu) {
             $this->validate([
-                'mcu' => 'image|max:1024', // 1MB Max
+                'mcu' => 'image', // 1MB Max
             ]);
             $mcu = $this->mcu->store('public/photos');
             Document::where('user_id', auth()->user()->id)->update([

@@ -17,7 +17,8 @@ class AktivasiPage extends Component
 
     public $aktivasi;
 
-    public function mount() {
+    public function mount()
+    {
         $this->aktivasi = auth()->user()->tanggal_upload == '';
     }
 
@@ -33,7 +34,7 @@ class AktivasiPage extends Component
             'path_dokumen' => $a,
         ]);
         $this->aktivasi = false;
-        session()->flash('status', 'Buktu Upload telah terkirim.');
+        session()->flash('status', 'Bukti upload telah terkirim.');
 
     }
 

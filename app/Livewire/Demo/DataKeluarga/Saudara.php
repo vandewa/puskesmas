@@ -15,12 +15,13 @@ class Saudara extends Component
     public $idHapus, $edit = false, $idnya;
 
     public $form = [
-        'nama' => '',
-        'tempat_lahir' => '',
-        'tgl_lahir' => '',
-        'pendidikan' => '',
-        'pekerjaan' => '',
-        'gender_tp' => '',
+        'nama' => null,
+        'telepon' => null,
+        'gender_tp' => null,
+        'tempat_lahir' => null,
+        'tgl_lahir' => null,
+        'pendidikan' => null,
+        'education_tp' => null,
         'data_keluarga_tp' => 'DATA_KELUARGA_TP_04',
         'user_id' => null
     ];
@@ -34,6 +35,11 @@ class Saudara extends Component
     public function ambilJenisKelamin()
     {
         return ComCode::where('code_group', 'GENDER_TP')->get()->toArray();
+    }
+
+    public function ambilPendidikan()
+    {
+        return ComCode::where('code_group', 'EDUCATION_CD')->get()->toArray();
     }
 
 
@@ -125,6 +131,7 @@ class Saudara extends Component
         return view('livewire.demo.data-keluarga.saudara', [
             'post' => $data,
             'listJenisKelamin' => $this->ambilJenisKelamin(),
+            'listPendidikan' => $this->ambilPendidikan()
         ]);
     }
 }

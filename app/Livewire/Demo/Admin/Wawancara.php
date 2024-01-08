@@ -93,9 +93,18 @@ class Wawancara extends Component
                 'tanggal_selesai' => $this->tanggalselesai,
             ]);
 
-            $pesan = $this->pesan;
+            $pesan = $data->user->name . ' *lolos* ke tahap selanjutnya.' . "\n\n" .
+                'Mohon mempersiapkan diri untuk melakukan pelatihan Pendidikan Bahasa Jepang :' . "\n" .
+                'Lokasi: ' . $this->lokasi . "\n" .
+                'Tgl Mulai : ' . Carbon::parse($this->tanggalmulai)->isoFormat('LLLL') . "\n" .
+                'Tgl Selesai : ' . Carbon::parse($this->tanggalselesai)->isoFormat('LLLL') . "\n\n" .
+                'Terima Kasih.';
 
             kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+
+            // $pesan = $this->pesan;
+
+            // kirimWhatsapp::dispatch($pesan, $data->user->telepon);
 
 
         } else {
@@ -108,7 +117,11 @@ class Wawancara extends Component
                 'keterangan' => $this->keterangan
             ]);
 
-            $pesan = $this->pesan;
+            // $pesan = $this->pesan;
+            // kirimWhatsapp::dispatch($pesan, $data->user->telepon);
+
+            $pesan = $data->user->name . ' *tidak lolos* ke tahap selanjutnya' . "\n\n" .
+                '(' . $this->keterangan . ')';
             kirimWhatsapp::dispatch($pesan, $data->user->telepon);
         }
 

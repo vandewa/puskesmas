@@ -33,7 +33,7 @@
 
                                                             <input type="text" class="form-control"
                                                                 wire:model="form.tunjangan_diterima"
-                                                                @if ($form['status'] == true) disabled @endif>
+                                                                @if ($form['status'] ?? '' == true) disabled @endif>
                                                             @error('form.tunjangan_diterima')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -46,7 +46,7 @@
                                                         <div class="col-md-7">
                                                             <input type="text" class="form-control"
                                                                 wire:model="form.gaji_diharap"
-                                                                @if ($form['status'] == true) disabled @endif>
+                                                                @if ($form['status'] ?? '' == true) disabled @endif>
                                                             @error('form.gaji_diharap')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -60,7 +60,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control"
                                                                 wire:model.live="form.bersedia_ditempatkan"
-                                                                @if ($form['status'] == true) disabled @endif>
+                                                                @if ($form['status'] ?? '' == true) disabled @endif>
                                                                 <option value="">
                                                                     -- Pilih --
                                                                 </option>
@@ -84,7 +84,7 @@
                                                         <div class="col-md-7">
                                                             <select class="form-control"
                                                                 wire:model.live="form.mematuhi_peraturan"
-                                                                @if ($form['status'] == true) disabled @endif>
+                                                                @if ($form['status'] ?? '' == true) disabled @endif>
                                                                 <option value="">
                                                                     -- Pilih --
                                                                 </option>
@@ -108,7 +108,7 @@
                                                         <div class="col-md-7">
                                                             <input type="text" class="form-control"
                                                                 wire:model="form.keterangan_lain"
-                                                                @if ($form['status'] == true) disabled @endif>
+                                                                @if ($form['status'] ?? '' == true) disabled @endif>
                                                             @error('form.keterangan_lain')
                                                                 <span
                                                                     class="form-text text-danger">{{ $message }}</span>
@@ -122,7 +122,7 @@
                                         </div>
                                         @if (!auth()->user()->hasRole('superadministrator'))
                                             <div class="card-footer">
-                                                @if ($form['status'] == true)
+                                                @if ($form['status'] ?? '' == true)
                                                 @else
                                                     <button type="submit" class="btn btn-info">Simpan</button>
                                                 @endif

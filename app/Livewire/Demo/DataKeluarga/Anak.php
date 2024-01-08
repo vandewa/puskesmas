@@ -16,11 +16,12 @@ class Anak extends Component
 
     public $form = [
         'nama' => null,
+        'telepon' => null,
+        'gender_tp' => null,
         'tempat_lahir' => null,
         'tgl_lahir' => null,
         'pendidikan' => null,
-        'pekerjaan' => null,
-        'gender_tp' => null,
+        'education_tp' => null,
         'data_keluarga_tp' => 'DATA_KELUARGA_TP_02',
         'user_id' => null
     ];
@@ -34,6 +35,11 @@ class Anak extends Component
     public function ambilJenisKelamin()
     {
         return ComCode::where('code_group', 'GENDER_TP')->get()->toArray();
+    }
+
+    public function ambilPendidikan()
+    {
+        return ComCode::where('code_group', 'EDUCATION_CD')->get()->toArray();
     }
 
     public function getEdit($a)
@@ -126,6 +132,7 @@ class Anak extends Component
         return view('livewire.demo.data-keluarga.anak', [
             'post' => $data,
             'listJenisKelamin' => $this->ambilJenisKelamin(),
+            'listPendidikan' => $this->ambilPendidikan()
         ]);
     }
 }

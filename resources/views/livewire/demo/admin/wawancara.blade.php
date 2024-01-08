@@ -84,7 +84,7 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        {{-- <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Pesan <small
                                                     class="text-danger">(*WhastApp)</small></label>
                                             <div class="col-sm-10">
@@ -95,7 +95,7 @@
                                                         class="error invalid-feedback">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     @endif
                                     @if ($persetujuan === '0')
                                         <div class="form-group row">
@@ -109,9 +109,9 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        {{-- <div class="form-group row">
                                             <label for="inputPassword3" class="col-sm-2 col-form-label">Pesan <small
-                                                    class="text-danger">(*WhastApp)</small></label>
+                                                    class="text-danger">(*WhatsApp)</small></label>
                                             <div class="col-sm-10">
                                                 <textarea name="" id="" cols="30" rows="2"
                                                     class="form-control @error('pesan') is-invalid @enderror" wire:model='pesan'></textarea>
@@ -120,7 +120,7 @@
                                                         class="error invalid-feedback">{{ $message }}</span>
                                                 @enderror
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     @endif
 
                                 </div>
