@@ -39,6 +39,31 @@
                                 </div>
                               </div>
                               @if($persetujuan)
+                              <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-center">Pilih Kelas</h5>
+                                    <table class="table">
+                                        <thead>
+                                            <th>No</th>
+                                            <th>Waktu Pelatihan</th>
+                                            <th>Action</th>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach ($listKelas??[] as $index => $item)
+                                            <tr @if($pilihkelas) class="bg-secondary"@endif>
+                                                <td>{{  $index = $index+1 }}</td>
+                                                <td>{{ $item->tanggal_mulai }} - {{ $item->tanggal_selesai }} </td>
+                                                <td><button type="button" class="btn btn-sm btn-primary" wire:click='ambilKelas({{ $item->id }})'>Pilih</button></td>
+                                            </tr>
+                                            @endforeach
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-md-6">
+
+
                               <h4>Proses Wawancara</h4>
                                     <div class="form-group row">
                                         <label for="inputEmail3" class="col-sm-2 col-form-label">Lokasi</label>
@@ -67,7 +92,9 @@
                                             @enderror
                                         </div>
                                     </div>
+                                </div>
                                     @endif
+
                                     @if($persetujuan === '0')
                                 <div class="form-group row">
                                     <label for="inputPassword3" class="col-sm-2 col-form-label">Alasan</label>
@@ -122,6 +149,7 @@
                                 <th>Status</th>
                                 <th>Tahapan</th>
                                 <th>Info</th>
+                                <th>Hasil Tes</th>
                                 <th>Aksi</th>
                             </tr>
                             </thead>
@@ -146,8 +174,15 @@
                                         <p><span class="fas fa-calendar-minus"></span>  Tanggal Selesai: {{ $item->tes->tanggal_selesai??"-" }}</p>
                                     </td>
                                     <td>
+                                       <p>Push Up: {{  $item->tes->push_up??"" }} </p>
+                                       <p>Sit Up: {{  $item->tes->sit_up??"" }} </p>
+                                       <p>Pull Up: {{  $item->tes->pull_up??"" }}  </p>
+                                       <p>Lari:  {{  $item->tes->lari??"" }} </p>
+                                    </td>
+                                    <td>
                                         <button class="btn btn-sm btn-primary" wire:click='proses({{ $item->id }})'>Proses</button>
-                                        <button class="btn btn-sm btn-warning">Detail Info</button>
+                                        <button class="btn btn-sm btn-info" wire:click='ambilPilihHasil({{ $item->tes->id }})' type="button" >Hasil</button>
+                                        <a href="{{ route('pendaftaran.detail-pengguna', $item->user_id) }}" target="_blank" class="btn btn-sm btn-warning">Detail Info</a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -166,4 +201,51 @@
             </div>
         </div>
     </section>
+    <!-- Modal -->
+    <div class="modal fade @if($showModal) show @endif" id="modal-default" @if($showModal) style="display: block;" @else style="display: none;" @endif>
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Hasil Tes</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="" wire:submit="saveHasil({{ $pilihHasil }})">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-3">Push Up</div>
+                        <div class="col-md-9">
+                            <input type="number" wire:model='push_up' class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Sit Up</div>
+                        <div class="col-md-9">
+                            <input type="number" wire:model='sit_up' class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Pull Up</div>
+                        <div class="col-md-9">
+                            <input type="number" wire:model='pull_up' class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">Lari</div>
+                        <div class="col-md-9">
+                            <input type="number" wire:model='lari' class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" >Raubah</button>
+                </div>
+            </form>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
 </div>

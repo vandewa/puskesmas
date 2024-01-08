@@ -184,7 +184,7 @@
                                                 <td>
                                                     <button class="btn btn-sm btn-primary"
                                                         wire:click='proses({{ $item->id }})'>Proses</button>
-                                                    <button class="btn btn-sm btn-warning">Detail Info</button>
+                                                        <a href="{{ route('pendaftaran.detail-pengguna', $item->user_id) }}" target="_blank" class="btn btn-sm btn-warning">Detail Info</a>
                                                 </td>
                                             </tr>
                                         @endforeach

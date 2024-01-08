@@ -5,9 +5,11 @@ namespace App\Livewire\Demo\Admin;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\Wawancara1;
-use App\Jobs\kirimWhatsapp;
+use App\Models\Demo\Kelas;
 use App\Models\Demo\Lamaran;
+use App\Models\TestFisik;
 use Livewire\WithPagination;
+
 
 class Tes extends Component
 {
@@ -22,11 +24,21 @@ class Tes extends Component
     public $lokasi;
     public $tanggalmulai;
     public $tanggalselesai;
+    public $pilihkelas;
+    public $pilihHasil;
+    public $push_up;
+    public $sit_up;
+    public $pull_up;
+    public $lari;
+    public $showModal = false;
+    // public $listKelas;
 
     public function proses($id)
     {
         $this->pilih = $id;
         $this->info = Lamaran::find($id);
+
+
 
         $this->js(<<<'JS'
         document.body.scrollTop = document.documentElement.scrollTop = 0;
@@ -67,8 +79,29 @@ class Tes extends Component
 
     }
 
+    public function ambilKelas($id)
+    {
+        $this->pilihkelas = $id;
+
+    }
+
     public function save()
     {
+        if (!$this->pilihkelas) {
+
+            $this->js(<<<'JS'
+
+                        Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Harap memilih kelas terlebih dahulu!",
+
+                        });
+
+            JS);
+
+            return;
+        }
 
         if ($this->persetujuan) {
             // naikan ke periode selanjutnya
@@ -80,6 +113,7 @@ class Tes extends Component
 
             $data = Lamaran::find($this->pilih);
             $data->tahapan_id = $data->tahapan_id + 1;
+            $data->kelas_id = $this->pilihkelas;
             $data->save();
             // simpan waktu dan lokasi wawancara
 
@@ -123,13 +157,50 @@ class Tes extends Component
         JS);
 
     }
+
+    public function saveHasil($id) {
+        $this->js(<<<'JS'
+            var myModalEl = document.getElementById('modal-default');
+            var modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide();
+        JS);
+        TestFisik::find($id)->update([
+            'push_up' => $this->push_up,
+            'sit_up' => $this->sit_up,
+            'pull_up' => $this->pull_up,
+            'lari' => $this->lari,
+        ]);
+        $this->tampilModal();
+    }
+
+    public function ambilPilihHasil($id) {
+
+        $this->pilihHasil = $id;
+        $a = TestFisik::find($id);
+        // dd($a);
+        $this->push_up = $a->push_up;
+        $this->sit_up = $a->sit_up;
+        $this->pull_up = $a->pull_up;
+        $this->lari = $a->lari;
+        $this->tampilModal();
+
+
+    }
+
+    public function tampilModal()
+    {
+        $this->showModal = !$this->showModal;
+    }
+
     public function render()
     {
+        $listKelas = Kelas::where('layanan_id', $this->info->layanan_id??"0")->get();
         $data = Lamaran::with(['tahapan', 'user', 'tes'])->where('tahapan_id', 2)
             ->where('status', 'Dalam Proses')
             ->paginate(10);
         return view('livewire.demo.admin.tes', [
-            'posts' => $data
+            'posts' => $data,
+            'listKelas' => $listKelas
         ]);
     }
 }

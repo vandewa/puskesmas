@@ -63,7 +63,7 @@
                                             <option value="2"> 2 Kali</option>
                                           </select>
                                     </div>
-                                    <h5 class="text-center">Pilih Kelas</h5>
+                                    {{-- <h5 class="text-center">Pilih Kelas</h5>
                                     <table class="table">
                                         <thead>
                                             <th>No</th>
@@ -81,14 +81,14 @@
                                             @endforeach
 
                                         </tbody>
-                                    </table>
+                                    </table> --}}
                                 </div>
                                 <div class="col-md-6">
                                     @if( $detailLayanan)
                                     <div class="mt-3 alert alert-info alert-dismissible">
                                         {{-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> --}}
                                         <h5><i class="icon fas fa-info"></i> Informasi Penting!</h5>
-                                        <p>Biaya: {{  "Rp " . number_format( $detailLayanan->harga??"0",2,',','.'); }}</p>
+                                        <p>Biaya: {{  "Rp " . number_format( $detailLayanan->harga??"",0,',','.'); }}</p>
 
                                       <p>{{ $detailLayanan->description??"" }}</p>
                                       </div>

@@ -95,21 +95,21 @@ class LamaranPage extends Component
             return;
         }
 
-        if (!$this->pilihkelas) {
+        // if (!$this->pilihkelas) {
 
-            $this->js(<<<'JS'
+        //     $this->js(<<<'JS'
 
-                        Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "Harap memilih kelas terlebih dahulu!",
+        //                 Swal.fire({
+        //                 icon: "error",
+        //                 title: "Oops...",
+        //                 text: "Harap memilih kelas terlebih dahulu!",
 
-                        });
+        //                 });
 
-            JS);
+        //     JS);
 
-            return;
-        }
+        //     return;
+        // }
         // cek activasi
         if (!auth()->user()->active_st) {
             $this->js(<<<'JS'
@@ -180,7 +180,7 @@ class LamaranPage extends Component
             'status' => 'Dalam Proses',
             'lamaran_tp' => $this->detailLayanan->name,
             'layanan_id' => $this->layanan_id,
-            'kelas_id' => $this->pilihkelas,
+            // 'kelas_id' => $this->pilihkelas,
             'status_pembayaran' => 'Belum Lunas',
             'metode_bayar' => $this->metode_bayar,
 
