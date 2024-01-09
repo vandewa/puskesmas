@@ -184,7 +184,7 @@ class RawatJalan extends Component
             $rm->medicalRecord()->create($this->medicalRecord);
         }
 
-        $this->js('window.open("' . route('helper.print-antrian-poli', $this->form['medical_cd']) . '", "Print Antrian Poli", "width=200,height=100");');
+        $this->js('window.open("' . route('helper.print-antrian-poli', $this->form['medical_cd']) . '", "Print Antrian Poli", "width=500,height=500");');
         session()->flash('status', 'Post successfully updated.');
 
         $this->js(<<<'JS'
