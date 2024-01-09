@@ -925,7 +925,7 @@
                           </ul>
                       </li>
                       @endpermission
-                      @permission('keuangan-create')
+                      @permission('kasir-create')
                       <li
                           class="nav-item
                       {{ request()->is('keuangan*') ? 'menu-is-opening menu-open' : '' }}">
