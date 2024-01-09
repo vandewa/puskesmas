@@ -10,6 +10,7 @@ use App\Models\His\TrxTindakan;
 use App\Models\His\TrxUnitMedis;
 use App\Models\His\TrxMedicalTindakan;
 use App\Livewire\Component\TindakanMedis\TableTindakanMedis;
+use App\Models\His\TrxBangsal;
 
 class TambahTindakanMedis extends Component
 {
@@ -39,7 +40,15 @@ class TambahTindakanMedis extends Component
         $this->tanggal = date('Y-m-d');
         $this->jam = date('h:i');
         $this->form['dr_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->dr_cd;
-        $this->form['medunit_cd'] = TrxMedical::where('medical_cd', $this->medicalcd)->first()->medunit_cd;
+        $a = TrxMedical::with(['ruang'])->where('medical_cd', $this->medicalcd)->first();
+
+        if($a->medical_tp == 'MEDICAL_TP_01'){
+            $this->form['medunit_cd'] = $a->medunit_cd;
+        }
+        else {
+            $this->form['medunit_cd'] = $a->ruang->bangsal_cd??"";
+        }
+
     }
 
     public function save()
@@ -63,13 +72,19 @@ class TambahTindakanMedis extends Component
         $this->form['medical_cd'] = $this->medicalcd;
 
         TrxMedicalTindakan::create($this->form);
-
+        $this->form['form'] = null;
+        $this->form['medical_note'] = null;
+        $this->tindakan = null;
     }
 
     public function render()
     {
         $data = TrxMedical::with(['pasien', 'jenisRawat', 'dokter', 'poli'])->find($this->medicalcd);
-        $poli = TrxUnitMedis::all()->toArray();
+        $bangsal = TrxBangsal::select('bangsal_cd', 'bangsal_nm');
+
+        $poli = TrxUnitMedis::select('medunit_cd', 'medunit_nm')
+        ->union($bangsal)->get();
+
         $dokter = TrxDokter::all()->toArray();
 
 
