@@ -161,10 +161,14 @@
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-info">Simpan</button>
-                            <a href="{{ route('registrasi.rawat-inap', [$medik->pasien_cd, $medik->medical_cd]) }}"
-                                class="btn btn-warning">Mutasi To Inap</a>
-                            <a href="{{ route('registrasi.rawat-jalan', [$medik->pasien_cd, $medik->medical_cd]) }}"
-                                class="btn btn-success">Mutasi Poli</a>
+
+                            @if ($medik->medical_tp == 'MEDICAL_TP_01')
+                                <a href="{{ route('registrasi.rawat-inap', [$medik->pasien_cd, $medik->medical_cd]) }}"
+                                    class="btn btn-warning">Mutasi To Inap</a>
+                                <a href="{{ route('registrasi.rawat-jalan', [$medik->pasien_cd, $medik->medical_cd]) }}"
+                                    class="btn btn-success">Mutasi Poli</a>
+                            @endif
+
                             <a href="{{ route('transaksi.rawat-jalan.list') }}"
                                 class="btn btn-default float-right">Kembali</a>
                         </div>

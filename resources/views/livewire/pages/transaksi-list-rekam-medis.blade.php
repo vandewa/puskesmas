@@ -8,6 +8,8 @@
                     <h1 class="m-0">Tindakan Medis</h1>
                 @elseif (Request::segment('4') == 'transaksi.rawat-inap.resep-obat')
                     <h1 class="m-0">Resep Obat</h1>
+                @elseif (Request::segment('1') == 'rekam-medis')
+                    <h1 class="m-0">Rekam Medis</h1>
                 @else
                     <h1 class="m-0">Transaksi Rawat Inap</h1>
                 @endif

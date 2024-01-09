@@ -87,7 +87,8 @@
                                                             Keterangan
                                                             Sakit</a>
                                                         <a class="dropdown-item"
-                                                            href="{{ route('helper.print-kartu-pasien', $selected) }}">Kartu
+                                                            href="{{ route('helper.print-kartu-pasien', $selected) }}"
+                                                            target="_blank">Kartu
                                                             Pasien</a>
                                                     </div>
                                                 </div>
