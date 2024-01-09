@@ -1004,6 +1004,7 @@
                                       class="nav-item
                                 {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
                                 {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
+                                {{ Request::segment(2) == 'pos-inventori' ? 'menu-is-opening menu-open' : '' }}
                                 {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
                                 {{ Request::segment(2) == 'principal' ? 'menu-is-opening menu-open' : '' }}
                                 {{ Request::segment(2) == 'list-principal' ? 'menu-is-opening menu-open' : '' }}
@@ -1015,6 +1016,7 @@
                                           class="nav-link
                                     {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'pos-inventori' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'principal' ? 'active' : '' }}
                                     {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
@@ -1125,26 +1127,26 @@
                               <ul class="nav nav-treeview">
                                   <li
                                       class="nav-item
-                       {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'principal' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'list-principal' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'supplier' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'list-supplier' ? 'menu-is-opening menu-open' : '' }}
-                       {{ Request::segment(2) == 'list-tipe' ? 'menu-is-opening menu-open' : '' }}
-                       ">
+                                    {{-- {{ Request::segment(2) == 'inventori' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'list-inventori' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'unit-satuan' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'principal' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'list-principal' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'supplier' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'list-supplier' ? 'menu-is-opening menu-open' : '' }}
+                                    {{ Request::segment(2) == 'list-tipe' ? 'menu-is-opening menu-open' : '' }} --}}
+                                    ">
                                       <a href="#"
                                           class="nav-link
-                      {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'principal' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
-                      {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }}
-                      ">
+                                    {{-- {{ Request::segment(2) == 'inventori' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'list-inventori' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'unit-satuan' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'principal' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'list-principal' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'supplier' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'list-supplier' ? 'active' : '' }}
+                                    {{ Request::segment(2) == 'list-tipe' ? 'active' : '' }} --}}
+                                    ">
                                           <i class="ml-2 fa fa-folder nav-icon"></i>
                                           <p>
                                               Transaksi Inventori
