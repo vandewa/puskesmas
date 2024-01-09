@@ -284,5 +284,14 @@ class TrxMedical extends Model implements Auditable
         }
     }
 
+    public function parent()
+        {
+        return $this->belongsTo(TrxMedical::class, 'parent_id');
+        }
+        public function children()
+        {
+        return $this->hasMany(TrxMedical::class, 'parent_id');
+        }
+
 
 }

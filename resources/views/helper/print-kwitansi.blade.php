@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="page-header">
-                        <i class="fas fa-globe"></i> {{ ucwords($data->rs_nm) }}
+                        <img src="{{ asset('puskesmas.png') }}" alt=""> {{ ucwords($data->rs_nm) }}
                         <small class="float-right">Tanggal:
                             {{ date('d/m/Y', strtotime($settlemen->entry_date)) }}</small>
                     </h2>

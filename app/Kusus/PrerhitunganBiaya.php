@@ -118,8 +118,14 @@ class PrerhitunganBiaya
 
         TrxMedicalSettlementShare::where('medical_cd', $medicalcd);
 
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->deletePerhitungan($a->medical_root_cd);
+        }
+
     }
 
+    // hitung inventory root
     protected function hitungInventory($medicalcd)
     {
         $data = TrxMedicalResep::with('resepData')->where('medical_cd', $medicalcd)->get();
@@ -163,8 +169,59 @@ class PrerhitunganBiaya
                 }
             }
         }
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->hitungInventoryChild($a->medical_root_cd, $medicalcd);
+        }
+    }
 
+    protected function hitungInventoryChild($medicalcd, $root)
+    {
+        $data = TrxMedicalResep::with('resepData')->where('medical_cd', $medicalcd)->get();
 
+        foreach($data as $a) {
+            $trxResepData = TrxResepData::where('medical_resep_seqno', $a->seq_no)->where('resep_tp', 'RESEP_TP_2')->get();
+            if($trxResepData) {
+                TrxMedicalSettlement::create([
+                    'medical_cd' =>  $root,
+                    'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
+                    'account_cd' => 'AC301',
+                    'datetime_trx' => date('Y-m-d'),
+                    'data_cd' => $a->seq_no,
+                    'data_nm' => 'Biaya Obat Resep Racik @ 1 Resep',
+                    'amount' => 6500,
+                    'note' => '',
+                    'manual_st' => '0',
+                    'payment_st' => 'PAYMENT_ST_0',
+                    'quantity' => 1,
+                    'item_price' =>  6500,
+
+                ]);
+            } else {
+                $cekNonRacik = TrxResepData::where('medical_resep_seqno', $a->seq_no)->where('resep_tp', 'RESEP_TP_1')->get();
+                if( $cekNonRacik) {
+                    TrxMedicalSettlement::create([
+                        'medical_cd' =>  $root,
+                        'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
+                        'account_cd' => 'AC301',
+                        'datetime_trx' => date('Y-m-d'),
+                        'data_cd' => $a->seq_no,
+                        'data_nm' => 'Biaya Obat Resep @ 1 Resep',
+                        'amount' => 6000,
+                        'note' => '',
+                        'manual_st' => '0',
+                        'payment_st' => 'PAYMENT_ST_0',
+                        'quantity' => 1,
+                        'item_price' =>  6500,
+
+                    ]);
+                }
+            }
+        }
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->hitungInventoryChild($a->medical_root_cd, $root);
+        }
     }
 
 
@@ -258,10 +315,100 @@ class PrerhitunganBiaya
                 ]);
             }
 
+        }
+
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->hitungTarifUnitMedisParent($a->medical_root_cd, $medicalcd);
+        }
+
+    }
+
+    // hitung tariff lab dan radiologi parent
+    protected function hitungTarifUnitMedisParent($medicalcd, $root) {
+        $data = TrxMedicalUnit::with(['tindakan'])->where('medical_cd', $medicalcd)->where(function($a){
+            $a->where('payment_st', '<>', 'PAYMENT_ST_1')->orwhere('payment_st', null);
+        })
+        ->orderBy('datetime_trx', 'asc')->get();
+
+        // dd($data);
+
+
+        foreach($data as $item) {
+
+            $ambilAccount = TrxTarifUnitmedis::where('medicalunit_cd', $item->medicalunit_cd)
+            ->where('kelas_cd', $this->dataMedical->ruang->kelas_cd ??'')
+            ->where('insurance_cd', $this->dataMedical->pasien->asuransi->insurance_cd ??'')
+            ->first();
+            if(!$ambilAccount){
+                $ambilAccount = TrxTarifUnitmedis::where('medicalunit_cd', $item->medicalunit_cd)
+                ->first();
+            }
+            // dd($ambilAccount);
+            if($ambilAccount) {
+                TrxMedicalSettlement::create([
+                    'medical_cd' => $root,
+                    'tarif_tp' => 'TARIF_TP_02', // merupakan jenis tarif tp general
+                    'account_cd' => $ambilAccount->account_cd,
+                    'datetime_trx' => $item->created_at,
+                    'data_cd' => $item->seq_no,
+                    'data_nm' =>  $item->tindakan->medicalunit_nm??"",
+                    'amount' => $ambilAccount->tarif,
+                    'note' => '',
+                    'manual_st' => '0',
+                    'payment_st' => 'PAYMENT_ST_0',
+                    'quantity' => 1,
+                    'item_price' =>  $ambilAccount->tarif,
+
+                ]);
+            }
 
         }
 
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->hitungTarifUnitMedisParent($a->medical_root_cd, $root);
+        }
 
+    }
+
+
+
+    // hitung biaya dari setiap tindakan yang dilakukan pada child
+    protected function hitungTarifTindakanParent ($medicalcd, $root) {
+
+        $data = TrxMedicalTindakan::with(['tindakan'])->where('medical_cd', $medicalcd)
+        ->where(function($a){
+            $a->where('payment_st', '<>', 'PAYMENT_ST_1')->orwhere('payment_st', null);
+        })->get();
+
+
+
+        foreach($data as $item) {
+            $cektaritindakan = TrxTarifTindakan::where('treatment_cd', $item->treatment_cd)->first();
+            // dd( $cektaritindakan );
+            if($cektaritindakan) {
+                TrxMedicalSettlement::create([
+                    'medical_cd' => $root,
+                    'tarif_tp' => 'TARIF_TP_00', // merupakan jenis tarif tp general
+                    'account_cd' => $cektaritindakan->account_cd,
+                    'datetime_trx' => $item->datetime_trx,
+                    'data_nm' =>  $item->tindakan->treatment_nm,
+                    'amount' => $cektaritindakan->tarif,
+                    'note' => '',
+                    'manual_st' => '0',
+                    'payment_st' => 'PAYMENT_ST_0',
+                    'quantity' => 1,
+                    'item_price' =>  $cektaritindakan->tarif,
+
+                ]);
+            }
+        }
+
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->hitungTarifTindakanParent($a->medical_root_cd, $root);
+        }
     }
 
     // hitung biaya dari setiap tindakan yang dilakukan
@@ -294,6 +441,11 @@ class PrerhitunganBiaya
                 ]);
             }
         }
+        $a = TrxMedical::find($medicalcd);
+        if($a->medical_root_cd??"" != ""){
+            $this->hitungTarifTindakanParent($a->medical_root_cd, $medicalcd);
+        }
+
     }
     // mulai hitung tarif general jika ada
     protected function hitungTarifGeneral($medicalTp) {
