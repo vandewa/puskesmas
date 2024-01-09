@@ -110,18 +110,22 @@ class NutrisiComponent extends Component
 
     public function updated($property)
     {
-        // $property: The name of the current property that was updated
-
         if ($property === 'form.berat') {
-            if ($this->form['tinggi'] != null) {
-                $this->form['imt'] = round($this->form['berat'] / ($this->form['tinggi'] * $this->form['tinggi'] / 10000), 2);
+            if ($this->form['berat'] != null) {
+                if ($this->form['tinggi'] != null) {
+                    $this->form['imt'] = round($this->form['berat'] / ($this->form['tinggi'] * $this->form['tinggi'] / 10000), 2);
+                }
             }
+
         }
 
         if ($property === 'form.tinggi') {
-            if ($this->form['berat'] != null) {
-                $this->form['imt'] = round($this->form['berat'] / ($this->form['tinggi'] * $this->form['tinggi'] / 10000), 2);
+            if ($this->form['tinggi'] != null) {
+                if ($this->form['berat'] != null) {
+                    $this->form['imt'] = round($this->form['berat'] / ($this->form['tinggi'] * $this->form['tinggi'] / 10000), 2);
+                }
             }
+
         }
 
     }

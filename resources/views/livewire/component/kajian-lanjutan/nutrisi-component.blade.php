@@ -38,7 +38,7 @@
                                 <label for="" class="col-sm-3 col-form-label">IMT</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
-                                        <input type="text" class="form-control" wire:model='form.imt' readonly>
+                                        <input type="number" class="form-control" wire:model='form.imt' readonly>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Kg/m²</span>
                                         </div>
