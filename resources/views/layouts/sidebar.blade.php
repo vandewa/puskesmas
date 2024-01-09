@@ -595,8 +595,8 @@
                                       <li class="nav-item">
                                           <a href="{{ route('transaksi.rawat-jalan.list', 'transaksi.rawat-jalan.rekam-medis') }}"
                                               class="nav-link {{ request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.rekam-medis') ? 'active' : '' }}
-                                      {{ request()->is('transaksi/rawat-jalan/list/rekam-medis/*') ? 'active' : '' }}
-                                      ">
+                                                {{ request()->is('transaksi/rawat-jalan/list/rekam-medis/*') ? 'active' : '' }}
+                                                ">
                                               @if (request()->is('transaksi/rawat-jalan/list/transaksi.rawat-jalan.rekam-medis') ? 'active' : '')
                                                   <i class="ml-3 far fa-dot-circle nav-icon"></i>
                                               @else
@@ -856,8 +856,8 @@
                           </ul>
                       </li> --}}
                       @permission('rekam_medis-create')
-                          <li class="nav-item">
-                              <a href="#" class="nav-link">
+                          <li class="nav-item @if (Request::segment(1) == 'rekam-medis') menu-is-opening menu-open @endif">
+                              <a href="#" class="nav-link @if (Request::segment(1) == 'rekam-medis') active @endif">
                                   <i class="nav-icon fas fa-copy"></i>
                                   <p>
                                       Rekam Medis
@@ -866,8 +866,13 @@
                               </a>
                               <ul class="nav nav-treeview">
                                   <li class="nav-item">
-                                      <a href="{{ route('list-rekam-medis') }}" class="nav-link">
-                                          <i class="ml-3 far fa-circle nav-icon"></i>
+                                      <a href="{{ route('list-rekam-medis') }}"
+                                          class="nav-link @if (Request::segment(1) == 'rekam-medis') active @endif">
+                                          @if (Request::segment(1) == 'rekam-medis')
+                                              <i class="ml-3 far fa-dot-circle nav-icon"></i>
+                                          @else
+                                              <i class="ml-3 far fa-circle nav-icon"></i>
+                                          @endif
                                           <p>Rekam Medis</p>
                                       </a>
                                   </li>
