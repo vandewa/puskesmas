@@ -57,7 +57,7 @@ class FormDocument extends Component
 
         $this->validate([
             'form.document_tp' => 'required',
-            'path' => 'required',
+            'path' => 'required|image|max:5120',
         ]);
        $a = $this->path->store('path');
         $this->form['path'] = $a;
@@ -66,6 +66,8 @@ class FormDocument extends Component
         TrxDocument::create(
             $this->form
         );
+
+        $this->dispatch('refresh')->to(TableDocument::class);
 
         $this->pilihan = [];
         $this->js(<<<'JS'

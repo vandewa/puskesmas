@@ -283,7 +283,7 @@ if (!function_exists('gen_no_rm')) {
     function gen_no_rm($id = '')
     {
         $a = '';
-        $tambahan = '99';
+        $tambahan = '90';
         if ($id) {
             $a = ComRegion::find($id);
         }
@@ -291,7 +291,7 @@ if (!function_exists('gen_no_rm')) {
         $no = str_pad(1, 6, '0', STR_PAD_LEFT);
         $terakhir = \App\Models\His\TrxPasien::orderBy('created_at', 'desc');
         if ($a->modi_id ?? "" != "") {
-            $tambahan = str_pad($a->modi_id, 2, '0');
+            $tambahan = str_pad($a->modi_id, 2, '0', STR_PAD_LEFT);
             $terakhir->where(DB::raw("left(no_rm,2)"), $tambahan);
         } else {
             $terakhir->where(DB::raw("left(no_rm,2)"), '99');

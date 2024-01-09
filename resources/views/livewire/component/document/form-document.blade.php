@@ -18,13 +18,20 @@
                 <div class="col-md-3">Keterangan</div>
                 <div class="col-md-9">
                     <input type="text" wire:model='form.keterangan' class="form-control" name="" id="">
+                    @error('form.keterangan')
+                    <span class="form-text text-danger">{{ $message }}</span>
+                @enderror
                 </div>
+
             </div>
             @endif
             <div class="form-group row">
                 <div class="col-md-3">Data</div>
                 <div class="col-md-9">
                     <input type="file" class="form-control" name="" id="" wire:model='path'>
+                    @error('path')
+                        <span class="form-text text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
         </div>

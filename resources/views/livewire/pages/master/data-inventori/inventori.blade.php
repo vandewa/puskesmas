@@ -218,7 +218,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-info">Simpan</button>
-                                <a href="{{ route('master.inventori.index') }}"
+                                <a href="{{ route('inventori.inventori.index') }}"
                                     class="btn btn-default float-right">Kembali</a>
                             </div>
                         </form>

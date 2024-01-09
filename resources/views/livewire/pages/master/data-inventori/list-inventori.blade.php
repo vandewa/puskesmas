@@ -42,7 +42,7 @@
                                             <td>{{ $item->item_nm ?? '-' }}</td>
                                             <td>{{ $item->type->type_nm ?? '-' }}</td>
                                             <td>{{ $item->satuan->unit_nm ?? '-' }}</td>
-                                            <td>{{ $item->satuan->unit_nm ?? '-' }}</td>
+                                            <td>{{ $item->generic->code_nm ?? '-' }}</td>
                                             <td>
                                                 <a href="{{ route('inventori.inventori', $item->item_cd) }}" wire:navigate
                                                     class="btn btn-warning btn-flat btn-sm" data-toggle="tooltip"

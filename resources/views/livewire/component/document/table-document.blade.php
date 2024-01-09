@@ -19,7 +19,7 @@
                     <td>{{ $item->document->code_nm ?? '-' }}</td>
                     <td>{{ $item->keterangan ?? '-' }}</td>
                     <td>
-                        <button class="btn btn-primary">Lihat</button>
+                        <a href="{{ route('helper.preview-dokumen',['path'=> $item->path]) }}" target="_blank" class="btn btn-primary">Lihat</a>
                         <button class="btn btn-danger">Hapus</button>
                     </td>
                 </tr>
