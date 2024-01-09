@@ -214,6 +214,9 @@ Route::middleware([
     });
 
     Route::group(['prefix' => 'keuangan', 'as' => 'keuangan.'], function () {
+
+        Route::get('cetak-ulang', CetakUlangPage::class)->name('cetak-ulang');
+
         Route::group(['prefix' => 'proses-pembayaran', 'as' => 'proses-pembayaran.'], function () {
             Route::group(['prefix' => 'rawat-jalan', 'as' => 'rawat-jalan.'], function () {
                 Route::get('list/{url?}', ListPasienKeuangan::class)->name('list');
@@ -224,8 +227,6 @@ Route::middleware([
                 Route::get('list/{url?}', ListPasienKeuangan::class)->name('list');
                 Route::get('proses/{id?}', ProsesPembayaran::class)->name('proses');
             });
-
-            Route::get('cetak-ulang', CetakUlangPage::class)->name('cetak-ulang');
 
         });
     });

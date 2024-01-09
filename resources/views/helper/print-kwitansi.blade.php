@@ -144,7 +144,13 @@
     <!-- ./wrapper -->
     <!-- Page specific script -->
     <script>
-        window.addEventListener("load", window.print());
+        window.print();
+
+        // Menutup jendela cetak setelah pencetakan selesai atau dibatalkan
+        window.addEventListener('afterprint', function(event) {
+            // Menutup jendela cetak
+            window.close();
+        });
     </script>
 </body>
 

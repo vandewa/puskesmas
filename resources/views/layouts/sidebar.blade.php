@@ -976,8 +976,19 @@
                                           </a>
                                       </li>
                                   </ul>
+
                               </li>
                           </ul>
+                          <li class="nav-item">
+                            <a href="{{ route('keuangan.cetak-ulang') }}" class="nav-link" wire:navigate>
+                                @if (request()->is('keuangan/cetak-ulang') ? 'active' : '')
+                                    <i class="ml-3 far fa-dot-circle nav-icon"></i>
+                                @else
+                                    <i class="ml-3 far fa-circle nav-icon"></i>
+                                @endif
+                                <p>Cetak Ulang Kwitansi</p>
+                            </a>
+                        </li>
                       </li>
                       @endpermission
                       @permission('inventori-create')
