@@ -21,7 +21,7 @@ class ProsesSettlement {
     }
 
     protected function rubahTrxMedical($data) {
-        $cek = TrxMedical::where('medical_cd', $data->medical_cd);
+        $cek = TrxMedical::where('medical_cd', $data->medical_cd)->first();
         TrxRuang::where('ruang_cd', $cek->ruang_cd)->update([
             'kondisi_st' => 'KONDISI_ST_02'
         ]);
