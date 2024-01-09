@@ -882,7 +882,7 @@
                       @endpermission
                       @permission('farmasi-create')
                           <li class="nav-item  {{ request()->is('farmasi*') ? 'menu-is-opening menu-open' : '' }}">
-                              <a href="#" class="nav-link">
+                              <a href="#" class="nav-link  {{ request()->is('farmasi*') ? 'active' : '' }}">
                                   <i class="nav-icon fas fa-flask"></i>
                                   <p>
                                       Farmasi
@@ -890,8 +890,10 @@
                                   </p>
                               </a>
                               <ul class="nav nav-treeview">
-                                  <li class="nav-item">
-                                      <a href="{{ route('farmasi.list') }}" class="nav-link" wire:navigate>
+                                  <li class="nav-item {{ request()->is('farmasi*') ? 'active' : '' }}">
+                                      <a href="{{ route('farmasi.list') }}"
+                                          class="nav-link  {{ request()->is('farmasi/list') ? 'active' : '' }}"
+                                          wire:navigate>
                                           @if (request()->is('farmasi/list') ? 'active' : '')
                                               <i class="ml-3 far fa-dot-circle nav-icon"></i>
                                           @else
@@ -913,7 +915,8 @@
                                   </a>
                               </li> --}}
                                   <li class="nav-item">
-                                      <a href="{{ route('farmasi.pengambilan') }}" class="nav-link">
+                                      <a href="{{ route('farmasi.pengambilan') }}"
+                                          class="nav-link {{ request()->is('farmasi/pengambilan') ? 'active' : '' }}">
                                           @if (request()->is('farmasi/pengambilan') ? 'active' : '')
                                               <i class="ml-3 far fa-dot-circle nav-icon"></i>
                                           @else
