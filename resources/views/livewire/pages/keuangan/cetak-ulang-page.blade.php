@@ -33,18 +33,6 @@
                                                 placeholder="Ketik No RM">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="" class="col-sm-3 col-form-label">PoliKlinik</label>
-                                        <div class="col-md-9">
-                                            <select name="" class="form-control select2bs4" id="select2"
-                                                wire:model.live='poliklinik'>
-                                                @foreach ($poli ?? [] as $item)
-                                                    <option value="{{ $item['medunit_cd'] }}">{{ $item['medunit_nm'] }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group row">
@@ -60,9 +48,28 @@
                     <!-- general form elements -->
                     <div class="card card-success card-outline">
                         <div class="card-body">
-                           
-                        </div>
+                            <table class="table">
+                                <thead>
+                                    <th>No Kwitansi</th>
+                                    <th>Tanggal</th>
+                                    <th>Pasien</th>
+                                    <th>No RM</th>
+                                    <th>Action</th>
+                                </thead>
+                                <tbody>
 
+                                </tbody>
+                                @foreach ($data as $item)
+                                    <tr>
+                                        <td>{{$item->invoice_no  }}</td>
+                                        <td>{{$item->invoice_date }}</td>
+                                        <td>{{ $item->pasien->pasien_nm??"" }}</td>
+                                        <td>{{ $item->pasien->no_rm??"" }}</td>
+                                        <td><a href="{{ route('helper.cetak-invoice', $item->settlement_no) }}" target="_blank" class="btn btn-primary">Cetak</a></td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
                     </div>
                     <!-- /.card -->
                 </div>

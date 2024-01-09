@@ -953,40 +953,52 @@
                                           class="nav-link
                                       {{ request()->is('keuangan*') ? 'active' : '' }}
                                 ">
-                                          <i class="ml-3 fa fa-folder nav-icon"></i>
-                                          <p>Proses Pembayaran
-                                              <i class="fas fa-angle-left right"></i>
-                                          </p>
-                                      </a>
-                                      <ul class="nav nav-treeview">
-                                          <li class="nav-item">
-                                              <a href="{{ route('keuangan.proses-pembayaran.rawat-jalan.list') }}"
-                                                  wire:navigate
-                                                  class="nav-link  {{ Request::segment(3) == 'rawat-jalan' ? 'active' : '' }}">
-                                                  @if (Request::segment(3) == 'rawat-jalan')
-                                                      <i class="ml-5 far fa-dot-circle nav-icon"></i>
-                                                  @else
-                                                      <i class="ml-5 far fa-circle nav-icon"></i>
-                                                  @endif
-                                                  <p>Rawat Jalan</p>
-                                              </a>
-                                          </li>
-                                          <li class="nav-item">
-                                              <a href="{{ route('keuangan.proses-pembayaran.rawat-inap.list') }}"
-                                                  wire:navigate
-                                                  class="nav-link {{ Request::segment(3) == 'rawat-inap' ? 'active' : '' }}">
-                                                  @if (Request::segment(3) == 'rawat-inap')
-                                                      <i class="ml-5 far fa-dot-circle nav-icon"></i>
-                                                  @else
-                                                      <i class="ml-5 far fa-circle nav-icon"></i>
-                                                  @endif
-                                                  <p>Rawat Inap</p>
-                                              </a>
-                                          </li>
-                                      </ul>
-                                  </li>
-                              </ul>
-                          </li>
+                                      <i class="ml-3 fa fa-folder nav-icon"></i>
+                                      <p>Proses Pembayaran
+                                          <i class="fas fa-angle-left right"></i>
+                                      </p>
+                                  </a>
+                                  <ul class="nav nav-treeview">
+                                      <li class="nav-item">
+                                          <a href="{{ route('keuangan.proses-pembayaran.rawat-jalan.list') }}"
+                                              wire:navigate
+                                              class="nav-link  {{ Request::segment(3) == 'rawat-jalan' ? 'active' : '' }}">
+                                              @if (Request::segment(3) == 'rawat-jalan')
+                                                  <i class="ml-5 far fa-dot-circle nav-icon"></i>
+                                              @else
+                                                  <i class="ml-5 far fa-circle nav-icon"></i>
+                                              @endif
+                                              <p>Rawat Jalan</p>
+                                          </a>
+                                      </li>
+                                      <li class="nav-item">
+                                          <a href="{{ route('keuangan.proses-pembayaran.rawat-inap.list') }}"
+                                              wire:navigate
+                                              class="nav-link {{ Request::segment(3) == 'rawat-inap' ? 'active' : '' }}">
+                                              @if (Request::segment(3) == 'rawat-inap')
+                                                  <i class="ml-5 far fa-dot-circle nav-icon"></i>
+                                              @else
+                                                  <i class="ml-5 far fa-circle nav-icon"></i>
+                                              @endif
+                                              <p>Rawat Inap</p>
+                                          </a>
+                                      </li>
+                                  </ul>
+
+                              </li>
+                              <li class="nav-item">
+                                <a href="{{ route('keuangan.cetak-ulang') }}" class="nav-link" wire:navigate>
+                                    @if (request()->is('keuangan/cetak-ulang') ? 'active' : '')
+                                        <i class="ml-3 far fa-dot-circle nav-icon"></i>
+                                    @else
+                                        <i class="ml-3 far fa-circle nav-icon"></i>
+                                    @endif
+                                    <p>Cetak Ulang Kwitansi</p>
+                                </a>
+                            </li>
+                          </ul>
+
+                      </li>
                       @endpermission
                       @permission('inventori-create')
                           <li

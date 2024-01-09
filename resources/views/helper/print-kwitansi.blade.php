@@ -10,9 +10,9 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('AdminLte') }}/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('AdminLTE') }}/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('AdminLte') }}/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('AdminLTE') }}/dist/css/adminlte.min.css">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="col-12">
                     <h2 class="page-header">
-                        <i class="fas fa-globe"></i> {{ ucwords($data->rs_nm) }}
+                        <img src="{{ asset('puskesmas.png') }}" alt=""> {{ ucwords($data->rs_nm) }}
                         <small class="float-right">Tanggal:
                             {{ date('d/m/Y', strtotime($settlemen->entry_date)) }}</small>
                     </h2>
@@ -144,7 +144,13 @@
     <!-- ./wrapper -->
     <!-- Page specific script -->
     <script>
-        window.addEventListener("load", window.print());
+        window.print();
+
+        // Menutup jendela cetak setelah pencetakan selesai atau dibatalkan
+        window.addEventListener('afterprint', function(event) {
+            // Menutup jendela cetak
+            window.close();
+        });
     </script>
 </body>
 

@@ -21,8 +21,8 @@ class TrxJadwalTableSeeder extends Seeder
 
         DB::table('trx_jadwal')->delete();
 
-        for($i = 1 ; $i<=6 ; $i++);
-            {
+        for($i = 1 ; $i<=6 ; $i++){
+                echo $i;
                 TrxJadwal::create([
                 'dr_cd' => 'DR02',
                 'medunit_cd' => 'POLIGIGI',

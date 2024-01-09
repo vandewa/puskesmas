@@ -77,7 +77,7 @@ class ProsesPembayaran extends Component
             'medical_cd' => $this->medik->medical_cd,
             'pasien_cd' =>  $this->medik->pasien_cd,
             'invoice_no' => gen_no_kwitansi(),
-            'invoice_date' => date('Y-m-d'),
+            'invoice_date' => date('Y-m-d H:i:s'),
             'payment_tp' => $this->caraBayar,
             'insurance_cd' => $this->medik->insurance_cd,
             'entry_nm' => auth()->user()->name,

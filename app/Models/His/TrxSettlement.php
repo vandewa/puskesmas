@@ -3,6 +3,7 @@
 namespace App\Models\His;
 use OwenIt\Auditing\Contracts\Auditable;
 use Auth;
+use DB;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -216,6 +217,21 @@ use \OwenIt\Auditing\Auditable;
     public function medical() {
         return $this->belongsTo(TrxMedical::class, 'medical_cd', 'medical_cd');
     }
+    public function scopeCarirm($filter, $value)
+    {
+        if ($value) {
+            return $filter->whereHas('pasien', function ($a) use ($value) {
+                $a->where('no_rm', 'ilike', "%$value%");
+            });
+        }
+    }
+    public function scopeCaritanggal($filter, $value){
+        if ($value) {
+            $filter->where(DB::raw("invoice_date::date"), $value);
+        }
+    }
+
+
 
 
 }
