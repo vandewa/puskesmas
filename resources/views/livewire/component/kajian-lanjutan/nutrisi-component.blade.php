@@ -10,7 +10,7 @@
                                 <label for="" class="col-sm-3 col-form-label">Berat</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
-                                        <input type="number" class="form-control" wire:model='form.berat'>
+                                        <input type="number" class="form-control" wire:model.live='form.berat'>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Kg</span>
                                         </div>
@@ -24,7 +24,7 @@
                                 <label for="" class="col-sm-3 col-form-label">Tinggi</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
-                                        <input type="number" class="form-control" wire:model='form.tinggi'>
+                                        <input type="number" class="form-control" wire:model.live='form.tinggi'>
                                         <div class="input-group-append">
                                             <span class="input-group-text">Cm</span>
                                         </div>
@@ -38,9 +38,9 @@
                                 <label for="" class="col-sm-3 col-form-label">IMT</label>
                                 <div class="col-md-9">
                                     <div class="mb-3 input-group">
-                                        <input type="number" class="form-control" wire:model='form.imt'>
+                                        <input type="text" class="form-control" wire:model='form.imt' readonly>
                                         <div class="input-group-append">
-                                            <span class="input-group-text">Kg/M</span>
+                                            <span class="input-group-text">Kg/m²</span>
                                         </div>
                                     </div>
                                     @error('form.imt')

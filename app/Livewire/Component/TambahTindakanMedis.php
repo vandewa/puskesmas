@@ -45,7 +45,7 @@ class TambahTindakanMedis extends Component
     {
         $this->store();
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil disimpan");
-        $this->reset();
+        // $this->reset();
     }
 
     public function store()

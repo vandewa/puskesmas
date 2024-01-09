@@ -24,13 +24,13 @@
 
                                     <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Jumlah</label>
-                                        <div class="col-md-3">
+                                        <div class="col-md-9">
                                             <input type="text" class="form-control" wire:model='form.quantity'>
                                             @error('form.quantity')
                                                 <span class="form-text text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
-                                        <label for="" class="col-sm-3 col-form-label">Diskon Dokter</label>
+                                        {{-- <label for="" class="col-sm-3 col-form-label">Diskon Dokter</label>
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <input type="text" class="form-control"
@@ -42,7 +42,7 @@
                                             @error('form.diskon_percent')
                                                 <span class="form-text text-danger">{{ $message }}</span>
                                             @enderror
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="row mb-2">
                                         <label for="" class="col-sm-3 col-form-label">Unit</label>
