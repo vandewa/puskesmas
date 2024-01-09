@@ -54,7 +54,7 @@ class TableTindakanMedis extends Component
 
     public function render()
     {
-        $data = TrxMedicalTindakan::with(['dokter', 'tindakan', 'medical'])->where('medical_cd', $this->medicalcd)->cari($this->cari)->paginate(10);
+        $data = TrxMedicalTindakan::with(['dokter', 'tindakan', 'medical', 'bangsal'])->where('medical_cd', $this->medicalcd)->cari($this->cari)->paginate(10);
         return view('livewire.component.tindakan-medis.table-tindakan-medis', [
             'posts' => $data
         ]);

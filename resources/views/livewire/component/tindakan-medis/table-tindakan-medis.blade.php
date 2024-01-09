@@ -1,5 +1,5 @@
     <div>
-        <div class="row mb-3">
+        <div class="mb-3 row">
             <div class="col-md-2">
                 <input type="text" class="form-control" placeholder="cari" wire:model.live='cari'>
             </div>
@@ -20,7 +20,7 @@
                         <td>{{ $item->dokter->dr_nm ?? '-' }}</td>
                         <td>{{ $item->tindakan->treatment_nm ?? '' }}</td>
                         <td>{{ $item->quantity ?? '' }}</td>
-                        <td>{{ $item->medical->poli->medunit_nm ?? '' }}</td>
+                        <td>{{ $item->medical->poli->medunit_nm ?? '' }} {{ $item->bangsal->bangsal_nm??"" }}</td>
                         <td>
                             <button type="button" class="btn btn-sm btn-danger"
                                 wire:click='confirmDelete({{ $item->medical_tindakan_seqno }})'>Hapus</button>

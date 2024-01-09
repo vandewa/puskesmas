@@ -145,6 +145,11 @@ class TrxMedicalTindakan extends Model implements Auditable
         return $this->belongsTo(TrxMedical::class, 'medical_cd');
     }
 
+    public function bangsal()
+    {
+        return $this->belongsTo(TrxBangsal::class, 'medunit_cd');
+    }
+
     public function scopeCari($query, $s)
     {
         if ($s) {
