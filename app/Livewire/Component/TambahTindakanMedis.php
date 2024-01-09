@@ -9,6 +9,7 @@ use App\Models\His\TrxMedical;
 use App\Models\His\TrxTindakan;
 use App\Models\His\TrxUnitMedis;
 use App\Models\His\TrxMedicalTindakan;
+use App\Livewire\Component\TindakanMedis\TableTindakanMedis;
 
 class TambahTindakanMedis extends Component
 {
@@ -45,7 +46,8 @@ class TambahTindakanMedis extends Component
     {
         $this->store();
         $this->dispatch('toast', type: 'bg-success', title: 'Berhasil!!', body: "Data berhasil disimpan");
-        // $this->reset();
+        $this->dispatch('refresh')->to(TableTindakanMedis::class);
+
     }
 
     public function store()

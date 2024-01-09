@@ -13,7 +13,10 @@ class TableTindakanMedis extends Component
     use WithPagination;
 
     #[On('refresh')]
-
+    public function refresh()
+    {
+        $this->resetPage();
+    }
 
     public function confirmDelete($id)
     {
